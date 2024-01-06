@@ -1,0 +1,2 @@
+E:\Github\CG\x64\Debug\CG.exe
+C:\Github\ComputerGraphics\OpenGL\x64\Debug\CG.exe
