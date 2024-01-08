@@ -19,27 +19,57 @@
     <Filter Include="소스 파일\Shader">
       <UniqueIdentifier>{d61a8871-5816-4cdc-babd-1a22a0c685dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Components">
+      <UniqueIdentifier>{f7ee8dcc-9541-4bb2-bbd2-e76837b98d64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Objects">
+      <UniqueIdentifier>{e0e73e32-9016-47ad-97b6-ead00288ce92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Managers">
+      <UniqueIdentifier>{20ff8402-461a-471d-a86c-d76ea3dd0a1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Resources">
+      <UniqueIdentifier>{fd76c42e-416d-4114-a6c6-80919fa9977d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Util">
+      <UniqueIdentifier>{a28e6766-926b-4702-9070-459e1dc816b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Code\cScene.cpp">
+    <ClCompile Include="Code\Scene.cpp">
       <Filter>소스 파일\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Code\Vector2.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\CObjcet.cpp">
+      <Filter>소스 파일\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\MemoryMgr.cpp">
+      <Filter>소스 파일\Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Include.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Code\cScene.h">
+    <ClInclude Include="Code\Scene.h">
       <Filter>소스 파일\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Code\Vector2.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\CObjcet.h">
+      <Filter>소스 파일\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\CoreBase.h">
+      <Filter>소스 파일\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\MemoryMgr.h">
+      <Filter>소스 파일\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

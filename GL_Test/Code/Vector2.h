@@ -10,7 +10,7 @@ public:
 	float y;
 public:
 	Vector2();
-	Vector2(float tx, float ty) : x(tx), y(ty) {}
+	Vector2(float tx = 0, float ty = 0) : x(tx), y(ty) {}
 	~Vector2();
 	Vector2 operator +(const Vector2& v) const;
 	Vector2 operator -(const Vector2& v) const;

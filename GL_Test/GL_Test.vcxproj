@@ -19,12 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Code\cScene.cpp" />
+    <ClCompile Include="Code\CObjcet.cpp" />
+    <ClCompile Include="Code\MemoryMgr.cpp" />
+    <ClCompile Include="Code\Scene.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\cScene.h" />
+    <ClInclude Include="Code\CObjcet.h" />
+    <ClInclude Include="Code\CoreBase.h" />
+    <ClInclude Include="Code\MemoryMgr.h" />
+    <ClInclude Include="Code\Scene.h" />
     <ClInclude Include="Code\Include.h" />
     <ClInclude Include="Code\Vector2.h" />
   </ItemGroup>

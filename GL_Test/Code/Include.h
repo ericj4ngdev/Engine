@@ -11,8 +11,12 @@
 #include <GL/glew.h>
 #include <GL/glut.h>
 
-#include "Vector2.h"
+#include "CObjcet.h"
+#include "CoreBase.h"
+#include "MemoryMgr.h"
 
+#include "Scene.h"
+#include "Vector2.h"
 
 
 #endif
