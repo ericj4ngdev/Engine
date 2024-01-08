@@ -7,11 +7,11 @@ void MemoryMgr::Init() {
 
 }
 
-void MemoryMgr::ExterminateObjects(bool KillAll = false) {
+void MemoryMgr::ExterminateObjects(bool KillAll) {
 
 }
 
-void MemoryMgr::ReleaseObject(CObject* object, bool isForce = false) {
+void MemoryMgr::ReleaseObject(CObject* object, bool isForce) {
     if (object == nullptr) return;
 
     if (object->isUndestroyable && !isForce) {

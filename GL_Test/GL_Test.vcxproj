@@ -19,19 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Code\CObjcet.cpp" />
+    <ClCompile Include="Code\Asset\SampleScene.cpp" />
+    <ClCompile Include="Code\CObject.cpp" />
+    <ClCompile Include="Code\CGameObject.cpp" />
+    <ClCompile Include="Code\Component\Transform.cpp" />
     <ClCompile Include="Code\MemoryMgr.cpp" />
-    <ClCompile Include="Code\Scene.cpp" />
+    <ClCompile Include="Code\CScene.cpp" />
     <ClCompile Include="Code\main.cpp" />
-    <ClCompile Include="Code\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\CObjcet.h" />
+    <ClInclude Include="Code\Asset\SampleScene.h" />
+    <ClInclude Include="Code\CObject.h" />
+    <ClInclude Include="Code\Component\CComponent.h" />
+    <ClInclude Include="Code\Component\IComponent.h" />
+    <ClInclude Include="Code\Component\Transform.h" />
     <ClInclude Include="Code\CoreBase.h" />
+    <ClInclude Include="Code\CGameObject.h" />
     <ClInclude Include="Code\MemoryMgr.h" />
-    <ClInclude Include="Code\Scene.h" />
+    <ClInclude Include="Code\CScene.h" />
     <ClInclude Include="Code\Include.h" />
-    <ClInclude Include="Code\Vector2.h" />
+    <ClInclude Include="Code\Util\ITransform.h" />
+    <ClInclude Include="Code\Util\Matrix.h" />
+    <ClInclude Include="Code\Util\MatrixDef.h" />
+    <ClInclude Include="Code\Util\MoreMath.h" />
+    <ClInclude Include="Code\Util\Quaternion.h" />
+    <ClInclude Include="Code\Util\Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="FragmentShader.txt" />
@@ -90,7 +102,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\GitHub\Engine\GL_Test\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\GitHub\Engine\GL_Test\include;C:\GitHub\Engine\GL_Test\Code;$(IncludePath)</IncludePath>
     <LibraryPath>C:\GitHub\Engine\GL_Test\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

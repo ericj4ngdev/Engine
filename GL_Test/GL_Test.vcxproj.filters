@@ -13,63 +13,105 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\Scene">
-      <UniqueIdentifier>{1aafd325-6fa4-451d-bf5c-03e9d74c412a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Shader">
       <UniqueIdentifier>{d61a8871-5816-4cdc-babd-1a22a0c685dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Components">
+    <Filter Include="소스 파일\Core">
+      <UniqueIdentifier>{503b8a54-6ffc-4f55-9106-89966768e04a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Core\Components">
       <UniqueIdentifier>{f7ee8dcc-9541-4bb2-bbd2-e76837b98d64}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Objects">
-      <UniqueIdentifier>{e0e73e32-9016-47ad-97b6-ead00288ce92}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Managers">
+    <Filter Include="소스 파일\Core\Managers">
       <UniqueIdentifier>{20ff8402-461a-471d-a86c-d76ea3dd0a1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Resources">
+    <Filter Include="소스 파일\Core\Objects">
+      <UniqueIdentifier>{e0e73e32-9016-47ad-97b6-ead00288ce92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Core\Scene">
+      <UniqueIdentifier>{1aafd325-6fa4-451d-bf5c-03e9d74c412a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Core\Resources">
       <UniqueIdentifier>{fd76c42e-416d-4114-a6c6-80919fa9977d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Util">
+    <Filter Include="소스 파일\Core\Util">
       <UniqueIdentifier>{a28e6766-926b-4702-9070-459e1dc816b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Custom">
+      <UniqueIdentifier>{aadf0d40-e3d6-4e45-be04-292073a6307e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Scene.cpp">
-      <Filter>소스 파일\Scene</Filter>
+    <ClCompile Include="Code\CScene.cpp">
+      <Filter>소스 파일\Core\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Vector2.cpp">
-      <Filter>소스 파일\Util</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\CObjcet.cpp">
-      <Filter>소스 파일\Objects</Filter>
+    <ClCompile Include="Code\CObject.cpp">
+      <Filter>소스 파일\Core\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Code\MemoryMgr.cpp">
-      <Filter>소스 파일\Managers</Filter>
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\CGameObject.cpp">
+      <Filter>소스 파일\Core\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Component\Transform.cpp">
+      <Filter>소스 파일\Core\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Asset\SampleScene.cpp">
+      <Filter>소스 파일\Custom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Include.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Scene.h">
-      <Filter>소스 파일\Scene</Filter>
+    <ClInclude Include="Code\CScene.h">
+      <Filter>소스 파일\Core\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Vector2.h">
-      <Filter>소스 파일\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\CObjcet.h">
-      <Filter>소스 파일\Objects</Filter>
+    <ClInclude Include="Code\CObject.h">
+      <Filter>소스 파일\Core\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Code\CoreBase.h">
-      <Filter>소스 파일\Managers</Filter>
+      <Filter>소스 파일\Core\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Code\MemoryMgr.h">
-      <Filter>소스 파일\Managers</Filter>
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\CGameObject.h">
+      <Filter>소스 파일\Core\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Util\ITransform.h">
+      <Filter>소스 파일\Core\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Util\Matrix.h">
+      <Filter>소스 파일\Core\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Util\Quaternion.h">
+      <Filter>소스 파일\Core\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Util\Vector.h">
+      <Filter>소스 파일\Core\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Util\MatrixDef.h">
+      <Filter>소스 파일\Core\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component\CComponent.h">
+      <Filter>소스 파일\Core\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component\IComponent.h">
+      <Filter>소스 파일\Core\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component\Transform.h">
+      <Filter>소스 파일\Core\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Asset\SampleScene.h">
+      <Filter>소스 파일\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Util\MoreMath.h">
+      <Filter>소스 파일\Core\Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
