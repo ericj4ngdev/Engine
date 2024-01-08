@@ -1,0 +1,12 @@
+#version 400 core
+
+in vec3 inPos;
+in vec3 inCol;
+
+out vec3 vertexColor; // fragment shader를 위한 컬러 출력을 지정
+
+void main()
+{	
+	gl_Position = vec4 (inPos, 1);
+	vertexColor = inCol; 
+}

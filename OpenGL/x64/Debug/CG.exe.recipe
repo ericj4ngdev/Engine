@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\GitHub\ComputerGraphics\OpenGL\x64\Debug\CG.exe</FullPath>
+      <FullPath>C:\GitHub\Engine\OpenGL\x64\Debug\CG.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
