@@ -27,6 +27,9 @@
     <ClCompile Include="Code\cScene.cpp">
       <Filter>소스 파일\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Vector2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Include.h">
@@ -34,6 +37,9 @@
     </ClInclude>
     <ClInclude Include="Code\cScene.h">
       <Filter>소스 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Vector2.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

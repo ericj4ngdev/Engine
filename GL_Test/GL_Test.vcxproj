@@ -21,10 +21,12 @@
   <ItemGroup>
     <ClCompile Include="Code\cScene.cpp" />
     <ClCompile Include="Code\main.cpp" />
+    <ClCompile Include="Code\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\cScene.h" />
     <ClInclude Include="Code\Include.h" />
+    <ClInclude Include="Code\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="FragmentShader.txt" />

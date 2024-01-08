@@ -7,11 +7,12 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-
+#include <cmath>
 #include <GL/glew.h>
 #include <GL/glut.h>
 
-#include <vector>
+#include "Vector2.h"
+
 
 
 #endif
