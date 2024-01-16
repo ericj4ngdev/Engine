@@ -11,7 +11,5 @@ public:
 	virtual void Destroy();
 
 public:
-	friend class MemoryMgr;
-
 };
 

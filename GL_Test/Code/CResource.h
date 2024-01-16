@@ -1,11 +1,11 @@
 #pragma once
 
 
-class CResource : public CObject
+class CResource
 {
 public:
 	CResource();
-	~CResource() override;
+	~CResource();
 private:
 	std::string m_name;
 };

@@ -31,6 +31,7 @@
     <ClCompile Include="Code\CScene.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\CResource.cpp" />
+    <ClCompile Include="Code\Resource\CTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Asset\SampleScene.h" />
@@ -49,6 +50,7 @@
     <ClInclude Include="Code\CScene.h" />
     <ClInclude Include="Code\Include.h" />
     <ClInclude Include="Code\CResource.h" />
+    <ClInclude Include="Code\Resource\CTexture.h" />
     <ClInclude Include="Code\Util\ITransform.h" />
     <ClInclude Include="Code\Util\Matrix.h" />
     <ClInclude Include="Code\Util\MatrixDef.h" />
@@ -150,7 +152,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>include.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
