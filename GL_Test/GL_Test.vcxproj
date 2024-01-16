@@ -23,21 +23,32 @@
     <ClCompile Include="Code\CObject.cpp" />
     <ClCompile Include="Code\CGameObject.cpp" />
     <ClCompile Include="Code\Component\Transform.cpp" />
+    <ClCompile Include="Code\Core\EngineCore.cpp" />
+    <ClCompile Include="Code\Core\GLMgr.cpp" />
+    <ClCompile Include="Code\Manager\CKeyMgr.cpp" />
+    <ClCompile Include="Code\Manager\CSceneMgr.cpp" />
     <ClCompile Include="Code\MemoryMgr.cpp" />
     <ClCompile Include="Code\CScene.cpp" />
     <ClCompile Include="Code\main.cpp" />
+    <ClCompile Include="Code\CResource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Asset\SampleScene.h" />
+    <ClInclude Include="Code\Cmacro.h" />
     <ClInclude Include="Code\CObject.h" />
     <ClInclude Include="Code\Component\CComponent.h" />
     <ClInclude Include="Code\Component\IComponent.h" />
     <ClInclude Include="Code\Component\Transform.h" />
     <ClInclude Include="Code\CoreBase.h" />
     <ClInclude Include="Code\CGameObject.h" />
+    <ClInclude Include="Code\Core\EngineCore.h" />
+    <ClInclude Include="Code\Core\GLMgr.h" />
+    <ClInclude Include="Code\Manager\CKeyMgr.h" />
+    <ClInclude Include="Code\Manager\CSceneMgr.h" />
     <ClInclude Include="Code\MemoryMgr.h" />
     <ClInclude Include="Code\CScene.h" />
     <ClInclude Include="Code\Include.h" />
+    <ClInclude Include="Code\CResource.h" />
     <ClInclude Include="Code\Util\ITransform.h" />
     <ClInclude Include="Code\Util\Matrix.h" />
     <ClInclude Include="Code\Util\MatrixDef.h" />
@@ -139,6 +150,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>include.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

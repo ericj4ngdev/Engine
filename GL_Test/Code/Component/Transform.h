@@ -19,7 +19,7 @@ public:
 
     void Tick(float elapsedTime) override;
 
-    void Exterminate() override;
+    void Exterminate();
 
     mat4 GetMatrix() const;
 

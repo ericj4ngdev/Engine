@@ -1,2 +1,13 @@
-﻿  Transform.cpp
+﻿  SampleScene.cpp
+  CGameObject.cpp
+  CObject.cpp
+  CResource.cpp
+  CScene.cpp
+  EngineCore.cpp
+  GLMgr.cpp
+  CKeyMgr.cpp
+  CSceneMgr.cpp
+  MemoryMgr.cpp
+  main.cpp
+  Generating Code...
   GL_Test.vcxproj -> C:\GitHub\Engine\GL_Test\x64\Debug\GL_Test.exe

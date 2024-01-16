@@ -20,7 +20,6 @@ public:
 
 	virtual void Init();
 	virtual void Tick(float elapsedTime);
-	void Exterminate() override;
 	void Destroy() override;
 
 

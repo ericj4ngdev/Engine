@@ -63,6 +63,21 @@
     <ClCompile Include="Code\Asset\SampleScene.cpp">
       <Filter>소스 파일\Custom</Filter>
     </ClCompile>
+    <ClCompile Include="Code\CResource.cpp">
+      <Filter>소스 파일\Core\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Core\EngineCore.cpp">
+      <Filter>소스 파일\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Core\GLMgr.cpp">
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Manager\CKeyMgr.cpp">
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Manager\CSceneMgr.cpp">
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Include.h">
@@ -112,6 +127,24 @@
     </ClInclude>
     <ClInclude Include="Code\Util\MoreMath.h">
       <Filter>소스 파일\Core\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\CResource.h">
+      <Filter>소스 파일\Core\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Core\EngineCore.h">
+      <Filter>소스 파일\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Cmacro.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Core\GLMgr.h">
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Manager\CSceneMgr.h">
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Manager\CKeyMgr.h">
+      <Filter>소스 파일\Core\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

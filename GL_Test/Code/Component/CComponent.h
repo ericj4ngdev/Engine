@@ -26,7 +26,7 @@ public :
     ~CComponent() override = default;
 
 
-    void Start() override {}
+    void Enter() override {}
 
     virtual CComponent* Clone(CGameObject* object) {
         return nullptr;

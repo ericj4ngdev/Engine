@@ -117,12 +117,13 @@ GLuint LoadShaders(const char* vertex_file_path, const char* fragment_file_path)
 
 void Update()
 {
+    // 여기서 Scene의 Tick을 호출
     glClear(GL_COLOR_BUFFER_BIT);
 
     // 4. 오브젝트를 그립니다.
     glUseProgram(programID);
     glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glDrawArrays(GL_LINE_LOOP, 0, 6);       // 사각형은 Line Loop로 그리기
 
     //Double buffer
     glutSwapBuffers();      // 백버퍼와 프론트버퍼를 교환하여 화면에 그려진 결과를 표시
@@ -174,8 +175,13 @@ int main(int argc, char** argv)
 
     Init();
     programID = LoadShaders("VertexShader.txt", "FragmentShader.txt");
-    
     Triangle();
+
+    // 코어 초기화
+    EngineCore::GetInstance()->Init();
+
+
+
 
     glutDisplayFunc(Update);
     glutMainLoop();

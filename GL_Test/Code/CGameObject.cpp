@@ -18,10 +18,6 @@ void CGameObject::Tick(float elapsedTime) {
     // UpdateComponent(elapsedTime);
 }
 
-void CGameObject::Exterminate() {
-    // CORE->GetCore(GameObjectMgr)->Remove(this);
-}
-
 void CGameObject::Destroy() {
 
 }
