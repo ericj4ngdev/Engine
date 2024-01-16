@@ -3,7 +3,6 @@
 class CObject
 {
 private:
-	bool isUndestroyable = false;
 
 public:
 	CObject();

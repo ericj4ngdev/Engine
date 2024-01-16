@@ -1,12 +1,15 @@
 #version 400 core
 
-in vec3 inPos;
-in vec3 inCol;
+layout (location = 0) in vec3 inPos;
+layout (location = 1) in vec3 inColor;
+layout (location = 2) in vec2 inTexCoord;
 
-out vec3 vertexColor; // fragment shader를 위한 컬러 출력을 지정
+out vec3 vertexColor;
+out vec2 TexCoord;
 
 void main()
 {	
 	gl_Position = vec4 (inPos, 1);
-	vertexColor = inCol; 
+	vertexColor = inColor;
+	TexCoord = inTexCoord;
 }

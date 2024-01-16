@@ -1,13 +1,6 @@
 #ifndef O_H_
 #define O_H_
 
-struct WindowSize
-{
-	int WINDOWSIZE_WIDTH;
-	int WINDOWSIZE_HEIGHT;
-};
-extern WindowSize g_Extern;
-
 enum class SCENE_TYPE {
 	TOOL,
 	START,
@@ -46,6 +39,8 @@ using std::vector;
 #include "Manager/CSceneMgr.h"
 #include "Asset/SampleScene.h"
 
+#include "Component/CComponent.h"
+#include "Component/CRenderComponent.h"
 #include "Component/Transform.h"
 #include "Resource/CTexture.h"
 #include "Util/ShaderUtil.h"

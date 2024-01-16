@@ -3,6 +3,7 @@
   CObject.cpp
   CResource.cpp
   CScene.cpp
+  CRenderComponent.cpp
   Transform.cpp
   EngineCore.cpp
   GLMgr.cpp

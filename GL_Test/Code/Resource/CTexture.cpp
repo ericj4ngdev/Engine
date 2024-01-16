@@ -4,11 +4,11 @@
 
 CTexture::CTexture()
 {
-	m_internalFormat = 0;
 }
 
 CTexture::~CTexture()
 {
+
 }
 
 void CTexture::LoadImage(const char* path)
@@ -23,13 +23,19 @@ void CTexture::LoadImage(const char* path)
 	{
 		// 2. 텍스처 생성
 		glGenTextures(1, &m_texId);
+		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_texId);
 
+		// set the texture wrapping parameters
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+		// set texture wrapping to GL_REPEAT (default wrapping method)
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
 		// 3. 텍스처 데이터 전송
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		// glGenerateMipmap(GL_TEXTURE_2D);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+		glGenerateMipmap(GL_TEXTURE_2D);
 
 		// 4. 텍스처 바인딩
 		// glBindTexture(GL_TEXTURE_2D, 0);
