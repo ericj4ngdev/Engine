@@ -32,6 +32,7 @@
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\CResource.cpp" />
     <ClCompile Include="Code\Resource\CTexture.cpp" />
+    <ClCompile Include="Code\Util\ShaderUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Asset\SampleScene.h" />
@@ -56,6 +57,7 @@
     <ClInclude Include="Code\Util\MatrixDef.h" />
     <ClInclude Include="Code\Util\MoreMath.h" />
     <ClInclude Include="Code\Util\Quaternion.h" />
+    <ClInclude Include="Code\Util\ShaderUtil.h" />
     <ClInclude Include="Code\Util\Vector.h" />
   </ItemGroup>
   <ItemGroup>

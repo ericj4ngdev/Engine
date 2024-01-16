@@ -12,6 +12,7 @@ EngineCore::~EngineCore()
 
 void EngineCore::Init()
 {
+	GLMgr::GetInstance()->Init();
 	CKeyMgr::GetInstance()->Init();
 	CSceneMgr::GetInstance()->Init();
 }
@@ -19,4 +20,9 @@ void EngineCore::Init()
 void EngineCore::Update()
 {
 	CKeyMgr::GetInstance()->Update();
+}
+
+void EngineCore::Render()
+{
+	GLMgr::GetInstance()->Render();
 }

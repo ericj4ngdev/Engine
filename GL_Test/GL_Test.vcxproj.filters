@@ -40,6 +40,9 @@
     <Filter Include="소스 파일\Custom">
       <UniqueIdentifier>{aadf0d40-e3d6-4e45-be04-292073a6307e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Core\Util\Render">
+      <UniqueIdentifier>{86da0d46-188e-48d1-9e2b-fe222385f5b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\main.cpp">
@@ -80,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="Code\Resource\CTexture.cpp">
       <Filter>소스 파일\Core\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Util\ShaderUtil.cpp">
+      <Filter>소스 파일\Core\Util\Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -150,7 +156,10 @@
       <Filter>소스 파일\Core\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Code\Resource\CTexture.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\Core\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Util\ShaderUtil.h">
+      <Filter>소스 파일\Core\Util\Render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
