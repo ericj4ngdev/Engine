@@ -5,7 +5,7 @@ class CResource
 {
 public:
 	CResource();
-	~CResource();
+	virtual ~CResource();
 private:
 	std::string m_name;
 };

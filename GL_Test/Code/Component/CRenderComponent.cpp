@@ -1,43 +1,64 @@
 #include "include.h"
 
-CRenderComponent::CRenderComponent()
-{
-	VAO = 0;
-	VBO = 0;
+CRenderComponent::CRenderComponent(CGameObject* l_gameObject) : CComponent("CRenderComponent", l_gameObject) {
+	m_VAO = 0;
+	m_VBO = 0;
 	programID = 0;
+	programID = ShaderUtil::CreateProgram("VertexShader.txt", "FragmentShader.txt");
+	LoadPlaneVAO();
 }
 
 CRenderComponent::~CRenderComponent()
 {
-	glDeleteVertexArrays(1, &VAO);
+	glDeleteVertexArrays(1, &m_VAO);
 }
 
 void CRenderComponent::Init()
 {
-	m_texture->LoadImage("Code/Asset/Image/Test.png");
-	m_Texid = NULL;
-	m_Texid = *(m_texture->GetTexture());
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glBindVertexArray(VAO);     // 1. Vertex Array Object 바인딩
-
-	programID = ShaderUtil::CreateProgram("VertexShader.txt", "FragmentShader.txt");
+	
 }
 
 void CRenderComponent::Tick()
 {
 	// 그리기
-	// bind Texture
-	glBindTexture(GL_TEXTURE_2D, m_Texid);
-
+	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(programID);
-	glBindVertexArray(VAO);
-	glDrawArrays(GL_QUADS, 0, 4);
+	RenderPlaneVAO();
+	glutSwapBuffers();
+}
 
+void CRenderComponent::Destroy()
+{
+}
 
-	glBindVertexArray(VAO);     // 1. Vertex Array Object 바인딩    
+void CRenderComponent::SetTexture(const char* name)
+{
+	if (m_texture == nullptr) {
+		m_texture = new CTexture();
+	}
+	m_texture->LoadImage(name);
+	m_Texid = NULL;
+	m_Texid = *m_texture->GetTexture();
+	// Bind까지 함
+	// m_texture->Bind();
+}
 
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+void CRenderComponent::LoadPlaneVAO()
+{
+	float vertices[32] =
+	{
+		// 위치              // 컬러
+		0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,    1.0f, 0.0f, // top right
+		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // bottom right
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // bottom left
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // top left 
+	};
+
+	glGenVertexArrays(1, &m_VAO);
+	glGenBuffers(1, &m_VBO);
+	glBindVertexArray(m_VAO);     // 1. Vertex Array Object 바인딩
+
+	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 	// position attribute
@@ -51,16 +72,11 @@ void CRenderComponent::Tick()
 	// texture coord attribute
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
+}
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+void CRenderComponent::RenderPlaneVAO()
+{
+	glBindVertexArray(m_VAO);
+	glDrawArrays(GL_QUADS, 0, 4);
 	glBindVertexArray(0);
-
-}
-
-void CRenderComponent::Destroy()
-{
-}
-
-void CRenderComponent::SetTexture()
-{
 }

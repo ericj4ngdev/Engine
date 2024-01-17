@@ -4,11 +4,16 @@
 
 CTexture::CTexture()
 {
+
 }
 
 CTexture::~CTexture()
 {
 
+}
+
+CTexture::CTexture(const CTexture& other)
+{
 }
 
 void CTexture::LoadImage(const char* path)
@@ -21,7 +26,7 @@ void CTexture::LoadImage(const char* path)
 
 	if (image)
 	{
-		// 2. 텍스처 생성
+		// 1. 텍스처 생성
 		glGenTextures(1, &m_texId);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, m_texId);
@@ -39,7 +44,6 @@ void CTexture::LoadImage(const char* path)
 
 		// 4. 텍스처 바인딩
 		// glBindTexture(GL_TEXTURE_2D, 0);
-
 		// Set the texture uniform in the shader
 		// glUseProgram(programID);			// 프로그램 활성화
 		// GLuint texLoc = glGetUniformLocation(programID, "u_Image");
@@ -66,4 +70,11 @@ GLuint* CTexture::GetTexture()
 		return &m_texId;
 	else
 		return NULL;
+}
+
+void CTexture::Bind(GLint location, int layout)
+{
+	glUniform1i(location, layout);
+	glActiveTexture(GL_TEXTURE0 + layout);
+	glBindTexture(m_targetGL, m_texId);
 }

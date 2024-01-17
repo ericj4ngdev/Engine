@@ -4,25 +4,21 @@ class CTexture;
 class CRenderComponent : public CComponent
 {
 public:
-	explicit CRenderComponent();
+	explicit CRenderComponent(CGameObject* l_gameObject);
 	~CRenderComponent() override;
 	void Init() override;
 	void Tick() override;
 	void Destroy() override;
-	void SetTexture();
+	void SetTexture(const char* name);
+	void LoadPlaneVAO();
+	void RenderPlaneVAO();
 private:
 	CTexture* m_texture;
+	int m_textureLayout = 0;
 	GLuint m_Texid;
 	GLuint programID;
-	GLuint VAO;
-	GLuint VBO;
-	float vertices[32] =
-	{
-		// 위치              // 컬러
-		0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,    1.0f, 0.0f, // top right
-		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // bottom right
-		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // bottom left
-		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // top left 
-	};
+	GLuint m_VAO;
+	GLuint m_VBO;
+	
 };
 
