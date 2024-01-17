@@ -32,6 +32,7 @@ using std::vector;
 
 #include "CoreBase.h"
 #include "MemoryMgr.h"
+#include "Manager/CTimeMgr.h"
 #include "CGameObject.h"
 
 #include "Manager/CKeyMgr.h"
@@ -42,7 +43,7 @@ using std::vector;
 #include "Component/CComponent.h"
 #include "Util/ITransform.h"
 #include "Component/CRenderComponent.h"
-#include "Component/Transform.h"
+#include "Component/TransformComponent.h"
 #include "Resource/CTexture.h"
 #include "Util/ShaderUtil.h"
 

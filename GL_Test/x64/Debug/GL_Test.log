@@ -1,3 +1,17 @@
-﻿  CTimeMgr.cpp
+﻿  SampleScene.cpp
+  CGameObject.cpp
+  CObject.cpp
+  CResource.cpp
+  CScene.cpp
+  CRenderComponent.cpp
+  Transform.cpp
+  EngineCore.cpp
+  GLMgr.cpp
+  CKeyMgr.cpp
+  CSceneMgr.cpp
+  CTimeMgr.cpp
+  MemoryMgr.cpp
+  CTexture.cpp
+  ShaderUtil.cpp
   main.cpp
   GL_Test.vcxproj -> C:\GitHub\Engine\GL_Test\x64\Debug\GL_Test.exe

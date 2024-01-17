@@ -23,7 +23,7 @@
     <ClCompile Include="Code\CObject.cpp" />
     <ClCompile Include="Code\CGameObject.cpp" />
     <ClCompile Include="Code\Component\CRenderComponent.cpp" />
-    <ClCompile Include="Code\Component\Transform.cpp" />
+    <ClCompile Include="Code\Component\TransformComponent.cpp" />
     <ClCompile Include="Code\Core\EngineCore.cpp" />
     <ClCompile Include="Code\Core\GLMgr.cpp" />
     <ClCompile Include="Code\Manager\CKeyMgr.cpp" />
@@ -42,7 +42,7 @@
     <ClInclude Include="Code\CObject.h" />
     <ClInclude Include="Code\Component\CComponent.h" />
     <ClInclude Include="Code\Component\CRenderComponent.h" />
-    <ClInclude Include="Code\Component\Transform.h" />
+    <ClInclude Include="Code\Component\TransformComponent.h" />
     <ClInclude Include="Code\CoreBase.h" />
     <ClInclude Include="Code\CGameObject.h" />
     <ClInclude Include="Code\Core\EngineCore.h" />

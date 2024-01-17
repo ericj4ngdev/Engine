@@ -24,7 +24,7 @@ public :
     
     virtual void Init() = 0;
 
-    virtual void Tick(float elapsedTime) = 0;
+    virtual void Tick() = 0;
 
     virtual void Destroy() = 0;
 

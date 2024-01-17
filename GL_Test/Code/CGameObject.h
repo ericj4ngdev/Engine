@@ -13,7 +13,7 @@ public:
 	~CGameObject() override;
 
 	virtual void Init();
-	virtual void Tick(float elapsedTime);
+	virtual void Tick();
 	void Destroy() override;
 public:
 	// Component°ü·Ã
@@ -47,7 +47,7 @@ private:
 
 	bool isEnable;
 private:
-	void UpdateComponent(float elapsedTime);
+	void UpdateComponent();
 
 };
 

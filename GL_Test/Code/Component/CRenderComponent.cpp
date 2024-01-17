@@ -4,10 +4,14 @@ void CRenderComponent::Init()
 {
 }
 
-void CRenderComponent::Tick(float elapsedTime)
+void CRenderComponent::Tick()
 {
 }
 
 void CRenderComponent::Destroy()
+{
+}
+
+void CRenderComponent::SetTexture()
 {
 }

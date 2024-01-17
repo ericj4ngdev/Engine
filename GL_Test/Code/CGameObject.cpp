@@ -3,13 +3,13 @@
 
 CGameObject::CGameObject() 
 {
-    m_transform = CreateComponent<Transform>();
+    m_transform = CreateComponent<TransformComponent>();
     CGameObject::Init();
 }
 
 CGameObject::CGameObject(std::string name)
 {
-    m_transform = CreateComponent<Transform>();
+    m_transform = CreateComponent<TransformComponent>();
     m_name = std::move(name);
     CGameObject::Init();
 }
@@ -23,10 +23,10 @@ void CGameObject::Init()
     isEnable = true;
 }
 
-void CGameObject::Tick(float elapsedTime) 
+void CGameObject::Tick() 
 {
     if (!isEnable) return;
-    UpdateComponent(elapsedTime);
+    UpdateComponent();
 }
 
 void CGameObject::Destroy()
@@ -116,12 +116,12 @@ void CGameObject::SetIsEnable(bool is_enable)
     }
 }
 
-void CGameObject::UpdateComponent(float elapsedTime)
+void CGameObject::UpdateComponent()
 {
     for (const auto& component : m_components) 
     {
         if (component == nullptr) continue;
         if (component->GetIsEnable())
-            component->Tick(elapsedTime);
+            component->Tick();
     }
 }

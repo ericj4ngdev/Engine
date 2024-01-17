@@ -60,7 +60,7 @@
     <ClCompile Include="Code\CGameObject.cpp">
       <Filter>소스 파일\Core\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Component\Transform.cpp">
+    <ClCompile Include="Code\Component\TransformComponent.cpp">
       <Filter>소스 파일\Core\Components</Filter>
     </ClCompile>
     <ClCompile Include="Code\Asset\SampleScene.cpp">
@@ -131,7 +131,7 @@
     <ClInclude Include="Code\Component\CComponent.h">
       <Filter>소스 파일\Core\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Component\Transform.h">
+    <ClInclude Include="Code\Component\TransformComponent.h">
       <Filter>소스 파일\Core\Components</Filter>
     </ClInclude>
     <ClInclude Include="Code\Asset\SampleScene.h">
