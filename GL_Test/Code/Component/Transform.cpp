@@ -1,6 +1,6 @@
 #include "Include.h"
 
-Transform::Transform(CGameObject* l_gameObject) :CComponent("Transform", l_gameObject) {
+Transform::Transform(CGameObject* l_gameObject) : CComponent("Transform", l_gameObject) {
     m_position = vec3(0, 0, 0);
     m_rotation = Quaternion();
     m_scale = vec3(1, 1, 1);
@@ -19,8 +19,10 @@ void Transform::Tick(float elapsedTime) {
 
 }
 
-void Transform::Exterminate() {
+void Transform::Destroy()
+{
 }
+
 
 mat4 Transform::GetMatrix() const {
     return m_f_matrix;

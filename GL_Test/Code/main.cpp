@@ -3,24 +3,36 @@
 #include "include.h"
 using namespace std;
 
-void Update()
-{
-    EngineCore::GetInstance()->Update();
-    EngineCore::GetInstance()->Render();    
-}
-
-int main(int argc, char** argv)
-{
+bool InitInstance(int argc, char** argv) {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);   
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
     glutInitWindowPosition(200, 200);
     glutInitWindowSize(GLMgr::g_screenWidth, GLMgr::g_screenHeight);
     glutCreateWindow("Simple OpenGL Window");
 
+    return true;
+}
+
+void Update()
+{
+    EngineCore::GetInstance()->Update();
+    EngineCore::GetInstance()->Render();
+}
+
+void OnIdle() 
+{
+    glutPostRedisplay();
+}
+
+int main(int argc, char** argv)
+{
+    if (!InitInstance(argc, argv)) return 0;
+    
     // 코어 초기화
     EngineCore::GetInstance()->Init();
-
+    
     glutDisplayFunc(Update);
+    glutIdleFunc(OnIdle);
     glutMainLoop();    
 
     return 1;

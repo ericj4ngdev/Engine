@@ -30,6 +30,7 @@ public:
 	CGameObject* GetParent();
 	void SetParent(CGameObject* object);
 	void RemoveParent();
+	const std::list<CGameObject*>& GetChildren() const;
 public:
 	std::string GetName() const { return m_name; }
 	void Setname(std::string name) { m_name = std::move(name); }
@@ -39,7 +40,7 @@ public:
 
 private:
 	std::list<CGameObject*> m_children;
-	std::list<CComponent*> m_Components;
+	std::list<CComponent*> m_components;
 	std::string m_name;
 	ITransform* m_transform;
 	CGameObject* m_parent;
@@ -53,7 +54,7 @@ private:
 template<class T>
 T* CGameObject::GetComponent()
 {
-	for(const auto& component : m_Components)
+	for(const auto& component : m_components)
 	{
 		if (component == nullptr) continue;
 		if (dynamic_cast<T*>(component)) {
@@ -68,6 +69,6 @@ T* CGameObject::CreateComponent()
 {
 	T* component = new T(this);
 	AddComponent(component);
-	
+	component->Init();
 	return component;
 }

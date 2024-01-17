@@ -5,7 +5,6 @@ class CRenderComponent : public CComponent
 {
 public:
 	void Init() override;
-	void Start() override;
 	void Tick(float elapsedTime) override;
 	void Destroy() override;
 	void SetTexture();

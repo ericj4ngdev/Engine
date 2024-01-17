@@ -28,6 +28,7 @@
     <ClCompile Include="Code\Core\GLMgr.cpp" />
     <ClCompile Include="Code\Manager\CKeyMgr.cpp" />
     <ClCompile Include="Code\Manager\CSceneMgr.cpp" />
+    <ClCompile Include="Code\Manager\CTimeMgr.cpp" />
     <ClCompile Include="Code\MemoryMgr.cpp" />
     <ClCompile Include="Code\CScene.cpp" />
     <ClCompile Include="Code\main.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="Code\Core\GLMgr.h" />
     <ClInclude Include="Code\Manager\CKeyMgr.h" />
     <ClInclude Include="Code\Manager\CSceneMgr.h" />
+    <ClInclude Include="Code\Manager\CTimeMgr.h" />
     <ClInclude Include="Code\MemoryMgr.h" />
     <ClInclude Include="Code\CScene.h" />
     <ClInclude Include="Code\Include.h" />

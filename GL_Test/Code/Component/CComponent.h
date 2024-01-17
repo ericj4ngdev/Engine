@@ -22,8 +22,6 @@ public :
     }
     virtual ~CComponent() = default;
     
-    virtual void Start() = 0;
-
     virtual void Init() = 0;
 
     virtual void Tick(float elapsedTime) = 0;

@@ -4,10 +4,6 @@ void CRenderComponent::Init()
 {
 }
 
-void CRenderComponent::Start()
-{
-}
-
 void CRenderComponent::Tick(float elapsedTime)
 {
 }

@@ -20,6 +20,7 @@ void EngineCore::Init()
 void EngineCore::Update()
 {
 	CKeyMgr::GetInstance()->Update();
+	CSceneMgr::GetInstance()->Update();
 }
 
 void EngineCore::Render()

@@ -1,12 +1,14 @@
 #pragma once
 class SampleScene : public CScene
 {
-
-	virtual void Init();
-	virtual void Enter();
-	virtual void Exit();
-	virtual void Tick(float elapsedTime);
-	virtual void Update();
-	virtual void Destroy();
+public:
+	virtual void Init() override;
+	virtual void Enter()override;
+	virtual void Exit()override;
+	virtual void Tick(float elapsedTime)override;
+	virtual void Update() override;
+	virtual void Destroy() override;
+private:
+	float startTIme = 0;
 };
 

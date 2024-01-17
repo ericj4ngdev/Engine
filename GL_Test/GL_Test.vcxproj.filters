@@ -90,6 +90,9 @@
     <ClCompile Include="Code\Component\CRenderComponent.cpp">
       <Filter>소스 파일\Core\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Manager\CTimeMgr.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Include.h">
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="Code\Component\CRenderComponent.h">
       <Filter>소스 파일\Core\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Manager\CTimeMgr.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

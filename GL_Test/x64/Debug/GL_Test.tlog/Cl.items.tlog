@@ -7,6 +7,7 @@ C:\GitHub\Engine\GL_Test\Code\Core\EngineCore.cpp;C:\GitHub\Engine\GL_Test\x64\D
 C:\GitHub\Engine\GL_Test\Code\Core\GLMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\GLMgr.obj
 C:\GitHub\Engine\GL_Test\Code\Manager\CKeyMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CKeyMgr.obj
 C:\GitHub\Engine\GL_Test\Code\Manager\CSceneMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CSceneMgr.obj
+C:\GitHub\Engine\GL_Test\Code\Manager\CTimeMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CTimeMgr.obj
 C:\GitHub\Engine\GL_Test\Code\MemoryMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\MemoryMgr.obj
 C:\GitHub\Engine\GL_Test\Code\CScene.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CScene.obj
 C:\GitHub\Engine\GL_Test\Code\main.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\main.obj
