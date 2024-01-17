@@ -1,7 +1,5 @@
 #include "include.h"
 
-MemoryMgr* memoryMgr = nullptr;
-
 CObject::CObject() {
 }
 

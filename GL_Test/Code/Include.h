@@ -40,6 +40,7 @@ using std::vector;
 #include "Asset/SampleScene.h"
 
 #include "Component/CComponent.h"
+#include "Util/ITransform.h"
 #include "Component/CRenderComponent.h"
 #include "Component/Transform.h"
 #include "Resource/CTexture.h"

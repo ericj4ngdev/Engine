@@ -1,6 +1,4 @@
 #pragma once
-#include "CComponent.h"
-#include "./Util/ITransform.h"
 
 class Transform : public CComponent, public ITransform
 {
@@ -11,8 +9,7 @@ private:
     Quaternion m_f_rotation;
 
 public:
-    Transform();
-
+    explicit Transform(CGameObject* l_gameObject);
     ~Transform() override;
 
     void Init() override;
