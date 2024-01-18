@@ -6,8 +6,5 @@ public:
 	virtual void Enter()override;
 	virtual void Exit()override;
 	virtual void Destroy() override;
-private:
-
-	float startTIme = 0;
 };
 

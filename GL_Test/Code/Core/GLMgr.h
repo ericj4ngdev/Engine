@@ -7,9 +7,6 @@ class GLMgr
 {
 	SINGLE(GLMgr);
 public :	
-	/*GLuint VAO;
-	GLuint VBO;*/
-	
 	static int g_screenWidth;
 	static int g_screenHeight;
 

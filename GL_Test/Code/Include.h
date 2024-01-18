@@ -44,6 +44,7 @@ using std::vector;
 #include "Util/ITransform.h"
 #include "Component/CRenderComponent.h"
 #include "Component/TransformComponent.h"
+#include "Component/ControllerComponent.h"
 #include "Resource/CTexture.h"
 #include "Util/ShaderUtil.h"
 

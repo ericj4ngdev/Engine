@@ -27,5 +27,5 @@ void EngineCore::Update()
 
 void EngineCore::Render()
 {
-	GLMgr::GetInstance()->Render();
+
 }

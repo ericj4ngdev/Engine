@@ -1,6 +1,7 @@
 #include "Include.h"
 
-TransformComponent::TransformComponent(CGameObject* l_gameObject) : CComponent("Transform", l_gameObject) {
+COMPONENT_CONSTRUCTOR(TransformComponent) 
+{
     m_position = vec3(0, 0, 0);
     m_rotation = Quaternion();
     m_scale = vec3(1, 1, 1);
@@ -13,9 +14,27 @@ void TransformComponent::Init() {
 
 void TransformComponent::Tick() {
 
-    //m_f_matrix = GetFinalMatrix();
-    m_f_position = vec3(m_f_matrix.w.x, m_f_matrix.w.y, m_f_matrix.w.z );
-    m_f_scale = vec3(m_f_matrix.x.x, m_f_matrix.y.y, m_f_matrix.z.z );
+	/*if (GetKeyHold(W))
+	{
+		m_position.y += 1.f * fDT;
+		printf("%f\n", m_position.y);
+	}
+	if (GetKeyHold(A))
+	{
+		m_position.x -= 1.f * fDT;
+		printf("%f\n", m_position.x);
+	}
+	if (GetKeyHold(S))
+	{
+		m_position.y -= 1.f * fDT;
+		printf("%f\n", m_position.y);
+	}
+	if (GetKeyHold(D))
+	{
+		m_position.x += 1.f * fDT;
+		printf("%f\n", m_position.x);
+	}*/
+	gameObject->GetComponent<CRenderComponent>()->SetCenterPos(m_position.x, m_position.y);
 
 }
 
@@ -30,6 +49,14 @@ mat4 TransformComponent::GetMatrix() const {
 
 vec3* TransformComponent::GetPosition() {
     return &m_f_position;
+}
+
+
+void TransformComponent::SetPosition(float x, float y)
+{
+    m_position.x = x;
+    m_position.y = y;
+    printf("TransformComponent : m_position.y : %f / ", m_position.y);
 }
 
 vec3 TransformComponent::GetScale() const {

@@ -1,6 +1,7 @@
 C:\GitHub\Engine\GL_Test\Code\Asset\SampleScene.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\SampleScene.obj
 C:\GitHub\Engine\GL_Test\Code\CObject.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CObject.obj
 C:\GitHub\Engine\GL_Test\Code\CGameObject.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CGameObject.obj
+C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\ControllerComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\CRenderComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CRenderComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\TransformComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\TransformComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Core\EngineCore.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\EngineCore.obj

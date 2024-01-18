@@ -22,6 +22,7 @@
     <ClCompile Include="Code\Asset\SampleScene.cpp" />
     <ClCompile Include="Code\CObject.cpp" />
     <ClCompile Include="Code\CGameObject.cpp" />
+    <ClCompile Include="Code\Component\ControllerComponent.cpp" />
     <ClCompile Include="Code\Component\CRenderComponent.cpp" />
     <ClCompile Include="Code\Component\TransformComponent.cpp" />
     <ClCompile Include="Code\Core\EngineCore.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="Code\Cmacro.h" />
     <ClInclude Include="Code\CObject.h" />
     <ClInclude Include="Code\Component\CComponent.h" />
+    <ClInclude Include="Code\Component\ControllerComponent.h" />
     <ClInclude Include="Code\Component\CRenderComponent.h" />
     <ClInclude Include="Code\Component\TransformComponent.h" />
     <ClInclude Include="Code\CoreBase.h" />

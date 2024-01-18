@@ -9,7 +9,7 @@ private:
     Quaternion m_f_rotation;
 
 public:
-    explicit TransformComponent(CGameObject* l_gameObject);
+    COMPONENT_DEFINE_CONSTRUCTOR(TransformComponent)
     ~TransformComponent() override;
 
     void Init() override;
@@ -21,6 +21,8 @@ public:
     mat4 GetMatrix() const;
 
     vec3* GetPosition();
+
+    void SetPosition(float x, float y);
 
     vec3 GetScale() const;
 

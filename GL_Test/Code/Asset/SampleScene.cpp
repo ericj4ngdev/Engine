@@ -9,11 +9,13 @@ void SampleScene::Enter()
 {
 	// playerÇÒ´ç
 	CGameObject* player = new CGameObject("Player");
-	player->GetComponent<TransformComponent>()->m_position = vec3{ 0, 0, 0 };
-	player->GetTransform()->m_scale = vec3{ 1.f,1.f,1.f };
 	player->CreateComponent<CRenderComponent>();
+	player->CreateComponent<ControllerComponent>();
+	player->GetTransform()->m_scale = vec3{ 1.f,1.f,1.f };
 	player->GetComponent<CRenderComponent>()->SetTexture("Code/Asset/Image/Test.png");
+
 	
+
 	AddObject(player);	
 }
 

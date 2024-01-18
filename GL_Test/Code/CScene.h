@@ -10,7 +10,7 @@ protected:
 
 public:
 	CScene();
-	~CScene();
+	virtual ~CScene();
     void SetName(const std::wstring& _strName) { m_name = _strName; }
     virtual void Init() = 0;
     virtual void Enter() = 0;           // 해당 씬에 진입시 호출

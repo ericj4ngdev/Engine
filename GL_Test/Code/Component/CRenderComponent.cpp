@@ -1,6 +1,7 @@
 #include "include.h"
 
-CRenderComponent::CRenderComponent(CGameObject* l_gameObject) : CComponent("CRenderComponent", l_gameObject) {
+COMPONENT_CONSTRUCTOR(CRenderComponent)
+{
 	m_VAO = 0;
 	m_VBO = 0;
 	programID = 0;
@@ -23,8 +24,14 @@ void CRenderComponent::Tick()
 	// 그리기
 	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(programID);
+
 	RenderPlaneVAO();
-	glutSwapBuffers();
+	// 위치
+	m_icenterPos = glGetUniformLocation(programID, "movePos");
+	glUniform3f(m_icenterPos, m_centerPos.x, m_centerPos.y, 0.0);
+	printf("CRenderComponent : m_centerPos.y : %f\n", m_centerPos.y);
+
+	glutSwapBuffers();	
 }
 
 void CRenderComponent::Destroy()
@@ -39,8 +46,6 @@ void CRenderComponent::SetTexture(const char* name)
 	m_texture->LoadImage(name);
 	m_Texid = NULL;
 	m_Texid = *m_texture->GetTexture();
-	// Bind까지 함
-	// m_texture->Bind();
 }
 
 void CRenderComponent::LoadPlaneVAO()
@@ -71,12 +76,20 @@ void CRenderComponent::LoadPlaneVAO()
 
 	// texture coord attribute
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);
+	glEnableVertexAttribArray(2);	
+	
 }
 
 void CRenderComponent::RenderPlaneVAO()
 {
 	glBindVertexArray(m_VAO);
+
 	glDrawArrays(GL_QUADS, 0, 4);
 	glBindVertexArray(0);
+}
+
+void CRenderComponent::SetCenterPos(float x, float y)
+{
+	m_centerPos.x = x;
+	m_centerPos.y = y;
 }

@@ -1,5 +1,5 @@
 ﻿  Sample_main.cpp
-C:\GitHub\Engine\OpenGL\Sample_main.cpp(123,51): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\GitHub\Engine\OpenGL\Sample_main.cpp(124,52): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\GitHub\Engine\OpenGL\Sample_main.cpp(125,55): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\GitHub\Engine\OpenGL\Sample_main.cpp(123,51): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\GitHub\Engine\OpenGL\Sample_main.cpp(124,52): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\GitHub\Engine\OpenGL\Sample_main.cpp(125,55): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   CG.vcxproj -> C:\GitHub\Engine\OpenGL\x64\Debug\CG.exe

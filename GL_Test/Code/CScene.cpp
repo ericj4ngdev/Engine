@@ -1,6 +1,5 @@
 #include "include.h"
 
-
 CScene::CScene() {
 
 }
