@@ -22,7 +22,8 @@ private:
 	GLuint programID;
 	GLuint m_VAO;
 	GLuint m_VBO;
-	GLuint m_icenterPos;
+	GLuint m_iCenterPos;
+	GLuint m_iScale;
 	vec2 m_centerPos;
 	vec2 m_Scale;
 };

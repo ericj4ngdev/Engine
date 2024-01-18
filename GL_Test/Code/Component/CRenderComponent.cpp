@@ -19,19 +19,26 @@ void CRenderComponent::Init()
 	
 }
 
+
+
 void CRenderComponent::Tick()
-{	
-	// glClear(GL_COLOR_BUFFER_BIT);
-	// glEnable(GL_BLEND);
+{
 	// 그리기	
 	glUseProgram(programID);
 	RenderPlaneVAO();
 	// 위치
-	m_icenterPos = glGetUniformLocation(programID, "movePos");
-	glUniform3f(m_icenterPos, m_centerPos.x, m_centerPos.y, 0.0);
-
-	// std::cout << gameObject->GetName() << '\n';
-	
+	m_iCenterPos = glGetUniformLocation(programID, "movePos");
+	glUniform3f(m_iCenterPos, m_centerPos.x, m_centerPos.y, 0.0);
+	m_iScale = glGetUniformLocation(programID, "scale");
+		
+	GLfloat scaleMatrix[16] = {
+		m_Scale.x,	0.0f,		0.0f, 0.0f,
+		0.0f,		m_Scale.y,	0.0f, 0.0f,
+		0.0f,		0.0f,		1.0f, 0.0f,
+		0.0f,		0.0f,		0.0f, 1.0f
+	};
+	glUniformMatrix4fv(m_iScale, 1, GL_FALSE, scaleMatrix);
+		
 }
 
 void CRenderComponent::Destroy()

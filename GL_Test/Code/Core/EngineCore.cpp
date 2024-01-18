@@ -28,7 +28,7 @@ void EngineCore::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClearColor(0.5, 0.5, 0.5, 1.0);	//select the background color
-
+	GLMgr::GetInstance()->Render();
 	CSceneMgr::GetInstance()->Update();		// RenderCompo °»½ÅÇÔ
 
 	glutSwapBuffers();

@@ -1,5 +1,3 @@
-﻿  SampleScene.cpp
-  CRenderComponent.cpp
-  EngineCore.cpp
-  GLMgr.cpp
+﻿  GLMgr.cpp
+C:\GitHub\Engine\GL_Test\Code\Core\GLMgr.cpp(29,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   GL_Test.vcxproj -> C:\GitHub\Engine\GL_Test\x64\Debug\GL_Test.exe

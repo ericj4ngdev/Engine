@@ -23,6 +23,7 @@ public:
 	void Init();
 	void Update();
 	void Render();
+	void Resize(int width, int height);
 };
 
 #endif

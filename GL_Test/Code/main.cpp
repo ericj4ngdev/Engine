@@ -24,6 +24,8 @@ void OnIdle()
     glutPostRedisplay();
 }
 
+
+
 int main(int argc, char** argv)
 {
     if (!InitInstance(argc, argv)) return 0;

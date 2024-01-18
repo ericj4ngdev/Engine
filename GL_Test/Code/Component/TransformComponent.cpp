@@ -14,6 +14,7 @@ void TransformComponent::Init() {
 
 void TransformComponent::Tick() {
 	gameObject->GetComponent<CRenderComponent>()->SetCenterPos(m_position.x, m_position.y);
+    gameObject->GetComponent<CRenderComponent>()->SetScale(m_scale.x, m_scale.y);
 }
 
 void TransformComponent::Destroy()
