@@ -1,2 +1,5 @@
 ﻿  SampleScene.cpp
+  CRenderComponent.cpp
+  EngineCore.cpp
+  GLMgr.cpp
   GL_Test.vcxproj -> C:\GitHub\Engine\GL_Test\x64\Debug\GL_Test.exe

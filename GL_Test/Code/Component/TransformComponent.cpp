@@ -13,33 +13,12 @@ void TransformComponent::Init() {
 }
 
 void TransformComponent::Tick() {
-
-	/*if (GetKeyHold(W))
-	{
-		m_position.y += 1.f * fDT;
-		printf("%f\n", m_position.y);
-	}
-	if (GetKeyHold(A))
-	{
-		m_position.x -= 1.f * fDT;
-		printf("%f\n", m_position.x);
-	}
-	if (GetKeyHold(S))
-	{
-		m_position.y -= 1.f * fDT;
-		printf("%f\n", m_position.y);
-	}
-	if (GetKeyHold(D))
-	{
-		m_position.x += 1.f * fDT;
-		printf("%f\n", m_position.x);
-	}*/
 	gameObject->GetComponent<CRenderComponent>()->SetCenterPos(m_position.x, m_position.y);
-
 }
 
 void TransformComponent::Destroy()
 {
+
 }
 
 
@@ -56,7 +35,7 @@ void TransformComponent::SetPosition(float x, float y)
 {
     m_position.x = x;
     m_position.y = y;
-    printf("TransformComponent : m_position.y : %f / ", m_position.y);
+    // printf("TransformComponent : m_position.y : %f / ", m_position.y);
 }
 
 vec3 TransformComponent::GetScale() const {

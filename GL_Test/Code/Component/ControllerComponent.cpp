@@ -16,8 +16,7 @@ void ControllerComponent::Init()
 
 void ControllerComponent::Tick()
 {
-	Control();
-	
+	Control();	
 }
 
 void ControllerComponent::Destroy()

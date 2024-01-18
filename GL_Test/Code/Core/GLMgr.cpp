@@ -19,9 +19,6 @@ void GLMgr::Init()
     {
         fprintf(stderr, "Error: '%s' \n", glewGetErrorString(errorCode));
     }
-    //select the background color
-    glClearColor(1.0, 1.0, 1.0, 1.0);
-    glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);
 }
 
 void GLMgr::Update()

@@ -22,10 +22,14 @@ void EngineCore::Update()
 {
 	CTimeMgr::GetInstance()->Update();
 	CKeyMgr::GetInstance()->Update();
-	CSceneMgr::GetInstance()->Update();
 }
 
 void EngineCore::Render()
 {
+	glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(0.5, 0.5, 0.5, 1.0);	//select the background color
 
+	CSceneMgr::GetInstance()->Update();		// RenderCompo °»½ÅÇÔ
+
+	glutSwapBuffers();
 }
