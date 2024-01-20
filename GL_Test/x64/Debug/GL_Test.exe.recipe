@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Github\Engine\GL_Test\Output\bin_Debug\GL_Test.exe</FullPath>
+      <FullPath>C:\GitHub\Engine\GL_Test\Output\bin_Debug\GL_Test.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

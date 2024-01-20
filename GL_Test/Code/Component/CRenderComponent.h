@@ -10,7 +10,7 @@ public:
 	void Tick() override;
 	void Destroy() override;
 	CTexture* GetTexture() { return m_texture; }
-	void SetTexture(const char* name);
+	void SetTexture(const string& _strKey, const char* name);
 	void LoadPlaneVAO();
 	void RenderPlaneVAO();
 	void SetCenterPos(float x, float y);

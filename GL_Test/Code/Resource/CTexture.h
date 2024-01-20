@@ -8,9 +8,11 @@ public:
     GLuint m_texId;
     int m_targetGL = GL_TEXTURE_2D;
 
-public:
+private:
     CTexture();
     virtual ~CTexture();
+    friend class CResMgr;
+public:
     CTexture(const CTexture& other);
     void LoadTexture(const char* path);
     void Release();

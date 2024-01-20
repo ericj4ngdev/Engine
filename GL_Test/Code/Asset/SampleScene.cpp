@@ -7,10 +7,7 @@ void SampleScene::Init()
 
 void SampleScene::Enter()
 {
-	CTexture* pTex = new CTexture;
-
-	//char* strFilePath += CPathMgr::GetInstance()->GetContentPath();
-	//strFilePath = "Texture/player.png" ;
+	
 	{
 		std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
 		// playerÇÒ´ç
@@ -19,7 +16,7 @@ void SampleScene::Enter()
 		player->CreateComponent<ControllerComponent>();
 		player->GetTransform()->m_scale = vec3{ 0.5f,1.f,1.f };
 		strFilePath += "texture\\player.png";
-		player->GetComponent<CRenderComponent>()->SetTexture(strFilePath.c_str());
+		player->GetComponent<CRenderComponent>()->SetTexture("PlayerTex", strFilePath.c_str());
 		AddObject(player);
 	}
 
@@ -34,7 +31,7 @@ void SampleScene::Enter()
 			block->CreateComponent<CRenderComponent>();
 			block->GetTransform()->m_position = vec3{ -0.5f + (float)i * 1.f ,-9.5f,0.1f };
 			block->GetTransform()->m_scale = vec3{ 0.1f,0.1f,1.f };
-			block->GetComponent<CRenderComponent>()->SetTexture(strFilePath.c_str());
+			block->GetComponent<CRenderComponent>()->SetTexture("Zombie1Tex",strFilePath.c_str());
 			AddObject(block);
 		}
 	}

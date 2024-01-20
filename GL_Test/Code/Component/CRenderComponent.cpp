@@ -50,13 +50,10 @@ void CRenderComponent::Destroy()
 {
 }
 
-void CRenderComponent::SetTexture(const char* name)
+void CRenderComponent::SetTexture(const string& _strKey, const char* _strFilePath)
 {
-	if (m_texture == NULL) {
-		m_texture = new CTexture();
-	}
-	m_texture->LoadTexture(name);
-	m_Texid = *m_texture->GetTexture();    // 여기 오류
+	m_texture = CResMgr::GetInstance()->Load(_strKey, _strFilePath);
+	m_Texid = m_texture->m_texId;
 }
 
 void CRenderComponent::LoadPlaneVAO()

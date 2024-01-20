@@ -22,7 +22,7 @@ void CSceneMgr::Init()
 {
 	// ¾À »ý¼º
 	m_arrScene[(UINT)SCENE_TYPE::START] = new SampleScene;
-	m_arrScene[(UINT)SCENE_TYPE::START]->SetName(L"Start");
+	m_arrScene[(UINT)SCENE_TYPE::START]->SetName("Start");
 	// m_arrScene[(UINT)SCENE_TYPE::STAGE_01] = new SampleScene;
 	// m_arrScene[(UINT)SCENE_TYPE::STAGE_02] = new SampleScene;
 	// m_arrScene[(UINT)SCENE_TYPE::TOOL] = new SampleScene;

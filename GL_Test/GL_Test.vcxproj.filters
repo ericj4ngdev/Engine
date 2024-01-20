@@ -99,6 +99,9 @@
     <ClCompile Include="Code\Manager\CPathMgr.cpp">
       <Filter>소스 파일\Core\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Manager\CResMgr.cpp">
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Include.h">
@@ -180,6 +183,9 @@
       <Filter>소스 파일\Core\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Code\Manager\CPathMgr.h">
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Manager\CResMgr.h">
       <Filter>소스 파일\Core\Managers</Filter>
     </ClInclude>
   </ItemGroup>

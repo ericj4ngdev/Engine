@@ -17,6 +17,7 @@ CTexture::~CTexture()
 
 CTexture::CTexture(const CTexture& other)
 {
+
 }
 
 void CTexture::LoadTexture(const char* path)
@@ -25,7 +26,7 @@ void CTexture::LoadTexture(const char* path)
 	// assert(m_texId);
 	if (m_texId != 0) {  return;	}
 	int width, height, channels;
-	//stbi_set_flip_vertically_on_load(true);
+
 	image = stbi_load(path, &width, &height, &channels, STBI_rgb_alpha);
 	std::cout << width << " " << height << '\n';
 	std::cout << "Channels: " << channels << std::endl;
@@ -52,6 +53,7 @@ void CTexture::LoadTexture(const char* path)
 		std::cerr << "Failed to load image." << std::endl;
 	}
 
+	// GetTexture();
 	stbi_image_free(image);
 }
 

@@ -28,6 +28,10 @@ void OnIdle()
 
 int main(int argc, char** argv)
 {
+    // 메모리 누수 체크
+    // _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    // _CrtSetBreakAlloc(1012);
+
     if (!InitInstance(argc, argv)) return 0;
     
     // 코어 초기화

@@ -14,6 +14,8 @@ enum class SCENE_TYPE {
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+using namespace std;
+
 #include <iostream>
 using std::cout;
 using std::cin;
@@ -21,12 +23,15 @@ using std::cin;
 #include <vector>
 using std::vector;
 #include <list>
+#include <map>
 #include <cmath>
 #include <GL/glew.h>
 #include <GL/glut.h>
 
 #include "Core/EngineCore.h"
 #include "Core/GLMgr.h"
+#include "Manager/CResMgr.h"
+
 #include "Manager/CPathMgr.h"
 #include "CObject.h"
 #include "CResource.h"
