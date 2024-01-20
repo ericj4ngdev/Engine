@@ -1,3 +1,21 @@
-﻿  CRenderComponent.cpp
+﻿  SampleScene.cpp
+  CObject.cpp
+  CGameObject.cpp
+  ControllerComponent.cpp
+  CRenderComponent.cpp
+  TransformComponent.cpp
+  EngineCore.cpp
+  GLMgr.cpp
+C:\GitHub\Engine\GL_Test\Code\Core\GLMgr.cpp(32,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  CKeyMgr.cpp
+  CPathMgr.cpp
+C:\GitHub\Engine\GL_Test\Code\Manager\CPathMgr.cpp(19,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   CResMgr.cpp
+  CSceneMgr.cpp
+  CTimeMgr.cpp
+  MemoryMgr.cpp
+  CScene.cpp
+  CResource.cpp
+  CTexture.cpp
+  ShaderUtil.cpp
   GL_Test.vcxproj -> C:\GitHub\Engine\GL_Test\Output\bin_Debug\GL_Test.exe

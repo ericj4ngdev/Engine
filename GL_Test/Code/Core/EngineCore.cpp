@@ -8,6 +8,7 @@ EngineCore::EngineCore()
 
 EngineCore::~EngineCore()
 {
+
 }
 
 void EngineCore::Init()
@@ -30,7 +31,7 @@ void EngineCore::Render()
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClearColor(0.5, 0.5, 0.5, 1.0);	//select the background color
 	GLMgr::GetInstance()->Render();
-	CSceneMgr::GetInstance()->Update();		// RenderCompo 갱신함
+	CSceneMgr::GetInstance()->Tick();		// RenderCompo 갱신함
 
 	glutSwapBuffers();
 }

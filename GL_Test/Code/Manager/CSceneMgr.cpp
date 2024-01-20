@@ -32,8 +32,8 @@ void CSceneMgr::Init()
 	m_pCurScene->Enter();
 }
 
-void CSceneMgr::Update()
+void CSceneMgr::Tick()
 {
 	if (m_pCurScene == nullptr) return;
-	m_pCurScene->Update();
+	m_pCurScene->Tick();
 }

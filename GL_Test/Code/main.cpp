@@ -13,6 +13,10 @@ bool InitInstance(int argc, char** argv) {
     return true;
 }
 
+void Init() {
+    EngineCore::GetInstance()->Init();  // 코어 초기화
+}
+
 void Update()
 {
     EngineCore::GetInstance()->Update();
@@ -34,9 +38,7 @@ int main(int argc, char** argv)
 
     if (!InitInstance(argc, argv)) return 0;
     
-    // 코어 초기화
-    EngineCore::GetInstance()->Init();
-    
+    Init();    
     glutDisplayFunc(Update);
     glutIdleFunc(OnIdle);
     glutMainLoop();    

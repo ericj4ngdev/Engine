@@ -11,6 +11,6 @@ private:
 	CScene*		m_pCurScene;
 public:
 	void Init();
-	void Update();
+	void Tick();
 };
 

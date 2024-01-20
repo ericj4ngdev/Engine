@@ -1,6 +1,7 @@
 #include "include.h"
 
-CScene::CScene() {
+CScene::CScene() 
+{
 
 }
 CScene::~CScene() 
@@ -13,7 +14,7 @@ CScene::~CScene()
 	// vector소멸은 알아서
 }
 
-void CScene::Update()
+void CScene::Tick()
 {
 	for (auto item : m_arrObj) {
 		item->Tick();
