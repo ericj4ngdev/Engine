@@ -5,7 +5,12 @@ COMPONENT_CONSTRUCTOR(CRenderComponent)
 	m_VAO = 0;
 	m_VBO = 0;
 	programID = 0;
-	programID = ShaderUtil::CreateProgram("VertexShader.txt", "FragmentShader.txt");
+	std::string strFilePath_vert = CPathMgr::GetInstance()->GetContentPath();
+	std::string strFilePath_frag = CPathMgr::GetInstance()->GetContentPath();
+	strFilePath_vert += "shader\\VertexShader.txt";
+	strFilePath_frag += "shader\\FragmentShader.txt";
+	
+	programID = ShaderUtil::CreateProgram(strFilePath_vert.c_str(), strFilePath_frag.c_str());
 	LoadPlaneVAO();
 }
 
@@ -47,11 +52,11 @@ void CRenderComponent::Destroy()
 
 void CRenderComponent::SetTexture(const char* name)
 {
-	if (m_texture == nullptr) {
+	if (m_texture == NULL) {
 		m_texture = new CTexture();
 	}
-	m_texture->LoadImage(name);
-	m_Texid = *m_texture->GetTexture();
+	m_texture->LoadTexture(name);
+	m_Texid = *m_texture->GetTexture();    // 여기 오류
 }
 
 void CRenderComponent::LoadPlaneVAO()

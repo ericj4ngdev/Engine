@@ -19,6 +19,9 @@ void GLMgr::Init()
     {
         fprintf(stderr, "Error: '%s' \n", glewGetErrorString(errorCode));
     }
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);      // png ≈ı∏Ì»≠
+
 }
 
 void GLMgr::Resize(int width, int height)

@@ -13,6 +13,7 @@ EngineCore::~EngineCore()
 void EngineCore::Init()
 {
 	CTimeMgr::GetInstance()->Init();
+	CPathMgr::GetInstance()->Init();
 	GLMgr::GetInstance()->Init();
 	CKeyMgr::GetInstance()->Init();
 	CSceneMgr::GetInstance()->Init();

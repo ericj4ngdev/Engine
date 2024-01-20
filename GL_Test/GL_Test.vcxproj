@@ -28,6 +28,7 @@
     <ClCompile Include="Code\Core\EngineCore.cpp" />
     <ClCompile Include="Code\Core\GLMgr.cpp" />
     <ClCompile Include="Code\Manager\CKeyMgr.cpp" />
+    <ClCompile Include="Code\Manager\CPathMgr.cpp" />
     <ClCompile Include="Code\Manager\CSceneMgr.cpp" />
     <ClCompile Include="Code\Manager\CTimeMgr.cpp" />
     <ClCompile Include="Code\MemoryMgr.cpp" />
@@ -50,6 +51,7 @@
     <ClInclude Include="Code\Core\EngineCore.h" />
     <ClInclude Include="Code\Core\GLMgr.h" />
     <ClInclude Include="Code\Manager\CKeyMgr.h" />
+    <ClInclude Include="Code\Manager\CPathMgr.h" />
     <ClInclude Include="Code\Manager\CSceneMgr.h" />
     <ClInclude Include="Code\Manager\CTimeMgr.h" />
     <ClInclude Include="Code\MemoryMgr.h" />
@@ -124,6 +126,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\GitHub\Engine\GL_Test\include;C:\GitHub\Engine\GL_Test\Code;$(IncludePath)</IncludePath>
     <LibraryPath>C:\GitHub\Engine\GL_Test\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Output\bin_Debug\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)Output\bin\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

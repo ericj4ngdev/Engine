@@ -1,0 +1,36 @@
+﻿  SampleScene.cpp
+C:\Github\Engine\GL_Test\Code\Asset\SampleScene.cpp(1,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'include.h': No such file or directory
+  CObject.cpp
+C:\Github\Engine\GL_Test\Code\include.h(25,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'GL/glew.h': No such file or directory
+  CGameObject.cpp
+C:\Github\Engine\GL_Test\Code\include.h(25,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'GL/glew.h': No such file or directory
+  ControllerComponent.cpp
+C:\Github\Engine\GL_Test\Code\Component\ControllerComponent.cpp(1,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'include.h': No such file or directory
+  CRenderComponent.cpp
+C:\Github\Engine\GL_Test\Code\Component\CRenderComponent.cpp(1,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'include.h': No such file or directory
+  TransformComponent.cpp
+C:\Github\Engine\GL_Test\Code\Component\TransformComponent.cpp(1,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'Include.h': No such file or directory
+  EngineCore.cpp
+C:\Github\Engine\GL_Test\Code\Core\EngineCore.cpp(1,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'include.h': No such file or directory
+  GLMgr.cpp
+C:\Github\Engine\GL_Test\Code\Core\GLMgr.cpp(1,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'include.h': No such file or directory
+  CKeyMgr.cpp
+C:\Github\Engine\GL_Test\Code\Manager\CKeyMgr.cpp(1,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'include.h': No such file or directory
+  CPathMgr.cpp
+C:\Github\Engine\GL_Test\Code\Manager\CPathMgr.cpp(1,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'include.h': No such file or directory
+  CSceneMgr.cpp
+C:\Github\Engine\GL_Test\Code\Manager\CSceneMgr.cpp(1,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'include.h': No such file or directory
+  CTimeMgr.cpp
+C:\Github\Engine\GL_Test\Code\Manager\CTimeMgr.cpp(1,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'include.h': No such file or directory
+  MemoryMgr.cpp
+C:\Github\Engine\GL_Test\Code\include.h(25,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'GL/glew.h': No such file or directory
+  CScene.cpp
+C:\Github\Engine\GL_Test\Code\include.h(25,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'GL/glew.h': No such file or directory
+  main.cpp
+C:\Github\Engine\GL_Test\Code\include.h(25,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'GL/glew.h': No such file or directory
+  CResource.cpp
+C:\Github\Engine\GL_Test\Code\include.h(25,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'GL/glew.h': No such file or directory
+  CTexture.cpp
+C:\Github\Engine\GL_Test\Code\Resource\CTexture.cpp(2,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'include.h': No such file or directory
+  ShaderUtil.cpp
+C:\Github\Engine\GL_Test\Code\Util\ShaderUtil.cpp(1,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'include.h': No such file or directory

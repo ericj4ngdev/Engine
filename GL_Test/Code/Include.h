@@ -27,6 +27,7 @@ using std::vector;
 
 #include "Core/EngineCore.h"
 #include "Core/GLMgr.h"
+#include "Manager/CPathMgr.h"
 #include "CObject.h"
 #include "CResource.h"
 

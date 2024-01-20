@@ -90,9 +90,19 @@ GLuint ShaderUtil::LoadShader(GLenum eShaderType, const char* pfile_path)
 
     if (!success)
     {
-        char ShaderErrorMessage[512];
-        glGetShaderInfoLog(shader, 512, NULL, ShaderErrorMessage);
-        fprintf(stdout, "%s\n", &ShaderErrorMessage[0]);
+        GLint infoLogLength;
+        glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLogLength);
+
+        if (infoLogLength > 0)
+        {
+            std::vector<GLchar> shaderErrorMessage(infoLogLength + 1);
+            glGetShaderInfoLog(shader, infoLogLength, NULL, shaderErrorMessage.data());
+            fprintf(stdout, "Shader compilation failed for %s:\n%s\n", pfile_path, shaderErrorMessage.data());
+        }
+        else
+        {
+            fprintf(stdout, "Shader compilation failed for %s, but no error message available.\n", pfile_path);
+        }
     }
 
 	return shader;

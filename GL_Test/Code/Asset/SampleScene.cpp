@@ -7,26 +7,37 @@ void SampleScene::Init()
 
 void SampleScene::Enter()
 {
-	// player할당
-	CGameObject* player = new CGameObject("Player");
-	player->CreateComponent<CRenderComponent>();
-	player->CreateComponent<ControllerComponent>();
-	player->GetTransform()->m_scale = vec3{ 0.5f,1.f,1.f };
-	player->GetComponent<CRenderComponent>()->SetTexture("Code/Asset/Image/player.png");
-	AddObject(player);
+	CTexture* pTex = new CTexture;
 
-
-	CGameObject* block = nullptr;
-	for (int i = 0; i < 5; i++) 
+	//char* strFilePath += CPathMgr::GetInstance()->GetContentPath();
+	//strFilePath = "Texture/player.png" ;
 	{
-		block = new CGameObject("block");
-		block->CreateComponent<CRenderComponent>();
-		block->GetTransform()->m_position = vec3{ -0.5f + (float)i * 1.f ,-9.5f,0.1f };
-		block->GetTransform()->m_scale = vec3{ 0.1f,0.1f,1.f };
-		block->GetComponent<CRenderComponent>()->SetTexture("Code/Asset/Image/block.png");
-		AddObject(block);
+		std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
+		// player할당
+		CGameObject* player = new CGameObject("Player");
+		player->CreateComponent<CRenderComponent>();
+		player->CreateComponent<ControllerComponent>();
+		player->GetTransform()->m_scale = vec3{ 0.5f,1.f,1.f };
+		strFilePath += "texture\\player.png";
+		player->GetComponent<CRenderComponent>()->SetTexture(strFilePath.c_str());
+		AddObject(player);
 	}
-	
+
+
+	{
+		std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
+		strFilePath += "texture\\Zombie1.png";
+		CGameObject* block = nullptr;
+		for (int i = 0; i < 5; i++)
+		{
+			block = new CGameObject("block");
+			block->CreateComponent<CRenderComponent>();
+			block->GetTransform()->m_position = vec3{ -0.5f + (float)i * 1.f ,-9.5f,0.1f };
+			block->GetTransform()->m_scale = vec3{ 0.1f,0.1f,1.f };
+			block->GetComponent<CRenderComponent>()->SetTexture(strFilePath.c_str());
+			AddObject(block);
+		}
+	}
 }
 
 void SampleScene::Exit()

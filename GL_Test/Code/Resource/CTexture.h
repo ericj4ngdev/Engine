@@ -12,11 +12,9 @@ public:
     CTexture();
     virtual ~CTexture();
     CTexture(const CTexture& other);
-    void LoadImage(const char* path);
+    void LoadTexture(const char* path);
     void Release();
     GLuint* GetTexture();
-    void Bind(GLint location, int layout);
-    // InitTexture
 };
 
 #endif
