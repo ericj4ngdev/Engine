@@ -6,7 +6,6 @@ class CTexture : public CResource
 public:
     unsigned char* image;
     GLuint m_texId;
-    int m_targetGL = GL_TEXTURE_2D;
 
 private:
     CTexture();

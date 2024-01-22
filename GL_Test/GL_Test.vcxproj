@@ -38,7 +38,6 @@
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\CResource.cpp" />
     <ClCompile Include="Code\Resource\CTexture.cpp" />
-    <ClCompile Include="Code\Util\ShaderUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Asset\CPlayer.h" />
@@ -63,16 +62,12 @@
     <ClInclude Include="Code\Include.h" />
     <ClInclude Include="Code\CResource.h" />
     <ClInclude Include="Code\Resource\CTexture.h" />
+    <ClInclude Include="Code\Util\Color4f.h" />
     <ClInclude Include="Code\Util\Matrix.h" />
     <ClInclude Include="Code\Util\MatrixDef.h" />
     <ClInclude Include="Code\Util\MoreMath.h" />
     <ClInclude Include="Code\Util\Quaternion.h" />
-    <ClInclude Include="Code\Util\ShaderUtil.h" />
     <ClInclude Include="Code\Util\Vector.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="FragmentShader.txt" />
-    <Text Include="VertexShader.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

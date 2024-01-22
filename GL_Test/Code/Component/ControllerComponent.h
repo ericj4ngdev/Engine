@@ -12,6 +12,6 @@ public:
 	void Destroy() override;
 	void Control();
 private:
-	vec2 m_pos;
+	vec2 m_curpos;
+	float m_speed;
 };
-

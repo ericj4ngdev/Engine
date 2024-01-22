@@ -10,10 +10,22 @@ enum class SCENE_TYPE {
 	END,
 };
 
+enum class GROUP_TYPE {
+	DEFAULT,
+	PLAYER,
+	MAP,
+	ENEMY,
+	PROJECTILE,
+	WEAPON,
+	END = 32,
+};
 
+// #pragma comment(lib,"glut32.lib") 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#include <stdio.h>
+#include <windows.h>
 using namespace std;
 
 #include <iostream>
@@ -25,7 +37,7 @@ using std::vector;
 #include <list>
 #include <map>
 #include <cmath>
-#include <GL/glew.h>
+// #include <GL/glew.h>
 #include <GL/glut.h>
 
 #include "Core/EngineCore.h"
@@ -33,6 +45,7 @@ using std::vector;
 #include "Manager/CResMgr.h"
 #include "Util/Vector.h"
 #include "Util/Quaternion.h"
+#include "Util/Color4f.h"
 
 #include "Manager/CPathMgr.h"
 #include "CResource.h"
@@ -49,7 +62,7 @@ using std::vector;
 #include "Asset/SampleScene.h"
 
 #include "Component/CComponent.h"
-#include "Util/ShaderUtil.h"
+// #include "Util/ShaderUtil.h"
 #include "Component/CRenderComponent.h"
 #include "Component/TransformComponent.h"
 #include "Component/ControllerComponent.h"

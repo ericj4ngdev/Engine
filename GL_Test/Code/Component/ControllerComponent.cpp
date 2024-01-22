@@ -3,7 +3,7 @@
 // CComponent의 생성자를 자식 생성자 초기화로부터 호출
 ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent("ControllerComponent", l_gameObject)
 {
-	// m_pos = { 0, 0 };
+	m_speed = 100;
 }
 
 
@@ -13,15 +13,13 @@ ControllerComponent::~ControllerComponent()
 
 void ControllerComponent::Init()
 {
-	//m_pos.x = gameObject->GetTransform()->m_position.x;
-	//m_pos.y = gameObject->GetTransform()->m_position.y;
+	printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
 }
 
 void ControllerComponent::Update()
 {
-	// m_pos.x = gameObject->GetTransform()->m_position.x;
-	// m_pos.y = gameObject->GetTransform()->m_position.y;
-	// Control();	
+	m_curpos = gameObject->GetComponent<TransformComponent>()->GetPosition();
+	Control();	
 }
 
 void ControllerComponent::FinalUpdate()
@@ -37,27 +35,24 @@ void ControllerComponent::Destroy()
 }
 
 void ControllerComponent::Control()
-{	
-	// m_pos = gameObject->GetTransform()->m_position;
+{
 	if (GetKeyHold(W))
-	{
-		m_pos.y += 1.f * fDT;
-		printf("%f\n", m_pos.y);
+	{		
+		m_curpos.y += m_speed * fDT;
 	}
 	if (GetKeyHold(A))
 	{
-		m_pos.x -= 1.f * fDT;
-		printf("%f\n", m_pos.x);
+		m_curpos.x -= m_speed * fDT;
 	}
 	if (GetKeyHold(S))
 	{
-		m_pos.y -= 1.f * fDT;
-		printf("%f\n", m_pos.y);
+		m_curpos.y -= m_speed * fDT;
 	}
 	if (GetKeyHold(D))
 	{
-		m_pos.x += 1.f * fDT;
-		printf("%f\n", m_pos.x);
+		m_curpos.x += m_speed * fDT;
 	}
-	// gameObject->GetComponent<TransformComponent>()->SetPosition(m_pos.x, m_pos.y);
+	printf("Player (%f, %f)\r", m_curpos.x, m_curpos.y);
+	// set(현재 위치 + 변화량)
+	gameObject->GetComponent<TransformComponent>()->SetPosition(m_curpos);
 }

@@ -1,7 +1,6 @@
 #include "include.h"
 
-int GLMgr::g_screenWidth = 720;
-int GLMgr::g_screenHeight = 720;
+
 
 GLMgr::GLMgr()
 {
@@ -14,13 +13,11 @@ GLMgr::~GLMgr()
 
 void GLMgr::Init()
 {
-    GLenum errorCode = glewInit();         //initilize the glew and check the errors.
-    if (errorCode != GLEW_OK)
-    {
-        fprintf(stderr, "Error: '%s' \n", glewGetErrorString(errorCode));
+    GLenum error = glGetError();
+    if (error != GL_NO_ERROR) {
+        fprintf(stderr, "OpenGL Error: %d\n", error);
     }
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);      // png 투명화
+          
 }
 
 void GLMgr::Resize(int width, int height)
@@ -43,20 +40,6 @@ void GLMgr::Resize(int width, int height)
     glLoadIdentity();
     gluLookAt(0.0, 0.0, 5.0, 0.0, 0.0, -1.0, 0.0f, 1.0f, 0.0f);
 
-    //// 뷰포트 설정 (창의 크기에 따라 변경)
-    //glViewport(0, 0, width, height);
-
-    //// 프로젝션 행렬 설정
-    //glMatrixMode(GL_PROJECTION);
-    //glLoadIdentity();
-
-    //// 원하는 프로젝션 설정을 여기에 추가 (예: 직교 투영)
-    //// glOrtho(left, right, bottom, top, near, far);
-    //glOrtho(-width / 2.0, width / 2.0, -height / 2.0, height / 2.0, -1.0, 1.0);
-
-    //// 모델뷰 행렬로 전환
-    //glMatrixMode(GL_MODELVIEW);
-    //glLoadIdentity();
 }
 
 void GLMgr::Update()
@@ -64,13 +47,13 @@ void GLMgr::Update()
 }
 
 void GLMgr::Render()
-{
-    glClearColor(0.5, 0.5, 0.5, 1.0);	//select the background color
-    glClear(GL_COLOR_BUFFER_BIT);
+{ 
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);              // png 투명화
     glViewport(0, 0, GLMgr::g_screenWidth, GLMgr::g_screenHeight);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0, GLMgr::g_screenWidth, 0, GLMgr::g_screenHeight, 0.01, 1000);
-
-    Resize(GLMgr::g_screenWidth, GLMgr::g_screenHeight);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 프레임마다 이전에 그려진 색상 버퍼와 깊이 버퍼를 초기화
+    glClearColor(0.5, 0.5, 0.5, 1.0);	//select the background color
 }

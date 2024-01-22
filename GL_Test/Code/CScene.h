@@ -5,13 +5,14 @@ class CGameObject;
 class CScene
 {
 protected:
-    std::vector<CGameObject*> m_arrObj;
-    std::string m_name;
+    vector<CGameObject*> m_arrObj[(UINT)GROUP_TYPE::END];
+    string m_name;
 
 public:
 	CScene();
 	virtual ~CScene();
-    void SetName(const std::string& _strName) { m_name = _strName; }
+    void SetName(const std::string& strName) { m_name = strName; }
+    const string GetName() { return m_name; }
     virtual void Init() = 0;
     virtual void Enter() = 0;           // 해당 씬에 진입시 호출
     virtual void Exit() = 0;            // 해당 씬에 탈출시 호출
@@ -20,6 +21,6 @@ public:
     void Render();
     virtual void Destroy() = 0;
 protected:
-    inline void AddObject(CGameObject* pGameObject){ m_arrObj.push_back(pGameObject); }
+    inline void AddObject(CGameObject* pGameObject, GROUP_TYPE eType){ m_arrObj[(UINT)eType].push_back(pGameObject); }
 };
 

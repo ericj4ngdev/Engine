@@ -78,9 +78,6 @@
     <ClCompile Include="Code\Resource\CTexture.cpp">
       <Filter>소스 파일\Core\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Util\ShaderUtil.cpp">
-      <Filter>소스 파일\Core\Util\Render</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Component\CRenderComponent.cpp">
       <Filter>소스 파일\Core\Components</Filter>
     </ClCompile>
@@ -164,9 +161,6 @@
     <ClInclude Include="Code\Resource\CTexture.h">
       <Filter>소스 파일\Core\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Util\ShaderUtil.h">
-      <Filter>소스 파일\Core\Util\Render</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Component\CRenderComponent.h">
       <Filter>소스 파일\Core\Components</Filter>
     </ClInclude>
@@ -191,13 +185,8 @@
     <ClInclude Include="Code\Asset\CZombie.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="FragmentShader.txt">
-      <Filter>소스 파일\Shader</Filter>
-    </Text>
-    <Text Include="VertexShader.txt">
-      <Filter>소스 파일\Shader</Filter>
-    </Text>
+    <ClInclude Include="Code\Util\Color4f.h">
+      <Filter>소스 파일\Core\Util</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
