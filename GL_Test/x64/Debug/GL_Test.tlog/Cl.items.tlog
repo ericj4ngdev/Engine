@@ -1,3 +1,5 @@
+C:\GitHub\Engine\GL_Test\Code\Asset\CBlock.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CBlock.obj
+C:\GitHub\Engine\GL_Test\Code\Asset\CMap.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CMap.obj
 C:\GitHub\Engine\GL_Test\Code\Asset\CPlayer.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CPlayer.obj
 C:\GitHub\Engine\GL_Test\Code\Asset\CZombie.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CZombie.obj
 C:\GitHub\Engine\GL_Test\Code\Asset\SampleScene.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\SampleScene.obj
@@ -6,6 +8,7 @@ C:\GitHub\Engine\GL_Test\Code\Component\CCollider.cpp;C:\GitHub\Engine\GL_Test\x
 C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\ControllerComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\CRenderComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CRenderComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\TransformComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\TransformComponent.obj
+C:\GitHub\Engine\GL_Test\Code\Component\Zombie.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\Zombie.obj
 C:\GitHub\Engine\GL_Test\Code\Core\EngineCore.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\EngineCore.obj
 C:\GitHub\Engine\GL_Test\Code\Core\GLMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\GLMgr.obj
 C:\GitHub\Engine\GL_Test\Code\Manager\CKeyMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CKeyMgr.obj

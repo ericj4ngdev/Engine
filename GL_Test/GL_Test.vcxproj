@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Asset\CBlock.cpp" />
+    <ClCompile Include="Code\Asset\CMap.cpp" />
     <ClCompile Include="Code\Asset\CPlayer.cpp" />
     <ClCompile Include="Code\Asset\CZombie.cpp" />
     <ClCompile Include="Code\Asset\SampleScene.cpp" />
@@ -27,6 +29,7 @@
     <ClCompile Include="Code\Component\ControllerComponent.cpp" />
     <ClCompile Include="Code\Component\CRenderComponent.cpp" />
     <ClCompile Include="Code\Component\TransformComponent.cpp" />
+    <ClCompile Include="Code\Component\Zombie.cpp" />
     <ClCompile Include="Code\Core\EngineCore.cpp" />
     <ClCompile Include="Code\Core\GLMgr.cpp" />
     <ClCompile Include="Code\Manager\CKeyMgr.cpp" />
@@ -40,6 +43,8 @@
     <ClCompile Include="Code\Resource\CTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Asset\CBlock.h" />
+    <ClInclude Include="Code\Asset\CMap.h" />
     <ClInclude Include="Code\Asset\CPlayer.h" />
     <ClInclude Include="Code\Asset\CZombie.h" />
     <ClInclude Include="Code\Asset\SampleScene.h" />
@@ -49,6 +54,7 @@
     <ClInclude Include="Code\Component\ControllerComponent.h" />
     <ClInclude Include="Code\Component\CRenderComponent.h" />
     <ClInclude Include="Code\Component\TransformComponent.h" />
+    <ClInclude Include="Code\Component\Zombie.h" />
     <ClInclude Include="Code\CoreBase.h" />
     <ClInclude Include="Code\CGameObject.h" />
     <ClInclude Include="Code\Core\EngineCore.h" />

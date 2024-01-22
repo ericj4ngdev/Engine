@@ -16,8 +16,7 @@ void GLMgr::Init()
     GLenum error = glGetError();
     if (error != GL_NO_ERROR) {
         fprintf(stderr, "OpenGL Error: %d\n", error);
-    }
-          
+    }          
 }
 
 void GLMgr::Resize(int width, int height)
@@ -48,12 +47,12 @@ void GLMgr::Update()
 
 void GLMgr::Render()
 { 
-    glEnable(GL_BLEND);
+    glEnable(GL_BLEND); // glEnable(GL_DEPTH_TEST);  // 깊이 테스트 활성화
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);              // png 투명화
     glViewport(0, 0, GLMgr::g_screenWidth, GLMgr::g_screenHeight);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0, GLMgr::g_screenWidth, 0, GLMgr::g_screenHeight, 0.01, 1000);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 프레임마다 이전에 그려진 색상 버퍼와 깊이 버퍼를 초기화
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 색상 버퍼 깊이 버퍼 초기화
     glClearColor(0.5, 0.5, 0.5, 1.0);	//select the background color
 }

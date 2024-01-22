@@ -12,8 +12,8 @@ enum class SCENE_TYPE {
 
 enum class GROUP_TYPE {
 	DEFAULT,
-	PLAYER,
 	MAP,
+	PLAYER,
 	ENEMY,
 	PROJECTILE,
 	WEAPON,
@@ -55,6 +55,8 @@ using std::vector;
 #include "CGameObject.h"
 #include "Asset/CPlayer.h"
 #include "Asset/CZombie.h"
+#include "Asset/CBlock.h"
+#include "Asset/CMap.h"
 
 #include "Manager/CKeyMgr.h"
 #include "CScene.h"
@@ -67,6 +69,7 @@ using std::vector;
 #include "Component/TransformComponent.h"
 #include "Component/ControllerComponent.h"
 #include "Component/CCollider.h"
+#include "Component/Zombie.h"
 #include "Resource/CTexture.h"
 
 #endif

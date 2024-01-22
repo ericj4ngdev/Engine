@@ -43,6 +43,9 @@
     <Filter Include="소스 파일\Core\Util\Render">
       <UniqueIdentifier>{86da0d46-188e-48d1-9e2b-fe222385f5b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Core\Components\Collider">
+      <UniqueIdentifier>{d3f4e65b-57dc-47d3-8b4d-3f72337c9aca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\main.cpp">
@@ -93,14 +96,23 @@
     <ClCompile Include="Code\Manager\CResMgr.cpp">
       <Filter>소스 파일\Core\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Component\CCollider.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Asset\CPlayer.cpp">
       <Filter>소스 파일\Core\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Code\Asset\CZombie.cpp">
+      <Filter>소스 파일\Core\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Asset\CBlock.cpp">
+      <Filter>소스 파일\Core\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Component\CCollider.cpp">
+      <Filter>소스 파일\Core\Components\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Asset\CMap.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Component\Zombie.cpp">
+      <Filter>소스 파일\Core\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,17 +188,26 @@
     <ClInclude Include="Code\Manager\CResMgr.h">
       <Filter>소스 파일\Core\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Component\CCollider.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Asset\CPlayer.h">
       <Filter>소스 파일\Core\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Asset\CZombie.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Util\Color4f.h">
       <Filter>소스 파일\Core\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Asset\CZombie.h">
+      <Filter>소스 파일\Core\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Asset\CBlock.h">
+      <Filter>소스 파일\Core\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component\CCollider.h">
+      <Filter>소스 파일\Core\Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Asset\CMap.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component\Zombie.h">
+      <Filter>소스 파일\Core\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,6 +13,7 @@ void CZombie::Init()
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
 	strFilePath += "texture\\Zombie1.png";
 	CreateComponent<CRenderComponent>();
+	CreateComponent<Zombie>();
 	GetComponent<CRenderComponent>()->SetTexture("Zombie1Tex", strFilePath.c_str());	
 }
 
