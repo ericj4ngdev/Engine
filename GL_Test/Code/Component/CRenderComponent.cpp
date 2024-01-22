@@ -1,6 +1,6 @@
 #include "include.h"
 
-COMPONENT_CONSTRUCTOR(CRenderComponent)
+CRenderComponent::CRenderComponent(CGameObject* l_gameObject) : CComponent("CRenderComponent", l_gameObject)
 {
 	m_VAO = 0;
 	m_VBO = 0;
@@ -24,9 +24,20 @@ void CRenderComponent::Init()
 	
 }
 
+void CRenderComponent::Update()
+{
+	vec2 vObjectPos = gameObject->GetComponent<TransformComponent>()->GetPosition();
+	SetCenterPos(vObjectPos.x, vObjectPos.y);
 
+	vec2 vObjectScale = gameObject->GetComponent<TransformComponent>()->GetScale();
+	SetScale(vObjectScale.x, vObjectScale.y);
+}
 
-void CRenderComponent::Tick()
+void CRenderComponent::FinalUpdate()
+{
+}
+
+void CRenderComponent::Render()
 {
 	// ±×¸®±â	
 	glUseProgram(programID);

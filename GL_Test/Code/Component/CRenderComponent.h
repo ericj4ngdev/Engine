@@ -4,11 +4,14 @@ class CTexture;
 class CRenderComponent : public CComponent
 {
 public:
-	COMPONENT_DEFINE_CONSTRUCTOR(CRenderComponent)
+	CRenderComponent(CGameObject* l_gameObject);
 	~CRenderComponent() override;
 	void Init() override;
-	void Tick() override;
+	void Update() override;
+	void FinalUpdate() override;
+	void Render() override;
 	void Destroy() override;
+public:
 	CTexture* GetTexture() { return m_texture; }
 	void SetTexture(const string& _strKey, const char* name);
 	void LoadPlaneVAO();

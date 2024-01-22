@@ -51,12 +51,6 @@
     <ClCompile Include="Code\CScene.cpp">
       <Filter>소스 파일\Core\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Code\CObject.cpp">
-      <Filter>소스 파일\Core\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\MemoryMgr.cpp">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClCompile>
     <ClCompile Include="Code\CGameObject.cpp">
       <Filter>소스 파일\Core\Objects</Filter>
     </ClCompile>
@@ -102,6 +96,15 @@
     <ClCompile Include="Code\Manager\CResMgr.cpp">
       <Filter>소스 파일\Core\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Component\CCollider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Asset\CPlayer.cpp">
+      <Filter>소스 파일\Core\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Asset\CZombie.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Include.h">
@@ -110,20 +113,11 @@
     <ClInclude Include="Code\CScene.h">
       <Filter>소스 파일\Core\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Code\CObject.h">
-      <Filter>소스 파일\Core\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Code\CoreBase.h">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\MemoryMgr.h">
       <Filter>소스 파일\Core\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Code\CGameObject.h">
       <Filter>소스 파일\Core\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Util\ITransform.h">
-      <Filter>소스 파일\Core\Util</Filter>
     </ClInclude>
     <ClInclude Include="Code\Util\Matrix.h">
       <Filter>소스 파일\Core\Util</Filter>
@@ -187,6 +181,15 @@
     </ClInclude>
     <ClInclude Include="Code\Manager\CResMgr.h">
       <Filter>소스 파일\Core\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component\CCollider.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Asset\CPlayer.h">
+      <Filter>소스 파일\Core\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Asset\CZombie.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

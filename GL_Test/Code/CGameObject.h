@@ -3,18 +3,20 @@
 #include <string>
 
 class CComponent;
-struct ITransform;
+class TransformComponent;
 
-class CGameObject : public CObject
+class CGameObject
 {
 public:
 	CGameObject();
-	explicit CGameObject(std::string name);
-	~CGameObject() override;
+	explicit CGameObject(string name);
+	virtual ~CGameObject() = default;
 
-	virtual void Init();
-	virtual void Tick();
-	void Destroy() override;
+	virtual void Init() = 0;		// 순수가상함수
+	virtual void Update();
+	virtual void FinalUpdate();
+	virtual void Render();
+	virtual void Destroy();
 public:
 	// Component관련
 	template <class T>
@@ -24,30 +26,21 @@ public:
 	void AddComponent(CComponent* component);
 	void DeleteComponent(CComponent* component);
 public:
-	// Object관련
-	void AddChild(CGameObject* object);
-	void RemoveChild(CGameObject* object);
-	CGameObject* GetParent();
-	void SetParent(CGameObject* object);
-	void RemoveParent();
-	const std::list<CGameObject*>& GetChildren() const;
-public:
-	std::string GetName() const { return m_name; }
-	void Setname(std::string name) { m_name = std::move(name); }
-	ITransform* GetTransform() const { return m_transform; }
+	string GetName() const { return m_name; }
+	void Setname(string name) { m_name = move(name); }
 	bool GetIsEnable() const { return isEnable; }
 	void SetIsEnable(bool is_enable);
 
-private:
-	std::list<CGameObject*> m_children;
-	std::list<CComponent*> m_components;
-	std::string m_name;
-	ITransform* m_transform;
+protected:
+	list<CGameObject*> m_children;
+	list<CComponent*> m_components;
+	string m_name;
 	CGameObject* m_parent;
-
+	TransformComponent* m_transform;
 	bool isEnable;
-private:
+protected:
 	void UpdateComponent();
+	void RenderComponent();
 
 };
 
@@ -57,6 +50,7 @@ T* CGameObject::GetComponent()
 	for(const auto& component : m_components)
 	{
 		if (component == nullptr) continue;
+		// T 컴포넌트이면 T컴포넌트* 반환
 		if (dynamic_cast<T*>(component)) {
 			return static_cast<T*>(component);
 		}

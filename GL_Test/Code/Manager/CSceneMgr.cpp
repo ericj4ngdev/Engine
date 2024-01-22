@@ -32,8 +32,20 @@ void CSceneMgr::Init()
 	m_pCurScene->Enter();
 }
 
-void CSceneMgr::Tick()
+void CSceneMgr::Update()
 {
 	if (m_pCurScene == nullptr) return;
-	m_pCurScene->Tick();
+	m_pCurScene->Update();
+}
+void CSceneMgr::FinalUpdate()
+{
+	if (m_pCurScene == nullptr) return;
+	m_pCurScene->FinalUpdate();
+}
+
+
+void CSceneMgr::Render()
+{
+	if (m_pCurScene == nullptr) return;
+	m_pCurScene->Render();
 }

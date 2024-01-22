@@ -1,8 +1,9 @@
 #include "include.h"
 
-COMPONENT_CONSTRUCTOR(ControllerComponent) 
+// CComponent의 생성자를 자식 생성자 초기화로부터 호출
+ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent("ControllerComponent", l_gameObject)
 {
-	m_pos = { 0, 0 };
+	// m_pos = { 0, 0 };
 }
 
 
@@ -12,11 +13,23 @@ ControllerComponent::~ControllerComponent()
 
 void ControllerComponent::Init()
 {
+	//m_pos.x = gameObject->GetTransform()->m_position.x;
+	//m_pos.y = gameObject->GetTransform()->m_position.y;
 }
 
-void ControllerComponent::Tick()
+void ControllerComponent::Update()
 {
-	Control();	
+	// m_pos.x = gameObject->GetTransform()->m_position.x;
+	// m_pos.y = gameObject->GetTransform()->m_position.y;
+	// Control();	
+}
+
+void ControllerComponent::FinalUpdate()
+{
+}
+
+void ControllerComponent::Render()
+{
 }
 
 void ControllerComponent::Destroy()
@@ -25,6 +38,7 @@ void ControllerComponent::Destroy()
 
 void ControllerComponent::Control()
 {	
+	// m_pos = gameObject->GetTransform()->m_position;
 	if (GetKeyHold(W))
 	{
 		m_pos.y += 1.f * fDT;
@@ -45,5 +59,5 @@ void ControllerComponent::Control()
 		m_pos.x += 1.f * fDT;
 		printf("%f\n", m_pos.x);
 	}
-	gameObject->GetComponent<TransformComponent>()->SetPosition(m_pos.x, m_pos.y);
+	// gameObject->GetComponent<TransformComponent>()->SetPosition(m_pos.x, m_pos.y);
 }

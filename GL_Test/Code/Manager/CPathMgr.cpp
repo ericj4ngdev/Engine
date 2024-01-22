@@ -16,7 +16,7 @@ void CPathMgr::Init()
 	GetCurrentDirectory(255, m_szContentPath);		// 현재 디렉토리
 	// printf("m_szContentPath : %ls\n", m_szContentPath);
 
-	int len = wcslen(m_szContentPath);
+	int len = (int)wcslen(m_szContentPath);
 
 	for (int i = len - 1; 0 <= i; --i) 
 	{

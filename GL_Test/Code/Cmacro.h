@@ -26,3 +26,9 @@ CKeyMgr::GetInstance()->GetKeyState(KEY::_KEY_) == KEY_STATE::HOLD
 
 #define GetKeyUp(_KEY_) \
 CKeyMgr::GetInstance()->GetKeyState(KEY::_KEY_) == KEY_STATE::UP
+
+#define BLACK	{ 1,1,1,1 } 
+#define WHITE	{ 0,0,0,0 } 
+#define RED		{ 1,0,0,0 } 
+#define GREEN	{ 0,1,0,0 } 
+#define BLUE	{ 0,0,1,0 } 

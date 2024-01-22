@@ -21,7 +21,6 @@ void GLMgr::Init()
     }
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);      // png 투명화
-
 }
 
 void GLMgr::Resize(int width, int height)
@@ -29,7 +28,7 @@ void GLMgr::Resize(int width, int height)
     //창이 아주 작을 때, 0 으로 나누는 것을 예방합니다.
     if (height == 0)
         height = 1;
-    float ratio = 1.0 * width / height;
+    double ratio = 1.0 * width / height;
 
     //좌표계를 수정하기 전에 초기화합니다.
     glMatrixMode(GL_PROJECTION);
@@ -66,5 +65,12 @@ void GLMgr::Update()
 
 void GLMgr::Render()
 {
+    glClearColor(0.5, 0.5, 0.5, 1.0);	//select the background color
+    glClear(GL_COLOR_BUFFER_BIT);
+    glViewport(0, 0, GLMgr::g_screenWidth, GLMgr::g_screenHeight);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, GLMgr::g_screenWidth, 0, GLMgr::g_screenHeight, 0.01, 1000);
+
     Resize(GLMgr::g_screenWidth, GLMgr::g_screenHeight);
 }

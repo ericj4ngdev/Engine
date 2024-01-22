@@ -1,6 +1,8 @@
+C:\GitHub\Engine\GL_Test\Code\Asset\CPlayer.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CPlayer.obj
+C:\GitHub\Engine\GL_Test\Code\Asset\CZombie.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CZombie.obj
 C:\GitHub\Engine\GL_Test\Code\Asset\SampleScene.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\SampleScene.obj
-C:\GitHub\Engine\GL_Test\Code\CObject.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CObject.obj
 C:\GitHub\Engine\GL_Test\Code\CGameObject.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CGameObject.obj
+C:\GitHub\Engine\GL_Test\Code\Component\CCollider.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CCollider.obj
 C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\ControllerComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\CRenderComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CRenderComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\TransformComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\TransformComponent.obj
@@ -11,7 +13,6 @@ C:\GitHub\Engine\GL_Test\Code\Manager\CPathMgr.cpp;C:\GitHub\Engine\GL_Test\x64\
 C:\GitHub\Engine\GL_Test\Code\Manager\CResMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CResMgr.obj
 C:\GitHub\Engine\GL_Test\Code\Manager\CSceneMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CSceneMgr.obj
 C:\GitHub\Engine\GL_Test\Code\Manager\CTimeMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CTimeMgr.obj
-C:\GitHub\Engine\GL_Test\Code\MemoryMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\MemoryMgr.obj
 C:\GitHub\Engine\GL_Test\Code\CScene.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CScene.obj
 C:\GitHub\Engine\GL_Test\Code\main.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\main.obj
 C:\GitHub\Engine\GL_Test\Code\CResource.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CResource.obj

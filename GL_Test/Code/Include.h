@@ -31,15 +31,17 @@ using std::vector;
 #include "Core/EngineCore.h"
 #include "Core/GLMgr.h"
 #include "Manager/CResMgr.h"
+#include "Util/Vector.h"
+#include "Util/Quaternion.h"
 
 #include "Manager/CPathMgr.h"
-#include "CObject.h"
 #include "CResource.h"
 
 #include "CoreBase.h"
-#include "MemoryMgr.h"
 #include "Manager/CTimeMgr.h"
 #include "CGameObject.h"
+#include "Asset/CPlayer.h"
+#include "Asset/CZombie.h"
 
 #include "Manager/CKeyMgr.h"
 #include "CScene.h"
@@ -47,12 +49,12 @@ using std::vector;
 #include "Asset/SampleScene.h"
 
 #include "Component/CComponent.h"
-#include "Util/ITransform.h"
+#include "Util/ShaderUtil.h"
 #include "Component/CRenderComponent.h"
 #include "Component/TransformComponent.h"
 #include "Component/ControllerComponent.h"
+#include "Component/CCollider.h"
 #include "Resource/CTexture.h"
-#include "Util/ShaderUtil.h"
 
 #endif
 

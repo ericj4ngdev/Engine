@@ -24,14 +24,18 @@ void EngineCore::Update()
 {
 	CTimeMgr::GetInstance()->Update();
 	CKeyMgr::GetInstance()->Update();
+	CSceneMgr::GetInstance()->Update();		// RenderCompo 갱신함
+}
+
+void EngineCore::FinalUpdate() 
+{
+	CSceneMgr::GetInstance()->FinalUpdate();	
 }
 
 void EngineCore::Render()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
-	glClearColor(0.5, 0.5, 0.5, 1.0);	//select the background color
 	GLMgr::GetInstance()->Render();
-	CSceneMgr::GetInstance()->Tick();		// RenderCompo 갱신함
+	CSceneMgr::GetInstance()->Render();		// RenderCompo 갱신함
 
 	glutSwapBuffers();
 }

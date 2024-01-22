@@ -10,10 +10,9 @@ public:
     bool isEnable = true;
     std::string m_classType;
 
-public :
+public:
     CComponent() {};
-    explicit CComponent(std::string classType, CGameObject* gameObject) : m_classType(std::move(classType)), gameObject(gameObject)
-    { }
+    explicit CComponent(std::string classType, CGameObject* gameObject) : m_classType(std::move(classType)), gameObject(gameObject) {};
     CComponent(const CComponent& src) 
     {
         gameObject = src.gameObject;
@@ -23,20 +22,13 @@ public :
     virtual ~CComponent() = default;
     
     virtual void Init() = 0;
-
-    virtual void Tick() = 0;
-
+    virtual void Update() = 0;
+    virtual void FinalUpdate() = 0;
+    virtual void Render() = 0;
     virtual void Destroy() = 0;
 
-    void SetGameObject(CGameObject* object) 
-    {
-        gameObject = object;
-    }
-
-    virtual CGameObject* GetGameObject() const 
-    {
-        return gameObject;
-    }
+    void SetGameObject(CGameObject* object) { gameObject = object; }
+    virtual CGameObject* GetGameObject() const { return gameObject; }
 
     virtual bool GetIsEnable() const 
     {

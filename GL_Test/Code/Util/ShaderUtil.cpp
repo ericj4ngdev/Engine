@@ -9,25 +9,6 @@ ShaderUtil::~ShaderUtil()
 {
 }
 
-void ShaderUtil::Use()
-{
-    programID = CreateProgram("VertexShader.txt", "FragmentShader.txt");
-    glUseProgram(programID);
-}
-
-void ShaderUtil::setBool(const std::string& name, bool value) const
-{
-    glUniform1i(glGetUniformLocation(programID, name.c_str()), (int)value);
-}
-void ShaderUtil::setInt(const std::string& name, int value) const
-{
-    glUniform1i(glGetUniformLocation(programID, name.c_str()), value);
-}
-void ShaderUtil::setFloat(const std::string& name, float value) const
-{
-    glUniform1f(glGetUniformLocation(programID, name.c_str()), value);
-}
-
 GLuint ShaderUtil::CreateProgram(const char* vertex_file_path, const char* fragment_file_path)
 {
     GLuint VertexShaderID = LoadShader(GL_VERTEX_SHADER, vertex_file_path);
@@ -108,10 +89,3 @@ GLuint ShaderUtil::LoadShader(GLenum eShaderType, const char* pfile_path)
 	return shader;
 }
 
-// ¾ê¸¦ È£ÃâÇÏ¸é ±×·ÁÁü
-void ShaderUtil::BindAttributeToShader()
-{
-
-
-
-}

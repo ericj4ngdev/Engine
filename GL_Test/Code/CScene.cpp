@@ -14,9 +14,23 @@ CScene::~CScene()
 	// vector¼Ò¸êÀº ¾Ë¾Æ¼­
 }
 
-void CScene::Tick()
+void CScene::Update()
 {
 	for (auto item : m_arrObj) {
-		item->Tick();
+		item->Update();
+	}
+}
+
+void CScene::FinalUpdate()
+{
+	for (auto item : m_arrObj) {
+		item->Update();
+	}
+}
+
+void CScene::Render()
+{
+	for (auto item : m_arrObj) {
+		item->Render();
 	}
 }

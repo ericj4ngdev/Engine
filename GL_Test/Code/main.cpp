@@ -17,14 +17,18 @@ void Init() {
     EngineCore::GetInstance()->Init();  // 코어 초기화
 }
 
-void Update()
+void Tick()
 {
     EngineCore::GetInstance()->Update();
+    EngineCore::GetInstance()->FinalUpdate();
     EngineCore::GetInstance()->Render();
 }
 
 void OnIdle() 
 {
+    // GLMgr::g_screenWidth = glutGet(GLUT_WINDOW_WIDTH);
+    // GLMgr::g_screenHeight = glutGet(GLUT_WINDOW_HEIGHT);
+    Tick();
     glutPostRedisplay();
 }
 
@@ -39,7 +43,7 @@ int main(int argc, char** argv)
     if (!InitInstance(argc, argv)) return 0;
     
     Init();    
-    glutDisplayFunc(Update);
+    glutDisplayFunc(Tick);
     glutIdleFunc(OnIdle);
     glutMainLoop();    
 

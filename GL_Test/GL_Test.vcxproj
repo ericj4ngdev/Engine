@@ -19,9 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Asset\CPlayer.cpp" />
+    <ClCompile Include="Code\Asset\CZombie.cpp" />
     <ClCompile Include="Code\Asset\SampleScene.cpp" />
-    <ClCompile Include="Code\CObject.cpp" />
     <ClCompile Include="Code\CGameObject.cpp" />
+    <ClCompile Include="Code\Component\CCollider.cpp" />
     <ClCompile Include="Code\Component\ControllerComponent.cpp" />
     <ClCompile Include="Code\Component\CRenderComponent.cpp" />
     <ClCompile Include="Code\Component\TransformComponent.cpp" />
@@ -32,7 +34,6 @@
     <ClCompile Include="Code\Manager\CResMgr.cpp" />
     <ClCompile Include="Code\Manager\CSceneMgr.cpp" />
     <ClCompile Include="Code\Manager\CTimeMgr.cpp" />
-    <ClCompile Include="Code\MemoryMgr.cpp" />
     <ClCompile Include="Code\CScene.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\CResource.cpp" />
@@ -40,9 +41,11 @@
     <ClCompile Include="Code\Util\ShaderUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Asset\CPlayer.h" />
+    <ClInclude Include="Code\Asset\CZombie.h" />
     <ClInclude Include="Code\Asset\SampleScene.h" />
     <ClInclude Include="Code\Cmacro.h" />
-    <ClInclude Include="Code\CObject.h" />
+    <ClInclude Include="Code\Component\CCollider.h" />
     <ClInclude Include="Code\Component\CComponent.h" />
     <ClInclude Include="Code\Component\ControllerComponent.h" />
     <ClInclude Include="Code\Component\CRenderComponent.h" />
@@ -56,12 +59,10 @@
     <ClInclude Include="Code\Manager\CResMgr.h" />
     <ClInclude Include="Code\Manager\CSceneMgr.h" />
     <ClInclude Include="Code\Manager\CTimeMgr.h" />
-    <ClInclude Include="Code\MemoryMgr.h" />
     <ClInclude Include="Code\CScene.h" />
     <ClInclude Include="Code\Include.h" />
     <ClInclude Include="Code\CResource.h" />
     <ClInclude Include="Code\Resource\CTexture.h" />
-    <ClInclude Include="Code\Util\ITransform.h" />
     <ClInclude Include="Code\Util\Matrix.h" />
     <ClInclude Include="Code\Util\MatrixDef.h" />
     <ClInclude Include="Code\Util\MoreMath.h" />

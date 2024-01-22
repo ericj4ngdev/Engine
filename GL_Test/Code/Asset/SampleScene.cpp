@@ -6,33 +6,23 @@ void SampleScene::Init()
 }
 
 void SampleScene::Enter()
-{
-	
+{	
 	{
-		std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
 		// playerÇÒ´ç
-		CGameObject* player = new CGameObject("Player");
-		player->CreateComponent<CRenderComponent>();
-		player->CreateComponent<ControllerComponent>();
-		player->GetTransform()->m_scale = vec3{ 0.5f,1.f,1.f };
-		strFilePath += "texture\\player.png";
-		player->GetComponent<CRenderComponent>()->SetTexture("PlayerTex", strFilePath.c_str());
+		CPlayer* player = new CPlayer("Player");
+		player->GetComponent<TransformComponent>()->SetPosition(vec2(-1.f, -1.f));
+		player->GetComponent<TransformComponent>()->SetScale(vec2(0.5f, 1.f));
 		AddObject(player);
 	}
 
-
 	{
-		std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
-		strFilePath += "texture\\Zombie1.png";
-		CGameObject* block = nullptr;
+		CZombie* zombie = nullptr;
 		for (int i = 0; i < 5; i++)
 		{
-			block = new CGameObject("block");
-			block->CreateComponent<CRenderComponent>();
-			block->GetTransform()->m_position = vec3{ -0.5f + (float)i * 1.f ,-9.5f,0.1f };
-			block->GetTransform()->m_scale = vec3{ 0.1f,0.1f,1.f };
-			block->GetComponent<CRenderComponent>()->SetTexture("Zombie1Tex",strFilePath.c_str());
-			AddObject(block);
+			zombie = new CZombie("Zombie"+i);
+			zombie->GetComponent<TransformComponent>()->SetPosition(vec2(- 0.5f + (float)i * 1.f, -2.f));
+			zombie->GetComponent<TransformComponent>()->SetScale(vec2{ 0.1f,0.2f });
+			AddObject(zombie);
 		}
 	}
 }
