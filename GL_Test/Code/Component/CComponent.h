@@ -6,7 +6,7 @@ class CGameObject;
 class CComponent
 {
 public:
-    CGameObject* gameObject = nullptr;
+    CGameObject* gameObject = nullptr;      // 이거 바꾸면 아예 안그려짐 ㅋㅋㅋ
     bool isEnable = true;
     std::string m_classType;
 

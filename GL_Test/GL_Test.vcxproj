@@ -32,6 +32,7 @@
     <ClCompile Include="Code\Component\Zombie.cpp" />
     <ClCompile Include="Code\Core\EngineCore.cpp" />
     <ClCompile Include="Code\Core\GLMgr.cpp" />
+    <ClCompile Include="Code\Manager\CCollisionMgr.cpp" />
     <ClCompile Include="Code\Manager\CKeyMgr.cpp" />
     <ClCompile Include="Code\Manager\CPathMgr.cpp" />
     <ClCompile Include="Code\Manager\CResMgr.cpp" />
@@ -59,6 +60,7 @@
     <ClInclude Include="Code\CGameObject.h" />
     <ClInclude Include="Code\Core\EngineCore.h" />
     <ClInclude Include="Code\Core\GLMgr.h" />
+    <ClInclude Include="Code\Manager\CCollisionMgr.h" />
     <ClInclude Include="Code\Manager\CKeyMgr.h" />
     <ClInclude Include="Code\Manager\CPathMgr.h" />
     <ClInclude Include="Code\Manager\CResMgr.h" />

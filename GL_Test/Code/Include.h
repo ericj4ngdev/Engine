@@ -47,11 +47,12 @@ using std::vector;
 #include "Util/Quaternion.h"
 #include "Util/Color4f.h"
 
-#include "Manager/CPathMgr.h"
-#include "CResource.h"
-
 #include "CoreBase.h"
 #include "Manager/CTimeMgr.h"
+#include "Manager/CPathMgr.h"
+#include "Manager/CCollisionMgr.h"
+#include "CResource.h"
+
 #include "CGameObject.h"
 #include "Asset/CPlayer.h"
 #include "Asset/CZombie.h"

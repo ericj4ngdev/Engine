@@ -51,3 +51,5 @@ void CScene::Render()
 		}
 	}
 }
+
+

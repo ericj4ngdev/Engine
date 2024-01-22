@@ -20,7 +20,8 @@ public:
     void FinalUpdate();
     void Render();
     virtual void Destroy() = 0;
-protected:
-    inline void AddObject(CGameObject* pGameObject, GROUP_TYPE eType){ m_arrObj[(UINT)eType].push_back(pGameObject); }
+public:
+    void AddObject(CGameObject* pGameObject, GROUP_TYPE eType){ m_arrObj[(UINT)eType].push_back(pGameObject); }
+    const vector<CGameObject*>& GetGroupObject(GROUP_TYPE eType) { return m_arrObj[(UINT)eType]; }
 };
 

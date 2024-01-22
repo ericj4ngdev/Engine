@@ -11,6 +11,7 @@ C:\GitHub\Engine\GL_Test\Code\Component\TransformComponent.cpp;C:\GitHub\Engine\
 C:\GitHub\Engine\GL_Test\Code\Component\Zombie.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\Zombie.obj
 C:\GitHub\Engine\GL_Test\Code\Core\EngineCore.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\EngineCore.obj
 C:\GitHub\Engine\GL_Test\Code\Core\GLMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\GLMgr.obj
+C:\GitHub\Engine\GL_Test\Code\Manager\CCollisionMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CCollisionMgr.obj
 C:\GitHub\Engine\GL_Test\Code\Manager\CKeyMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CKeyMgr.obj
 C:\GitHub\Engine\GL_Test\Code\Manager\CPathMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CPathMgr.obj
 C:\GitHub\Engine\GL_Test\Code\Manager\CResMgr.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CResMgr.obj

@@ -23,7 +23,7 @@ void CGameObject::FinalUpdate()
     for (const auto& component : m_components)
     {
         if (component == nullptr) continue;
-        if (component->GetIsEnable() && component->m_classType == "CCollider")
+        if (component->GetIsEnable())
             component->FinalUpdate();
     }
 }

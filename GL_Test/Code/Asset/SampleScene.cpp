@@ -12,10 +12,10 @@ void SampleScene::Enter()
 	map->GetComponent<TransformComponent>()->SetScale(vec2(3500.f, 400.f) * 3.20f);
 	AddObject(map, GROUP_TYPE::MAP);
 
-	// player할당
 	CPlayer* player = new CPlayer("Player");
-	player->GetComponent<TransformComponent>()->SetPosition(vec2(100.f, 100.f));
+	player->GetComponent<TransformComponent>()->SetPosition(vec2(100.f, 200.f));
 	player->GetComponent<TransformComponent>()->SetScale(vec2(50.f, 100.f));
+	player->GetComponent<CCollider>()->SetScale(vec2(70.f, 96.f));
 	AddObject(player, GROUP_TYPE::PLAYER);
 
 	CZombie* zombie = nullptr;
@@ -24,6 +24,7 @@ void SampleScene::Enter()
 		zombie = new CZombie("Zombie" + i);
 		zombie->GetComponent<TransformComponent>()->SetPosition(vec2( 300.f + (float)i * 100.f, 100.f));
 		zombie->GetComponent<TransformComponent>()->SetScale(vec2{ 50.f, 100.f });
+		zombie->GetComponent<CCollider>()->SetScale(vec2(70.f, 100.f));
 		AddObject(zombie, GROUP_TYPE::ENEMY);
 	}
 
@@ -33,16 +34,19 @@ void SampleScene::Enter()
 		block = new CBlock("Block" + i);
 		block->GetComponent<TransformComponent>()->SetPosition(vec2(25.f + (float)i * 50.f, 25.f));
 		block->GetComponent<TransformComponent>()->SetScale(vec2{ 50.f, 50.f });
+		block->GetComponent<CCollider>()->SetScale(vec2(70.f, 70.f));
 		AddObject(block, GROUP_TYPE::MAP);
 	}
 
-	
-
-
+	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::MAP, GROUP_TYPE::PLAYER);
+	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::MAP, GROUP_TYPE::ENEMY);
+	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::ENEMY);
 }
 
 void SampleScene::Exit()
 {
+	// 그룹 설정 해제하기
+	CCollisionMgr::GetInstance()->Reset();
 }
 
 void SampleScene::Destroy()

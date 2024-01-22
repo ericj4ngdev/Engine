@@ -14,5 +14,6 @@ public:
 	void Update();
 	void FinalUpdate();
 	void Render();
+	CScene* GetCurScene() { return m_pCurScene; }
 };
 
