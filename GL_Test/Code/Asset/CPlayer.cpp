@@ -14,6 +14,7 @@ void CPlayer::Init()
 	CreateComponent<CRenderComponent>();
 	CreateComponent<ControllerComponent>();
 	CreateComponent<CCollider>();
+	CreateComponent<CRigidbody>();
 	GetComponent<CRenderComponent>()->SetTexture("PlayerTex", strFilePath.c_str());
 }
 

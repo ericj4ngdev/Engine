@@ -7,6 +7,7 @@ C:\GitHub\Engine\GL_Test\Code\CGameObject.cpp;C:\GitHub\Engine\GL_Test\x64\Debug
 C:\GitHub\Engine\GL_Test\Code\Component\CCollider.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CCollider.obj
 C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\ControllerComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\CRenderComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CRenderComponent.obj
+C:\GitHub\Engine\GL_Test\Code\Component\CRigidbody.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CRigidbody.obj
 C:\GitHub\Engine\GL_Test\Code\Component\TransformComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\TransformComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\Zombie.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\Zombie.obj
 C:\GitHub\Engine\GL_Test\Code\Core\EngineCore.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\EngineCore.obj

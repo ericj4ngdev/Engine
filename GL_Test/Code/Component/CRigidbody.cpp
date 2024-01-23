@@ -1,0 +1,64 @@
+#include "include.h"
+
+COMPONENT_CONSTRUCTOR(CRigidbody), m_Mass(1.f)
+{
+	
+}
+void CRigidbody::Init()
+{
+}
+void CRigidbody::Update()
+{
+}
+void CRigidbody::FinalUpdate()
+{
+	printf("m_vForce (%f, %f)\n", m_vForce.x, m_vForce.y);
+	// 힘의 크기
+	float fForce = m_vForce.Length();
+	if (fForce != 0.f) 
+	{
+		// 힘의 방향
+		m_vForce.Normalize();
+
+		// 가속도 크기
+		float m_fAccel = fForce / m_Mass;
+
+		// 가속도
+		// m_vAccel = m_vForce / m_Mass;  // 힘이 노멀벡터화되어서 이 식 쓰면 안됨
+		m_vAccel = m_vForce * m_fAccel;
+
+		// 속도
+		m_vVelocity += m_vAccel * fDT;		
+	}	
+	// 속도에 따른 이동
+	Move();
+
+	// 힘 초기화
+	m_vForce = vec2(0.f, 0.f);
+}
+void CRigidbody::Render()
+{
+}
+void CRigidbody::Destroy()
+{
+}
+CRigidbody::~CRigidbody() {
+
+}
+
+void CRigidbody::Move()
+{
+	// 이동 속력
+	float fSpeed = m_vVelocity.Length();
+	if ( 0.f != fSpeed)
+	{
+		// 이동 방향
+		vec2 vDir = m_vVelocity;
+		vDir.Normalize();
+
+		vec2 vPos = gameObject->GetComponent<TransformComponent>()->GetPosition();
+		vPos += m_vVelocity * fDT;
+
+		gameObject->GetComponent<TransformComponent>()->SetPosition(vPos);
+	}
+}

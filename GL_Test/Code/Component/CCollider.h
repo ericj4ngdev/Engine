@@ -22,8 +22,8 @@ public:
     void Update() override;
     void FinalUpdate() override;
     void Render() override;
-    void DrawRectangle(vec2 scale, Color4f color);
     void Destroy() override;
+    void DrawRectangle(vec2 scale, Color4f color);
 public:
     void OnCollision(CCollider* pOther);        // 충돌중인 경우 호출 함수
     void OnCollisionEnter(CCollider* pOther);   // 충돌 시작

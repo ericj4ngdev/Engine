@@ -1,5 +1,7 @@
 #pragma once
 
+class CRigidbody;
+
 class ControllerComponent : public CComponent
 {
 public:
@@ -14,4 +16,5 @@ public:
 private:
 	vec2 m_curpos;
 	float m_speed;
+	CRigidbody* m_rigidbody;
 };

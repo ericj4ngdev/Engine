@@ -62,10 +62,12 @@ public:
         *this = Vector2(x * s, y * s);
     }
 
-    void Normalize() {
-        float s = 1.0f / Length();
-        x *= s;
-        y *= s;
+    Vector2& Normalize() {
+        float len = Length();
+        assert(len != 0.f);
+        x /= len;
+        y /= len;
+        return *this;
     }
 
     Vector2 Normalized() const {
