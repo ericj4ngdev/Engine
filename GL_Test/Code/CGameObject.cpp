@@ -8,6 +8,7 @@ CGameObject::CGameObject() : m_parent(nullptr), isEnable(true)
 
 CGameObject::CGameObject(std::string name) : m_parent(nullptr), isEnable(true)
 {
+    m_name = name;
     m_transform = CreateComponent<TransformComponent>();
 }
 

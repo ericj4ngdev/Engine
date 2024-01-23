@@ -10,6 +10,8 @@ public:
 	// virtual void FinalUpdate() override;
 	// virtual void Render() override;
 	// virtual void Destroy() override;
+
+	virtual void OnCollisionEnter(CCollider* pOther);
 private:
 	vec2 pos;
 

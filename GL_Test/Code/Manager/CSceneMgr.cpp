@@ -36,13 +36,8 @@ void CSceneMgr::Update()
 {
 	if (m_pCurScene == nullptr) return;
 	m_pCurScene->Update();
-}
-void CSceneMgr::FinalUpdate()
-{
-	if (m_pCurScene == nullptr) return;
 	m_pCurScene->FinalUpdate();
 }
-
 
 void CSceneMgr::Render()
 {

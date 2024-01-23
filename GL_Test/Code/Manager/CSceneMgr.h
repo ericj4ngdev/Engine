@@ -12,7 +12,6 @@ private:
 public:
 	void Init();
 	void Update();
-	void FinalUpdate();
 	void Render();
 	CScene* GetCurScene() { return m_pCurScene; }
 };

@@ -17,3 +17,8 @@ void CPlayer::Init()
 	GetComponent<CRenderComponent>()->SetTexture("PlayerTex", strFilePath.c_str());
 }
 
+void CPlayer::OnCollisionEnter(CCollider* pOther)
+{
+	printf("Collide with %s\n", pOther->gameObject->GetName().c_str());
+}
+

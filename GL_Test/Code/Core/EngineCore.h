@@ -7,6 +7,5 @@ class EngineCore
 public:
 	void Init();
 	void Update();
-	void FinalUpdate();
 	void Render();
 };

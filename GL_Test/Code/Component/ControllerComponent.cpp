@@ -51,9 +51,9 @@ void ControllerComponent::Control()
 	{
 		m_curpos.x += m_speed * fDT;
 	}
-	printf("\x1B[H");
-	printf("\x1B[B");
-	printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
+	// printf("\x1B[H");
+	//printf("\x1B[B");
+	//printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
 	// set(현재 위치 + 변화량)
 	gameObject->GetComponent<TransformComponent>()->SetPosition(m_curpos);
 }

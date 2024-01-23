@@ -27,7 +27,7 @@ enum class GROUP_TYPE {
 #include <stdio.h>
 #include <windows.h>
 using namespace std;
-
+#include<assert.h>
 #include <iostream>
 using std::cout;
 using std::cin;

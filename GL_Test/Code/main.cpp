@@ -6,7 +6,7 @@ using namespace std;
 bool InitInstance(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-    glutInitWindowPosition(500, 500);
+    glutInitWindowPosition(600, 100);
     glutInitWindowSize(GLMgr::g_screenWidth, GLMgr::g_screenHeight);
     glutCreateWindow("Simple OpenGL Window");
 
@@ -19,8 +19,7 @@ void Init() {
 
 void Tick()
 {
-    EngineCore::GetInstance()->Update();
-    EngineCore::GetInstance()->FinalUpdate();
+    EngineCore::GetInstance()->Update();    
     EngineCore::GetInstance()->Render();
 }
 

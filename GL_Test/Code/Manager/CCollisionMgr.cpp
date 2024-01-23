@@ -70,9 +70,9 @@ void CCollisionMgr::CollisionGroupUpdate(GROUP_TYPE eLeft, GROUP_TYPE eRight)
 		for (int j = 0; j < vecRight.size(); j++)
 		{
 			// 충돌체가 없는 경우
-			if (NULL == vecRight[j]->GetComponent<CCollider>()) continue;
 			// 자기자신 충돌
-			if (vecLeft[i] == vecRight[j]) continue;
+			if (NULL == vecRight[j]->GetComponent<CCollider>() || vecLeft[i] == vecRight[j]) continue;
+			
 			CCollider* pLeftCol = vecLeft[i]->GetComponent<CCollider>();
 			CCollider* pRightCol = vecRight[j]->GetComponent<CCollider>();
 
@@ -123,7 +123,6 @@ void CCollisionMgr::CollisionGroupUpdate(GROUP_TYPE eLeft, GROUP_TYPE eRight)
 					iter->second = false;
 				}
 			}
-
 		}
 	}
 

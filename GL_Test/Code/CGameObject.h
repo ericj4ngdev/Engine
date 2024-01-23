@@ -30,7 +30,9 @@ public:
 	void Setname(string name) { m_name = move(name); }
 	bool GetIsEnable() const { return isEnable; }
 	void SetIsEnable(bool is_enable);
-
+	virtual void OnCollision(CCollider* pOther){}
+	virtual void OnCollisionEnter(CCollider* pOther){}
+	virtual void OnCollisionExit(CCollider* pOther){}
 protected:
 	list<CGameObject*> m_children;
 	list<CComponent*> m_components;

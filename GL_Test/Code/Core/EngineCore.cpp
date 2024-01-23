@@ -24,13 +24,8 @@ void EngineCore::Update()
 {
 	CTimeMgr::GetInstance()->Update();
 	CKeyMgr::GetInstance()->Update();
-	CSceneMgr::GetInstance()->Update();		// RenderCompo °»½ÅÇÔ
+	CSceneMgr::GetInstance()->Update();		
 	CCollisionMgr::GetInstance()->Update();
-}
-
-void EngineCore::FinalUpdate() 
-{
-	CSceneMgr::GetInstance()->FinalUpdate();	
 }
 
 void EngineCore::Render()

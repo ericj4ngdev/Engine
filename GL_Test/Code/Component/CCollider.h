@@ -8,6 +8,7 @@ private:
     vec2 m_pos;
     vec2 m_scale;
     UINT m_ID;      // 충돌체 고유 ID값
+    int m_ColCount;
 public:
     vec2 GetOffsetPos() { return m_offsetPos; }
     vec2 GetPos() { return m_pos; }

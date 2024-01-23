@@ -5,11 +5,13 @@ UINT CCollider::g_iNextID = 0;
 COMPONENT_CONSTRUCTOR(CCollider), m_ID(g_iNextID++)
 {
 	m_offsetPos = vec2(0, 0);
+	// m_ColCount = 0;
 }
 
 void CCollider::Init()
 {
-	// m_scale = vec2(100, 100);
+	vec2 vObjectScale = gameObject->GetComponent<TransformComponent>()->GetScale();
+	m_scale = vObjectScale;
 }
 
 void CCollider::Update()
@@ -20,7 +22,9 @@ void CCollider::FinalUpdate()
 {
 	// 오브젝트 위치를 따라다님
 	vec2 vObjectPos = gameObject->GetComponent<TransformComponent>()->GetPosition();
-	m_pos = vObjectPos + m_offsetPos;	
+	m_pos = vObjectPos + m_offsetPos;
+	
+	assert(0 <= m_ColCount);
 }
 
 void CCollider::Render()
@@ -41,17 +45,19 @@ void CCollider::DrawRectangle(vec2 scale, Color4f color)
 	glScalef(scale.x, scale.y, 1);
 
 	glBegin(GL_LINES);
-	glVertex3d(-scale.x / 200.0, -scale.y / 200.0, -1.0);
-	glVertex3d(-scale.x / 200.0, scale.y / 200.0, -1.0);
 
-	glVertex3d(-scale.x / 200.0, scale.y / 200.0, -1.0);
-	glVertex3d(scale.x / 200.0, scale.y / 200.0, -1.0);
+	glVertex3d(-0.5, -0.5, -1.0);
+	glVertex3d(-0.5, 0.5, -1.0);
 
-	glVertex3d(scale.x / 200.0, scale.y / 200.0, -1.0);
-	glVertex3d(scale.x / 200.0, -scale.y / 200.0, -1.0);
+	glVertex3d(-0.5, 0.5, -1.0);
+	glVertex3d(0.5, 0.5, -1.0);
 
-	glVertex3d(scale.x / 200.0, -scale.y / 200.0, -1.0);
-	glVertex3d(-scale.x / 200.0, -scale.y / 200.0, -1.0);
+	glVertex3d(0.5, 0.5, -1.0);
+	glVertex3d(0.5, -0.5, -1.0);
+
+	glVertex3d(0.5, -0.5, -1.0);
+	glVertex3d(-0.5, -0.5, -1.0);
+
 	glEnd();
 
 	glPopMatrix();
@@ -65,14 +71,19 @@ void CCollider::Destroy()
 
 void CCollider::OnCollision(CCollider* pOther)
 {
+	gameObject->OnCollision(pOther);
 }
 
 void CCollider::OnCollisionEnter(CCollider* pOther)
 {
+	++m_ColCount;
+	gameObject->OnCollisionEnter(pOther);
 }
 
 void CCollider::OnCollisionExit(CCollider* pOther)
 {
+	--m_ColCount;
+	gameObject->OnCollisionExit(pOther);
 }
 
 CCollider::CCollider(const CCollider& _origin)
