@@ -1,6 +1,8 @@
 #include "include.h"
 
 COMPONENT_CONSTRUCTOR(CRigidbody), m_Mass(1.f)
+	, m_fFricCoeff(100.f)
+	, m_fMaxSpeed(100.0f)
 {
 	
 }
@@ -28,8 +30,35 @@ void CRigidbody::FinalUpdate()
 		m_vAccel = m_vForce * m_fAccel;
 
 		// 속도
-		m_vVelocity += m_vAccel * fDT;		
-	}	
+		m_vVelocity += m_vAccel * fDT;
+	}
+
+	if (!(m_vVelocity.Length() == 0)) 
+	{
+		// 마찰력
+		vec2 vFircDir = -m_vVelocity;
+		vFircDir.Normalize();
+
+		vec2 vFriction = vFircDir * m_fFricCoeff * fDT;
+		if (m_vVelocity.Length() <= vFriction.Length())
+		{
+			// 마찰력이 본래 속도보다 큰 경우(반대로 가는 경우 방지) 
+			m_vVelocity = vec2(0.f, 0.f);
+		}
+		else
+		{
+			m_vVelocity += vFriction;
+		}
+	}
+
+	// 속도 제한
+	if (m_vVelocity.Length() > m_fMaxSpeed)
+	{
+		m_vVelocity.Normalize();
+		m_vVelocity *= m_fMaxSpeed;
+	}
+
+
 	// 속도에 따른 이동
 	Move();
 

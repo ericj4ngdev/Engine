@@ -3,7 +3,7 @@
 // CComponent의 생성자를 자식 생성자 초기화로부터 호출
 ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent("ControllerComponent", l_gameObject)
 {
-	m_speed = 1000;	
+	m_speed = 200;	
 	
 }
 
