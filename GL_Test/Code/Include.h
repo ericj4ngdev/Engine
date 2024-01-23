@@ -72,6 +72,7 @@ using std::vector;
 #include "Component/CCollider.h"
 #include "Component/Zombie.h"
 #include "Component/CRigidbody.h"
+#include "Component/CGravity.h"
 #include "Resource/CTexture.h"
 
 #endif

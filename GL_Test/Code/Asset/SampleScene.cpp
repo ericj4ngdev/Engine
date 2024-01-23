@@ -13,7 +13,7 @@ void SampleScene::Enter()
 	AddObject(map, GROUP_TYPE::MAP);
 
 	CPlayer* player = new CPlayer("Player");
-	player->GetComponent<TransformComponent>()->SetPosition(vec2(100.f, 200.f));
+	player->GetComponent<TransformComponent>()->SetPosition(vec2(75.f, 100.f));
 	player->GetComponent<TransformComponent>()->SetScale(vec2(50.f, 100.f));
 	player->GetComponent<CCollider>()->Init();
 	AddObject(player, GROUP_TYPE::PLAYER);
@@ -24,7 +24,7 @@ void SampleScene::Enter()
 		string zombieName = "Zombie" + to_string(i);
 		zombie = new CZombie(zombieName);
 		zombie->GetComponent<TransformComponent>()->SetPosition(vec2( 300.f + (float)i * 100.f, 100.f));
-		zombie->GetComponent<TransformComponent>()->SetScale(vec2{ 50.f, 100.f });
+		zombie->GetComponent<TransformComponent>()->SetScale(vec2 { 50.f, 100.f });
 		zombie->GetComponent<CCollider>()->Init();
 		AddObject(zombie, GROUP_TYPE::ENEMY);
 	}
@@ -34,7 +34,7 @@ void SampleScene::Enter()
 	{
 		string blockName = "Block" + to_string(i);
 		block = new CBlock(blockName);
-		block->GetComponent<TransformComponent>()->SetPosition(vec2(25.f + (float)i * 50.f, 25.f));
+		block->GetComponent<TransformComponent>()->SetPosition(vec2(25.f + (float)i * 50.f, 25.f));	// ¿ø·¡ y°ª 25
 		block->GetComponent<TransformComponent>()->SetScale(vec2{ 50.f, 50.f });
 		block->GetComponent<CCollider>()->Init();
 		AddObject(block, GROUP_TYPE::MAP);

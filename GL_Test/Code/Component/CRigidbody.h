@@ -15,17 +15,24 @@ private:
     vec2 m_vForce;
     vec2 m_vAccel;
     vec2 m_vVelocity;
-    float m_fMaxSpeed;
+    vec2 m_vAccelA;         // 추가 가속도
+    vec2 m_fMaxVelocity;
     float m_fFricCoeff;     // Friction Coefficient
     float m_Mass;
     float m_speed;
 public:
     void AddForce(vec2 vforce) { m_vForce += vforce; }
+    void AddVelocity(vec2 v) { m_vVelocity += v; }
+    
     void SetMass(float mass) { m_Mass = mass; }
-    float GetMass() { return m_Mass; }
+    void SetFriction(float friction) { m_fFricCoeff = friction; }
     void SetVelocity(vec2 v) { m_vVelocity = v; }
-    void SetMaxSpeed(float v) { m_fMaxSpeed = v; }
+    void SetMaxVelocity(vec2 v) { m_fMaxVelocity = v; }
+    void SetAccelAlpha(vec2 vAccel) { m_vAccelA = vAccel; }
+
+    float GetMass() { return m_Mass; }
     vec2 GetVelocity() { return m_vVelocity; }
+
     void Move();
 };
 

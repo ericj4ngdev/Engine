@@ -20,12 +20,12 @@ void CBlock::Init()
 
 void CBlock::OnCollisionEnter(CCollider* pOther)
 {
-	printf("Collide with %s\n", pOther->gameObject->GetName().c_str());
+	// printf("Collide with %s\n", pOther->gameObject->GetName().c_str());
 	CGameObject* pOtherObj = pOther->gameObject;
 	if (pOtherObj->GetName() == "Player") 
 	{
 		// 땅에 안착했음을 알려줌
-		// pOtherObj->GetComponent<CRigidbody>()->GetGround(true);
+		pOtherObj->GetComponent<CGravity>()->SetGround(true);
 
 		// 플레이어
 		vec2 vObjPos = pOther->GetPos();
@@ -37,10 +37,12 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 
 		// 플레이어가 땅을 파고 든 길이 = (높이 합 / 2) - (중심점 사이 y 거리)
 		float fLen = abs(vObjPos.y - vPos.y); 
-		float fPush = (vObjScale.y / 2.f + vScale.y / 2.f) - abs(vObjPos.y - vPos.y);
+		float fPush = (vObjScale.y / 2.f + vScale.y / 2.f) - fLen;
 
 		vObjPos = pOtherObj->GetComponent<TransformComponent>()->GetPosition();
-		vObjPos.y += (fPush - 1);
+		// assert(count == 0);
+		if (count == 0) return;
+		vObjPos.y += (float)((fPush - 0.01f) / count);
 
 		pOtherObj->GetComponent<TransformComponent>()->SetPosition(vObjPos);
 	}
@@ -49,10 +51,14 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 void CBlock::OnCollision(CCollider* pOther)
 {
 	CGameObject* pOtherObj = pOther->gameObject;
+	// bool isGround = pOtherObj->GetComponent<CGravity>()->GetGround(true);
+	// if(isGround)
+	// int col = 0;
 	if (pOtherObj->GetName() == "Player")
 	{
+		// col++;
 		// 땅에 안착했음을 알려줌
-		// pOtherObj->GetComponent<CRigidbody>()->GetGround(true);
+		pOtherObj->GetComponent<CGravity>()->SetGround(true);
 
 		// 플레이어
 		vec2 vObjPos = pOther->GetPos();
@@ -64,10 +70,11 @@ void CBlock::OnCollision(CCollider* pOther)
 
 		// 플레이어가 땅을 파고 든 길이 = (높이 합 / 2) - (중심점 사이 y 거리)
 		float fLen = abs(vObjPos.y - vPos.y);
-		float fPush = (vObjScale.y / 2.f + vScale.y / 2.f) - abs(vObjPos.y - vPos.y);
+		float fPush = (vObjScale.y / 2.f + vScale.y / 2.f) - fLen;
 
 		vObjPos = pOtherObj->GetComponent<TransformComponent>()->GetPosition();
-		vObjPos.y += (fPush - 1);
+		if (count == 0) return;
+		vObjPos.y += (float)((fPush - 0.01f) / count);	// 더 밀어버려.
 
 		pOtherObj->GetComponent<TransformComponent>()->SetPosition(vObjPos);
 	}
@@ -79,7 +86,6 @@ void CBlock::OnCollisionExit(CCollider* pOther)
 	if (pOtherObj->GetName() == "Player")
 	{
 		// 땅에 안착했음을 알려줌
-		// pOtherObj->GetComponent<CRigidbody>()->GetGround(false);
-
+		pOtherObj->GetComponent<CGravity>()->SetGround(false);
 	}
 }

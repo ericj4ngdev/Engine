@@ -5,6 +5,7 @@ C:\GitHub\Engine\GL_Test\Code\Asset\CZombie.cpp;C:\GitHub\Engine\GL_Test\x64\Deb
 C:\GitHub\Engine\GL_Test\Code\Asset\SampleScene.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\SampleScene.obj
 C:\GitHub\Engine\GL_Test\Code\CGameObject.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CGameObject.obj
 C:\GitHub\Engine\GL_Test\Code\Component\CCollider.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CCollider.obj
+C:\GitHub\Engine\GL_Test\Code\Component\CGravity.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CGravity.obj
 C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\ControllerComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\CRenderComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CRenderComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\CRigidbody.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CRigidbody.obj

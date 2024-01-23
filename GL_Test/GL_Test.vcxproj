@@ -26,6 +26,7 @@
     <ClCompile Include="Code\Asset\SampleScene.cpp" />
     <ClCompile Include="Code\CGameObject.cpp" />
     <ClCompile Include="Code\Component\CCollider.cpp" />
+    <ClCompile Include="Code\Component\CGravity.cpp" />
     <ClCompile Include="Code\Component\ControllerComponent.cpp" />
     <ClCompile Include="Code\Component\CRenderComponent.cpp" />
     <ClCompile Include="Code\Component\CRigidbody.cpp" />
@@ -53,6 +54,7 @@
     <ClInclude Include="Code\Cmacro.h" />
     <ClInclude Include="Code\Component\CCollider.h" />
     <ClInclude Include="Code\Component\CComponent.h" />
+    <ClInclude Include="Code\Component\CGravity.h" />
     <ClInclude Include="Code\Component\ControllerComponent.h" />
     <ClInclude Include="Code\Component\CRenderComponent.h" />
     <ClInclude Include="Code\Component\CRigidbody.h" />

@@ -2,7 +2,7 @@
 
 COMPONENT_CONSTRUCTOR(CRigidbody), m_Mass(1.f)
 	, m_fFricCoeff(100.f)
-	, m_fMaxSpeed(100.0f)
+	, m_fMaxVelocity(200.0f, 600.0f)
 {
 	
 }
@@ -27,11 +27,14 @@ void CRigidbody::FinalUpdate()
 
 		// 가속도
 		// m_vAccel = m_vForce / m_Mass;  // 힘이 노멀벡터화되어서 이 식 쓰면 안됨
-		m_vAccel = m_vForce * m_fAccel;
-
-		// 속도
-		m_vVelocity += m_vAccel * fDT;
+		m_vAccel = m_vForce * m_fAccel;		
 	}
+
+	// 추가 가속도
+	m_vAccel += m_vAccelA;
+
+	// 속도
+	m_vVelocity += m_vAccel * fDT;
 
 	if (!(m_vVelocity.Length() == 0)) 
 	{
@@ -52,18 +55,27 @@ void CRigidbody::FinalUpdate()
 	}
 
 	// 속도 제한
-	if (m_vVelocity.Length() > m_fMaxSpeed)
+	if (abs(m_vVelocity.x) > abs(m_fMaxVelocity.x))
 	{
-		m_vVelocity.Normalize();
-		m_vVelocity *= m_fMaxSpeed;
+		// 최고 속도
+		m_vVelocity.x = (m_vVelocity.x / abs(m_vVelocity.x)) * abs(m_fMaxVelocity.x);
 	}
 
+	if (abs(m_vVelocity.y) > abs(m_fMaxVelocity.y))
+	{
+		// 최고 속도
+		m_vVelocity.y = (m_vVelocity.y / abs(m_vVelocity.y)) * abs(m_fMaxVelocity.y);
+	}
 
 	// 속도에 따른 이동
 	Move();
 
 	// 힘 초기화
 	m_vForce = vec2(0.f, 0.f);
+
+	// 가속도 초기화
+	m_vAccel = vec2(0.f, 0.f);
+	m_vAccelA = vec2(0.f, 0.f);
 }
 void CRigidbody::Render()
 {

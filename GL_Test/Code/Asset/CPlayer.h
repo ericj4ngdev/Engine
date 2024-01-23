@@ -12,8 +12,11 @@ public:
 	// virtual void Destroy() override;
 
 	virtual void OnCollisionEnter(CCollider* pOther);
+	virtual void OnCollision(CCollider* pOther);
+	virtual void OnCollisionExit(CCollider* pOther);
 private:
 	vec2 pos;
+	int m_StepedBlockCount;
 
 	
 };

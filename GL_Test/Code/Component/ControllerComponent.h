@@ -17,4 +17,6 @@ private:
 	vec2 m_curpos;
 	float m_speed;
 	CRigidbody* m_rigidbody;
+public:
+	void SetSpeed(float sp) { m_speed = sp; }
 };
