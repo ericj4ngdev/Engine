@@ -15,9 +15,19 @@ enum class GROUP_TYPE {
 	MAP,
 	PLAYER,
 	ENEMY,
-	PROJECTILE,
+	PROJ_PLAYER,
+	PROJ_ENEMY,
 	WEAPON,
 	END = 32,
+};
+
+
+enum class EVENT_TYPE {
+	CREATE_OBJECT,
+	DELETE_OBJECT,
+	SCENE_CHANGE,
+
+	END,
 };
 
 // #pragma comment(lib,"glut32.lib") 
@@ -40,6 +50,8 @@ using std::vector;
 // #include <GL/glew.h>
 #include <GL/glut.h>
 
+#include "Func.h"
+
 #include "Core/EngineCore.h"
 #include "Core/GLMgr.h"
 #include "Manager/CResMgr.h"
@@ -51,21 +63,18 @@ using std::vector;
 #include "Manager/CTimeMgr.h"
 #include "Manager/CPathMgr.h"
 #include "Manager/CCollisionMgr.h"
-#include "CResource.h"
-
-#include "CGameObject.h"
-#include "Asset/CPlayer.h"
-#include "Asset/CZombie.h"
-#include "Asset/CBlock.h"
-#include "Asset/CMap.h"
-
+#include "Manager/CCamera.h"
+#include "Manager/CEventMgr.h"
 #include "Manager/CKeyMgr.h"
-#include "CScene.h"
 #include "Manager/CSceneMgr.h"
+
+#include "CResource.h"
+#include "Resource/CTexture.h"
+
+#include "CScene.h"
 #include "Asset/SampleScene.h"
 
 #include "Component/CComponent.h"
-// #include "Util/ShaderUtil.h"
 #include "Component/CRenderComponent.h"
 #include "Component/TransformComponent.h"
 #include "Component/ControllerComponent.h"
@@ -73,8 +82,14 @@ using std::vector;
 #include "Component/Zombie.h"
 #include "Component/CRigidbody.h"
 #include "Component/CGravity.h"
-#include "Resource/CTexture.h"
+#include "Component/Sword.h"
 
+#include "CGameObject.h"
+#include "Asset/CPlayer.h"
+#include "Asset/CZombie.h"
+#include "Asset/CBlock.h"
+#include "Asset/CMap.h"
+#include "Asset/CSword.h"
 #endif
 
 

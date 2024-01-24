@@ -6,5 +6,6 @@ public:
 	CZombie(string name);
 	~CZombie();
 	void Init();
+	virtual void OnCollisionEnter(CCollider* pOther);
 };
 

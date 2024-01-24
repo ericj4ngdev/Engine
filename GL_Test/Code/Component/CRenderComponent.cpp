@@ -30,13 +30,14 @@ void CRenderComponent::FinalUpdate()
 
 void CRenderComponent::Render()
 {
+	vec2 vRenderPos = CCamera::GetInstance()->GetRenderPos(m_centerPos);
 	glPushMatrix();
 	glBindTexture(GL_TEXTURE_2D, m_Texid);
 	glColor4f(m_color.r, m_color.g, m_color.b, m_color.a);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	glTranslatef(m_centerPos.x, m_centerPos.y, 0);
+	glTranslatef(vRenderPos.x, vRenderPos.y, 0);
 	glScalef(m_Scale.x , m_Scale.y, 1);
 	
 	RenderPlaneVAO();

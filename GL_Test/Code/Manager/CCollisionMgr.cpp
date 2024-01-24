@@ -101,15 +101,30 @@ void CCollisionMgr::CollisionGroupUpdate(GROUP_TYPE eLeft, GROUP_TYPE eRight)
 				if (iter->second) 
 				{
 					// 이전에도 계속 충돌 중
-					pLeftCol->OnCollision(pRightCol);
-					pRightCol->OnCollision(pLeftCol);
+					if (vecLeft[i]->IsDead() || vecRight[j]->IsDead()) 
+					{
+						// 삭제 예정이면 미리 Exit
+						pLeftCol->OnCollisionExit(pRightCol);
+						pRightCol->OnCollisionExit(pLeftCol);
+						iter->second = false;
+					}
+					else
+					{
+						pLeftCol->OnCollision(pRightCol);
+						pRightCol->OnCollision(pLeftCol);
+					}
 				}
 				else
 				{
-					// 이전엔 충돌 X, 첫 충돌
-					pLeftCol->OnCollisionEnter(pRightCol);
-					pRightCol->OnCollisionEnter(pLeftCol);
-					iter->second = true;
+					// 이전엔 충돌 X, 첫 충돌할 거임
+					// 그런데 곧바로 삭제 예정인 경우
+					// 둘다 삭제 예정이 아닌 경우에만 충돌이 일어나게 한다.
+					if (!vecLeft[i]->IsDead() && !vecRight[j]->IsDead())
+					{
+						pLeftCol->OnCollisionEnter(pRightCol);
+						pRightCol->OnCollisionEnter(pLeftCol);
+						iter->second = true;
+					}
 				}
 			}
 			else 
@@ -125,7 +140,6 @@ void CCollisionMgr::CollisionGroupUpdate(GROUP_TYPE eLeft, GROUP_TYPE eRight)
 			}
 		}
 	}
-
 }
 
 /// <summary>

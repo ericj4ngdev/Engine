@@ -36,12 +36,13 @@ void CCollider::Render()
 
 void CCollider::DrawRectangle(vec2 scale, Color4f color)
 {	
+	vec2 vRenderPos = CCamera::GetInstance()->GetRenderPos(m_pos);
 	glPushMatrix();
 	glColor4f(color.r, color.g, color.b, color.a);
 	glMatrixMode(GL_MODELVIEW); 
 	glLoadIdentity();
 
-	glTranslatef(m_pos.x, m_pos.y, 0);
+	glTranslatef(vRenderPos.x, vRenderPos.y, 0);
 	glScalef(scale.x, scale.y, 1);
 
 	glBegin(GL_LINES);

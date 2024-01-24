@@ -1,12 +1,12 @@
 #include "include.h"
 
 
-CGameObject::CGameObject() : m_parent(nullptr), isEnable(true)
+CGameObject::CGameObject() : m_parent(nullptr), isEnable(true), m_bAlive(true)
 {
     m_transform = CreateComponent<TransformComponent>();
 }
 
-CGameObject::CGameObject(std::string name) : m_parent(nullptr), isEnable(true)
+CGameObject::CGameObject(std::string name) : m_parent(nullptr), isEnable(true), m_bAlive(true)
 {
     m_name = name;
     m_transform = CreateComponent<TransformComponent>();

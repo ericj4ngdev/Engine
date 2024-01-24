@@ -33,6 +33,7 @@ void ControllerComponent::Render()
 
 void ControllerComponent::Destroy()
 {
+
 }
 
 void ControllerComponent::Control()
@@ -78,9 +79,33 @@ void ControllerComponent::Control()
 	//	m_rigidbody->AddVelocity(vec2(m_speed / 2, 0.f));
 	//}
 
+	if (GetKeyDown(Z)) 
+	{
+		SpecialAttack();
+	}
+
+	if (GetKeyDown(SPACE))
+	{
+		
+		// SpecialAttack();
+	}
+
 	printf("\x1B[H");
 	printf("\x1B[B");
-	// printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
-	// set(현재 위치 + 변화량)
+	printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
+	// set(현재 위치 + 변화량) 동기화.
 	gameObject->GetComponent<TransformComponent>()->SetPosition(m_curpos);
+}
+
+void ControllerComponent::SpecialAttack() {
+	vec2 vSwordPos = gameObject->GetPos();
+	vSwordPos.x += gameObject->GetScale().y / 2.f;
+	
+	CSword* pSword = new CSword("Sword");
+	pSword->GetComponent<TransformComponent>()->SetPosition(vSwordPos);
+	pSword->GetComponent<TransformComponent>()->SetScale(vec2(50.f, 50.f));
+	pSword->GetComponent<Sword>()->SetDir(vec2(1,0));
+
+	CreateObject(pSword, GROUP_TYPE::PROJ_PLAYER);
+	cout << "Shoot!" << '\n';
 }

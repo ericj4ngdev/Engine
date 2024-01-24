@@ -15,12 +15,19 @@ int g_arrVK[(int)KEY::LAST] =
 	'S',		// S,
 	'D',		// D,
 	'F',		// F,
+	'Z',		// Z,
+	'X',		// X,
+	'C',		// C,
+	'V',		// V,
 	VK_MENU,	// ALT,
 	VK_CONTROL,	// CTRL,
 	VK_LSHIFT,	// LSHIFT,
 	VK_SPACE,	// SPACE,
 	VK_RETURN,	// ENTER,
 	VK_ESCAPE,	// ESC,
+
+	VK_LBUTTON,
+	VK_RBUTTON,
 	// 
 	// LAST
 };
@@ -69,8 +76,13 @@ void CKeyMgr::Update()
 			m_veckey[i].bPrevPush = false;
 		}
 	}
-}
 
-KEY_STATE CKeyMgr::GetKeyState(KEY _ekey){	return m_veckey[(int)_ekey].eState; }
+	POINT ptPos = {};
+	GetCursorPos(&ptPos);
+	// ScreenToClient();
+
+	m_vCurMousePos = vec2((float)ptPos.x, (float)ptPos.y);
+	
+}
 
 

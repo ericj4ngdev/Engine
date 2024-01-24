@@ -13,6 +13,7 @@ public:
 	void Render() override;
 	void Destroy() override;
 	void Control();
+	void SpecialAttack();
 private:
 	vec2 m_curpos;
 	float m_speed;

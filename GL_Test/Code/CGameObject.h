@@ -1,7 +1,4 @@
 #pragma once
-
-#include <string>
-
 class CComponent;
 class TransformComponent;
 
@@ -27,23 +24,29 @@ public:
 	void DeleteComponent(CComponent* component);
 public:
 	string GetName() const { return m_name; }
-	void Setname(string name) { m_name = move(name); }
+	void Setname(const string name) { m_name = move(name); }
 	bool GetIsEnable() const { return isEnable; }
 	void SetIsEnable(bool is_enable);
+	vec2 GetPos() { return m_transform->GetPosition(); }
+	vec2 GetScale() { return m_transform->GetScale(); }
+	void SetPos(vec2 v) { m_transform->SetPosition(v); }	// 자주 써서 축약버전 
+	void SetScale(vec2 v) { m_transform->SetScale(v); }
+	bool IsDead() {	return !m_bAlive; }
+	void SetDead() { m_bAlive = false; }		// 이벤트 매니저 용도
 	virtual void OnCollision(CCollider* pOther){}
 	virtual void OnCollisionEnter(CCollider* pOther){}
 	virtual void OnCollisionExit(CCollider* pOther){}
 protected:
+	TransformComponent* m_transform;
 	list<CGameObject*> m_children;
 	list<CComponent*> m_components;
 	string m_name;
 	CGameObject* m_parent;
-	TransformComponent* m_transform;
 	bool isEnable;
+	bool m_bAlive;
 protected:
 	void UpdateComponent();
 	void RenderComponent();
-
 };
 
 template<class T>

@@ -17,3 +17,12 @@ void CZombie::Init()
 	// CreateComponent<Zombie>();
 	GetComponent<CRenderComponent>()->SetTexture("Zombie1Tex", strFilePath.c_str());	
 }
+
+void CZombie::OnCollisionEnter(CCollider* pOther)
+{
+	CGameObject* pOtherObj = pOther->gameObject;
+	if (dynamic_cast<CSword*>(pOtherObj))
+	{
+		DeleteObject(this);
+	}
+}

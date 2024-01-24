@@ -46,6 +46,9 @@
     <Filter Include="소스 파일\Core\Components\Collider">
       <UniqueIdentifier>{d3f4e65b-57dc-47d3-8b4d-3f72337c9aca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Core\Components\Custom">
+      <UniqueIdentifier>{054d4ab8-de92-4102-a337-999a4cbd48b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\main.cpp">
@@ -84,9 +87,6 @@
     <ClCompile Include="Code\Component\CRenderComponent.cpp">
       <Filter>소스 파일\Core\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Component\ControllerComponent.cpp">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Manager\CTimeMgr.cpp">
       <Filter>소스 파일\Core\Managers</Filter>
     </ClCompile>
@@ -108,9 +108,6 @@
     <ClCompile Include="Code\Component\CCollider.cpp">
       <Filter>소스 파일\Core\Components\Collider</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Component\Zombie.cpp">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Manager\CCollisionMgr.cpp">
       <Filter>소스 파일\Core\Managers</Filter>
     </ClCompile>
@@ -122,6 +119,27 @@
     </ClCompile>
     <ClCompile Include="Code\Component\CGravity.cpp">
       <Filter>소스 파일\Core\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Manager\CCamera.cpp">
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Manager\CEventMgr.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Func.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Asset\CSword.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Component\ControllerComponent.cpp">
+      <Filter>소스 파일\Core\Components\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Component\Zombie.cpp">
+      <Filter>소스 파일\Core\Components\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Component\Sword.cpp">
+      <Filter>소스 파일\Core\Components\Custom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -185,9 +203,6 @@
     <ClInclude Include="Code\Component\CRenderComponent.h">
       <Filter>소스 파일\Core\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Component\ControllerComponent.h">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Manager\CTimeMgr.h">
       <Filter>소스 파일\Core\Managers</Filter>
     </ClInclude>
@@ -212,9 +227,6 @@
     <ClInclude Include="Code\Component\CCollider.h">
       <Filter>소스 파일\Core\Components\Collider</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Component\Zombie.h">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Component\CRigidbody.h">
       <Filter>소스 파일\Core\Components</Filter>
     </ClInclude>
@@ -226,6 +238,27 @@
     </ClInclude>
     <ClInclude Include="Code\Component\CGravity.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Manager\CCamera.h">
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Manager\CEventMgr.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Func.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Asset\CSword.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component\ControllerComponent.h">
+      <Filter>소스 파일\Core\Components\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component\Zombie.h">
+      <Filter>소스 파일\Core\Components\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component\Sword.h">
+      <Filter>소스 파일\Core\Components\Custom</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

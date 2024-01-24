@@ -13,10 +13,11 @@ void SampleScene::Enter()
 	AddObject(map, GROUP_TYPE::MAP);
 
 	CPlayer* player = new CPlayer("Player");
-	player->GetComponent<TransformComponent>()->SetPosition(vec2(75.f, 100.f));
+	player->SetPos(vec2(175.f, 100.f));
 	player->GetComponent<TransformComponent>()->SetScale(vec2(50.f, 100.f));
 	player->GetComponent<CCollider>()->Init();
 	AddObject(player, GROUP_TYPE::PLAYER);
+	CCamera::GetInstance()->SetTarget(player);
 
 	CZombie* zombie = nullptr;
 	for (int i = 0; i < 5; i++)
@@ -43,6 +44,11 @@ void SampleScene::Enter()
 	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::MAP, GROUP_TYPE::PLAYER);
 	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::MAP, GROUP_TYPE::ENEMY);
 	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::ENEMY);
+	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::PROJ_PLAYER, GROUP_TYPE::ENEMY);
+
+	vec2 vResolution = vec2(GLMgr::g_screenWidth, GLMgr::g_screenWidth);
+
+	CCamera::GetInstance()->SetLookAt(vResolution / 2.f);
 }
 
 void SampleScene::Exit()

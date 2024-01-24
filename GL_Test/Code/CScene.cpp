@@ -25,7 +25,10 @@ void CScene::Update()
 	{
 		for (int j = 0; j < m_arrObj[i].size(); j++)
 		{
-			m_arrObj[i][j]->Update();	// i±×·ì j °´Ã¼
+			if (!m_arrObj[i][j]->IsDead()) 
+			{
+				m_arrObj[i][j]->Update();	// i±×·ì j °´Ã¼
+			}
 		}
 	}
 }
@@ -45,9 +48,19 @@ void CScene::Render()
 {
 	for (int i = 0; i < (UINT)GROUP_TYPE::END; i++)
 	{
-		for (int j = 0; j < m_arrObj[i].size(); j++)
+		vector<CGameObject*>::iterator iter = m_arrObj[i].begin();
+
+		for (; iter != m_arrObj[i].end();)
 		{
-			m_arrObj[i][j]->Render();	// i±×·ì j °´Ã¼
+			if (!(*iter)->IsDead())
+			{
+				(*iter)->Render();	// i±×·ì j °´Ã¼
+				++iter;
+			}
+			else 
+			{
+				iter = m_arrObj[i].erase(iter);
+			}
 		}
 	}
 }

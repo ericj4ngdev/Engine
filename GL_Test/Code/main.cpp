@@ -21,6 +21,7 @@ void Tick()
 {
     EngineCore::GetInstance()->Update();    
     EngineCore::GetInstance()->Render();
+    EngineCore::GetInstance()->Event();
 }
 
 void OnIdle() 
