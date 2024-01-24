@@ -1,2 +1,13 @@
 ﻿  CSword.cpp
+  CCamera.cpp
+C:\GitHub\Engine\GL_Test\Code\Manager\CCamera.cpp(45,55): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\GitHub\Engine\GL_Test\Code\Manager\CCamera.cpp(45,55): warning C4244:         with
+C:\GitHub\Engine\GL_Test\Code\Manager\CCamera.cpp(45,55): warning C4244:         [
+C:\GitHub\Engine\GL_Test\Code\Manager\CCamera.cpp(45,55): warning C4244:             T=float
+C:\GitHub\Engine\GL_Test\Code\Manager\CCamera.cpp(45,55): warning C4244:         ]
+C:\GitHub\Engine\GL_Test\Code\Manager\CCamera.cpp(45,33): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\GitHub\Engine\GL_Test\Code\Manager\CCamera.cpp(45,33): warning C4244:         with
+C:\GitHub\Engine\GL_Test\Code\Manager\CCamera.cpp(45,33): warning C4244:         [
+C:\GitHub\Engine\GL_Test\Code\Manager\CCamera.cpp(45,33): warning C4244:             T=float
+C:\GitHub\Engine\GL_Test\Code\Manager\CCamera.cpp(45,33): warning C4244:         ]
   GL_Test.vcxproj -> C:\GitHub\Engine\GL_Test\Output\bin_Debug\GL_Test.exe

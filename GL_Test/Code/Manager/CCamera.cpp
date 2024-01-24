@@ -12,7 +12,7 @@ void CCamera::Update()
 {
 	if (m_pTargetObj) 
 	{
-		if (!m_pTargetObj->IsDead())
+		if (m_pTargetObj->IsDead())
 		{
 			m_pTargetObj = nullptr;
 		}
