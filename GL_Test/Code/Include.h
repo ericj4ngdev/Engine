@@ -73,6 +73,7 @@ using std::vector;
 
 #include "CScene.h"
 #include "Asset/SampleScene.h"
+#include "Scene/SStage01.h"
 
 #include "Component/CComponent.h"
 #include "Component/CRenderComponent.h"

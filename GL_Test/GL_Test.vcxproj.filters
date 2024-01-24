@@ -123,13 +123,7 @@
     <ClCompile Include="Code\Manager\CCamera.cpp">
       <Filter>소스 파일\Core\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Manager\CEventMgr.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Func.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Asset\CSword.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Code\Component\ControllerComponent.cpp">
@@ -140,6 +134,15 @@
     </ClCompile>
     <ClCompile Include="Code\Component\Sword.cpp">
       <Filter>소스 파일\Core\Components\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Scene\SStage01.cpp">
+      <Filter>소스 파일\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Manager\CEventMgr.cpp">
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Asset\CSword.cpp">
+      <Filter>소스 파일\Core\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -236,19 +239,10 @@
     <ClInclude Include="Code\Asset\CMap.h">
       <Filter>소스 파일\Core\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Component\CGravity.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Manager\CCamera.h">
       <Filter>소스 파일\Core\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Manager\CEventMgr.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Func.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Asset\CSword.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Code\Component\ControllerComponent.h">
@@ -259,6 +253,18 @@
     </ClInclude>
     <ClInclude Include="Code\Component\Sword.h">
       <Filter>소스 파일\Core\Components\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Scene\SStage01.h">
+      <Filter>소스 파일\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Manager\CEventMgr.h">
+      <Filter>소스 파일\Core\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component\CGravity.h">
+      <Filter>소스 파일\Core\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Asset\CSword.h">
+      <Filter>소스 파일\Core\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

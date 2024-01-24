@@ -18,3 +18,12 @@ void DeleteObject(CGameObject* pObj)
 
 	CEventMgr::GetInstance()->AddEvent(evn);
 }
+
+void ChangeScene(SCENE_TYPE eNext)
+{
+	tEvent evn = {};
+	evn.eEven = EVENT_TYPE::SCENE_CHANGE;
+	evn.lParam = (DWORD_PTR)eNext;
+
+	CEventMgr::GetInstance()->AddEvent(evn);
+}

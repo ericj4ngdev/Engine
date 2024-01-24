@@ -16,12 +16,14 @@ public:
     virtual void Init() = 0;
     virtual void Enter() = 0;           // 해당 씬에 진입시 호출
     virtual void Exit() = 0;            // 해당 씬에 탈출시 호출
-    void Update();
-    void FinalUpdate();
-    void Render();
+    virtual void Update();
+    virtual void FinalUpdate();
+    virtual void Render();
     virtual void Destroy() = 0;
 public:
     void AddObject(CGameObject* pGameObject, GROUP_TYPE eType){ m_arrObj[(UINT)eType].push_back(pGameObject); }
     const vector<CGameObject*>& GetGroupObject(GROUP_TYPE eType) { return m_arrObj[(UINT)eType]; }
+    void DeleteGroup(GROUP_TYPE eGroup);
+    void DeleteAll();
 };
 

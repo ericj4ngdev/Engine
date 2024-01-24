@@ -65,4 +65,16 @@ void CScene::Render()
 	}
 }
 
+void CScene::DeleteGroup(GROUP_TYPE eGroup)
+{
+	// m_arrObj[(UINT)eGroup] // 이 벡터와 벡터 내용물도 모두 삭제해주어야 한다. 
+	SafeDeleteVec<CGameObject*>(m_arrObj[(UINT)eGroup]);
+}
 
+void CScene::DeleteAll()
+{
+	for(UINT i = 0; i < (UINT)GROUP_TYPE::END; ++i)
+	{
+		DeleteGroup((GROUP_TYPE)i);
+	}
+}

@@ -51,8 +51,18 @@ void SampleScene::Enter()
 	CCamera::GetInstance()->SetLookAt(vResolution / 2.f);
 }
 
+void SampleScene::Update()
+{
+	CScene::Update();
+	if (GetKeyDown(ENTER)) 
+	{
+		ChangeScene(SCENE_TYPE::STAGE_01);
+	}
+}
+
 void SampleScene::Exit()
 {
+	DeleteAll();
 	// 그룹 설정 해제하기
 	CCollisionMgr::GetInstance()->Reset();
 }
@@ -60,4 +70,12 @@ void SampleScene::Exit()
 void SampleScene::Destroy()
 {
 
+}
+
+SampleScene::SampleScene()
+{
+}
+
+SampleScene::~SampleScene()
+{
 }

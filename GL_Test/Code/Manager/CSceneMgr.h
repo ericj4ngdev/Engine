@@ -13,6 +13,10 @@ public:
 	void Init();
 	void Update();
 	void Render();
+public:
 	CScene* GetCurScene() { return m_pCurScene; }
+private:
+	void ChangeScene(SCENE_TYPE eNextScene);
+	friend class CEventMgr;
 };
 

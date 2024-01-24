@@ -23,7 +23,10 @@ void CSceneMgr::Init()
 	// ¾À »ı¼º
 	m_arrScene[(UINT)SCENE_TYPE::START] = new SampleScene;
 	m_arrScene[(UINT)SCENE_TYPE::START]->SetName("Start");
-	// m_arrScene[(UINT)SCENE_TYPE::STAGE_01] = new SampleScene;
+
+	m_arrScene[(UINT)SCENE_TYPE::STAGE_01] = new SStage01;
+	m_arrScene[(UINT)SCENE_TYPE::STAGE_01]->SetName("STAGE_01");
+
 	// m_arrScene[(UINT)SCENE_TYPE::STAGE_02] = new SampleScene;
 	// m_arrScene[(UINT)SCENE_TYPE::TOOL] = new SampleScene;
 
@@ -43,4 +46,11 @@ void CSceneMgr::Render()
 {
 	if (m_pCurScene == nullptr) return;
 	m_pCurScene->Render();
+}
+
+void CSceneMgr::ChangeScene(SCENE_TYPE eNextScene)
+{
+	m_pCurScene->Exit();
+	m_pCurScene = m_arrScene[(UINT)eNextScene];
+	m_pCurScene->Enter();
 }
