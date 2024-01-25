@@ -42,7 +42,7 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 		vObjPos = pOtherObj->GetComponent<TransformComponent>()->GetPosition();
 		// assert(count == 0);
 		if (count == 0) return;
-		vObjPos.y += (float)((fPush - 0.01f) / count);
+		vObjPos.y += (float)(fPush / count);
 
 		pOtherObj->GetComponent<TransformComponent>()->SetPosition(vObjPos);
 	}
@@ -74,7 +74,7 @@ void CBlock::OnCollision(CCollider* pOther)
 
 		vObjPos = pOtherObj->GetComponent<TransformComponent>()->GetPosition();
 		if (count == 0) return;
-		vObjPos.y += (float)((fPush - 0.01f) / count);	// 더 밀어버려.
+		vObjPos.y += (float)(fPush / count);	// 더 밀어버려.
 
 		pOtherObj->GetComponent<TransformComponent>()->SetPosition(vObjPos);
 	}

@@ -18,7 +18,7 @@ void CGravity::FinalUpdate()
 	// 가속도 제공
 	gameObject->GetComponent<CRigidbody>()->SetAccelAlpha(vec2(0.f, -m_gravity));
 	if (m_bGround == false) {
-
+		// 점프 못하게 막기
 	}
 }
 

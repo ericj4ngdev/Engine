@@ -44,7 +44,7 @@ CAnimator::~CAnimator()
 	SafeDeleteMap(m_mapAnim);
 }
 
-void CAnimator::CreateAnimation(const string strName, CTexture* pTex, vec2 vLT, vec2 vSliceSize, vec2 vStep, float fDuration, int iFrameCount)
+void CAnimator::CreateAnimation(const string strName, CTexture* pTex, vec2 vLT, vec2 vSliceSize, vec2 vStep, int idir, float fDuration, int iFrameCount)
 {
 	CAnimation* pAnim = FindAnimation(strName);
 	assert(nullptr == pAnim);
@@ -53,7 +53,7 @@ void CAnimator::CreateAnimation(const string strName, CTexture* pTex, vec2 vLT, 
 	
 	pAnim->SetName(strName);
 	pAnim->m_pAnimator = this;
-	pAnim->Create(pTex, vLT, vSliceSize, vStep, fDuration, iFrameCount);
+	pAnim->Create(pTex, vLT, vSliceSize, vStep, idir, fDuration, iFrameCount);
 
 	m_mapAnim.insert(make_pair(strName, pAnim));
 }

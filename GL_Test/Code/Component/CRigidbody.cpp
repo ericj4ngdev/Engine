@@ -14,7 +14,7 @@ void CRigidbody::Update()
 }
 void CRigidbody::FinalUpdate()
 {
-	printf("m_vForce (%f, %f)\n", m_vForce.x, m_vForce.y);
+	// printf("m_vForce (%f, %f)\n", m_vForce.x, m_vForce.y);
 	// 힘의 크기
 	float fForce = m_vForce.Length();
 	if (fForce != 0.f) 
@@ -79,19 +79,25 @@ void CRigidbody::FinalUpdate()
 }
 void CRigidbody::Render()
 {
+
 }
+
 void CRigidbody::Destroy()
 {
+
 }
-CRigidbody::~CRigidbody() {
+
+CRigidbody::~CRigidbody() 
+{
 
 }
 
 void CRigidbody::Move()
 {
 	// 이동 속력
-	float fSpeed = m_vVelocity.Length();
-	if ( 0.f != fSpeed)
+	m_speed = m_vVelocity.Length();
+	
+	if ( 0.f != m_speed)
 	{
 		// 이동 방향
 		vec2 vDir = m_vVelocity;

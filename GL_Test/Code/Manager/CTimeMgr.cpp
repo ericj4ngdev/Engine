@@ -40,7 +40,7 @@ void CTimeMgr::Update()
 		m_uiFPS = m_uiCallCount;
 		m_dAcc = 0.;
 		m_uiCallCount = 0;
-		printf("FPS : %d, dT : %lf \n", m_uiFPS, m_dDT);
+		// printf("FPS : %d, dT : %lf \n", m_uiFPS, m_dDT);
 	}
 }
 

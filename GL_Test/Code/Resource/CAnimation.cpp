@@ -5,7 +5,8 @@ CAnimation::CAnimation() :
 	m_iCurFrm(0),
 	m_fAccTime(0),
 	m_bFinish(false),
-	m_color(Color4f(1,1,1,1))
+	m_color(Color4f(1,1,1,1)),
+	m_direction(1)
 {
 }
 
@@ -50,7 +51,7 @@ void CAnimation::Render()
 	glLoadIdentity();
 
 	glTranslatef(vRenderPos.x, vRenderPos.y, 0);
-	glScalef(vScale.x, vScale.y, 1);
+	glScalef(vScale.x * m_vecFrm[m_iCurFrm].dir, vScale.y, 1);
 
 	vPos += m_vecFrm[m_iCurFrm].vOffset;		// offset만큼 추가 이동
 	DrawSprite();
@@ -63,7 +64,7 @@ void CAnimation::Render()
 
 
 
-void CAnimation::Create(CTexture* pTex, vec2 vLT, vec2 vSliceSize, vec2 vStep, float fDuration, int iFrameCount)
+void CAnimation::Create(CTexture* pTex, vec2 vLT, vec2 vSliceSize, vec2 vStep, int idir, float fDuration, int iFrameCount)
 {
 	m_pTex = pTex;
 	tAinmFrm frm = {};
@@ -72,6 +73,7 @@ void CAnimation::Create(CTexture* pTex, vec2 vLT, vec2 vSliceSize, vec2 vStep, f
 		frm.vLT = vLT + vStep * i;
 		frm.vSlice = vSliceSize;
 		frm.vTexSize = pTex->GetTextureSize();
+		frm.dir = idir;
 		frm.fD = fDuration;
 
 		m_vecFrm.push_back(frm);

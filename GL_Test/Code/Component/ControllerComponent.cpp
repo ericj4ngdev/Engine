@@ -2,6 +2,10 @@
 
 // CComponent의 생성자를 자식 생성자 초기화로부터 호출
 ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent("ControllerComponent", l_gameObject)
+	, m_eCurState(PLAYER_STATE::IDLE)
+	, m_ePrevState(PLAYER_STATE::WALK)
+	, m_iDir(1)
+	, m_iPrevDir(-1)
 {
 	// m_speed = 1000;	
 	
@@ -21,6 +25,11 @@ void ControllerComponent::Update()
 	m_curpos = gameObject->GetComponent<TransformComponent>()->GetPosition();
 	m_rigidbody = gameObject->GetComponent<CRigidbody>();	// 얘는 왜 업데이트해야 하는가?
 	Control();	
+	UpdateState();
+	UpdateAnimation();
+
+	m_ePrevState = m_eCurState;
+	m_iPrevDir = m_iDir;
 }
 
 void ControllerComponent::FinalUpdate()
@@ -45,8 +54,9 @@ void ControllerComponent::Control()
 	//}
 	if (GetKeyHold(A))
 	{
-		m_curpos.x -= m_speed * fDT;
-		// m_rigidbody->AddForce(vec2(- m_speed, 0.f));
+		// m_curpos.x -= m_speed * fDT;
+		// m_rigidbody->AddVelocity(vec2(-m_speed, 0.f));
+		m_rigidbody->AddForce(vec2(- m_speed, 0.f));
 	}
 	//if (GetKeyHold(S))
 	//{
@@ -55,8 +65,9 @@ void ControllerComponent::Control()
 	//}
 	if (GetKeyHold(D))
 	{
-		m_curpos.x += m_speed * fDT;
-		// m_rigidbody->AddForce(vec2(m_speed, 0.f));
+		// m_curpos.x += m_speed * fDT;
+		// m_rigidbody->AddVelocity(vec2(m_speed, 0.f));
+		m_rigidbody->AddForce(vec2(m_speed, 0.f));
 	}
 	//if (GetKeyDown(W))
 	//{
@@ -78,6 +89,9 @@ void ControllerComponent::Control()
 	//	// m_curpos.x += m_speed * fDT;
 	//	m_rigidbody->AddVelocity(vec2(m_speed / 2, 0.f));
 	//}
+
+
+
 
 	if (GetKeyDown(Z)) 
 	{
@@ -107,5 +121,81 @@ void ControllerComponent::SpecialAttack() {
 	pSword->GetComponent<Sword>()->SetDir(vec2(1,0));
 
 	CreateObject(pSword, GROUP_TYPE::PROJ_PLAYER);
-	cout << "Shoot!" << '\n';
+	// cout << "Shoot!" << '\n';
+}
+
+void ControllerComponent::UpdateState()
+{
+	if (m_rigidbody->GetSpeed() <= 1 && PLAYER_STATE::JUMP != m_eCurState)
+	{
+		m_eCurState = PLAYER_STATE::IDLE;
+	}
+	// 상태 관리
+	if (GetKeyHold(A)) 
+	{
+		m_iDir = -1;
+		if(m_eCurState != PLAYER_STATE::JUMP)
+			m_eCurState = PLAYER_STATE::WALK;
+	}
+	if (GetKeyHold(D))
+	{
+		m_iDir = 1;
+		if (m_eCurState != PLAYER_STATE::JUMP)
+			m_eCurState = PLAYER_STATE::WALK;
+	}
+	if (GetKeyDown(SPACE) && m_eCurState != PLAYER_STATE::JUMP)
+	{
+		m_eCurState = PLAYER_STATE::JUMP;
+		if (m_rigidbody)
+		{
+			m_rigidbody->SetVelocity(vec2(m_rigidbody->GetVelocity().x, 300.f));
+			// m_rigidbody->AddVelocity(vec2(0.f, 2000.f));	// 점프력
+		}
+	}
+	// printf("1. m_eCurStste : %d\n", (int)m_eCurState);
+}
+
+void ControllerComponent::UpdateAnimation()
+{
+	if (m_ePrevState == m_eCurState && m_iPrevDir == m_iDir) return;
+	
+	// 바뀌면
+	switch (m_eCurState)
+	{
+	case PLAYER_STATE::IDLE:
+	{
+		if (m_iDir == 1)
+			gameObject->GetComponent<CAnimator>()->Play("Idle_Right", true);
+		else
+			gameObject->GetComponent<CAnimator>()->Play("Idle_Left", true);
+	}
+		break;
+	case PLAYER_STATE::WALK:
+	{
+		if (m_iDir == 1)
+			gameObject->GetComponent<CAnimator>()->Play("Walk_Right", true);
+		else
+			gameObject->GetComponent<CAnimator>()->Play("Walk_Left", true);
+	}
+		break;
+	case PLAYER_STATE::JUMP:
+	{
+		if (m_iDir == 1)
+			gameObject->GetComponent<CAnimator>()->Play("Jump_Right", true);
+		else
+			gameObject->GetComponent<CAnimator>()->Play("Jump_Left", true);
+	}
+		break;
+	case PLAYER_STATE::ATTACK:
+		break;
+	case PLAYER_STATE::SIT:
+		break;
+	case PLAYER_STATE::HIT:
+		break;	
+	case PLAYER_STATE::DEAD:
+		break;
+	default:
+		break;
+	}
+
 }

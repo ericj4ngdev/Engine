@@ -12,17 +12,17 @@ void CPlayer::Init()
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
 	// strFilePath += "texture\\player.png";
 	// CreateComponent<CRenderComponent>();
-	CreateComponent<ControllerComponent>();
-	CreateComponent<CCollider>();
-	CreateComponent<CRigidbody>();
 	CreateComponent<CGravity>();
+	CreateComponent<CRigidbody>();
+	CreateComponent<CCollider>();
+	CreateComponent<ControllerComponent>();
 	
-	GetComponent<ControllerComponent>()->SetSpeed(200.0f);
+	GetComponent<ControllerComponent>()->SetSpeed(1000.0f);
 	// 조종에 AddForce를 안해서 무의미 
-	GetComponent<CRigidbody>()->SetFriction(100.0f);		
+	GetComponent<CRigidbody>()->SetFriction(400.0f);		
 	// x값 무의미
-	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(200.0f, 800.0f));
-	GetComponent<CGravity>()->SetGravity(1000);
+	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(400.0f, 800.0f));
+	GetComponent<CGravity>()->SetGravity(500.0f);
 
 	
 	CreateComponent<CAnimator>();
@@ -30,17 +30,32 @@ void CPlayer::Init()
 	GetComponent<CAnimator>()->SetTexture("PlayerTex", strFilePath.c_str());
 	CTexture* pTex = GetComponent<CAnimator>()->GetTexture();
 
-	GetComponent<CAnimator>()->CreateAnimation("Walk", pTex, vec2(8, 146), vec2(16,32), vec2(40,0), 0.5f, 4);
-	// GetComponent<CAnimator>()->CreateAnimation("Walk", pTex, vec2(1,1), vec2(1,1), vec2(0, 0), 0.1f, 3);
-	GetComponent<CAnimator>()->Play("Walk", true);
+	GetComponent<CAnimator>()->CreateAnimation("Walk_Right", pTex, vec2(8, 146), vec2(16,32), vec2(40,0), 1, 0.15f, 4);
+	GetComponent<CAnimator>()->CreateAnimation("Walk_Left", pTex, vec2(8, 146), vec2(16, 32), vec2(40, 0), -1, 0.15f, 4);
 
-	CAnimation* pAnim = GetComponent<CAnimator>()->FindAnimation("Walk");
-	for (int i = 0; i < pAnim->GetMaxFrame(); i++) 
-	{
-		pAnim->GetFrame(i).vOffset = vec2(0, 0.f);
-	}
+	GetComponent<CAnimator>()->CreateAnimation("Idle_Right", pTex, vec2(8, 146), vec2(16, 32), vec2(0, 0), 1, 0.5f, 1);
+	GetComponent<CAnimator>()->CreateAnimation("Idle_Left", pTex, vec2(8, 146), vec2(16, 32), vec2(0, 0), -1, 0.5f, 1);
+	GetComponent<CAnimator>()->CreateAnimation("Jump_Right", pTex, vec2(248, 146), vec2(16, 32), vec2(0, 0), 1, 0.5f, 1);
+	GetComponent<CAnimator>()->CreateAnimation("Jump_Left", pTex, vec2(248, 146), vec2(16, 32), vec2(0, 0), -1, 0.5f, 1);
+
+	/*CAnimation* pAnim = GetComponent<CAnimator>()->FindAnimation("Jump_Left");
+	for (int i = 0; i < pAnim->GetMaxFrame(); i++)
+		pAnim->GetFrame(i).vOffset = vec2(0, -1000.f);
+
+	pAnim = GetComponent<CAnimator>()->FindAnimation("Jump_Right");
+	for (int i = 0; i < pAnim->GetMaxFrame(); i++)
+		pAnim->GetFrame(i).vOffset = vec2(0, -1000.f);*/
+
 
 	m_StepedBlockCount = 0;
+}
+
+void CPlayer::Update()
+{
+	CGameObject::Update();
+
+
+
 }
 
 void CPlayer::OnCollisionEnter(CCollider* pOther)
@@ -50,14 +65,20 @@ void CPlayer::OnCollisionEnter(CCollider* pOther)
 	// 블럭이면
 	if(dynamic_cast<CBlock*>(pOtherObj)) 
 	{
+		vec2 vPos = GetPos();
+		vec2 vScale = GetScale();
 		m_StepedBlockCount++;
-		static_cast<CBlock*>(pOtherObj)->SetCount(m_StepedBlockCount);		
+		static_cast<CBlock*>(pOtherObj)->SetCount(m_StepedBlockCount);	
+		if ((vPos.y - vScale.y / 2.f) > pOtherObj->GetPos().y + pOtherObj->GetPos().y / 2.f)
+		{
+			GetComponent<ControllerComponent>()->SetState(PLAYER_STATE::IDLE);
+		}
 	}
 }
 
 void CPlayer::OnCollision(CCollider* pOther)
 {
-	printf("CPlayer::OnCollision -> count : %d\n", m_StepedBlockCount);
+	// printf("CPlayer::OnCollision -> count : %d\n", m_StepedBlockCount);
 }
 
 

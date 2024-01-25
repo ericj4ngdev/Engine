@@ -32,6 +32,7 @@ public:
 
     float GetMass() { return m_Mass; }
     vec2 GetVelocity() { return m_vVelocity; }
+    float GetSpeed() { return m_vVelocity.Length(); }
 
     void Move();
 };
