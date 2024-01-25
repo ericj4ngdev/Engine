@@ -51,13 +51,14 @@ using std::vector;
 #include <GL/glut.h>
 
 #include "Func.h"
+#include "Util/Vector.h"
+#include "Util/Quaternion.h"
+#include "Util/Color4f.h"
 
 #include "Core/EngineCore.h"
 #include "Core/GLMgr.h"
 #include "Manager/CResMgr.h"
-#include "Util/Vector.h"
-#include "Util/Quaternion.h"
-#include "Util/Color4f.h"
+
 
 #include "CoreBase.h"
 #include "Manager/CTimeMgr.h"
@@ -70,6 +71,8 @@ using std::vector;
 
 #include "CResource.h"
 #include "Resource/CTexture.h"
+#include "Resource/CAnimation.h"
+
 
 #include "CScene.h"
 #include "Asset/SampleScene.h"
@@ -80,6 +83,7 @@ using std::vector;
 #include "Component/TransformComponent.h"
 #include "Component/ControllerComponent.h"
 #include "Component/CCollider.h"
+#include "Component/CAnimator.h"
 #include "Component/Zombie.h"
 #include "Component/CRigidbody.h"
 #include "Component/CGravity.h"

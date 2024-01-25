@@ -144,6 +144,12 @@
     <ClCompile Include="Code\Asset\CSword.cpp">
       <Filter>소스 파일\Core\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Component\CAnimator.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Resource\CAnimation.cpp">
+      <Filter>소스 파일\Core\Resources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Include.h">
@@ -265,6 +271,12 @@
     </ClInclude>
     <ClInclude Include="Code\Asset\CSword.h">
       <Filter>소스 파일\Core\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component\CAnimator.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Resource\CAnimation.h">
+      <Filter>소스 파일\Core\Resources</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

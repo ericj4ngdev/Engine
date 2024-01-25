@@ -13,8 +13,8 @@ public:
 	void Destroy() override;
 public:
 	CTexture* GetTexture() { return m_texture; }
-	void SetTexture(const string& _strKey, const char* name);
-	void RenderPlaneVAO();
+	void SetTexture(const string& _strKey, const char* _strFilePath);
+	void DrawSquare();
 	void SetCenterPos(float x, float y);
 	void SetScale(float x, float y);
 private:

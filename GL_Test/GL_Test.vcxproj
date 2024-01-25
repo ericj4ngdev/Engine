@@ -26,6 +26,7 @@
     <ClCompile Include="Code\Asset\CZombie.cpp" />
     <ClCompile Include="Code\Asset\SampleScene.cpp" />
     <ClCompile Include="Code\CGameObject.cpp" />
+    <ClCompile Include="Code\Component\CAnimator.cpp" />
     <ClCompile Include="Code\Component\CCollider.cpp" />
     <ClCompile Include="Code\Component\CGravity.cpp" />
     <ClCompile Include="Code\Component\ControllerComponent.cpp" />
@@ -48,6 +49,7 @@
     <ClCompile Include="Code\CScene.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\CResource.cpp" />
+    <ClCompile Include="Code\Resource\CAnimation.cpp" />
     <ClCompile Include="Code\Resource\CTexture.cpp" />
     <ClCompile Include="Code\Scene\SStage01.cpp" />
   </ItemGroup>
@@ -59,6 +61,7 @@
     <ClInclude Include="Code\Asset\CZombie.h" />
     <ClInclude Include="Code\Asset\SampleScene.h" />
     <ClInclude Include="Code\Cmacro.h" />
+    <ClInclude Include="Code\Component\CAnimator.h" />
     <ClInclude Include="Code\Component\CCollider.h" />
     <ClInclude Include="Code\Component\CComponent.h" />
     <ClInclude Include="Code\Component\CGravity.h" />
@@ -84,6 +87,7 @@
     <ClInclude Include="Code\CScene.h" />
     <ClInclude Include="Code\Include.h" />
     <ClInclude Include="Code\CResource.h" />
+    <ClInclude Include="Code\Resource\CAnimation.h" />
     <ClInclude Include="Code\Resource\CTexture.h" />
     <ClInclude Include="Code\Scene\SStage01.h" />
     <ClInclude Include="Code\Util\Color4f.h" />

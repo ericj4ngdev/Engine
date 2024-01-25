@@ -12,6 +12,11 @@ CGameObject::CGameObject(std::string name) : m_parent(nullptr), isEnable(true), 
     m_transform = CreateComponent<TransformComponent>();
 }
 
+CGameObject::~CGameObject()
+{
+    
+}
+
 void CGameObject::Update()
 {
     if (!isEnable) return;

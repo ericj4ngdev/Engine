@@ -6,16 +6,19 @@ class CTexture : public CResource
 public:
     unsigned char* image;
     GLuint m_texId;
-
+    vec2 m_vTexSize;
 private:
     CTexture();
     virtual ~CTexture();
-    friend class CResMgr;
+
 public:
     CTexture(const CTexture& other);
     void LoadTexture(const char* path);
     void Release();
     GLuint* GetTexture();
+    const vec2& GetTextureSize(){ return m_vTexSize; }
+
+    friend class CResMgr;
 };
 
 #endif

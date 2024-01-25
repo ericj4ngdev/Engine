@@ -10,19 +10,36 @@ CPlayer::~CPlayer() = default;
 void CPlayer::Init()
 {
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
-	strFilePath += "texture\\player.png";
-	CreateComponent<CRenderComponent>();
+	// strFilePath += "texture\\player.png";
+	// CreateComponent<CRenderComponent>();
 	CreateComponent<ControllerComponent>();
 	CreateComponent<CCollider>();
 	CreateComponent<CRigidbody>();
 	CreateComponent<CGravity>();
-	GetComponent<CRenderComponent>()->SetTexture("PlayerTex", strFilePath.c_str());
+	
 	GetComponent<ControllerComponent>()->SetSpeed(200.0f);
 	// 조종에 AddForce를 안해서 무의미 
 	GetComponent<CRigidbody>()->SetFriction(100.0f);		
 	// x값 무의미
 	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(200.0f, 800.0f));
 	GetComponent<CGravity>()->SetGravity(1000);
+
+	
+	CreateComponent<CAnimator>();
+	strFilePath += "texture\\castlevania3.png";
+	GetComponent<CAnimator>()->SetTexture("PlayerTex", strFilePath.c_str());
+	CTexture* pTex = GetComponent<CAnimator>()->GetTexture();
+
+	GetComponent<CAnimator>()->CreateAnimation("Walk", pTex, vec2(8, 146), vec2(16,32), vec2(40,0), 0.5f, 4);
+	// GetComponent<CAnimator>()->CreateAnimation("Walk", pTex, vec2(1,1), vec2(1,1), vec2(0, 0), 0.1f, 3);
+	GetComponent<CAnimator>()->Play("Walk", true);
+
+	CAnimation* pAnim = GetComponent<CAnimator>()->FindAnimation("Walk");
+	for (int i = 0; i < pAnim->GetMaxFrame(); i++) 
+	{
+		pAnim->GetFrame(i).vOffset = vec2(0, 0.f);
+	}
+
 	m_StepedBlockCount = 0;
 }
 

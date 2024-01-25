@@ -17,6 +17,9 @@ void SampleScene::Enter()
 	player->GetComponent<TransformComponent>()->SetScale(vec2(50.f, 100.f));
 	player->GetComponent<CCollider>()->Init();
 	AddObject(player, GROUP_TYPE::PLAYER);
+	
+
+
 	CCamera::GetInstance()->SetTarget(player);
 
 	CZombie* zombie = nullptr;
@@ -46,9 +49,9 @@ void SampleScene::Enter()
 	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::ENEMY);
 	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::PROJ_PLAYER, GROUP_TYPE::ENEMY);
 
-	vec2 vResolution = vec2(GLMgr::g_screenWidth, GLMgr::g_screenWidth);
+	ivec2 vResolution = ivec2(GLMgr::g_screenWidth, GLMgr::g_screenWidth);
 
-	CCamera::GetInstance()->SetLookAt(vResolution / 2.f);
+	// CCamera::GetInstance()->SetLookAt(vResolution / 2.f);
 }
 
 void SampleScene::Update()

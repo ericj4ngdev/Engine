@@ -7,7 +7,7 @@ class CGameObject
 public:
 	CGameObject();
 	explicit CGameObject(string name);
-	virtual ~CGameObject() = default;
+	virtual ~CGameObject();
 
 	virtual void Init() = 0;		// 순수가상함수
 	virtual void Update();

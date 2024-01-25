@@ -40,7 +40,7 @@ void CRenderComponent::Render()
 	glTranslatef(vRenderPos.x, vRenderPos.y, 0);
 	glScalef(m_Scale.x , m_Scale.y, 1);
 	
-	RenderPlaneVAO();
+	DrawSquare();
 	
 	glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -57,7 +57,7 @@ void CRenderComponent::SetTexture(const string& _strKey, const char* _strFilePat
 	m_Texid = m_texture->m_texId;
 }
 
-void CRenderComponent::RenderPlaneVAO()
+void CRenderComponent::DrawSquare()
 {
 	glBegin(GL_QUADS);
 		glTexCoord2d(0,1);      glVertex3d(-0.5, -0.5, -1.0);
