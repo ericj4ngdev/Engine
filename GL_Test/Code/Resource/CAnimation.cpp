@@ -52,8 +52,8 @@ void CAnimation::Render()
 
 	glTranslatef(vRenderPos.x, vRenderPos.y, 0);
 	glScalef(vScale.x * m_vecFrm[m_iCurFrm].dir, vScale.y, 1);
+	// vPos += m_vecFrm[m_iCurFrm].vOffset;		// offset만큼 추가 이동
 
-	vPos += m_vecFrm[m_iCurFrm].vOffset;		// offset만큼 추가 이동
 	DrawSprite();
 
 	glBindTexture(GL_TEXTURE_2D, 0);

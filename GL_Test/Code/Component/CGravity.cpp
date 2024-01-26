@@ -16,10 +16,13 @@ void CGravity::Update()
 void CGravity::FinalUpdate()
 {
 	// 가속도 제공
-	gameObject->GetComponent<CRigidbody>()->SetAccelAlpha(vec2(0.f, -m_gravity));
-	if (m_bGround == false) {
-		// 점프 못하게 막기
+	if (m_bGround)
+	{
+		// 땅이면 중력 X
+		return;
 	}
+	gameObject->GetComponent<CRigidbody>()->SetAccelAlpha(vec2(0.f, -m_gravity));
+	
 }
 
 void CGravity::Render()
@@ -40,6 +43,6 @@ void CGravity::SetGround(bool b)
 	if (m_bGround) 
 	{
 		vec2 vV = gameObject->GetComponent<CRigidbody>()->GetVelocity();
-		gameObject->GetComponent<CRigidbody>()->SetVelocity(vec2(vV.x,0.f));
+		gameObject->GetComponent<CRigidbody>()->SetVelocity(vec2(vV.x,0.f));	// 중력 X
 	}
 }

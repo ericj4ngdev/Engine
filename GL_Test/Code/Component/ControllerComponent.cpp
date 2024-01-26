@@ -24,10 +24,12 @@ void ControllerComponent::Update()
 {
 	m_curpos = gameObject->GetComponent<TransformComponent>()->GetPosition();
 	m_rigidbody = gameObject->GetComponent<CRigidbody>();	// 얘는 왜 업데이트해야 하는가?
+	m_Collider = gameObject->GetComponent<CCollider>();
+	m_pGravity = gameObject->GetComponent<CGravity>();
 	Control();	
 	UpdateState();
 	UpdateAnimation();
-
+	
 	m_ePrevState = m_eCurState;
 	m_iPrevDir = m_iDir;
 }
@@ -52,22 +54,41 @@ void ControllerComponent::Control()
 	//	m_curpos.y += m_speed * fDT;
 	//	// m_rigidbody->AddForce(vec2(0.f, m_speed));
 	//}
-	if (GetKeyHold(A))
+	if (GetKeyHold(LEFT))
 	{
 		// m_curpos.x -= m_speed * fDT;
 		// m_rigidbody->AddVelocity(vec2(-m_speed, 0.f));
-		m_rigidbody->AddForce(vec2(- m_speed, 0.f));
+		
+		// 앉은 채로 이동 X
+		// 앉은 상태가 아니면 이동
+		if (m_eCurState != PLAYER_STATE::SIT) 
+			m_rigidbody->AddForce(vec2(- m_speed, 0.f));
 	}
-	//if (GetKeyHold(S))
-	//{
-	//	m_curpos.y -= m_speed * fDT;
-	//	// m_rigidbody->AddForce(vec2(0.f, - m_speed));
-	//}
-	if (GetKeyHold(D))
+	if (GetKeyHold(DOWN))
+	{
+		if (m_pGravity->GetGround()) 
+		{
+			//vec2 vScale = gameObject->GetScale();
+			//m_Collider->SetScale(vec2(vScale.x, vScale.y * 0.75));
+			//m_curpos.y -= vScale.y * 0.125;
+		}		
+		// m_rigidbody->AddForce(vec2(0.f, - m_speed));
+	}
+	if (GetKeyUp(DOWN))
+	{
+		if (m_ePrevState == PLAYER_STATE::SIT) 
+		{
+			//vec2 vScale = gameObject->GetScale();
+			//m_curpos.y += vScale.y * 0.125;
+			//m_Collider->SetScale(vec2(vScale.x, vScale.y));
+		}
+	}
+	if (GetKeyHold(RIGHT))
 	{
 		// m_curpos.x += m_speed * fDT;
 		// m_rigidbody->AddVelocity(vec2(m_speed, 0.f));
-		m_rigidbody->AddForce(vec2(m_speed, 0.f));
+		if (m_eCurState != PLAYER_STATE::SIT)
+			m_rigidbody->AddForce(vec2(m_speed, 0.f));
 	}
 	//if (GetKeyDown(W))
 	//{
@@ -89,10 +110,6 @@ void ControllerComponent::Control()
 	//	// m_curpos.x += m_speed * fDT;
 	//	m_rigidbody->AddVelocity(vec2(m_speed / 2, 0.f));
 	//}
-
-
-
-
 	if (GetKeyDown(Z)) 
 	{
 		SpecialAttack();
@@ -100,7 +117,6 @@ void ControllerComponent::Control()
 
 	if (GetKeyDown(SPACE))
 	{
-		
 		// SpecialAttack();
 	}
 
@@ -126,37 +142,54 @@ void ControllerComponent::SpecialAttack() {
 
 void ControllerComponent::UpdateState()
 {
-	if (m_rigidbody->GetSpeed() <= 1 && PLAYER_STATE::JUMP != m_eCurState)
-	{
-		m_eCurState = PLAYER_STATE::IDLE;
-	}
 	// 상태 관리
-	if (GetKeyHold(A)) 
+	if (GetKeyHold(LEFT))
 	{
 		m_iDir = -1;
-		if(m_eCurState != PLAYER_STATE::JUMP)
+		if(m_eCurState != PLAYER_STATE::JUMP && m_eCurState != PLAYER_STATE::SIT)
 			m_eCurState = PLAYER_STATE::WALK;
 	}
-	if (GetKeyHold(D))
+	if (GetKeyHold(RIGHT))
 	{
 		m_iDir = 1;
-		if (m_eCurState != PLAYER_STATE::JUMP)
+		// 점프 중에 좌우키 눌러도 점프 모션 유지
+		if (m_eCurState != PLAYER_STATE::JUMP && m_eCurState != PLAYER_STATE::SIT)
 			m_eCurState = PLAYER_STATE::WALK;
 	}
+	printf("1. m_eCurStste : %d\r", (int)m_eCurState);
 	if (GetKeyDown(SPACE) && m_eCurState != PLAYER_STATE::JUMP)
 	{
-		m_eCurState = PLAYER_STATE::JUMP;
-		if (m_rigidbody)
+		if (m_rigidbody && m_eCurState != PLAYER_STATE::SIT)
 		{
 			m_rigidbody->SetVelocity(vec2(m_rigidbody->GetVelocity().x, 300.f));
 			// m_rigidbody->AddVelocity(vec2(0.f, 2000.f));	// 점프력
 		}
+		m_eCurState = PLAYER_STATE::JUMP;
 	}
-	// printf("1. m_eCurStste : %d\n", (int)m_eCurState);
+	if (GetKeyHold(DOWN))
+	{
+		// 땅이면 
+		if(m_pGravity->GetGround())
+			m_eCurState = PLAYER_STATE::SIT;
+		// 다른 키 눌러도 아무 반응없게
+		// 단, 공격은 가능		
+	}
+	if (GetKeyUp(DOWN))
+	{
+		m_eCurState = PLAYER_STATE::IDLE;
+	}
+
+	// 점프 중에 IDle방지
+	if (m_rigidbody->GetSpeed() <= 1 && PLAYER_STATE::JUMP != m_eCurState && PLAYER_STATE::SIT != m_eCurState)
+	{
+		m_eCurState = PLAYER_STATE::IDLE;
+	}
+	
 }
 
 void ControllerComponent::UpdateAnimation()
 {
+	// printf("1. m_eCurStste : %d\r", (int)m_eCurState);
 	if (m_ePrevState == m_eCurState && m_iPrevDir == m_iDir) return;
 	
 	// 바뀌면
@@ -189,6 +222,12 @@ void ControllerComponent::UpdateAnimation()
 	case PLAYER_STATE::ATTACK:
 		break;
 	case PLAYER_STATE::SIT:
+	{
+		if (m_iDir == 1)
+			gameObject->GetComponent<CAnimator>()->Play("Sit_Right", true);
+		else
+			gameObject->GetComponent<CAnimator>()->Play("Sit_Left", true);
+	}
 		break;
 	case PLAYER_STATE::HIT:
 		break;	

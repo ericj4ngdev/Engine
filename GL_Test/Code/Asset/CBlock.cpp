@@ -51,14 +51,14 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 void CBlock::OnCollision(CCollider* pOther)
 {
 	CGameObject* pOtherObj = pOther->gameObject;
-	// bool isGround = pOtherObj->GetComponent<CGravity>()->GetGround(true);
+	//bool isGround = pOtherObj->GetComponent<CGravity>()->GetGround(true);
 	// if(isGround)
 	// int col = 0;
 	if (pOtherObj->GetName() == "Player")
 	{
 		// col++;
 		// ¶¥¿¡ ¾ÈÂøÇßÀ½À» ¾Ë·ÁÁÜ
-		pOtherObj->GetComponent<CGravity>()->SetGround(true);
+		pOtherObj->GetComponent<CGravity>()->SetGround(true);		// ¾ÈÂø ½Ã Áß·Â X
 
 		// ÇÃ·¹ÀÌ¾î
 		vec2 vObjPos = pOther->GetPos();

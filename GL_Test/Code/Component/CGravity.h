@@ -15,5 +15,6 @@ private:
 public:
     void SetGround(bool b);
     void SetGravity(float grav) { m_gravity = grav; }
+    bool GetGround() { return m_bGround; }
 };
 

@@ -19,6 +19,8 @@ enum class PLAYER_ATTACK_STATE
 
 
 class CRigidbody;
+class CCollider;
+class CGravity;
 
 class ControllerComponent : public CComponent
 {
@@ -40,6 +42,8 @@ private:
 	vec2 m_curpos;
 	float m_speed;
 	CRigidbody* m_rigidbody;
+	CCollider* m_Collider;
+	CGravity* m_pGravity;
 private:
 	PLAYER_STATE	m_eCurState;
 	PLAYER_STATE	m_ePrevState;
