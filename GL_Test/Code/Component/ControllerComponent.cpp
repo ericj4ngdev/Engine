@@ -54,6 +54,7 @@ void ControllerComponent::Control()
 	//	m_curpos.y += m_speed * fDT;
 	//	// m_rigidbody->AddForce(vec2(0.f, m_speed));
 	//}
+
 	if (GetKeyHold(LEFT))
 	{
 		// m_curpos.x -= m_speed * fDT;
@@ -61,7 +62,7 @@ void ControllerComponent::Control()
 		// m_rigidbody->AddForce(vec2(- m_speed, 0.f));
 		// 앉은 채로 이동 X
 		// 앉은 상태가 아니면 이동
-		if (m_eCurState != PLAYER_STATE::SIT) 
+		if (m_eCurState != PLAYER_STATE::SIT)
 		{
 			m_curpos.x -= m_speed * fDT;
 			m_rigidbody->SetVelocity(vec2(-m_speed, m_rigidbody->GetVelocity().y));
@@ -88,9 +89,8 @@ void ControllerComponent::Control()
 	}
 	if (GetKeyHold(RIGHT))
 	{
-		// m_curpos.x += m_speed * fDT;
-		// m_rigidbody->AddVelocity(vec2(m_speed, 0.f));
-		if (m_eCurState != PLAYER_STATE::SIT) 
+		// 점프 키눌러도 이렇게 앞으로 잘 갔으면 좋겠는데... ㅠㅠ 
+		if (m_eCurState != PLAYER_STATE::SIT)
 		{
 			m_curpos.x += m_speed * fDT;  // m_rigidbody->AddForce(vec2(m_speed, 0.f));
 			m_rigidbody->SetVelocity(vec2(m_speed, m_rigidbody->GetVelocity().y));
@@ -151,28 +151,60 @@ void ControllerComponent::UpdateState()
 	// 상태 관리
 	if (GetKeyHold(LEFT))
 	{
-		m_iDir = -1;
-		if(m_eCurState != PLAYER_STATE::JUMP && m_eCurState != PLAYER_STATE::SIT)
+		if (m_eCurState != PLAYER_STATE::JUMP && m_eCurState != PLAYER_STATE::SIT) 
+		{
+			m_iDir = -1;
 			m_eCurState = PLAYER_STATE::WALK;
+		}
 	}
+
 	if (GetKeyHold(RIGHT))
 	{
-		m_iDir = 1;
 		// 점프 중에 좌우키 눌러도 점프 모션 유지
 		if (m_eCurState != PLAYER_STATE::JUMP && m_eCurState != PLAYER_STATE::SIT)
+		{
+			m_iDir = 1;
 			m_eCurState = PLAYER_STATE::WALK;
+		}
 	}
-	
+	// 점프 관련 bool 변수
 	if (GetKeyDown(X) && m_eCurState != PLAYER_STATE::JUMP)
 	{
 		// 앉은 채에서 점프 불가
 		if (m_rigidbody && m_eCurState != PLAYER_STATE::SIT)
-		{
-			// m_rigidbody->SetVelocity(vec2(m_rigidbody->GetVelocity().x, 450.f));
-			m_rigidbody->AddVelocity(vec2(0.f, 700.f));	// 점프력
+		{			
+			m_rigidbody->AddVelocity(vec2(m_rigidbody->GetVelocity().x, 700.f));	// 점프력
+
+			//if (m_rigidbody->GetVelocity().x > 0) {
+			//	// m_rigidbody->AddVelocity(vec2(500.f, 700.f));	// 점프력
+			//}
+			//else if (m_rigidbody->GetVelocity().x < 0) 
+			//{
+			//	// m_rigidbody->AddVelocity(vec2(-500.f, 700.f));	// 점프력
+			//}
+			//else {
+			//	// m_rigidbody->AddVelocity(vec2(0.f, 700.f));	// 점프력
+			//}
+			printf("m_rigidbody->GetVelocity().x : %f\n", m_rigidbody->GetVelocity().x);
 		}
 		m_eCurState = PLAYER_STATE::JUMP;
 	}
+
+	//if (m_pGravity->GetGround() == false) // 공중
+	//{
+	//	if (m_rigidbody->GetVelocity().x > 0) {
+	//		m_rigidbody->AddVelocity(vec2(1000.f, 0.f));
+	//		// m_rigidbody->AddVelocity(vec2(10000.f, 0.f));	// 점프력
+	//	}
+	//	else if (m_rigidbody->GetVelocity().x < 0)
+	//	{
+	//		m_rigidbody->AddVelocity(vec2(-500.f, 0.f));	// 점프력
+	//	}
+	//	else {
+	//		m_rigidbody->AddVelocity(vec2(0.f, 0.f));	// 점프력
+	//	}
+	//}
+
 	if (GetKeyHold(DOWN))
 	{
 		// 땅이면 
@@ -186,14 +218,16 @@ void ControllerComponent::UpdateState()
 		m_eCurState = PLAYER_STATE::IDLE;
 	}
 	float speed = m_rigidbody->GetSpeed();
-	printf("speed : %f\n", speed);
+	
+	
+	/*printf("speed : %f\n", speed);
+	printf("1. m_eCurStste : %d\n", (int)m_eCurState);*/
 	// 점프 중에 IDle방지
 	// 속도 조건 넣기
 	if (m_rigidbody->GetSpeed() <= 1 && PLAYER_STATE::JUMP != m_eCurState && PLAYER_STATE::SIT != m_eCurState)
 	{
 		m_eCurState = PLAYER_STATE::IDLE;
 	}
-	printf("1. m_eCurStste : %d\n", (int)m_eCurState);
 }
 
 void ControllerComponent::UpdateAnimation()
