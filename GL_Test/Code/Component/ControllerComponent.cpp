@@ -58,11 +58,14 @@ void ControllerComponent::Control()
 	{
 		// m_curpos.x -= m_speed * fDT;
 		// m_rigidbody->AddVelocity(vec2(-m_speed, 0.f));
-		
+		// m_rigidbody->AddForce(vec2(- m_speed, 0.f));
 		// 앉은 채로 이동 X
 		// 앉은 상태가 아니면 이동
 		if (m_eCurState != PLAYER_STATE::SIT) 
-			m_rigidbody->AddForce(vec2(- m_speed, 0.f));
+		{
+			m_curpos.x -= m_speed * fDT;
+			m_rigidbody->SetVelocity(vec2(-m_speed, m_rigidbody->GetVelocity().y));
+		}
 	}
 	if (GetKeyHold(DOWN))
 	{
@@ -87,8 +90,11 @@ void ControllerComponent::Control()
 	{
 		// m_curpos.x += m_speed * fDT;
 		// m_rigidbody->AddVelocity(vec2(m_speed, 0.f));
-		if (m_eCurState != PLAYER_STATE::SIT)
-			m_rigidbody->AddForce(vec2(m_speed, 0.f));
+		if (m_eCurState != PLAYER_STATE::SIT) 
+		{
+			m_curpos.x += m_speed * fDT;  // m_rigidbody->AddForce(vec2(m_speed, 0.f));
+			m_rigidbody->SetVelocity(vec2(m_speed, m_rigidbody->GetVelocity().y));
+		}
 	}
 	//if (GetKeyDown(W))
 	//{
@@ -115,7 +121,7 @@ void ControllerComponent::Control()
 		SpecialAttack();
 	}
 
-	if (GetKeyDown(SPACE))
+	if (GetKeyDown(X))
 	{
 		// SpecialAttack();
 	}
@@ -156,13 +162,14 @@ void ControllerComponent::UpdateState()
 		if (m_eCurState != PLAYER_STATE::JUMP && m_eCurState != PLAYER_STATE::SIT)
 			m_eCurState = PLAYER_STATE::WALK;
 	}
-	printf("1. m_eCurStste : %d\r", (int)m_eCurState);
-	if (GetKeyDown(SPACE) && m_eCurState != PLAYER_STATE::JUMP)
+	
+	if (GetKeyDown(X) && m_eCurState != PLAYER_STATE::JUMP)
 	{
+		// 앉은 채에서 점프 불가
 		if (m_rigidbody && m_eCurState != PLAYER_STATE::SIT)
 		{
-			m_rigidbody->SetVelocity(vec2(m_rigidbody->GetVelocity().x, 300.f));
-			// m_rigidbody->AddVelocity(vec2(0.f, 2000.f));	// 점프력
+			// m_rigidbody->SetVelocity(vec2(m_rigidbody->GetVelocity().x, 450.f));
+			m_rigidbody->AddVelocity(vec2(0.f, 700.f));	// 점프력
 		}
 		m_eCurState = PLAYER_STATE::JUMP;
 	}
@@ -178,13 +185,15 @@ void ControllerComponent::UpdateState()
 	{
 		m_eCurState = PLAYER_STATE::IDLE;
 	}
-
+	float speed = m_rigidbody->GetSpeed();
+	printf("speed : %f\n", speed);
 	// 점프 중에 IDle방지
+	// 속도 조건 넣기
 	if (m_rigidbody->GetSpeed() <= 1 && PLAYER_STATE::JUMP != m_eCurState && PLAYER_STATE::SIT != m_eCurState)
 	{
 		m_eCurState = PLAYER_STATE::IDLE;
 	}
-	
+	printf("1. m_eCurStste : %d\n", (int)m_eCurState);
 }
 
 void ControllerComponent::UpdateAnimation()

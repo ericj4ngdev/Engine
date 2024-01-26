@@ -1,6 +1,6 @@
 #include "include.h"
 
-COMPONENT_CONSTRUCTOR(CGravity), m_bGround(false)
+COMPONENT_CONSTRUCTOR(CGravity), m_bGround(true)
 {
 
 }

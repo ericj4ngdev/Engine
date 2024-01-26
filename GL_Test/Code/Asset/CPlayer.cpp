@@ -17,12 +17,13 @@ void CPlayer::Init()
 	CreateComponent<CCollider>();
 	CreateComponent<ControllerComponent>();
 	
-	GetComponent<ControllerComponent>()->SetSpeed(1000.0f);
+
+	GetComponent<ControllerComponent>()->SetSpeed(100.0f);
 	// 조종에 AddForce를 안해서 무의미 
-	GetComponent<CRigidbody>()->SetFriction(400.0f);		
+	 GetComponent<CRigidbody>()->SetFriction(700.0f);		
 	// x값 무의미
-	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(400.0f, 800.0f));
-	GetComponent<CGravity>()->SetGravity(500.0f);
+	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(100.0f, 1000.0f));
+	GetComponent<CGravity>()->SetGravity(1700.0f);
 
 	
 	CreateComponent<CAnimator>();
@@ -67,9 +68,6 @@ void CPlayer::Init()
 void CPlayer::Update()
 {
 	CGameObject::Update();
-
-
-
 }
 
 void CPlayer::OnCollisionEnter(CCollider* pOther)
