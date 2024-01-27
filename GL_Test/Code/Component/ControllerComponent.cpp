@@ -3,7 +3,6 @@
 // CComponent의 생성자를 자식 생성자 초기화로부터 호출
 ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent("ControllerComponent", l_gameObject)
 	, m_eCurState(PLAYER_STATE::IDLE)
-	, m_ePrevState(PLAYER_STATE::WALK)
 	, m_iDir(1)
 	, m_iPrevDir(-1)
 {
@@ -50,12 +49,13 @@ void ControllerComponent::Destroy()
 
 void ControllerComponent::Control()
 {
+	printf("m_eCurStste : %d\n", (int)m_eCurState);
 	float move = 0;
 	if (GetKeyHold(LEFT))
 	{
+		m_iDir = -1;
 		if (m_eCurState != PLAYER_STATE::SIT)
 		{
-			m_iDir = -1;
 			move = m_iDir * m_speed;
 			m_curpos.x += move * fDT;
 			m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));
@@ -63,9 +63,9 @@ void ControllerComponent::Control()
 	}
 	if (GetKeyHold(RIGHT))
 	{
+		m_iDir = 1;
 		if (m_eCurState != PLAYER_STATE::SIT)
 		{
-			m_iDir = 1;
 			move = m_iDir * m_speed;
 			m_curpos.x += move * fDT;
 			m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));
@@ -81,6 +81,17 @@ void ControllerComponent::Control()
 	{
 		if (m_eCurState == PLAYER_STATE::WALK)
 			ChangeState(PLAYER_STATE::IDLE);
+	}
+
+	if (GetKeyHold(DOWN))
+	{
+		// 땅이면 
+		if (m_pGravity->GetGround())
+			ChangeState(PLAYER_STATE::SIT);
+	}
+	if(GetKeyUp(DOWN)) 
+	{
+		ChangeState(PLAYER_STATE::IDLE);
 	}
 	
 
@@ -125,7 +136,7 @@ void ControllerComponent::SpecialAttack() {
 
 void ControllerComponent::UpdateState()
 {
-	printf("m_eCurStste : %d\n", (int)m_eCurState);
+	// printf("m_eCurStste : %d\n", (int)m_eCurState);
 	switch (m_eCurState)
 	{
 	case PLAYER_STATE::IDLE:
@@ -170,7 +181,9 @@ void ControllerComponent::UpdateState()
 			gameObject->GetComponent<CAnimator>()->Play("Sit_Right", true);
 		else
 			gameObject->GetComponent<CAnimator>()->Play("Sit_Left", true);
-		ChangeState(PLAYER_STATE::IDLE);
+		// 앉아있는 동안에는 Idle로 돌아가면 안된다. 
+		// 따라서 아래 코드는 특정 조건에 의해 해제되게 해야 한다. 
+		// ChangeState(PLAYER_STATE::IDLE);
 	}
 	break;
 	case PLAYER_STATE::HIT:
@@ -193,7 +206,7 @@ void ControllerComponent::ChangeState(PLAYER_STATE newState)
 void ControllerComponent::UpdateAnimation()
 {
 	// printf("1. m_eCurStste : %d\r", (int)m_eCurState);
-	if (m_ePrevState == m_eCurState && m_iPrevDir == m_iDir) return;
+	// if (m_ePrevState == m_eCurState && m_iPrevDir == m_iDir) return;
 
 	// 바뀌면
 	switch (m_eCurState)
