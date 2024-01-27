@@ -33,6 +33,7 @@ public:
 	const string& GetName() { return m_strName; }
 	void Create(CTexture* pTex, vec2 vLT, vec2 vSliceSize, vec2 vStep, int idir, float fDuration, int iFrameCount);
 	bool IsFinished() { return m_bFinish; }
+	void SetFinished(bool b) { m_bFinish = b; }
 	void SetFrame(int iFrameIdx) 
 	{
 		m_bFinish = false;

@@ -89,7 +89,6 @@ void ControllerComponent::Control()
 	}
 	if (GetKeyHold(RIGHT))
 	{
-		// 점프 키눌러도 이렇게 앞으로 잘 갔으면 좋겠는데... ㅠㅠ 
 		if (m_eCurState != PLAYER_STATE::SIT)
 		{
 			m_curpos.x += m_speed * fDT;  // m_rigidbody->AddForce(vec2(m_speed, 0.f));
@@ -116,12 +115,15 @@ void ControllerComponent::Control()
 	//	// m_curpos.x += m_speed * fDT;
 	//	m_rigidbody->AddVelocity(vec2(m_speed / 2, 0.f));
 	//}
-	if (GetKeyDown(Z)) 
+	if (GetKeyDown(X)) 
 	{
 		SpecialAttack();
 	}
-
-	if (GetKeyDown(X))
+	if (GetKeyDown(V))
+	{
+		
+	}
+	if (GetKeyDown(C))
 	{
 		// SpecialAttack();
 	}
@@ -151,7 +153,9 @@ void ControllerComponent::UpdateState()
 	// 상태 관리
 	if (GetKeyHold(LEFT))
 	{
-		if (m_eCurState != PLAYER_STATE::JUMP && m_eCurState != PLAYER_STATE::SIT) 
+		if (m_eCurState != PLAYER_STATE::JUMP 
+			&& m_eCurState != PLAYER_STATE::SIT 
+			&& m_eCurState != PLAYER_STATE::ATTACK)
 		{
 			m_iDir = -1;
 			m_eCurState = PLAYER_STATE::WALK;
@@ -161,14 +165,35 @@ void ControllerComponent::UpdateState()
 	if (GetKeyHold(RIGHT))
 	{
 		// 점프 중에 좌우키 눌러도 점프 모션 유지
-		if (m_eCurState != PLAYER_STATE::JUMP && m_eCurState != PLAYER_STATE::SIT)
+		if (m_eCurState != PLAYER_STATE::JUMP 
+			&& m_eCurState != PLAYER_STATE::SIT 
+			&& m_eCurState != PLAYER_STATE::ATTACK)
 		{
 			m_iDir = 1;
 			m_eCurState = PLAYER_STATE::WALK;
 		}
 	}
+
+	if (GetKeyDown(V))
+	{
+		m_eCurState = PLAYER_STATE::ATTACK;
+
+		// 처음에는 false, State가 Attack이 되고 시간이 지나면 true되어서 내용물 실행
+		if (gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->IsFinished()) 
+		{
+			// 다시 쓸수 있게 
+			gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->SetFinished(false);
+		}
+		if (gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Left")->IsFinished())
+		{
+			// 다시 쓸수 있게 
+			gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Left")->SetFinished(false);
+		}
+	}
+	
+
 	// 점프 관련 bool 변수
-	if (GetKeyDown(X) && m_eCurState != PLAYER_STATE::JUMP)
+	if (GetKeyDown(C) && m_eCurState != PLAYER_STATE::JUMP)
 	{
 		// 앉은 채에서 점프 불가
 		if (m_rigidbody && m_eCurState != PLAYER_STATE::SIT)
@@ -220,14 +245,23 @@ void ControllerComponent::UpdateState()
 	float speed = m_rigidbody->GetSpeed();
 	
 	
-	/*printf("speed : %f\n", speed);
-	printf("1. m_eCurStste : %d\n", (int)m_eCurState);*/
+	// printf("speed : %f\n", speed);
+	printf("1. m_eCurStste : %d\n", (int)m_eCurState);
 	// 점프 중에 IDle방지
 	// 속도 조건 넣기
-	if (m_rigidbody->GetSpeed() <= 1 && PLAYER_STATE::JUMP != m_eCurState && PLAYER_STATE::SIT != m_eCurState)
+	if (m_rigidbody->GetSpeed() <= 1 && PLAYER_STATE::JUMP != m_eCurState && PLAYER_STATE::SIT != m_eCurState && m_eCurState != PLAYER_STATE::ATTACK)
 	{
 		m_eCurState = PLAYER_STATE::IDLE;
 	}
+	if (gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->IsFinished())
+	{
+		m_eCurState = PLAYER_STATE::IDLE;
+	}
+	if (gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Left")->IsFinished())
+	{
+		m_eCurState = PLAYER_STATE::IDLE;
+	}
+	printf("2. m_eCurStste : %d\n", (int)m_eCurState);
 }
 
 void ControllerComponent::UpdateAnimation()
@@ -263,6 +297,12 @@ void ControllerComponent::UpdateAnimation()
 	}
 		break;
 	case PLAYER_STATE::ATTACK:
+	{
+		if (m_iDir == 1)
+			gameObject->GetComponent<CAnimator>()->Play("Attack_Right", false);
+		else
+			gameObject->GetComponent<CAnimator>()->Play("Attack_Left", false);
+	}
 		break;
 	case PLAYER_STATE::SIT:
 	{

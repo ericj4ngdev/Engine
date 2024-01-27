@@ -72,7 +72,7 @@ CAnimation* CAnimator::FindAnimation(const string& strName)
 void CAnimator::Play(const string& strName, bool bRepeat)
 {
 	m_pCurAnim = FindAnimation(strName);
-	m_bRepeat = bRepeat;
+	m_bRepeat = bRepeat;	
 }
 
 void CAnimator::SetTexture(const string& _strKey, const char* _strFilePath)

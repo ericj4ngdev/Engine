@@ -35,16 +35,19 @@ void CPlayer::Init()
 	GetComponent<CAnimator>()->CreateAnimation("Idle_Right", pTex, vec2(8, 146), vec2(16, 32), vec2(0, 0), 1, 0.5f, 1);
 	GetComponent<CAnimator>()->CreateAnimation("Walk_Right", pTex, vec2(8, 146), vec2(16,32), vec2(40,0), 1, 0.15f, 4);
 	GetComponent<CAnimator>()->CreateAnimation("Jump_Right", pTex, vec2(248, 142), vec2(16, 32), vec2(0, 0), 1, 0.5f, 1);
-	GetComponent<CAnimator>()->CreateAnimation("Attack_Right", pTex, vec2(248, 146), vec2(16, 32), vec2(0, 0), 1, 0.5f, 1);
+	GetComponent<CAnimator>()->CreateAnimation("Attack_Right", pTex, vec2(1, 186), vec2(32, 32), vec2(40, 0), 1, 0.1f, 3);
 	GetComponent<CAnimator>()->CreateAnimation("Sit_Right", pTex, vec2(248, 142), vec2(16, 32), vec2(0, 0), 1, 0.5f, 1);
 
 	GetComponent<CAnimator>()->CreateAnimation("Idle_Left", pTex, vec2(8, 146), vec2(16, 32), vec2(0, 0), -1, 0.5f, 1);
 	GetComponent<CAnimator>()->CreateAnimation("Walk_Left", pTex, vec2(8, 146), vec2(16, 32), vec2(40, 0), -1, 0.15f, 4);
 	GetComponent<CAnimator>()->CreateAnimation("Jump_Left", pTex, vec2(248, 142), vec2(16, 32), vec2(0, 0), -1, 0.5f, 1);
-	GetComponent<CAnimator>()->CreateAnimation("Attack_Left", pTex, vec2(248, 146), vec2(16, 32), vec2(0, 0), -1, 0.5f, 4);
+	GetComponent<CAnimator>()->CreateAnimation("Attack_Left", pTex, vec2(1, 186), vec2(32, 32), vec2(40, 0), -1, 0.1f, 3);
 	GetComponent<CAnimator>()->CreateAnimation("Sit_Left", pTex, vec2(248, 142), vec2(16, 32), vec2(0, 0), -1, 0.5f, 1);
-	// CAnimation* pAnim = GetComponent<CAnimator>()->FindAnimation("Sit_Left");
-	// pAnim->GetFrame(0).vOffset = vec2(0, -10.f);
+
+	CAnimation* pAnim = GetComponent<CAnimator>()->FindAnimation("Attack_Right");
+	// pAnim->GetFrame(2).vOffset = vec2(0, -10.f);
+	pAnim->GetFrame(2).vSlice = vec2(48, 32);
+	pAnim->GetFrame(2).fD = 0.3f;
 	// pAnim = GetComponent<CAnimator>()->FindAnimation("Sit_Right");
 	// pAnim->GetFrame(0).vOffset = vec2(0, -10.f);
 	// pAnim = GetComponent<CAnimator>()->FindAnimation("Jump_Right");
