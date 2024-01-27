@@ -12,13 +12,10 @@ void CPlayer::Init()
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
 	// strFilePath += "texture\\player.png";
 	// CreateComponent<CRenderComponent>();
-	CreateComponent<ControllerComponent>();
 	CreateComponent<CRigidbody>();
 	CreateComponent<CGravity>();
 	CreateComponent<CCollider>();
 	
-
-	GetComponent<ControllerComponent>()->SetSpeed(100.0f);
 	// 조종에 AddForce를 안해서 무의미 
 	 GetComponent<CRigidbody>()->SetFriction(700.0f);		
 	// x값 무의미
@@ -64,7 +61,10 @@ void CPlayer::Init()
 	for (int i = 0; i < pAnim->GetMaxFrame(); i++)
 		pAnim->GetFrame(i).vOffset = vec2(0, -1000.f);*/
 
+	CreateComponent<ControllerComponent>();
 
+
+	GetComponent<ControllerComponent>()->SetSpeed(100.0f);
 	m_StepedBlockCount = 0;
 }
 

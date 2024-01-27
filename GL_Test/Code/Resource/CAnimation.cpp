@@ -28,9 +28,10 @@ void CAnimation::Update()
 			m_iCurFrm = 0;
 			m_bFinish = true;
 			m_fAccTime = 0.f;
-			return;		// 인덱스가 -1되는 거 방지
+			// return;		// 인덱스가 -1되는 거 방지
 		}
-		else {
+		else 
+		{
 			m_bFinish = false;
 		}
 		m_fAccTime = m_fAccTime - m_vecFrm[m_iCurFrm].fD;

@@ -13,8 +13,11 @@ enum class PLAYER_STATE
 
 enum class PLAYER_ATTACK_STATE
 {
-	SIT_ATTACK,
-	SKILL,
+	IDLE,
+	PREPARE,
+	CAST,
+	ONACTION,
+	FINISH,
 };
 
 
@@ -39,6 +42,7 @@ public:
 	void UpdateAnimation();
 	void SetState(PLAYER_STATE state) { m_eCurState = state; }
 	void ChangeState(PLAYER_STATE newState);
+	void UpdateAttack();
 private:
 	vec2 m_curpos;
 	float m_speed;
@@ -48,8 +52,12 @@ private:
 private:
 	PLAYER_STATE	m_eCurState;
 	PLAYER_STATE	m_ePrevState;
+	PLAYER_ATTACK_STATE	m_eAttackState;
 	int m_iDir;
 	int m_iPrevDir;
+	bool m_bMoveable;
+	float animationTimer;
+	int m_attackFrame;
 public:
 	void SetSpeed(float sp) { m_speed = sp; }
 };

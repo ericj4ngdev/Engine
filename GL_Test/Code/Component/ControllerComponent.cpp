@@ -5,6 +5,8 @@ ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent
 	, m_eCurState(PLAYER_STATE::IDLE)
 	, m_iDir(1)
 	, m_iPrevDir(-1)
+	, m_bMoveable(true)
+	, m_eAttackState(PLAYER_ATTACK_STATE::IDLE)
 {
 	// m_speed = 1000;	
 	
@@ -17,6 +19,7 @@ ControllerComponent::~ControllerComponent()
 
 void ControllerComponent::Init()
 {
+	m_attackFrame = gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->GetMaxFrame();
 }
 
 void ControllerComponent::Update()
@@ -29,7 +32,8 @@ void ControllerComponent::Update()
 	UpdateState();
 	
 	// UpdateAnimation();
-	
+	// printf("\x1B[H");
+	// printf("\x1B[B");
 	// m_ePrevState = m_eCurState;
 	// m_iPrevDir = m_iDir;
 }
@@ -49,7 +53,7 @@ void ControllerComponent::Destroy()
 
 void ControllerComponent::Control()
 {
-	printf("m_eCurStste : %d\n", (int)m_eCurState);
+	// printf("m_eCurStste : %d\n", (int)m_eCurState);
 	float move = 0;
 	if (GetKeyHold(LEFT))
 	{
@@ -71,17 +75,21 @@ void ControllerComponent::Control()
 			m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));
 		}
 	}
-
-	if (abs(move) > 0)
+	
+	if (m_bMoveable) 
 	{
-		if (m_eCurState == PLAYER_STATE::IDLE)
-			ChangeState(PLAYER_STATE::WALK);
+		if (abs(move) > 0)
+		{
+			if (m_eCurState == PLAYER_STATE::IDLE)
+				ChangeState(PLAYER_STATE::WALK);
+		}
+		else
+		{
+			if (m_eCurState == PLAYER_STATE::WALK)
+				ChangeState(PLAYER_STATE::IDLE);
+		}
 	}
-	else 
-	{
-		if (m_eCurState == PLAYER_STATE::WALK)
-			ChangeState(PLAYER_STATE::IDLE);
-	}
+	
 
 	if (GetKeyHold(DOWN))
 	{
@@ -97,11 +105,16 @@ void ControllerComponent::Control()
 
 	if (GetKeyDown(X)) 
 	{
-		SpecialAttack();
+		// SpecialAttack();
 	}
 	if (GetKeyDown(V))
 	{
-		
+		if (m_eCurState != PLAYER_STATE::ATTACK)
+		{
+			m_bMoveable = false;
+			// gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->SetFinished(false);
+			ChangeState(PLAYER_STATE::ATTACK);
+		}
 	}
 
 	if (GetKeyDown(C) && m_eCurState != PLAYER_STATE::JUMP)
@@ -114,8 +127,7 @@ void ControllerComponent::Control()
 		}
 	}
 
-	// printf("\x1B[H");
-	// printf("\x1B[B");
+	
 	// printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
 	// set(현재 위치 + 변화량) 동기화.
 	gameObject->GetComponent<TransformComponent>()->SetPosition(m_curpos);
@@ -168,11 +180,12 @@ void ControllerComponent::UpdateState()
 	break;
 	case PLAYER_STATE::ATTACK:
 	{
-		if (m_iDir == 1)
+		UpdateAttack();
+		/*if (m_iDir == 1)
 			gameObject->GetComponent<CAnimator>()->Play("Attack_Right", false);
 		else
-			gameObject->GetComponent<CAnimator>()->Play("Attack_Left", false);
-		ChangeState(PLAYER_STATE::IDLE);
+			gameObject->GetComponent<CAnimator>()->Play("Attack_Left", false);*/
+		// ChangeState(PLAYER_STATE::IDLE);
 	}
 	break;
 	case PLAYER_STATE::SIT:
@@ -195,6 +208,10 @@ void ControllerComponent::UpdateState()
 	}
 }
 
+void ControllerComponent::UpdateAnimation()
+{
+}
+
 // 모든 State 끝에 Idle로 돌아가는 로직 만들기
 void ControllerComponent::ChangeState(PLAYER_STATE newState)
 {
@@ -203,60 +220,54 @@ void ControllerComponent::ChangeState(PLAYER_STATE newState)
 	m_eCurState = newState;
 }
 
-void ControllerComponent::UpdateAnimation()
-{
-	// printf("1. m_eCurStste : %d\r", (int)m_eCurState);
-	// if (m_ePrevState == m_eCurState && m_iPrevDir == m_iDir) return;
-
-	// 바뀌면
-	switch (m_eCurState)
+void ControllerComponent::UpdateAttack()
+{	
+	switch (m_eAttackState)
 	{
-	case PLAYER_STATE::IDLE:
+	case PLAYER_ATTACK_STATE::IDLE:
+		m_eAttackState = PLAYER_ATTACK_STATE::PREPARE;
+		break;
+	case PLAYER_ATTACK_STATE::PREPARE:
 	{
-		if (m_iDir == 1)
-			gameObject->GetComponent<CAnimator>()->Play("Idle_Right", true);
-		else
-			gameObject->GetComponent<CAnimator>()->Play("Idle_Left", true);
-	}
-	break;
-	case PLAYER_STATE::WALK:
-	{
-		if (m_iDir == 1)
-			gameObject->GetComponent<CAnimator>()->Play("Walk_Right", true);
-		else
-			gameObject->GetComponent<CAnimator>()->Play("Walk_Left", true);
-	}
-	break;
-	case PLAYER_STATE::JUMP:
-	{
-		if (m_iDir == 1)
-			gameObject->GetComponent<CAnimator>()->Play("Jump_Right", true);
-		else
-			gameObject->GetComponent<CAnimator>()->Play("Jump_Left", true);
-	}
-	break;
-	case PLAYER_STATE::ATTACK:
-	{
+		printf("m_attackFrame : %d\n", m_attackFrame);
+		animationTimer = m_attackFrame;
+		m_bMoveable = false;
 		if (m_iDir == 1)
 			gameObject->GetComponent<CAnimator>()->Play("Attack_Right", false);
 		else
 			gameObject->GetComponent<CAnimator>()->Play("Attack_Left", false);
+		m_eAttackState = PLAYER_ATTACK_STATE::CAST;
 	}
-	break;
-	case PLAYER_STATE::SIT:
-	{
-		if (m_iDir == 1)
-			gameObject->GetComponent<CAnimator>()->Play("Sit_Right", true);
-		else
-			gameObject->GetComponent<CAnimator>()->Play("Sit_Left", true);
-	}
-	break;
-	case PLAYER_STATE::HIT:
 		break;
-	case PLAYER_STATE::DEAD:
+	case PLAYER_ATTACK_STATE::CAST:
+	{
+		// m_attackFrame = 3
+		// printf("animationTimer : %f\n", animationTimer);
+		if (animationTimer < (float)m_attackFrame / 3) {
+			m_eAttackState = PLAYER_ATTACK_STATE::ONACTION;
+		}
+		else animationTimer -= fDT;
+	}
+		break;
+	case PLAYER_ATTACK_STATE::ONACTION:
+		if (animationTimer < 0)
+		{
+			m_eAttackState = PLAYER_ATTACK_STATE::FINISH;
+		}
+		else
+			animationTimer -= fDT;
+		break;
+	case PLAYER_ATTACK_STATE::FINISH:
+	{
+		m_bMoveable = true;
+		gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->SetFinished(false);
+		ChangeState(PLAYER_STATE::IDLE);
+		m_eAttackState = PLAYER_ATTACK_STATE::IDLE;
+	}
 		break;
 	default:
 		break;
 	}
+
 
 }
