@@ -12,10 +12,10 @@ void CPlayer::Init()
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
 	// strFilePath += "texture\\player.png";
 	// CreateComponent<CRenderComponent>();
-	CreateComponent<CGravity>();
-	CreateComponent<CRigidbody>();
-	CreateComponent<CCollider>();
 	CreateComponent<ControllerComponent>();
+	CreateComponent<CRigidbody>();
+	CreateComponent<CGravity>();
+	CreateComponent<CCollider>();
 	
 
 	GetComponent<ControllerComponent>()->SetSpeed(100.0f);
@@ -84,9 +84,9 @@ void CPlayer::OnCollisionEnter(CCollider* pOther)
 		vec2 vScale = GetScale();
 		m_StepedBlockCount++;
 		static_cast<CBlock*>(pOtherObj)->SetCount(m_StepedBlockCount);	
-		if ((vPos.y - vScale.y / 2.f) > pOtherObj->GetPos().y + pOtherObj->GetPos().y / 2.f)
+		if ((vPos.y - vScale.y / 2.f) > pOtherObj->GetPos().y + pOtherObj->GetPos().y /2.f)
 		{
-			GetComponent<ControllerComponent>()->SetState(PLAYER_STATE::IDLE);
+			GetComponent<ControllerComponent>()->ChangeState(PLAYER_STATE::IDLE);
 		}
 	}
 }

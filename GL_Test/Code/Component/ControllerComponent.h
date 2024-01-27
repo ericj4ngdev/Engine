@@ -38,6 +38,7 @@ public:
 	void UpdateState();
 	void UpdateAnimation();
 	void SetState(PLAYER_STATE state) { m_eCurState = state; }
+	void ChangeState(PLAYER_STATE newState);
 private:
 	vec2 m_curpos;
 	float m_speed;

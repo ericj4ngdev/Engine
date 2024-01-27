@@ -15,13 +15,13 @@ void CGravity::Update()
 
 void CGravity::FinalUpdate()
 {
+	gameObject->GetComponent<CRigidbody>()->SetAccelAlpha(vec2(0.f, -m_gravity));
 	// 가속도 제공
 	if (m_bGround)
 	{
 		// 땅이면 중력 X
 		return;
 	}
-	gameObject->GetComponent<CRigidbody>()->SetAccelAlpha(vec2(0.f, -m_gravity));
 	
 }
 
