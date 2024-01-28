@@ -32,7 +32,7 @@ void OnIdle()
     // glutPostRedisplay();
 }
 
-int GLMgr::g_screenWidth = 720;
+int GLMgr::g_screenWidth = 1080;
 int GLMgr::g_screenHeight = 720;
 
 int main(int argc, char** argv)

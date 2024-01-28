@@ -38,8 +38,8 @@ void ControllerComponent::Update()
 	Control();	
 	UpdateState();
 	// UpdateAnimation();
-	/*printf("\x1B[H");
-	printf("\x1B[B");*/
+	printf("\x1B[H");
+	printf("\x1B[B");
 	// m_ePrevState = m_eCurState;
 	// m_iPrevDir = m_iDir;
 }
@@ -148,9 +148,8 @@ void ControllerComponent::Control()
 	}
 	
 
-	printf("m_eCurStste : %d	m_eCurAttackState : %d\n", (int)m_eCurState, (int)m_eCurAttackState);
-	
-	// printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
+	printf("m_eCurStste : %d	m_eCurAttackState : %d\n", (int)m_eCurState, (int)m_eCurAttackState);	
+	printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
 	// set(현재 위치 + 변화량) 동기화.
 	gameObject->GetComponent<TransformComponent>()->SetPosition(m_curpos);
 }
@@ -210,9 +209,9 @@ void ControllerComponent::UpdateState()
 			gameObject->GetComponent<CAnimator>()->Play("Fall_Right", true);
 		else
 			gameObject->GetComponent<CAnimator>()->Play("Fall_Left", true);
-		// 앉아있는 동안에는 Idle로 돌아가면 안된다. 
-		// 따라서 아래 코드는 특정 조건에 의해 해제되게 해야 한다. 
-		// ChangeState(PLAYER_STATE::IDLE);
+		
+		// CPlayer의 OnCollsionEnter로 돌아오게 하려 했는데 엔진 구조상 Idle로 안돌아온다. 
+		if(m_pGravity->GetGround()) ChangeState(PLAYER_STATE::IDLE);
 	}
 	break;
 	case PLAYER_STATE::HIT:

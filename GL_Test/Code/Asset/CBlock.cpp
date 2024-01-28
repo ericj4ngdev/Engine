@@ -11,9 +11,9 @@ void CBlock::Init()
 {
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
 	strFilePath += "texture\\block.png";
-	CreateComponent<CRenderComponent>();
+	// CreateComponent<CRenderComponent>();
 	CreateComponent<CCollider>();
-	GetComponent<CRenderComponent>()->SetTexture("Block", strFilePath.c_str());
+	// GetComponent<CRenderComponent>()->SetTexture("Block", strFilePath.c_str());
 	
 
 }
@@ -26,10 +26,8 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 	{
 		// 땅에 안착했음을 알려줌
 		// 이미 true이면 패스
-		if (!pOtherObj->GetComponent<CGravity>()->GetGround()) 
-		{
-			pOtherObj->GetComponent<CGravity>()->SetGround(true);
-		}
+		if (pOtherObj->GetComponent<CGravity>()->GetGround()) return;
+		pOtherObj->GetComponent<CGravity>()->SetGround(true);
 
 		// 플레이어
 		vec2 vObjPos = pOther->GetPos();
@@ -62,6 +60,7 @@ void CBlock::OnCollision(CCollider* pOther)
 	{
 		// col++;
 		// 땅에 안착했음을 알려줌
+		// if (pOtherObj->GetComponent<CGravity>()->GetGround()) return;
 		pOtherObj->GetComponent<CGravity>()->SetGround(true);// 안착 시 중력 X
 		
 
@@ -79,7 +78,7 @@ void CBlock::OnCollision(CCollider* pOther)
 
 		vObjPos = pOtherObj->GetComponent<TransformComponent>()->GetPosition();
 		if (count == 0) return;
-		vObjPos.y += (float)(fPush / count);	// 더 밀어버려.
+		vObjPos.y += (float)(fPush / count);	// 더 밀어버려. position을 더 파먹게. 더 적게 더한다.
 
 		pOtherObj->GetComponent<TransformComponent>()->SetPosition(vObjPos);
 	}

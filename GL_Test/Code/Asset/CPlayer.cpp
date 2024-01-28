@@ -88,16 +88,16 @@ void CPlayer::OnCollisionEnter(CCollider* pOther)
 		vec2 vScale = GetScale();
 		m_StepedBlockCount++;
 		static_cast<CBlock*>(pOtherObj)->SetCount(m_StepedBlockCount);	
-		if ((vPos.y - vScale.y / 2.f) > pOtherObj->GetPos().y + pOtherObj->GetPos().y /2.f)
+		if ((vPos.y - vScale.y / 2.f) >= pOtherObj->GetPos().y + pOtherObj->GetScale().y /2.f)
 		{
-			GetComponent<ControllerComponent>()->ChangeState(PLAYER_STATE::IDLE);
+			// GetComponent<ControllerComponent>()->ChangeState(PLAYER_STATE::IDLE);
 		}
 	}
 }
 
 void CPlayer::OnCollision(CCollider* pOther)
 {
-	// printf("CPlayer::OnCollision -> count : %d\n", m_StepedBlockCount);
+	printf("CPlayer::OnCollision -> count : %d\n", m_StepedBlockCount);
 }
 
 
@@ -109,6 +109,6 @@ void CPlayer::OnCollisionExit(CCollider* pOther)
 	{
 		m_StepedBlockCount--;
 		static_cast<CBlock*>(pOtherObj)->SetCount(m_StepedBlockCount);
-		// printf("count : %d\n", c);
+		// printf("count : %d\n", m_StepedBlockCount);
 	}
 }
