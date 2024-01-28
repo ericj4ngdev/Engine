@@ -131,6 +131,8 @@ void ControllerComponent::Control()
 			case PLAYER_STATE::FALL:
 				ChangeAttackState(PLAYER_ATTACK_STATE::JUMP_ATTACK);
 				break;
+			case PLAYER_STATE::ATTACK:				
+				break;
 			default:
 				break;
 			}
@@ -139,41 +141,11 @@ void ControllerComponent::Control()
 	}
 	if (GetKeyUp(V)) 
 	{
-		// 단타용
-		// 떼면 완전 종료
-		/*switch (m_eCurAttackState)
-		{
-		case PLAYER_ATTACK_STATE::IDLE:
-		{
-
-		}
-		break;
-		case PLAYER_ATTACK_STATE::NORMAL:
-		{
-			ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
-			ChangeState(PLAYER_STATE::IDLE);
-		}
-		break;
-		case PLAYER_ATTACK_STATE::RUN_ATTACK:
-		{
-			ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
-			ChangeState(PLAYER_STATE::WALK);
-		}
-		break;
-		case PLAYER_ATTACK_STATE::JUMP_ATTACK:
-		{
-			ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
-			ChangeState(PLAYER_STATE::FALL);
-		}
-		break;
-		default:
-			break;
-		}*/
+		// 단타용 떼면 완전 종료
 		ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
 		m_attackTimer = 1;
 		m_attackCount = 0;
 	}
-
 	
 
 	printf("m_eCurStste : %d	m_eCurAttackState : %d\n", (int)m_eCurState, (int)m_eCurAttackState);
@@ -254,6 +226,8 @@ void ControllerComponent::UpdateState()
 
 void ControllerComponent::UpdateAttack()
 {	
+
+	
 	
 	switch (m_eCurAttackState)
 	{
@@ -262,14 +236,17 @@ void ControllerComponent::UpdateAttack()
 		animationTimer = 0;
 		// ChangeState(PLAYER_STATE::IDLE);		// 공중에선 Idle로 돌아오면 안된다.
 		// 그래서 Jump_Attack빼고 일일이 ChangeState(PLAYER_STATE::IDLE);넣어줌
-		// if(m_ePrevAttackState != PLAYER_ATTACK_STATE::JUMP_ATTACK)
-		// 	ChangeState(PLAYER_STATE::IDLE);
+		// 아래 코드 추가 -> 단발 공격시 애니메이션 안돌아감
+		if(m_ePrevAttackState != PLAYER_ATTACK_STATE::JUMP_ATTACK)
+			ChangeState(PLAYER_STATE::IDLE);
+		else
+			ChangeState(PLAYER_STATE::FALL);
 	}
 		break;
 	case PLAYER_ATTACK_STATE::NORMAL:
 	{
 		animationTimer += fDT;
-		// 3초 동안 애니메이션 
+		// 0.5초 동안 애니메이션 
 		if (animationTimer < 0.5f) 
 		{
 			if (m_iDir == 1)
@@ -279,16 +256,19 @@ void ControllerComponent::UpdateAttack()
 		}
 		else 
 		{
-			// 1.5초 지나면 끝(누르고 있어도 끝)
+			// 0.5초 지나면 끝(누르고 있어도 끝)
 			ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
 			ChangeState(PLAYER_STATE::IDLE);
+			animationTimer = 0;			// 직접 시간 초기화
+			// 둘 다 Idle이면 다음 프레임에서 PLAYER_STATE가 Attack이 아니어서 
+			// PLAYER_ATTACK_STATE가 IDLE이어도 animationTimer가 초기화가 안된다.
+			// 따라서 Change할 때, 전체 초기화를 해줘야 한다 생각
 		}	
 	}
 		break;
 	case PLAYER_ATTACK_STATE::RUN_ATTACK:
 	{
 		animationTimer += fDT;
-		// 3초 동안 애니메이션 
 		if (animationTimer < 0.5f)
 		{
 			if (m_iDir == 1)
@@ -298,16 +278,15 @@ void ControllerComponent::UpdateAttack()
 		}
 		else
 		{
-			// 3초 지나면 끝(누르고 있어도 끝)
 			ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
 			ChangeState(PLAYER_STATE::IDLE);
+			animationTimer = 0;
 		}
 	}
 		break;
 	case PLAYER_ATTACK_STATE::JUMP_ATTACK:
 	{
 		animationTimer += fDT;
-		// 3초 동안 애니메이션 
 		if (animationTimer < 0.5f)
 		{
 			if (m_iDir == 1)
@@ -317,10 +296,10 @@ void ControllerComponent::UpdateAttack()
 		}
 		else
 		{
-			// 3초 지나면 끝(누르고 있어도 끝)
 			ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
 			ChangeState(PLAYER_STATE::FALL);		// 공중 공격이 끝나면 Idle이 아닌 공중으로 복귀. 
 			// FALL에서 알아서 IDLE로 돌아갈 거임
+			animationTimer = 0;
 		}
 	}
 		break;
