@@ -14,7 +14,7 @@ void Bullet::Update()
 	// 칼 본인 위치 받아오기. 그런데 항상 0,0이다...
 	m_curpos = gameObject->GetComponent<TransformComponent>()->GetPosition();
 	Movement();	
-	printf("Bullet (%f, %f)\n", m_curpos.x, m_curpos.y);
+	// printf("Bullet (%f, %f)\n", m_curpos.x, m_curpos.y);
 }
 
 void Bullet::FinalUpdate()

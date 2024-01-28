@@ -7,7 +7,6 @@ enum class PLAYER_STATE
 	JUMP,
 	FALL,
 	ATTACK,
-	SIT,
 	HIT,
 	DEAD,
 };
@@ -39,7 +38,6 @@ public:
 	void Control();
 	void SpecialAttack();
 	void UpdateState();
-	void UpdateAnimation();
 	void SetState(PLAYER_STATE state) { m_eCurState = state; }
 	void ChangeState(PLAYER_STATE newState);
 	void ChangeAttackState(PLAYER_ATTACK_STATE attackState);
@@ -54,10 +52,12 @@ private:
 	PLAYER_STATE	m_eCurState;
 	PLAYER_STATE	m_ePrevState;
 	PLAYER_ATTACK_STATE	m_eCurAttackState;
+	PLAYER_ATTACK_STATE	m_ePrevAttackState;
 	int m_iDir;
 	int m_iPrevDir;
 	bool m_bMoveable;
 	float animationTimer;
+	float m_MoveOffset;
 private:
 	float m_attackDT;
 	float m_attackTimer;

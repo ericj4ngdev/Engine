@@ -32,14 +32,18 @@ void CPlayer::Init()
 	GetComponent<CAnimator>()->CreateAnimation("Idle_Right", pTex, vec2(101, 34), vec2(24, 24), vec2(30, 0), 1, 0.5f, 2);
 	GetComponent<CAnimator>()->CreateAnimation("Walk_Right", pTex, vec2(188, 34), vec2(24, 24), vec2(28,0), 1, 0.15f, 4);
 	GetComponent<CAnimator>()->CreateAnimation("Jump_Right", pTex, vec2(296, 34), vec2(26, 29), vec2(0, 0), 1, 0.5f, 1);
+	GetComponent<CAnimator>()->CreateAnimation("Fall_Right", pTex, vec2(296, 34), vec2(26, 29), vec2(0, 0), 1, 0.5f, 1);
 	GetComponent<CAnimator>()->CreateAnimation("Attack_Right", pTex, vec2(14, 70), vec2(32, 24), vec2(0, 0), 1, 0.1f, 1);
-	GetComponent<CAnimator>()->CreateAnimation("Sit_Right", pTex, vec2(248, 142), vec2(16, 32), vec2(0, 0), 1, 0.5f, 1);
+	GetComponent<CAnimator>()->CreateAnimation("Run_Attack_Right", pTex, vec2(47, 70), vec2(32, 24), vec2(33, 0), 1, 0.15f, 3);
+	GetComponent<CAnimator>()->CreateAnimation("Jump_Attack_Right", pTex, vec2(146, 70), vec2(26, 29), vec2(33, 0), 1, 0.15f, 1);
 
 	GetComponent<CAnimator>()->CreateAnimation("Idle_Left", pTex, vec2(101, 34), vec2(24, 24), vec2(30, 0), -1, 0.5f, 2);
-	GetComponent<CAnimator>()->CreateAnimation("Walk_Left", pTex, vec2(188, 34), vec2(26, 29), vec2(28, 0), -1, 0.15f, 4);
+	GetComponent<CAnimator>()->CreateAnimation("Walk_Left", pTex, vec2(188, 34), vec2(24, 24), vec2(28, 0), -1, 0.15f, 4);
 	GetComponent<CAnimator>()->CreateAnimation("Jump_Left", pTex, vec2(296, 34), vec2(26, 29), vec2(0, 0), -1, 0.5f, 1);
+	GetComponent<CAnimator>()->CreateAnimation("Fall_Left", pTex, vec2(296, 34), vec2(26, 29), vec2(0, 0), -1, 0.5f, 1);
 	GetComponent<CAnimator>()->CreateAnimation("Attack_Left", pTex, vec2(14, 70), vec2(32, 24), vec2(0, 0), -1, 0.1f, 1);
-	GetComponent<CAnimator>()->CreateAnimation("Sit_Left", pTex, vec2(248, 142), vec2(16, 32), vec2(0, 0), -1, 0.5f, 1);
+	GetComponent<CAnimator>()->CreateAnimation("Run_Attack_Left", pTex, vec2(47, 70), vec2(32, 24), vec2(33, 0), -1, 0.15f, 3);
+	GetComponent<CAnimator>()->CreateAnimation("Jump_Attack_Left", pTex, vec2(146, 70), vec2(26, 29), vec2(33, 0), -1, 0.15f, 1);
 
 	// CAnimation* pAnim = GetComponent<CAnimator>()->FindAnimation("Attack_Right");
 	// pAnim->GetFrame(2).vOffset = vec2(0, -10.f);

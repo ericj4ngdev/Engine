@@ -77,6 +77,7 @@ void CRigidbody::FinalUpdate()
 	m_vAccel = vec2(0.f, 0.f);
 	m_vAccelA = vec2(0.f, 0.f);
 }
+
 void CRigidbody::Render()
 {
 

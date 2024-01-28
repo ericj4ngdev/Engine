@@ -25,7 +25,11 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 	if (pOtherObj->GetName() == "Player") 
 	{
 		// 땅에 안착했음을 알려줌
-		pOtherObj->GetComponent<CGravity>()->SetGround(true);
+		// 이미 true이면 패스
+		if (!pOtherObj->GetComponent<CGravity>()->GetGround()) 
+		{
+			pOtherObj->GetComponent<CGravity>()->SetGround(true);
+		}
 
 		// 플레이어
 		vec2 vObjPos = pOther->GetPos();
@@ -58,7 +62,8 @@ void CBlock::OnCollision(CCollider* pOther)
 	{
 		// col++;
 		// 땅에 안착했음을 알려줌
-		pOtherObj->GetComponent<CGravity>()->SetGround(true);		// 안착 시 중력 X
+		pOtherObj->GetComponent<CGravity>()->SetGround(true);// 안착 시 중력 X
+		
 
 		// 플레이어
 		vec2 vObjPos = pOther->GetPos();

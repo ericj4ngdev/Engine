@@ -32,15 +32,21 @@ void SampleScene::Enter()
 	}*/
 
 	CBlock* block = nullptr;
-	for (int i = 0; i < 30; i++)
-	{
-		string blockName = "Block" + to_string(i);
-		block = new CBlock(blockName);
-		block->GetComponent<TransformComponent>()->SetPosition(vec2(25.f + (float)i * 50.f, 25.f));	// 원래 y값 25
-		block->GetComponent<TransformComponent>()->SetScale(vec2{ 50.f, 50.f });
-		block->GetComponent<CCollider>()->Init();
-		AddObject(block, GROUP_TYPE::MAP);
-	}
+	string blockName = "Block" + to_string(1);
+	block = new CBlock(blockName);
+	block->GetComponent<TransformComponent>()->SetPosition(vec2(175.f, 25.f));	// 원래 y값 25
+	block->GetComponent<TransformComponent>()->SetScale(vec2{ 50.f, 50.f });
+	block->GetComponent<CCollider>()->Init();
+	AddObject(block, GROUP_TYPE::MAP);
+	//for (int i = 0; i < 30; i++)
+	//{
+	//	string blockName = "Block" + to_string(i);
+	//	block = new CBlock(blockName);
+	//	block->GetComponent<TransformComponent>()->SetPosition(vec2(25.f + (float)i * 50.f, 25.f));	// 원래 y값 25
+	//	block->GetComponent<TransformComponent>()->SetScale(vec2{ 50.f, 50.f });
+	//	block->GetComponent<CCollider>()->Init();
+	//	AddObject(block, GROUP_TYPE::MAP);
+	//}
 
 	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::MAP, GROUP_TYPE::PLAYER);
 	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::MAP, GROUP_TYPE::ENEMY);
