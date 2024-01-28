@@ -1,4 +1,11 @@
-﻿  ControllerComponent.cpp
-C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(22,99): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(233,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+﻿  CBullet.cpp
+  SampleScene.cpp
+  ControllerComponent.cpp
+C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(11,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(163,47): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(163,47): warning C4244:         with
+C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(163,47): warning C4244:         [
+C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(163,47): warning C4244:             T=float
+C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(163,47): warning C4244:         ]
+C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(282,10): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   GL_Test.vcxproj -> C:\GitHub\Engine\GL_Test\Output\bin_Debug\GL_Test.exe

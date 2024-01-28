@@ -22,7 +22,7 @@
     <ClCompile Include="Code\Asset\CBlock.cpp" />
     <ClCompile Include="Code\Asset\CMap.cpp" />
     <ClCompile Include="Code\Asset\CPlayer.cpp" />
-    <ClCompile Include="Code\Asset\CSword.cpp" />
+    <ClCompile Include="Code\Asset\CBullet.cpp" />
     <ClCompile Include="Code\Asset\CZombie.cpp" />
     <ClCompile Include="Code\Asset\SampleScene.cpp" />
     <ClCompile Include="Code\CGameObject.cpp" />
@@ -32,7 +32,7 @@
     <ClCompile Include="Code\Component\ControllerComponent.cpp" />
     <ClCompile Include="Code\Component\CRenderComponent.cpp" />
     <ClCompile Include="Code\Component\CRigidbody.cpp" />
-    <ClCompile Include="Code\Component\Sword.cpp" />
+    <ClCompile Include="Code\Component\Bullet.cpp" />
     <ClCompile Include="Code\Component\TransformComponent.cpp" />
     <ClCompile Include="Code\Component\Zombie.cpp" />
     <ClCompile Include="Code\Core\EngineCore.cpp" />
@@ -57,7 +57,7 @@
     <ClInclude Include="Code\Asset\CBlock.h" />
     <ClInclude Include="Code\Asset\CMap.h" />
     <ClInclude Include="Code\Asset\CPlayer.h" />
-    <ClInclude Include="Code\Asset\CSword.h" />
+    <ClInclude Include="Code\Asset\CBullet.h" />
     <ClInclude Include="Code\Asset\CZombie.h" />
     <ClInclude Include="Code\Asset\SampleScene.h" />
     <ClInclude Include="Code\Cmacro.h" />
@@ -68,7 +68,7 @@
     <ClInclude Include="Code\Component\ControllerComponent.h" />
     <ClInclude Include="Code\Component\CRenderComponent.h" />
     <ClInclude Include="Code\Component\CRigidbody.h" />
-    <ClInclude Include="Code\Component\Sword.h" />
+    <ClInclude Include="Code\Component\Bullet.h" />
     <ClInclude Include="Code\Component\TransformComponent.h" />
     <ClInclude Include="Code\Component\Zombie.h" />
     <ClInclude Include="Code\CoreBase.h" />

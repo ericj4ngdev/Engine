@@ -35,6 +35,7 @@ void CTexture::LoadTexture(const char* path)
 	}
 	image = stbi_load_from_file(fp, &width, &height, &channel, 4);
 	m_vTexSize = vec2(width, height);
+	printf("m_vTexSize : %f, %f \n", m_vTexSize.x, m_vTexSize.y);
 	fclose(fp);
 	if (image)
 	{

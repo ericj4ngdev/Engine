@@ -1,15 +1,15 @@
 #pragma once
 
-class Sword : public CComponent
+class Bullet : public CComponent
 {
 public:
-    COMPONENT_DEFINE_CONSTRUCTOR(Sword)
+    COMPONENT_DEFINE_CONSTRUCTOR(Bullet)
     void Init() override;
     void Update() override;
     void FinalUpdate() override;
     void Render() override;
     void Destroy() override;
-    ~Sword();
+    ~Bullet();
 public:
     void Movement();
     void SetDir(vec2 v) { m_vDirection = v.Normalize(); }

@@ -33,8 +33,8 @@ void CAnimation::Update()
 		else 
 		{
 			m_bFinish = false;
+			m_fAccTime = m_fAccTime - m_vecFrm[m_iCurFrm].fD;
 		}
-		m_fAccTime = m_fAccTime - m_vecFrm[m_iCurFrm].fD;
 	}
 }
 

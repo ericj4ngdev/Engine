@@ -87,14 +87,14 @@ using std::vector;
 #include "Component/Zombie.h"
 #include "Component/CRigidbody.h"
 #include "Component/CGravity.h"
-#include "Component/Sword.h"
+#include "Component/Bullet.h"
 
 #include "CGameObject.h"
 #include "Asset/CPlayer.h"
 #include "Asset/CZombie.h"
 #include "Asset/CBlock.h"
 #include "Asset/CMap.h"
-#include "Asset/CSword.h"
+#include "Asset/CBullet.h"
 #endif
 
 

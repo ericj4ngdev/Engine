@@ -6,7 +6,10 @@ ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent
 	, m_iDir(1)
 	, m_iPrevDir(-1)
 	, m_bMoveable(true)
-	, m_eAttackState(PLAYER_ATTACK_STATE::IDLE)
+	, m_attackTimer(1)
+	, m_attackCount(0)
+	, m_attackDT(0.1)
+	, m_eCurAttackState(PLAYER_ATTACK_STATE::NORMAL)
 {
 	// m_speed = 1000;	
 	
@@ -19,7 +22,9 @@ ControllerComponent::~ControllerComponent()
 
 void ControllerComponent::Init()
 {
-	m_attackFrame = gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->GetMaxFrame();
+	// m_attackCount = 0;
+	// animationTimer = 1;
+	// m_attackDT = 0.3;
 }
 
 void ControllerComponent::Update()
@@ -28,12 +33,12 @@ void ControllerComponent::Update()
 	m_rigidbody = gameObject->GetComponent<CRigidbody>();	// 얘는 왜 업데이트해야 하는가?
 	m_Collider = gameObject->GetComponent<CCollider>();
 	m_pGravity = gameObject->GetComponent<CGravity>();
+	
 	Control();	
 	UpdateState();
-	
 	// UpdateAnimation();
-	// printf("\x1B[H");
-	// printf("\x1B[B");
+	printf("\x1B[H");
+	printf("\x1B[B");
 	// m_ePrevState = m_eCurState;
 	// m_iPrevDir = m_iDir;
 }
@@ -58,63 +63,80 @@ void ControllerComponent::Control()
 	if (GetKeyHold(LEFT))
 	{
 		m_iDir = -1;
-		if (m_eCurState != PLAYER_STATE::SIT)
-		{
-			move = m_iDir * m_speed;
-			m_curpos.x += move * fDT;
-			m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));
-		}
+		move = m_iDir * m_speed;
+		m_curpos.x += move * fDT;
+		m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));		
 	}
 	if (GetKeyHold(RIGHT))
 	{
 		m_iDir = 1;
-		if (m_eCurState != PLAYER_STATE::SIT)
-		{
-			move = m_iDir * m_speed;
-			m_curpos.x += move * fDT;
-			m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));
-		}
+		move = m_iDir * m_speed;
+		m_curpos.x += move * fDT;
+		m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));
+		
+	}
+
+	if (abs(move) > 0)
+	{
+		if (m_eCurState == PLAYER_STATE::IDLE)
+			ChangeState(PLAYER_STATE::WALK);
+	}
+	else
+	{
+		if (m_eCurState == PLAYER_STATE::WALK)
+			ChangeState(PLAYER_STATE::IDLE);
 	}
 	
-	if (m_bMoveable) 
-	{
-		if (abs(move) > 0)
-		{
-			if (m_eCurState == PLAYER_STATE::IDLE)
-				ChangeState(PLAYER_STATE::WALK);
-		}
-		else
-		{
-			if (m_eCurState == PLAYER_STATE::WALK)
-				ChangeState(PLAYER_STATE::IDLE);
-		}
-	}
 	
 
 	if (GetKeyHold(DOWN))
 	{
-		// 땅이면 
-		if (m_pGravity->GetGround())
-			ChangeState(PLAYER_STATE::SIT);
+
 	}
 	if(GetKeyUp(DOWN)) 
 	{
-		ChangeState(PLAYER_STATE::IDLE);
+
 	}
 	
 
 	if (GetKeyDown(X)) 
 	{
-		// SpecialAttack();
+		// 
 	}
-	if (GetKeyDown(V))
+	if (GetKeyHold(V))
 	{
-		if (m_eCurState != PLAYER_STATE::ATTACK)
+		// 이전 프레임이 JUMP, FALL 이면 (공중이면)
+		if (m_eCurState == PLAYER_STATE::JUMP || m_eCurState == PLAYER_STATE::FALL) 
 		{
-			m_bMoveable = false;
-			// gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->SetFinished(false);
-			ChangeState(PLAYER_STATE::ATTACK);
+			// 공중 공격
 		}
+
+		// IDLE이었다면
+		if (m_eCurState == PLAYER_STATE::IDLE)
+		{
+			// m_bMoveable = false;
+			if (m_attackCount < 3) {
+				if (m_attackTimer > m_attackDT)
+				{
+					SpecialAttack();				// 발사기능. 0.3초 간격
+					m_attackTimer = 0;
+					m_attackCount++;
+				}
+				m_attackTimer += fDT;
+				ChangeAttackState(PLAYER_ATTACK_STATE::NORMAL);
+				ChangeState(PLAYER_STATE::ATTACK);
+				// 3번 발사후 V 떼면 카운트 초기화
+				// m_attackCount = 0;
+			}			
+		}
+	}
+	if (GetKeyUp(V)) 
+	{
+		// 떼면 완전 종료
+		ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
+		ChangeState(PLAYER_STATE::IDLE);
+		m_attackTimer = 1;
+		m_attackCount = 0;
 	}
 
 	if (GetKeyDown(C) && m_eCurState != PLAYER_STATE::JUMP)
@@ -122,7 +144,6 @@ void ControllerComponent::Control()
 		if (m_rigidbody && m_eCurState != PLAYER_STATE::SIT)
 		{
 			ChangeState(PLAYER_STATE::JUMP);
-			// m_rigidbody->SetVelocity(vec2(m_rigidbody->GetVelocity().x, 800.f));
 			m_rigidbody->AddVelocity(vec2(m_rigidbody->GetVelocity().x, 800.f));
 		}
 	}
@@ -134,15 +155,14 @@ void ControllerComponent::Control()
 }
 
 void ControllerComponent::SpecialAttack() {
-	vec2 vSwordPos = gameObject->GetPos();
-	vSwordPos.x += gameObject->GetScale().y / 2.f;
+	vec2 vBulletPos = gameObject->GetPos();
+	vBulletPos.x += (gameObject->GetScale().y / 2.f) * m_iDir;
 	
-	CSword* pSword = new CSword("Sword");
-	pSword->GetComponent<TransformComponent>()->SetPosition(vSwordPos);
-	pSword->GetComponent<TransformComponent>()->SetScale(vec2(50.f, 50.f));
-	pSword->GetComponent<Sword>()->SetDir(vec2(1,0));
+	CBullet* pBullet = new CBullet("Bullet");
+	pBullet->GetComponent<TransformComponent>()->SetPosition(vBulletPos);
+	pBullet->GetComponent<Bullet>()->SetDir(vec2(m_iDir,0));
 
-	CreateObject(pSword, GROUP_TYPE::PROJ_PLAYER);
+	CreateObject(pBullet, GROUP_TYPE::PROJ_PLAYER);
 	// cout << "Shoot!" << '\n';
 }
 
@@ -180,12 +200,7 @@ void ControllerComponent::UpdateState()
 	break;
 	case PLAYER_STATE::ATTACK:
 	{
-		UpdateAttack();
-		/*if (m_iDir == 1)
-			gameObject->GetComponent<CAnimator>()->Play("Attack_Right", false);
-		else
-			gameObject->GetComponent<CAnimator>()->Play("Attack_Left", false);*/
-		// ChangeState(PLAYER_STATE::IDLE);
+		UpdateAttack();		
 	}
 	break;
 	case PLAYER_STATE::SIT:
@@ -220,53 +235,57 @@ void ControllerComponent::ChangeState(PLAYER_STATE newState)
 	m_eCurState = newState;
 }
 
+void ControllerComponent::ChangeAttackState(PLAYER_ATTACK_STATE attackState)
+{
+	if (m_eCurAttackState == attackState) return;
+	m_eCurAttackState = attackState;
+}
+
 void ControllerComponent::UpdateAttack()
 {	
-	switch (m_eAttackState)
+	switch (m_eCurAttackState)
 	{
-	case PLAYER_ATTACK_STATE::IDLE:
-		m_eAttackState = PLAYER_ATTACK_STATE::PREPARE;
-		break;
-	case PLAYER_ATTACK_STATE::PREPARE:
+	case PLAYER_ATTACK_STATE::IDLE: 
 	{
-		printf("m_attackFrame : %d\n", m_attackFrame);
-		animationTimer = m_attackFrame;
-		m_bMoveable = false;
-		if (m_iDir == 1)
-			gameObject->GetComponent<CAnimator>()->Play("Attack_Right", false);
-		else
-			gameObject->GetComponent<CAnimator>()->Play("Attack_Left", false);
-		m_eAttackState = PLAYER_ATTACK_STATE::CAST;
-	}
-		break;
-	case PLAYER_ATTACK_STATE::CAST:
-	{
-		// m_attackFrame = 3
-		// printf("animationTimer : %f\n", animationTimer);
-		if (animationTimer < (float)m_attackFrame / 3) {
-			m_eAttackState = PLAYER_ATTACK_STATE::ONACTION;
-		}
-		else animationTimer -= fDT;
-	}
-		break;
-	case PLAYER_ATTACK_STATE::ONACTION:
-		if (animationTimer < 0)
-		{
-			m_eAttackState = PLAYER_ATTACK_STATE::FINISH;
-		}
-		else
-			animationTimer -= fDT;
-		break;
-	case PLAYER_ATTACK_STATE::FINISH:
-	{
-		m_bMoveable = true;
-		gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->SetFinished(false);
+		animationTimer = 0;
 		ChangeState(PLAYER_STATE::IDLE);
-		m_eAttackState = PLAYER_ATTACK_STATE::IDLE;
 	}
+		break;
+	case PLAYER_ATTACK_STATE::NORMAL:
+	{
+		animationTimer += fDT;
+		// 3초 동안 애니메이션 
+		if (animationTimer < 1.5f) 
+		{
+			if (m_iDir == 1)
+				gameObject->GetComponent<CAnimator>()->Play("Attack_Right", true);
+			else
+				gameObject->GetComponent<CAnimator>()->Play("Attack_Left", true);			
+		}
+		else 
+		{
+			// 3초 지나면 끝(누르고 있어도 끝)
+			ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
+		}	
+	}
+		break;
+	case PLAYER_ATTACK_STATE::RUN_ATTACK:
+		break;
+	case PLAYER_ATTACK_STATE::JUMP_ATTACK:
 		break;
 	default:
 		break;
+	}
+	
+	
+	int cur = gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->GetCurFrame();
+	int max = gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->GetMaxFrame();
+	if ( cur >= max - 1)
+	{
+		animationTimer = 0.5;
+		m_bMoveable = true;
+		gameObject->GetComponent<CAnimator>()->FindAnimation("Attack_Right")->SetFinished(false);
+		ChangeState(PLAYER_STATE::IDLE);
 	}
 
 

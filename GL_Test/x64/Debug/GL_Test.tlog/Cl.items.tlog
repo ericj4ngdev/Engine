@@ -1,7 +1,7 @@
 C:\GitHub\Engine\GL_Test\Code\Asset\CBlock.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CBlock.obj
 C:\GitHub\Engine\GL_Test\Code\Asset\CMap.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CMap.obj
 C:\GitHub\Engine\GL_Test\Code\Asset\CPlayer.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CPlayer.obj
-C:\GitHub\Engine\GL_Test\Code\Asset\CSword.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CSword.obj
+C:\GitHub\Engine\GL_Test\Code\Asset\CBullet.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CBullet.obj
 C:\GitHub\Engine\GL_Test\Code\Asset\CZombie.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CZombie.obj
 C:\GitHub\Engine\GL_Test\Code\Asset\SampleScene.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\SampleScene.obj
 C:\GitHub\Engine\GL_Test\Code\CGameObject.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CGameObject.obj
@@ -11,7 +11,7 @@ C:\GitHub\Engine\GL_Test\Code\Component\CGravity.cpp;C:\GitHub\Engine\GL_Test\x6
 C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\ControllerComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\CRenderComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CRenderComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\CRigidbody.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CRigidbody.obj
-C:\GitHub\Engine\GL_Test\Code\Component\Sword.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\Sword.obj
+C:\GitHub\Engine\GL_Test\Code\Component\Bullet.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\Bullet.obj
 C:\GitHub\Engine\GL_Test\Code\Component\TransformComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\TransformComponent.obj
 C:\GitHub\Engine\GL_Test\Code\Component\Zombie.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\Zombie.obj
 C:\GitHub\Engine\GL_Test\Code\Core\EngineCore.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\EngineCore.obj

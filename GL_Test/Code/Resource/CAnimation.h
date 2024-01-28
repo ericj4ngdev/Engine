@@ -42,6 +42,7 @@ public:
 	}
 	void SetDirection(int dir) { m_direction = dir; }
 	tAinmFrm& GetFrame(int idx) { return m_vecFrm[idx]; }
+	int GetCurFrame() { return m_iCurFrm; }
 	size_t GetMaxFrame() { return m_vecFrm.size(); }
 	void DrawSprite();
 private:

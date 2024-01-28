@@ -21,7 +21,7 @@ void CZombie::Init()
 void CZombie::OnCollisionEnter(CCollider* pOther)
 {
 	CGameObject* pOtherObj = pOther->gameObject;
-	if (dynamic_cast<CSword*>(pOtherObj))
+	if (dynamic_cast<CBullet*>(pOtherObj))
 	{
 		DeleteObject(this);
 	}

@@ -13,16 +13,14 @@ void SampleScene::Enter()
 	AddObject(map, GROUP_TYPE::MAP);
 
 	CPlayer* player = new CPlayer("Player");
-	player->SetPos(vec2(175.f, 100.f));
-	player->GetComponent<TransformComponent>()->SetScale(vec2(50.f, 100.f));
+	player->SetPos(vec2(175.f, 200.f));
+	player->GetComponent<TransformComponent>()->SetScale(vec2(75.f, 75.f));
 	player->GetComponent<CCollider>()->Init();
 	AddObject(player, GROUP_TYPE::PLAYER);
-	
-
 
 	CCamera::GetInstance()->SetTarget(player);
 
-	CZombie* zombie = nullptr;
+	/*CZombie* zombie = nullptr;
 	for (int i = 0; i < 5; i++)
 	{
 		string zombieName = "Zombie" + to_string(i);
@@ -31,7 +29,7 @@ void SampleScene::Enter()
 		zombie->GetComponent<TransformComponent>()->SetScale(vec2 { 50.f, 100.f });
 		zombie->GetComponent<CCollider>()->Init();
 		AddObject(zombie, GROUP_TYPE::ENEMY);
-	}
+	}*/
 
 	CBlock* block = nullptr;
 	for (int i = 0; i < 30; i++)

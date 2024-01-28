@@ -13,7 +13,7 @@ CMap::~CMap()
 void CMap::Init()
 {
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
-	strFilePath += "texture\\CastlevaniaLevel1.png";
+	strFilePath += "texture\\Wood Man Stage.png";
 	CreateComponent<CRenderComponent>();
 	GetComponent<CRenderComponent>()->SetTexture("Background", strFilePath.c_str());
 }
