@@ -23,6 +23,7 @@ public:
     void CreateAnimation(const string strName, CTexture* pTex, vec2 vLT, vec2 vSliceSize, vec2 vStep, int idir, float fDuration, int iFrameCount);
     CAnimation* FindAnimation(const string& strName);
     void Play(const string& strName, bool bRepeat);
+    CAnimation* GetAnimation() { return m_pCurAnim; }
 
     CTexture* GetTexture() { return m_texture; }
     void SetTexture(const string& _strKey, const char* _strFilePath);

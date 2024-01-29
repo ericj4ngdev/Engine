@@ -6,7 +6,8 @@ CAnimation::CAnimation() :
 	m_fAccTime(0),
 	m_bFinish(false),
 	m_color(Color4f(1,1,1,1)),
-	m_direction(1)
+	m_direction(1),
+	m_vRenderPos(vec2(0,0))
 {
 }
 
@@ -47,14 +48,16 @@ void CAnimation::Render()
 	vec2 vPos = pObj->GetPos();							// 오브젝트 위치
 	vec2 vScale = pObj->GetScale();
 
-	vec2 vRenderPos = CCamera::GetInstance()->GetRenderPos(vPos);
+	m_vRenderPos = CCamera::GetInstance()->GetRenderPos(vPos);
+	
+	printf("vRenderPos : (%f, %f)\n", m_vRenderPos.x, m_vRenderPos.y);
 	glPushMatrix();
 	glBindTexture(GL_TEXTURE_2D, m_pTex->m_texId);
 	glColor4f(m_color.r, m_color.g, m_color.b, m_color.a);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	glTranslatef(vRenderPos.x, vRenderPos.y, 0);
+	glTranslatef(m_vRenderPos.x, m_vRenderPos.y, 0);
 	glScalef(vScale.x * m_vecFrm[m_iCurFrm].dir, vScale.y, 1);
 	// vPos += m_vecFrm[m_iCurFrm].vOffset;		// offset만큼 추가 이동
 

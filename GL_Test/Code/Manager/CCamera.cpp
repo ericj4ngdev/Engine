@@ -1,6 +1,7 @@
 #include "include.h"
 
-CCamera::CCamera() {
+CCamera::CCamera():m_vLookAt(vec2(0,0))
+{
 
 }
 
@@ -18,23 +19,23 @@ void CCamera::Update()
 		}
 		else
 		{
-			m_vLookAt = m_pTargetObj->GetComponent<TransformComponent>()->GetPosition();
+			m_vLookAt.x = m_pTargetObj->GetPos().x;	// y좌표 동기화는 제외 
 		}
 	}
 
-	if (GetKeyHold(UP)) {
+	/*if (GetKeyHold(W)) {
 		m_vLookAt.y += 500.0f * fDT;
 	}
-	if (GetKeyHold(DOWN)) {
+	if (GetKeyHold(S)) {
 		m_vLookAt.y -= 500.0f * fDT;
 	}
-	if (GetKeyHold(LEFT)) {
+	if (GetKeyHold(A)) {
 		m_vLookAt.x -= 500.0f * fDT;
 	}
-	if (GetKeyHold(RIGHT)) {
+	if (GetKeyHold(D)) {
 		m_vLookAt.x += 500.0f * fDT;
-	}
-
+	}*/
+	printf("Camera Position : (%f, %f)\n", m_vLookAt.x, m_vLookAt.y);
 	CalDiff();
 }
 
@@ -42,7 +43,7 @@ void CCamera::CalDiff()
 {
 	// vec2 vLookDir = m_vLookAt - m_vPrevLookAt;
 
-	vec2 vResolution = vec2(GLMgr::g_screenWidth, GLMgr::g_screenWidth);
+	vec2 vResolution = vec2(GLMgr::g_screenWidth, GLMgr::g_screenHeight);
 	vec2 center = vResolution / 2;
 	m_vDiff = m_vLookAt - center;
 }

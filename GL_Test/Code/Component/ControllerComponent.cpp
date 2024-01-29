@@ -42,6 +42,44 @@ void ControllerComponent::Update()
 	printf("\x1B[B");
 	// m_ePrevState = m_eCurState;
 	// m_iPrevDir = m_iDir;
+	vec2 vRenderPos = gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos();
+	// 경계선에 닿으면 속도 0
+	//if (vRenderPos.x <= 50 || vRenderPos.x >= GLMgr::g_screenWidth - 50)
+	//{
+
+	//	// m_curpos.x = m_iDir * m_speed;
+	//	// m_curpos.x = -490;
+	//	m_curpos.x -= m_iDir * (m_speed) * fDT;
+	//	m_rigidbody->SetVelocity(vec2(-m_iDir * m_speed, m_rigidbody->GetVelocity().y));
+	//	printf("boundary");
+	//	// printf("boundary");
+	//	// m_speed = 0;
+	//}
+	//else {
+	//	// m_speed = 100;
+
+	//}
+
+	if (vRenderPos.x <= 50)
+	{
+		m_curpos.x -= -m_speed * fDT;
+		m_rigidbody->SetVelocity(vec2(m_speed, m_rigidbody->GetVelocity().y));
+		printf("boundary");
+	}
+	if (vRenderPos.x >= GLMgr::g_screenWidth - 50) {
+		m_curpos.x -= 1 * m_speed * fDT;
+		m_rigidbody->SetVelocity(vec2(-m_speed, m_rigidbody->GetVelocity().y));
+		printf("boundary");
+	}
+
+
+	if (vRenderPos.y < 50 || vRenderPos.y > GLMgr::g_screenHeight - 50)
+	{
+
+	}
+	printf("m_eCurStste : %d	m_eCurAttackState : %d\n", (int)m_eCurState, (int)m_eCurAttackState);
+	printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
+	gameObject->GetComponent<TransformComponent>()->SetPosition(m_curpos);
 }
 
 void ControllerComponent::FinalUpdate()
@@ -50,6 +88,7 @@ void ControllerComponent::FinalUpdate()
 
 void ControllerComponent::Render()
 {
+	
 }
 
 void ControllerComponent::Destroy()
@@ -58,23 +97,40 @@ void ControllerComponent::Destroy()
 }
 
 void ControllerComponent::Control()
-{
-	
+{	
 	float move = 0;
-	if (GetKeyHold(LEFT))
+
+	bool moveLeft = GetKeyHold(LEFT);
+	bool moveRight = GetKeyHold(RIGHT);
+
+	if (moveLeft || moveRight) {
+		// 좌우 이동 처리
+		if (moveLeft) {
+			m_iDir = -1;
+		}
+		else {
+			m_iDir = 1;
+		}
+
+		move = m_iDir * m_speed;
+		m_curpos.x += move * fDT;
+		m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));
+	}
+
+	/*if (GetKeyHold(LEFT))
 	{
 		m_iDir = -1;
 		move = m_iDir * m_speed;
 		m_curpos.x += move * fDT;
 		m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));		
 	}
-	if (GetKeyHold(RIGHT))
+	else if (GetKeyHold(RIGHT))
 	{
 		m_iDir = 1;
 		move = m_iDir * m_speed;
 		m_curpos.x += move * fDT;
 		m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));		
-	}
+	}*/
 
 	if (abs(move) > m_MoveOffset)
 	{
@@ -148,11 +204,27 @@ void ControllerComponent::Control()
 	}
 	
 
-	printf("m_eCurStste : %d	m_eCurAttackState : %d\n", (int)m_eCurState, (int)m_eCurAttackState);	
-	printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
+	if (m_curpos.x > 0 && m_curpos.x < 3000) 
+	{
+		CCamera::GetInstance()->SetTarget(gameObject);
+	}
+	else {
+		CCamera::GetInstance()->SetTarget(NULL);
+	}
+
+	// assert(gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos());
+	// if (gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos()) { return; }
+	
+
+
+	
+	
+
+
 	// set(현재 위치 + 변화량) 동기화.
-	gameObject->GetComponent<TransformComponent>()->SetPosition(m_curpos);
+	
 }
+
 
 void ControllerComponent::SpecialAttack() {
 	vec2 vBulletPos = gameObject->GetPos();

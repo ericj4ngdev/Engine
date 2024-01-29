@@ -21,7 +21,8 @@ private:
 	CTexture*			m_pTex;
 	vector<tAinmFrm>	m_vecFrm;			// 모든 프레임 정보
 	Color4f				m_color;
-	vec2 texSize;
+	vec2				texSize;
+	vec2				m_vRenderPos;
 	int					m_direction;
 	int					m_iCurFrm;			// 재생중인 애니메이션의 현재 프레임
 	float				m_fAccTime;			// 시간 누적
@@ -44,6 +45,7 @@ public:
 	tAinmFrm& GetFrame(int idx) { return m_vecFrm[idx]; }
 	int GetCurFrame() { return m_iCurFrm; }
 	size_t GetMaxFrame() { return m_vecFrm.size(); }
+	vec2 GetRenderPos() {return m_vRenderPos; }
 	void DrawSprite();
 private:
 	void SetName(const string& name) { m_strName = name; }

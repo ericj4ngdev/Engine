@@ -24,7 +24,7 @@ void EngineCore::Update()
 {
 	CTimeMgr::GetInstance()->Update();
 	CKeyMgr::GetInstance()->Update();
-	// CCamera::GetInstance()->Update();
+	CCamera::GetInstance()->Update();
 	CSceneMgr::GetInstance()->Update();	
 	CCollisionMgr::GetInstance()->Update();
 }

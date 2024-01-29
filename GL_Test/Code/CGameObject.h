@@ -33,11 +33,13 @@ public:
 	void SetScale(vec2 v) { m_transform->SetScale(v); }
 	bool IsDead() {	return !m_bAlive; }
 	void SetDead() { m_bAlive = false; }		// 이벤트 매니저 용도
+	vec2 GetRenderPos() {return m_vRenderPos;}
 	virtual void OnCollision(CCollider* pOther){}
 	virtual void OnCollisionEnter(CCollider* pOther){}
 	virtual void OnCollisionExit(CCollider* pOther){}
 protected:
 	TransformComponent* m_transform;
+	vec2 m_vRenderPos;
 	list<CGameObject*> m_children;
 	list<CComponent*> m_components;
 	string m_name;
