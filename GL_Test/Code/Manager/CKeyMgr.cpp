@@ -77,6 +77,7 @@ void CKeyMgr::Update()
 		}
 	}
 
+	// 마우스 입력 미완료
 	POINT ptPos = {};
 	GetCursorPos(&ptPos);
 	// ScreenToClient();

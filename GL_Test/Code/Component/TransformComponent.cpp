@@ -3,7 +3,6 @@
 TransformComponent::TransformComponent(CGameObject* l_gameObject) : CComponent("TransformComponent", l_gameObject)
 {
     m_position = vec2(0, 0);
-    m_rotation = Quaternion();
     m_scale = vec2(1, 1);
 }
 

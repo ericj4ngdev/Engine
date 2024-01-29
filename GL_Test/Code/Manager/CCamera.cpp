@@ -35,7 +35,8 @@ void CCamera::Update()
 	if (GetKeyHold(D)) {
 		m_vLookAt.x += 500.0f * fDT;
 	}*/
-	printf("Camera Position : (%f, %f)\n", m_vLookAt.x, m_vLookAt.y);
+	// printf("Camera Position : (%f, %f)\n", m_vLookAt.x, m_vLookAt.y);
+
 	CalDiff();
 }
 
@@ -47,3 +48,4 @@ void CCamera::CalDiff()
 	vec2 center = vResolution / 2;
 	m_vDiff = m_vLookAt - center;
 }
+

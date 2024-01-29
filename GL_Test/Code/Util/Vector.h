@@ -226,77 +226,10 @@ public:
     }
 
 };
-
-template <typename T>
-class Vector4 {
-public:
-    T x;
-    T y;
-    T z;
-    T w;
-    
-public:
-    Vector4() {}
-
-    Vector4(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {}
-
-    Vector4(const Vector3<T>& v, T w) : x(v.x), y(v.y), z(v.z), w(w) {}
-
-    ~Vector4() {}
-
-    void Set(T x, T y, T z, T w) {
-        this->x = x;
-        this->y = y;
-        this->z = z;
-        this->w = w;
-
-    }
-
-    T Dot(const Vector4& v) const {
-        return x * v.x + y * v.y + z * v.z + w * v.w;
-    }
-
-    Vector4 operator-() const {
-        return Vector4(-x, -y, -z, -w);
-    }
-
-    Vector4 Lerp(float t, const Vector4& v) const {
-        return Vector4(x * (1 - t) + v.x * t,
-            y * (1 - t) + v.y * t,
-            z * (1 - t) + v.z * t,
-            w * (1 - t) + v.w * t);
-    }
-
-    Vector4 Lerp(float t, const Vector4& a, const Vector4& b) const {
-        return Vector4(a.x * (1 - t) + b.x * t,
-            a.y * (1 - t) + b.y * t,
-            a.z * (1 - t) + b.z * t,
-            a.w * (1 - t) + b.w * t);
-    }
-
-    static float Distance(const Vector4& a, const Vector4& b) {
-        return sqrtf(powf(a.x - b.x, 2) + powf(a.y - b.y, 2) + powf(a.z - b.z, 2) + powf(a.w - b.w, 2));
-    }
-
-    Vector4 operator+(const Vector4& v) const {
-        return Vector4(x + v.x, y + v.y, z + v.z, w + v.w);
-    }
-
-    Vector4 operator*(T s) const {
-        return Vector4(x * s, y * s, z * s, w * s);
-    }
-
-    const T* Pointer() const {
-        return &x;
-    }
-};
-
 typedef Vector2<bool> bvec2;
 
 typedef Vector2<int> ivec2;
 typedef Vector3<int> ivec3;
-typedef Vector4<int> ivec4;
 
 typedef Vector2<float> vec2;
 typedef Vector3<float> vec3;
-typedef Vector4<float> vec4;

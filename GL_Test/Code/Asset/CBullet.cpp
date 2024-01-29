@@ -30,13 +30,20 @@ void CBullet::Init()
 void CBullet::Update()
 {
 	CGameObject::Update();
+	vec2 vRenderPos = GetComponent<CAnimator>()->GetAnimation()->GetRenderPos();
+	// printf("vRenderPos.x : %f\n", vRenderPos.x);
+	if (vRenderPos.x <= -1 || vRenderPos.x >= GLMgr::g_screenWidth)
+	{
+		DeleteObject(this);
+		printf("CBullet::Update() -> Deleted\n");
+	}
 }
 
 
 void CBullet::OnCollisionEnter(CCollider* pOther)
 {
 	CGameObject* pOtherObj = pOther->gameObject;
-	if (dynamic_cast<CZombie*>(pOtherObj))
+	if (dynamic_cast<CEnemy*>(pOtherObj))
 	{
 		DeleteObject(this);
 	}

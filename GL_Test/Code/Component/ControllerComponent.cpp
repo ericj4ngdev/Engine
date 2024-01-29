@@ -12,10 +12,8 @@ ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent
 	, m_attackDT(0.1)
 	, m_eCurAttackState(PLAYER_ATTACK_STATE::IDLE)
 {
-	// m_speed = 1000;	
-	
+	// m_speed = 1000;
 }
-
 
 ControllerComponent::~ControllerComponent()
 {
@@ -37,28 +35,8 @@ void ControllerComponent::Update()
 	
 	Control();	
 	UpdateState();
-	// UpdateAnimation();
-	printf("\x1B[H");
-	printf("\x1B[B");
-	// m_ePrevState = m_eCurState;
-	// m_iPrevDir = m_iDir;
+
 	vec2 vRenderPos = gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos();
-	// 경계선에 닿으면 속도 0
-	//if (vRenderPos.x <= 50 || vRenderPos.x >= GLMgr::g_screenWidth - 50)
-	//{
-
-	//	// m_curpos.x = m_iDir * m_speed;
-	//	// m_curpos.x = -490;
-	//	m_curpos.x -= m_iDir * (m_speed) * fDT;
-	//	m_rigidbody->SetVelocity(vec2(-m_iDir * m_speed, m_rigidbody->GetVelocity().y));
-	//	printf("boundary");
-	//	// printf("boundary");
-	//	// m_speed = 0;
-	//}
-	//else {
-	//	// m_speed = 100;
-
-	//}
 
 	if (vRenderPos.x <= 50)
 	{
@@ -77,8 +55,10 @@ void ControllerComponent::Update()
 	{
 
 	}
-	printf("m_eCurStste : %d	m_eCurAttackState : %d\n", (int)m_eCurState, (int)m_eCurAttackState);
-	printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
+	printf("\x1B[H");
+	printf("\x1B[B");
+	printf("ControllerComponent::Update() -> m_eCurStste : %d	m_eCurAttackState : %d\n", (int)m_eCurState, (int)m_eCurAttackState);
+	printf("ControllerComponent::Update() -> Player (%f, %f)\n", m_curpos.x, m_curpos.y);
 	gameObject->GetComponent<TransformComponent>()->SetPosition(m_curpos);
 }
 
@@ -208,21 +188,14 @@ void ControllerComponent::Control()
 	{
 		CCamera::GetInstance()->SetTarget(gameObject);
 	}
-	else {
+	else 
+	{
 		CCamera::GetInstance()->SetTarget(NULL);
 	}
 
 	// assert(gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos());
 	// if (gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos()) { return; }
-	
-
-
-	
-	
-
-
-	// set(현재 위치 + 변화량) 동기화.
-	
+	// set(현재 위치 + 변화량) 동기화.	
 }
 
 
@@ -231,7 +204,7 @@ void ControllerComponent::SpecialAttack() {
 	vBulletPos.x += (gameObject->GetScale().y / 2.f) * m_iDir;
 	
 	CBullet* pBullet = new CBullet("Bullet");
-	pBullet->GetComponent<TransformComponent>()->SetPosition(vBulletPos);
+	pBullet->SetPos(vBulletPos);
 	pBullet->GetComponent<Bullet>()->SetDir(vec2(m_iDir,0));
 
 	CreateObject(pBullet, GROUP_TYPE::PROJ_PLAYER);
@@ -296,10 +269,7 @@ void ControllerComponent::UpdateState()
 }
 
 void ControllerComponent::UpdateAttack()
-{	
-
-	
-	
+{
 	switch (m_eCurAttackState)
 	{
 	case PLAYER_ATTACK_STATE::IDLE: 

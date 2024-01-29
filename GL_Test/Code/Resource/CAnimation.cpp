@@ -50,7 +50,7 @@ void CAnimation::Render()
 
 	m_vRenderPos = CCamera::GetInstance()->GetRenderPos(vPos);
 	
-	printf("vRenderPos : (%f, %f)\n", m_vRenderPos.x, m_vRenderPos.y);
+	// printf("vRenderPos : (%f, %f)\n", m_vRenderPos.x, m_vRenderPos.y);
 	glPushMatrix();
 	glBindTexture(GL_TEXTURE_2D, m_pTex->m_texId);
 	glColor4f(m_color.r, m_color.g, m_color.b, m_color.a);

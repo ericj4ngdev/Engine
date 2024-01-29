@@ -18,7 +18,6 @@ public:
     void SetScale(vec2 v);
 private:
     vec2 m_position;
-    Quaternion m_rotation;
     vec2 m_scale;
 };
 

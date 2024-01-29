@@ -52,7 +52,6 @@ using std::vector;
 
 #include "Func.h"
 #include "Util/Vector.h"
-#include "Util/Quaternion.h"
 #include "Util/Color4f.h"
 
 #include "Core/EngineCore.h"
@@ -91,7 +90,7 @@ using std::vector;
 
 #include "CGameObject.h"
 #include "Asset/CPlayer.h"
-#include "Asset/CZombie.h"
+#include "Asset/CEnemy.h"
 #include "Asset/CBlock.h"
 #include "Asset/CMap.h"
 #include "Asset/CBullet.h"

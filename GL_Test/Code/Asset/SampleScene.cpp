@@ -19,18 +19,16 @@ void SampleScene::Enter()
 	player->GetComponent<CCollider>()->Init();
 	AddObject(player, GROUP_TYPE::PLAYER);
 
-	// CCamera::GetInstance()->SetTarget(player);
-
-	/*CZombie* zombie = nullptr;
+	CEnemy* enemy = nullptr;
 	for (int i = 0; i < 5; i++)
 	{
-		string zombieName = "Zombie" + to_string(i);
-		zombie = new CZombie(zombieName);
-		zombie->GetComponent<TransformComponent>()->SetPosition(vec2( 300.f + (float)i * 100.f, 100.f));
-		zombie->GetComponent<TransformComponent>()->SetScale(vec2 { 50.f, 100.f });
-		zombie->GetComponent<CCollider>()->Init();
-		AddObject(zombie, GROUP_TYPE::ENEMY);
-	}*/
+		string enemyName = "enemy" + to_string(i);
+		enemy = new CEnemy(enemyName);
+		enemy->GetComponent<TransformComponent>()->SetPosition(vec2( 500.f + (float)i * 100.f, 500.f));
+		enemy->GetComponent<TransformComponent>()->SetScale(vec2 { 75.f, 80.f });
+		enemy->GetComponent<CCollider>()->Init();
+		AddObject(enemy, GROUP_TYPE::ENEMY);
+	}
 
 	CBlock* block = nullptr;
 
@@ -114,10 +112,7 @@ void SampleScene::Enter()
 void SampleScene::Update()
 {
 	CScene::Update();
-	if (GetKeyDown(ENTER)) 
-	{
-		ChangeScene(SCENE_TYPE::STAGE_01);
-	}
+	// if (GetKeyDown(ENTER)) ChangeScene(SCENE_TYPE::STAGE_01);
 }
 
 void SampleScene::Exit()

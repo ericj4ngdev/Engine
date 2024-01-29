@@ -23,7 +23,7 @@
     <ClCompile Include="Code\Asset\CMap.cpp" />
     <ClCompile Include="Code\Asset\CPlayer.cpp" />
     <ClCompile Include="Code\Asset\CBullet.cpp" />
-    <ClCompile Include="Code\Asset\CZombie.cpp" />
+    <ClCompile Include="Code\Asset\CEnemy.cpp" />
     <ClCompile Include="Code\Asset\SampleScene.cpp" />
     <ClCompile Include="Code\CGameObject.cpp" />
     <ClCompile Include="Code\Component\CAnimator.cpp" />
@@ -58,7 +58,7 @@
     <ClInclude Include="Code\Asset\CMap.h" />
     <ClInclude Include="Code\Asset\CPlayer.h" />
     <ClInclude Include="Code\Asset\CBullet.h" />
-    <ClInclude Include="Code\Asset\CZombie.h" />
+    <ClInclude Include="Code\Asset\CEnemy.h" />
     <ClInclude Include="Code\Asset\SampleScene.h" />
     <ClInclude Include="Code\Cmacro.h" />
     <ClInclude Include="Code\Component\CAnimator.h" />
@@ -91,10 +91,7 @@
     <ClInclude Include="Code\Resource\CTexture.h" />
     <ClInclude Include="Code\Scene\SStage01.h" />
     <ClInclude Include="Code\Util\Color4f.h" />
-    <ClInclude Include="Code\Util\Matrix.h" />
-    <ClInclude Include="Code\Util\MatrixDef.h" />
     <ClInclude Include="Code\Util\MoreMath.h" />
-    <ClInclude Include="Code\Util\Quaternion.h" />
     <ClInclude Include="Code\Util\Vector.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

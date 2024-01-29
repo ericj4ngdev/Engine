@@ -99,7 +99,7 @@
     <ClCompile Include="Code\Asset\CPlayer.cpp">
       <Filter>소스 파일\Core\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Asset\CZombie.cpp">
+    <ClCompile Include="Code\Asset\CEnemy.cpp">
       <Filter>소스 파일\Core\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Code\Asset\CBlock.cpp">
@@ -164,16 +164,7 @@
     <ClInclude Include="Code\CGameObject.h">
       <Filter>소스 파일\Core\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Util\Matrix.h">
-      <Filter>소스 파일\Core\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Util\Quaternion.h">
-      <Filter>소스 파일\Core\Util</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Util\Vector.h">
-      <Filter>소스 파일\Core\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Util\MatrixDef.h">
       <Filter>소스 파일\Core\Util</Filter>
     </ClInclude>
     <ClInclude Include="Code\Component\CComponent.h">
@@ -227,7 +218,7 @@
     <ClInclude Include="Code\Util\Color4f.h">
       <Filter>소스 파일\Core\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Asset\CZombie.h">
+    <ClInclude Include="Code\Asset\CEnemy.h">
       <Filter>소스 파일\Core\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Code\Asset\CBlock.h">

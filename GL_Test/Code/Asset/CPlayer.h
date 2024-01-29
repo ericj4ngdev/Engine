@@ -7,7 +7,7 @@ public:
 	CPlayer(string name);
 	virtual ~CPlayer();
 	virtual void Init();
-	virtual void Update() override;
+	virtual void Update();
 	// virtual void FinalUpdate() override;
 	// virtual void Render() override;
 	// virtual void Destroy() override;
