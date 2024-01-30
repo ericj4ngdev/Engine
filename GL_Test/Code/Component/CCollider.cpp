@@ -35,8 +35,8 @@ void CCollider::FinalUpdate()
 	if ((m_vCurColPos - m_vPrevColPos).Length() != 0)
 	{
 		m_vDirection = (m_vCurColPos - m_vPrevColPos).Normalize();       // πÊ«‚
-		printf("CCollider::FinalUpdate() m_vCurColPos %f %f \n", m_vCurColPos.x, m_vCurColPos.y);
-		printf("CCollider::FinalUpdate() m_vPrevColPos %f %f \n", m_vPrevColPos.x, m_vPrevColPos.y);
+		// printf("CCollider::FinalUpdate() m_vCurColPos %f %f \n", m_vCurColPos.x, m_vCurColPos.y);
+		// printf("CCollider::FinalUpdate() m_vPrevColPos %f %f \n", m_vPrevColPos.x, m_vPrevColPos.y);
 	}
 	else m_vDirection = vec2(0, 0);
 	

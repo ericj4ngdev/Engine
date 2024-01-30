@@ -2,22 +2,23 @@
 #include "CGameObject.h"
 
 enum class COLLIDE_EDGE {
-	RIGHT,
-	LEFT,
-	TOP,
-	BOTTOM,
+	RIGHT,		// 0
+	LEFT,		// 1
+	TOP,		// 2
+	BOTTOM,		// 3
+	NONE,		// 4
 };
 
 enum class DIR {
-	STOP,			// 정지 Idle
-	DOWN,			// 자유 낙하
-	UP,				// 수직 상승
-	LFET,			// 왼쪽 걷기
-	RIGHT,			// 오른쪽 걷기
-	LEFT_UP,
-	RIGHT_UP,
-	LEFT_DOWN,
-	RIGHT_DOWN,
+	STOP,			// 0 정지 Idle
+	DOWN,			// 1 자유 낙하
+	UP,				// 2 수직 상승
+	LFET,			// 3 왼쪽 걷기
+	RIGHT,			// 4 오른쪽 걷기
+	LEFT_UP,		// 5
+	RIGHT_UP,		// 6
+	LEFT_DOWN,		// 7
+	RIGHT_DOWN,		// 8
 };
 
 

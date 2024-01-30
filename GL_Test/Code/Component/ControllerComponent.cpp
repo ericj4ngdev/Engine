@@ -36,7 +36,7 @@ void ControllerComponent::Update()
 	Control();	
 	UpdateState();
 
-	vec2 vRenderPos = gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos();
+	/*vec2 vRenderPos = gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos();
 
 	if (vRenderPos.x <= 50)
 	{
@@ -48,13 +48,8 @@ void ControllerComponent::Update()
 		m_curpos.x -= 1 * m_speed * fDT;
 		m_rigidbody->SetVelocity(vec2(-m_speed, m_rigidbody->GetVelocity().y));
 		printf("boundary");
-	}
+	}*/
 
-
-	if (vRenderPos.y < 50 || vRenderPos.y > GLMgr::g_screenHeight - 50)
-	{
-
-	}
 	printf("\x1B[H");
 	printf("\x1B[B");
 	printf("ControllerComponent::Update() -> m_eCurStste : %d	m_eCurAttackState : %d\n", (int)m_eCurState, (int)m_eCurAttackState);

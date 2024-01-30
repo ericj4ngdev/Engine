@@ -6,7 +6,7 @@ using namespace std;
 bool InitInstance(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-    glutInitWindowPosition(600, 100);
+    glutInitWindowPosition(800, 100);
     glutInitWindowSize(GLMgr::g_screenWidth, GLMgr::g_screenHeight);
     glutCreateWindow("Simple OpenGL Window");
 

@@ -51,7 +51,7 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 		vec2 vScale = GetComponent<CCollider>()->GetScale();
 		
 		// ============ CheckCollideEdge ==============
-		COLLIDE_EDGE m_ColEdge;
+		COLLIDE_EDGE m_ColEdge = COLLIDE_EDGE::NONE;
 
 		vec2 vOtherLT = pOther->GetEdges().m_vLT;
 		vec2 vOtherRT = pOther->GetEdges().m_vRT;
@@ -74,15 +74,15 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 		DIR m_Dir;
 		vec2 vDir = pOther->GetDirection();
 		if (vDir.x == 0 && vDir.y == 0) m_Dir = DIR::STOP;
-		else if (vDir.x > 0 && vDir.y > 0) m_Dir = DIR::RIGHT_UP;
-		else if (vDir.x < 0 && vDir.y > 0) m_Dir = DIR::LEFT_UP;
-		else if (vDir.x > 0 && vDir.y < 0) m_Dir = DIR::RIGHT_DOWN;
-		else if (vDir.x < 0 && vDir.y < 0) m_Dir = DIR::LEFT_DOWN;
-		else if (vDir.x == 0 && vDir.y < 0) m_Dir = DIR::DOWN;
-		else if (vDir.x == 0 && vDir.y > 0) m_Dir = DIR::UP;
-		else if (vDir.x < 0 && vDir.y == 0) m_Dir = DIR::LFET;
-		else if (vDir.x > 0 && vDir.y == 0) m_Dir = DIR::RIGHT;
-		else return;
+		if (vDir.x > 0 && vDir.y > 0) m_Dir = DIR::RIGHT_UP;		// 6
+		if (vDir.x < 0 && vDir.y > 0) m_Dir = DIR::LEFT_UP;			// 5
+		if (vDir.x > 0 && vDir.y < 0) m_Dir = DIR::RIGHT_DOWN;		// 8
+		if (vDir.x < 0 && vDir.y < 0) m_Dir = DIR::LEFT_DOWN;		// 7
+		if (vDir.x == 0 && vDir.y < 0) m_Dir = DIR::DOWN;
+		if (vDir.x == 0 && vDir.y > 0) m_Dir = DIR::UP;
+		if (vDir.x < 0 && vDir.y == 0) m_Dir = DIR::LFET;
+		if (vDir.x > 0 && vDir.y == 0) m_Dir = DIR::RIGHT;
+		// return;
 
 		float fVerticalLen = abs(vObjPos.y - vPos.y);
 		float fHorizonLen = abs(vObjPos.x - vPos.x);
@@ -91,6 +91,9 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 
 		vObjPos = pOtherObj->GetPos();				// transform 정보
 		
+		printf("m_ColEdge : %d\n", m_ColEdge);
+		printf("m_Dir : %d\n", m_Dir);
+		// Push
 		switch (m_ColEdge)
 		{
 		case COLLIDE_EDGE::RIGHT:
@@ -103,68 +106,71 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 			vObjPos.x -= (float)(fPushX);
 		}
 		break;
-		case COLLIDE_EDGE::TOP: {			
+		case COLLIDE_EDGE::TOP:
+		{
 			switch (m_Dir)
 			{
-			case DIR::STOP: 
+			case DIR::STOP:
 			{
-				vObjPos.y += (float)(fPushY);		
+				vObjPos.y += (float)(fPushY);
 				pOtherObj->GetComponent<CGravity>()->SetGround(true);
 			}
-				break;
+			break;
 			case DIR::DOWN:
 			{
-				vObjPos.y += (float)(fPushY);		
+				vObjPos.y += (float)(fPushY);
 				pOtherObj->GetComponent<CGravity>()->SetGround(true);
 			}
-				break;
+			break;
 			case DIR::UP:
 			{
 				vObjPos.y += (float)(fPushY);
 				pOtherObj->GetComponent<CGravity>()->SetGround(true);
 			}
-				break;
+			break;
 			case DIR::LFET:
 			{
 				vObjPos.y += (float)(fPushY);
 				pOtherObj->GetComponent<CGravity>()->SetGround(true);
 			}
-				break;
+			break;
 			case DIR::RIGHT:
 			{
 				vObjPos.y += (float)(fPushY);
 				pOtherObj->GetComponent<CGravity>()->SetGround(true);
 			}
-				break;
+			break;
 			case DIR::LEFT_UP:
 			{
-				vObjPos.x += (float)(fPushX);		// 3				
+				if (pOtherObj->GetComponent<CGravity>()->GetGround() == false)
+					vObjPos.x += (float)(fPushX);		// 3				
 			}
-				break;
+			break;
 			case DIR::RIGHT_UP:
 			{
-				vObjPos.x -= (float)(fPushX);		// 5
+				if (pOtherObj->GetComponent<CGravity>()->GetGround() == false)
+					vObjPos.x -= (float)(fPushX);		// 5
 			}
-				break;
+			break;
 			case DIR::LEFT_DOWN:
 			{
 				vObjPos.y += (float)(fPushY);		// 7
 				pOtherObj->GetComponent<CGravity>()->SetGround(true);
 			}
-				break;
+			break;
 			case DIR::RIGHT_DOWN:
 			{
 				vObjPos.y += (float)(fPushY);		// 1
 				pOtherObj->GetComponent<CGravity>()->SetGround(true);
 			}
-				break;
+			break;
 			default:
 				break;
 			}
 		}
-			break;
-		
-		case COLLIDE_EDGE::BOTTOM: 
+		break;
+
+		case COLLIDE_EDGE::BOTTOM:
 		{
 			switch (m_Dir)
 			{
@@ -172,27 +178,27 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 			{
 				vObjPos.y -= (float)(fPushY);
 			}
-				break;
-			case DIR::DOWN: 
+			break;
+			case DIR::DOWN:
 			{
-				vObjPos.y -= (float)(fPushY); 
+				vObjPos.y -= (float)(fPushY);
 			}
-				break;
+			break;
 			case DIR::UP:
 			{
 				vObjPos.y -= (float)(fPushY);
 			}
-				break;
+			break;
 			case DIR::LFET:
 			{
 				vObjPos.y -= (float)(fPushY);
 			}
-				break;
+			break;
 			case DIR::RIGHT:
 			{
 				vObjPos.y -= (float)(fPushY);
 			}
-				break;
+			break;
 			case DIR::LEFT_UP:
 			{
 				vObjPos.y -= (float)(fPushY);		// 4
@@ -202,22 +208,24 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 			{
 				vObjPos.y -= (float)(fPushY);		// 6
 			}
-				break;
+			break;
 			case DIR::LEFT_DOWN:
 			{
-				vObjPos.x += (float)(fPushX);		// 8
+				// if (pOtherObj->GetComponent<CGravity>()->GetGround() == false)
+					vObjPos.x += (float)(fPushX);		// 8
 			}
 			break;
 			case DIR::RIGHT_DOWN:
 			{
-				vObjPos.x -= (float)(fPushX);		// 2
+				// if (pOtherObj->GetComponent<CGravity>()->GetGround() == false)
+					vObjPos.x -= (float)(fPushX);		// 2
 			}
-				break;
+			break;
 			default:
 				break;
 			}
 		}
-			break;
+		break;
 		default:
 			break;
 		}
@@ -267,7 +275,7 @@ void CBlock::OnCollision(CCollider* pOther)
 		vec2 vScale = GetComponent<CCollider>()->GetScale();
 
 		// ============ CheckCollideEdge ==============
-		COLLIDE_EDGE m_ColEdge;
+		COLLIDE_EDGE m_ColEdge = COLLIDE_EDGE::NONE;
 
 		vec2 vOtherLT = pOther->GetEdges().m_vLT;
 		vec2 vOtherRT = pOther->GetEdges().m_vRT;
@@ -290,15 +298,15 @@ void CBlock::OnCollision(CCollider* pOther)
 		DIR m_Dir;
 		vec2 vDir = pOther->GetDirection();
 		if (vDir.x == 0 && vDir.y == 0) m_Dir = DIR::STOP;
-		else if (vDir.x > 0 && vDir.y > 0) m_Dir = DIR::RIGHT_UP;
-		else if (vDir.x < 0 && vDir.y > 0) m_Dir = DIR::LEFT_UP;
-		else if (vDir.x > 0 && vDir.y < 0) m_Dir = DIR::RIGHT_DOWN;
-		else if (vDir.x < 0 && vDir.y < 0) m_Dir = DIR::LEFT_DOWN;
-		else if (vDir.x == 0 && vDir.y < 0) m_Dir = DIR::DOWN;
-		else if (vDir.x == 0 && vDir.y > 0) m_Dir = DIR::UP;
-		else if (vDir.x < 0 && vDir.y == 0) m_Dir = DIR::LFET;
-		else if (vDir.x > 0 && vDir.y == 0) m_Dir = DIR::RIGHT;
-		else return;
+		if (vDir.x > 0 && vDir.y > 0) m_Dir = DIR::RIGHT_UP;
+		if (vDir.x < 0 && vDir.y > 0) m_Dir = DIR::LEFT_UP;
+		if (vDir.x > 0 && vDir.y < 0) m_Dir = DIR::RIGHT_DOWN;
+		if (vDir.x < 0 && vDir.y < 0) m_Dir = DIR::LEFT_DOWN;
+		if (vDir.x == 0 && vDir.y < 0) m_Dir = DIR::DOWN;
+		if (vDir.x == 0 && vDir.y > 0) m_Dir = DIR::UP;
+		if (vDir.x < 0 && vDir.y == 0) m_Dir = DIR::LFET;
+		if (vDir.x > 0 && vDir.y == 0) m_Dir = DIR::RIGHT;
+		// return;
 
 		float fVerticalLen = abs(vObjPos.y - vPos.y);
 		float fHorizonLen = abs(vObjPos.x - vPos.x);
@@ -306,6 +314,9 @@ void CBlock::OnCollision(CCollider* pOther)
 		float fPushX = (vObjScale.x / 2.f + vScale.x / 2.f) - fHorizonLen;
 
 		vObjPos = pOtherObj->GetPos();				// transform 정보
+
+		printf("m_ColEdge : %d\n", m_ColEdge);
+		printf("m_Dir : %d\n", m_Dir);
 
 		switch (m_ColEdge)
 		{
@@ -319,7 +330,8 @@ void CBlock::OnCollision(CCollider* pOther)
 			vObjPos.x -= (float)(fPushX);
 		}
 		break;
-		case COLLIDE_EDGE::TOP: {
+		case COLLIDE_EDGE::TOP: 
+		{
 			switch (m_Dir)
 			{
 			case DIR::STOP:
@@ -354,12 +366,14 @@ void CBlock::OnCollision(CCollider* pOther)
 			break;
 			case DIR::LEFT_UP:
 			{
-				vObjPos.x += (float)(fPushX);		// 3				
+				if (pOtherObj->GetComponent<CGravity>()->GetGround() == false)
+					vObjPos.x += (float)(fPushX);		// 3				
 			}
 			break;
 			case DIR::RIGHT_UP:
 			{
-				vObjPos.x -= (float)(fPushX);		// 5
+				if(pOtherObj->GetComponent<CGravity>()->GetGround() == false)
+					vObjPos.x -= (float)(fPushX);		// 5
 			}
 			break;
 			case DIR::LEFT_DOWN:
@@ -378,7 +392,7 @@ void CBlock::OnCollision(CCollider* pOther)
 				break;
 			}
 		}
-							  break;
+		break;
 
 		case COLLIDE_EDGE::BOTTOM:
 		{
@@ -411,22 +425,26 @@ void CBlock::OnCollision(CCollider* pOther)
 			break;
 			case DIR::LEFT_UP:
 			{
-				vObjPos.y -= (float)(fPushY);		// 4
+				// if (pOtherObj->GetComponent<CGravity>()->GetGround())
+					vObjPos.y -= (float)(fPushY);		// 4
 			}
 			break;
 			case DIR::RIGHT_UP:
 			{
-				vObjPos.y -= (float)(fPushY);		// 6
+				// if (pOtherObj->GetComponent<CGravity>()->GetGround())
+					vObjPos.y -= (float)(fPushY);		// 6
 			}
 			break;
 			case DIR::LEFT_DOWN:
 			{
-				vObjPos.x += (float)(fPushX);		// 8
+				// if (pOtherObj->GetComponent<CGravity>()->GetGround() == false)
+					vObjPos.x += (float)(fPushX);		// 8
 			}
 			break;
 			case DIR::RIGHT_DOWN:
 			{
-				vObjPos.x -= (float)(fPushX);		// 2
+				// if (pOtherObj->GetComponent<CGravity>()->GetGround() == false)
+					vObjPos.x -= (float)(fPushX);		// 2
 			}
 			break;
 			default:
@@ -437,7 +455,7 @@ void CBlock::OnCollision(CCollider* pOther)
 		default:
 			break;
 		}
-
+		// y좌표는 그대로... 
 		pOtherObj->GetComponent<TransformComponent>()->SetPosition(vObjPos);
 	}
 	else if (dynamic_cast<CEnemy*>(pOtherObj))
