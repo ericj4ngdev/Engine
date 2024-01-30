@@ -89,7 +89,7 @@ void ControllerComponent::Control()
 
 		move = m_iDir * m_speed;
 		m_curpos.x += move * fDT;
-		m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));
+		// m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));
 	}
 
 	/*if (GetKeyHold(LEFT))

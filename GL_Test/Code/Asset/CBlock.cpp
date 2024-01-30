@@ -211,14 +211,12 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 			break;
 			case DIR::LEFT_DOWN:
 			{
-				// if (pOtherObj->GetComponent<CGravity>()->GetGround() == false)
-					vObjPos.x += (float)(fPushX);		// 8
+				vObjPos.y -= (float)(fPushY);
 			}
 			break;
 			case DIR::RIGHT_DOWN:
 			{
-				// if (pOtherObj->GetComponent<CGravity>()->GetGround() == false)
-					vObjPos.x -= (float)(fPushX);		// 2
+				vObjPos.y -= (float)(fPushY);
 			}
 			break;
 			default:
@@ -292,7 +290,7 @@ void CBlock::OnCollision(CCollider* pOther)
 		if (LineIntersection(vObjPos, vPos, vBlockRB, vBlockLB)) m_ColEdge = COLLIDE_EDGE::BOTTOM;
 		if (LineIntersection(vObjPos, vPos, vBlockLB, vBlockLT)) m_ColEdge = COLLIDE_EDGE::LEFT;
 
-
+		
 		// ============ CheckObjectDirection ==============
 
 		DIR m_Dir;
@@ -438,13 +436,15 @@ void CBlock::OnCollision(CCollider* pOther)
 			case DIR::LEFT_DOWN:
 			{
 				// if (pOtherObj->GetComponent<CGravity>()->GetGround() == false)
-					vObjPos.x += (float)(fPushX);		// 8
+					// vObjPos.x += (float)(fPushX);		// 8
+				vObjPos.y -= (float)(fPushY);
 			}
 			break;
 			case DIR::RIGHT_DOWN:
 			{
 				// if (pOtherObj->GetComponent<CGravity>()->GetGround() == false)
-					vObjPos.x -= (float)(fPushX);		// 2
+					// vObjPos.x -= (float)(fPushX);		// 2
+				vObjPos.y -= (float)(fPushY);
 			}
 			break;
 			default:

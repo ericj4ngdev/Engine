@@ -19,7 +19,7 @@ void CPlayer::Init()
 	// 조종에 AddForce를 안해서 무의미 
 	 GetComponent<CRigidbody>()->SetFriction(700.0f);		
 	// x값 무의미
-	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(100.0f, 1000.0f));
+	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(200.0f, 1000.0f));
 	GetComponent<CGravity>()->SetGravity(1700.0f);
 
 	
@@ -68,7 +68,7 @@ void CPlayer::Init()
 	
 
 
-	GetComponent<ControllerComponent>()->SetSpeed(100.0f);
+	GetComponent<ControllerComponent>()->SetSpeed(200.0f);
 	m_StepedBlockCount = 0;
 }
 

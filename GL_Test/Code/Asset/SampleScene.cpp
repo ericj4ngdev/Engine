@@ -42,7 +42,7 @@ void SampleScene::Enter()
 	string blockName = "Block" + to_string(0);
 	block = new CBlock(blockName);
 	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300) 
-				+ vec2(50.f * 7.25, 110.f)));
+				+ vec2(50.f * 7.5f, 110.f)));
 	block->SetScale(vec2{ 50.f * 16, 50.f });
 	block->GetComponent<CCollider>()->Init();
 	AddObject(block, GROUP_TYPE::MAP);
@@ -58,7 +58,7 @@ void SampleScene::Enter()
 	blockName = "Block" + to_string(2);
 	block = new CBlock(blockName);
 	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
-				+ vec2(50.f * 7.75f, 240.f)));
+				+ vec2(50.f * 7.75f, 270.f)));
 	block->SetScale(vec2{ 50.f * 5, 50.f });
 	block->GetComponent<CCollider>()->Init();
 	AddObject(block, GROUP_TYPE::MAP);
@@ -66,7 +66,15 @@ void SampleScene::Enter()
 	blockName = "Block" + to_string(3);
 	block = new CBlock(blockName);
 	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
-				+ vec2(3500, 240.f)));
+				+ vec2(3500, 300.f)));
+	block->SetScale(vec2{ 50.f * 100, 50.f });
+	block->GetComponent<CCollider>()->Init();
+	AddObject(block, GROUP_TYPE::MAP);
+
+	blockName = "Block" + to_string(3);
+	block = new CBlock(blockName);
+	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
+		+ vec2(3500, 110.f)));
 	block->SetScale(vec2{ 50.f * 100, 50.f });
 	block->GetComponent<CCollider>()->Init();
 	AddObject(block, GROUP_TYPE::MAP);
