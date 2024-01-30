@@ -26,6 +26,10 @@ public:
         return x * v.x + y * v.y;
     }
 
+    T Cross(const Vector2& v) const {
+        return x * v.y - y * v.x;
+    }
+
     Vector2 operator+(const Vector2& v) const {
         return Vector2(x + v.x, y + v.y);
     }
@@ -36,6 +40,10 @@ public:
 
     Vector2 operator-() const {
         return Vector2(-x, -y);
+    }
+
+    bool operator < (const Vector2& v)const {
+        return x != v.x ? x < v.x : y < v.y;
     }
 
     void operator+=(const Vector2& v) {

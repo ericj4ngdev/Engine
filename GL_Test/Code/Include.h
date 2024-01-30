@@ -51,6 +51,7 @@ using std::vector;
 #include <GL/glut.h>
 
 #include "Func.h"
+#include "Util/MoreMath.h"
 #include "Util/Vector.h"
 #include "Util/Color4f.h"
 
@@ -94,6 +95,8 @@ using std::vector;
 #include "Asset/CBlock.h"
 #include "Asset/CMap.h"
 #include "Asset/CBullet.h"
+
+
 #endif
 
 

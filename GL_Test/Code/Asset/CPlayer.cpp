@@ -10,6 +10,8 @@ CPlayer::~CPlayer() = default;
 void CPlayer::Init()
 {
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
+	CreateComponent<CAnimator>();
+	CreateComponent<ControllerComponent>();
 	CreateComponent<CRigidbody>();
 	CreateComponent<CGravity>();
 	CreateComponent<CCollider>();
@@ -21,7 +23,7 @@ void CPlayer::Init()
 	GetComponent<CGravity>()->SetGravity(1700.0f);
 
 	
-	CreateComponent<CAnimator>();
+	
 	strFilePath += "texture\\Rockman.png";
 	GetComponent<CAnimator>()->SetTexture("PlayerTex", strFilePath.c_str());
 	CTexture* pTex = GetComponent<CAnimator>()->GetTexture();
@@ -63,7 +65,7 @@ void CPlayer::Init()
 	for (int i = 0; i < pAnim->GetMaxFrame(); i++)
 		pAnim->GetFrame(i).vOffset = vec2(0, -1000.f);*/
 
-	CreateComponent<ControllerComponent>();
+	
 
 
 	GetComponent<ControllerComponent>()->SetSpeed(100.0f);

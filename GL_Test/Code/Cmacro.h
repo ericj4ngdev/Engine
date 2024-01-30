@@ -32,3 +32,5 @@ CKeyMgr::GetInstance()->GetKeyState(KEY::_KEY_) == KEY_STATE::UP
 #define RED		{ 1,0,0,1 } 
 #define GREEN	{ 0,1,0,1 } 
 #define BLUE	{ 0,0,1,1 } 
+
+#define EPSILON 0.0001
