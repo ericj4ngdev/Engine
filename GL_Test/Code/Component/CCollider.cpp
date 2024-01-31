@@ -9,9 +9,8 @@ COMPONENT_CONSTRUCTOR(CCollider), m_ID(g_iNextID++)
 }
 
 void CCollider::Init()
-{
-	vec2 vObjectScale = gameObject->GetComponent<TransformComponent>()->GetScale();
-	m_scale = vObjectScale;
+{	
+	m_scale = gameObject->GetScale();
 }
 
 void CCollider::Update()
@@ -20,6 +19,7 @@ void CCollider::Update()
 
 void CCollider::FinalUpdate()
 {
+	// m_scale = gameObject->GetScale();
 	// 오브젝트 위치를 따라다님
 	m_vCurColPos = gameObject->GetPos();							 // 물리 영향 다 받은 위치 정보
 	float fTop = m_vCurColPos.y + m_scale.y / 2;

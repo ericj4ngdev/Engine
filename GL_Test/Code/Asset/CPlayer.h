@@ -15,8 +15,9 @@ public:
 	virtual void OnCollisionEnter(CCollider* pOther);
 	virtual void OnCollision(CCollider* pOther);
 	virtual void OnCollisionExit(CCollider* pOther);
+public:
+	void TakeDamage(int damage);
 private:
-	vec2 pos;
 	int m_StepedBlockCount;
 
 	

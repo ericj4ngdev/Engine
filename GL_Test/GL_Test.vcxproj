@@ -20,10 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Asset\CBlock.cpp" />
+    <ClCompile Include="Code\Asset\CEnemyProjectile.cpp" />
     <ClCompile Include="Code\Asset\CMap.cpp" />
     <ClCompile Include="Code\Asset\CPlayer.cpp" />
     <ClCompile Include="Code\Asset\CBullet.cpp" />
     <ClCompile Include="Code\Asset\CEnemy.cpp" />
+    <ClCompile Include="Code\Asset\CRabbit.cpp" />
     <ClCompile Include="Code\Asset\SampleScene.cpp" />
     <ClCompile Include="Code\CGameObject.cpp" />
     <ClCompile Include="Code\Component\CAnimator.cpp" />
@@ -55,10 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Asset\CBlock.h" />
+    <ClInclude Include="Code\Asset\CEnemyProjectile.h" />
     <ClInclude Include="Code\Asset\CMap.h" />
     <ClInclude Include="Code\Asset\CPlayer.h" />
     <ClInclude Include="Code\Asset\CBullet.h" />
     <ClInclude Include="Code\Asset\CEnemy.h" />
+    <ClInclude Include="Code\Asset\CRabbit.h" />
     <ClInclude Include="Code\Asset\SampleScene.h" />
     <ClInclude Include="Code\Cmacro.h" />
     <ClInclude Include="Code\Component\CAnimator.h" />

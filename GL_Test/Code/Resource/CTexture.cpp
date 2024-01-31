@@ -34,6 +34,24 @@ void CTexture::LoadTexture(const char* path)
 		return;
 	}
 	image = stbi_load_from_file(fp, &width, &height, &channel, 4);
+	
+	// 특정 색상 제거
+	for (int i = 0; i < width * height; i++)
+	{
+		int r = image[i * 4];
+		int g = image[i * 4 + 1];
+		int b = image[i * 4 + 2];
+
+		if (r == 128 && g == 0 && b == 128) // 마젠타색인 경우
+		{
+			image[i * 4 + 3] = 0; // 알파값을 0으로 설정하여 투명하게 만듦
+		}
+		if (r == 0 && g == 128 && b == 0) // 초록색인 경우
+		{
+			image[i * 4 + 3] = 0; // 알파값을 0으로 설정하여 투명하게 만듦
+		}
+	}
+
 	m_vTexSize = vec2(width, height);
 	// printf("m_vTexSize : %f, %f \n", m_vTexSize.x, m_vTexSize.y);
 	fclose(fp);

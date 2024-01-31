@@ -20,9 +20,7 @@ void CPlayer::Init()
 	 GetComponent<CRigidbody>()->SetFriction(700.0f);		
 	// x값 무의미
 	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(200.0f, 1000.0f));
-	GetComponent<CGravity>()->SetGravity(1700.0f);
-
-	
+	GetComponent<CGravity>()->SetGravity(1700.0f);	
 	
 	strFilePath += "texture\\Rockman.png";
 	GetComponent<CAnimator>()->SetTexture("PlayerTex", strFilePath.c_str());
@@ -74,7 +72,8 @@ void CPlayer::Init()
 
 void CPlayer::Update()
 {
-	CGameObject::Update();
+	CGameObject::Update();	
+
 }
 
 void CPlayer::OnCollisionEnter(CCollider* pOther)
@@ -108,4 +107,9 @@ void CPlayer::OnCollisionExit(CCollider* pOther)
 		static_cast<CBlock*>(pOtherObj)->SetCount(m_StepedBlockCount);
 		// printf("count : %d\n", m_StepedBlockCount);
 	}
+}
+
+void CPlayer::TakeDamage(int damage)
+{
+	// printf("Damaged!");
 }

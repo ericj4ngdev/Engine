@@ -36,9 +36,9 @@ void ControllerComponent::Update()
 	Control();	
 	UpdateState();
 
-	/*vec2 vRenderPos = gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos();
+	vec2 vRenderPos = gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos();
 
-	if (vRenderPos.x <= 50)
+	/*if (vRenderPos.x <= 50)
 	{
 		m_curpos.x -= -m_speed * fDT;
 		m_rigidbody->SetVelocity(vec2(m_speed, m_rigidbody->GetVelocity().y));
@@ -52,8 +52,8 @@ void ControllerComponent::Update()
 
 	printf("\x1B[H");
 	printf("\x1B[B");
-	printf("ControllerComponent::Update() -> m_eCurStste : %d	m_eCurAttackState : %d\n", (int)m_eCurState, (int)m_eCurAttackState);
-	printf("ControllerComponent::Update() -> Player (%f, %f)\n", m_curpos.x, m_curpos.y);
+	// printf("ControllerComponent::Update() -> m_eCurStste : %d	m_eCurAttackState : %d\n", (int)m_eCurState, (int)m_eCurAttackState);
+	// printf("ControllerComponent::Update() -> Player (%f, %f)\n", m_curpos.x, m_curpos.y);
 	gameObject->GetComponent<TransformComponent>()->SetPosition(m_curpos);
 }
 

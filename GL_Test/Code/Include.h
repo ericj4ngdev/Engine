@@ -91,10 +91,13 @@ using std::vector;
 
 #include "CGameObject.h"
 #include "Asset/CPlayer.h"
-#include "Asset/CEnemy.h"
 #include "Asset/CBlock.h"
 #include "Asset/CMap.h"
 #include "Asset/CBullet.h"
+#include "Asset/CEnemy.h"
+#include "Asset/CRabbit.h"
+#include "Asset/CEnemyProjectile.h"
+
 
 
 #endif

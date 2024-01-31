@@ -10,10 +10,12 @@ CBlock::~CBlock() = default;
 void CBlock::Init()
 {
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
-	strFilePath += "texture\\block.png";
-	// CreateComponent<CRenderComponent>();
+	strFilePath += "texture\\NES - Mega Man 2 - Energy Bars.png";
+
+
+	CreateComponent<CRenderComponent>();
 	CreateComponent<CCollider>();
-	// GetComponent<CRenderComponent>()->SetTexture("Block", strFilePath.c_str());
+	GetComponent<CRenderComponent>()->SetTexture("Block", strFilePath.c_str());
 }
 
 bool CBlock::LineIntersection(vec2 a, vec2 b, vec2 c, vec2 d) 
@@ -24,7 +26,7 @@ bool CBlock::LineIntersection(vec2 a, vec2 b, vec2 c, vec2 d)
 	if (ab == 0 && cd == 0) 
 	{
 		if (b < a) swap(a, b);
-		if (b < a) swap(a, b);
+		if (d < c) swap(c, d);
 		return !(b < c || d < a);
 	}
 	return ab <= 0 && cd <= 0;
@@ -91,8 +93,8 @@ void CBlock::OnCollisionEnter(CCollider* pOther)
 
 		vObjPos = pOtherObj->GetPos();				// transform Á¤º¸
 		
-		printf("m_ColEdge : %d\n", m_ColEdge);
-		printf("m_Dir : %d\n", m_Dir);
+		// printf("m_ColEdge : %d\n", m_ColEdge);
+		// printf("m_Dir : %d\n", m_Dir);
 		// Push
 		switch (m_ColEdge)
 		{
@@ -313,8 +315,8 @@ void CBlock::OnCollision(CCollider* pOther)
 
 		vObjPos = pOtherObj->GetPos();				// transform Á¤º¸
 
-		printf("m_ColEdge : %d\n", m_ColEdge);
-		printf("m_Dir : %d\n", m_Dir);
+		// printf("m_ColEdge : %d\n", m_ColEdge);
+		// printf("m_Dir : %d\n", m_Dir);
 
 		switch (m_ColEdge)
 		{
@@ -484,6 +486,9 @@ void CBlock::OnCollisionExit(CCollider* pOther)
 	if (pOtherObj->GetName() == "Player")
 	{
 		// ¶¥¿¡ ¾ÈÂøÇßÀ½À» ¾Ë·ÁÁÜ
+		pOtherObj->GetComponent<CGravity>()->SetGround(false);
+	}
+	else if (dynamic_cast<CEnemy*>(pOtherObj)) {
 		pOtherObj->GetComponent<CGravity>()->SetGround(false);
 	}
 }

@@ -1,2 +1,3 @@
-﻿  CBlock.cpp
+﻿  CRabbit.cpp
+C:\GitHub\Engine\GL_Test\Code\Asset\CRabbit.cpp(154,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   GL_Test.vcxproj -> C:\GitHub\Engine\GL_Test\Output\bin_Debug\GL_Test.exe

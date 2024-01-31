@@ -7,6 +7,7 @@ void SampleScene::Init()
 
 void SampleScene::Enter()
 {
+	
 	CMap* map = new CMap("backgound");
 	vec2 offset = vec2(6000.f, -1600.0f);
 	map->SetPos(offset + vec2(0,0));
@@ -19,19 +20,32 @@ void SampleScene::Enter()
 	player->GetComponent<CCollider>()->Init();
 	AddObject(player, GROUP_TYPE::PLAYER);
 
-	CEnemy* enemy = nullptr;
-	for (int i = 0; i < 5; i++)
+	CRabbit* enemy = nullptr;
+	string enemyName = "enemy";
+	enemy = new CRabbit(enemyName);
+	enemy->GetComponent<TransformComponent>()->SetPosition(vec2(400.f, 200.f));
+	enemy->GetComponent<TransformComponent>()->SetScale(vec2{ 75.f, 80.f });
+	enemy->GetComponent<CCollider>()->Init();
+	AddObject(enemy, GROUP_TYPE::ENEMY);
+
+	/*for (int i = 0; i < 3; i++)
 	{
 		string enemyName = "enemy" + to_string(i);
-		enemy = new CEnemy(enemyName);
-		enemy->GetComponent<TransformComponent>()->SetPosition(vec2( 500.f + (float)i * 100.f, 500.f));
+		enemy = new CRabbit(enemyName);
+		enemy->GetComponent<TransformComponent>()->SetPosition(vec2( 500.f + (float)i * 200.f, 200.f));
 		enemy->GetComponent<TransformComponent>()->SetScale(vec2 { 75.f, 80.f });
 		enemy->GetComponent<CCollider>()->Init();
 		AddObject(enemy, GROUP_TYPE::ENEMY);
-	}
+	}*/
+
+
+	CEnemyProjectile* pro = new CEnemyProjectile();
+	pro->SetPos(vec2(-350.f, 150.f));
+	AddObject(pro, GROUP_TYPE::PROJ_ENEMY);
+
+
 
 	CBlock* block = nullptr;
-
 	//string blockName = "Block" + to_string(1);
 	//block = new CBlock(blockName);
 	//block->GetComponent<TransformComponent>()->SetPosition(vec2(175.f, 25.f));	// 원래 y값 25
@@ -39,7 +53,16 @@ void SampleScene::Enter()
 	//block->GetComponent<CCollider>()->Init();
 	//AddObject(block, GROUP_TYPE::MAP);
 
+	// boundary
 	string blockName = "Block" + to_string(0);
+	block = new CBlock(blockName);
+	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
+		+ vec2(-70.f , 110.f)));
+	block->SetScale(vec2{ 50.f, 2000.f });
+	block->GetComponent<CCollider>()->Init();
+	AddObject(block, GROUP_TYPE::MAP);
+
+	blockName = "Block" + to_string(0);
 	block = new CBlock(blockName);
 	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300) 
 				+ vec2(50.f * 7.5f, 110.f)));
@@ -50,15 +73,16 @@ void SampleScene::Enter()
 	blockName = "Block" + to_string(1);
 	block = new CBlock(blockName);
 	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
-				+ vec2(865.f, 160.f)));	// 원래 y값 25
+				+ vec2(50.f * 17.3f, 160.f)));	// 원래 y값 25
 	block->SetScale(vec2{ 50.f * 4, 50.f });
 	block->GetComponent<CCollider>()->Init();
 	AddObject(block, GROUP_TYPE::MAP);
 	
+	// 공중
 	blockName = "Block" + to_string(2);
 	block = new CBlock(blockName);
 	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
-				+ vec2(50.f * 7.75f, 270.f)));
+				+ vec2(50.f * 7.75f, 250.f)));
 	block->SetScale(vec2{ 50.f * 5, 50.f });
 	block->GetComponent<CCollider>()->Init();
 	AddObject(block, GROUP_TYPE::MAP);
@@ -66,18 +90,61 @@ void SampleScene::Enter()
 	blockName = "Block" + to_string(3);
 	block = new CBlock(blockName);
 	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
-				+ vec2(3500, 300.f)));
-	block->SetScale(vec2{ 50.f * 100, 50.f });
+		+ vec2(50.f * 22.0f, 110.f)));
+	block->SetScale(vec2{ 50.f * 5, 50.f });
 	block->GetComponent<CCollider>()->Init();
 	AddObject(block, GROUP_TYPE::MAP);
 
-	blockName = "Block" + to_string(3);
+	blockName = "Block" + to_string(4);
 	block = new CBlock(blockName);
 	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
-		+ vec2(3500, 110.f)));
-	block->SetScale(vec2{ 50.f * 100, 50.f });
+		+ vec2(50.f * 27.0f, 160.f)));
+	block->SetScale(vec2{ 50.f * 5, 50.f });
 	block->GetComponent<CCollider>()->Init();
 	AddObject(block, GROUP_TYPE::MAP);
+
+	blockName = "Block" + to_string(5);
+	block = new CBlock(blockName);
+	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
+		+ vec2(50.f * 36.9f, 210.f)));
+	block->SetScale(vec2{ 50.f * 14.3, 50.f });
+	block->GetComponent<CCollider>()->Init();
+	AddObject(block, GROUP_TYPE::MAP);
+
+	blockName = "Block" + to_string(6);
+	block = new CBlock(blockName);
+	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
+		+ vec2(50.f * 48.0f, 160.f)));
+	block->SetScale(vec2{ 50.f * 8, 50.f });
+	block->GetComponent<CCollider>()->Init();
+	AddObject(block, GROUP_TYPE::MAP);
+
+	blockName = "Block" + to_string(7);
+	block = new CBlock(blockName);
+	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
+		+ vec2(50.f * 63.3f, 110.f)));
+	block->SetScale(vec2{ 50.f * 22.5, 50.f });
+	block->GetComponent<CCollider>()->Init();
+	AddObject(block, GROUP_TYPE::MAP);
+
+	blockName = "Block" + to_string(8);
+	block = new CBlock(blockName);
+	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
+		+ vec2(50.f * 79.3f, 110.f)));
+	block->SetScale(vec2{ 50.f * 7, 2000.f });
+	block->GetComponent<CCollider>()->Init();
+	AddObject(block, GROUP_TYPE::MAP);
+
+	// 8
+	/*blockName = "Block" + to_string(3);
+	block = new CBlock(blockName);
+	block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
+				+ vec2(3500, 300.f)));
+	block->SetScale(vec2{ 50.f * 100, 50.f });
+	block->GetComponent<CCollider>()->Init();
+	AddObject(block, GROUP_TYPE::MAP);*/
+
+
 
 	//for (int i = 0; i < 5; i++)
 	//{
@@ -110,7 +177,11 @@ void SampleScene::Enter()
 	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::MAP, GROUP_TYPE::PLAYER);
 	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::MAP, GROUP_TYPE::ENEMY);
 	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::ENEMY);
+	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::PROJ_ENEMY);
 	CCollisionMgr::GetInstance()->CheckGroup(GROUP_TYPE::PROJ_PLAYER, GROUP_TYPE::ENEMY);
+
+
+	
 
 	ivec2 vResolution = ivec2(GLMgr::g_screenWidth, GLMgr::g_screenWidth);
 
