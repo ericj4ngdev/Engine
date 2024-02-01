@@ -37,7 +37,8 @@ void CRabbit::Init()
 	GetComponent<CRigidbody>()->SetFriction(700.0f);
 	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(300.0f, 1000.0f));
 	GetComponent<CGravity>()->SetGravity(1700.0f);
-
+	SetScale(vec2{ 75.f, 80.f });
+	
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
 	strFilePath += "texture\\NES - Mega Man 2 - Enemies.png";
 	GetComponent<CAnimator>()->SetTexture("Enemy", strFilePath.c_str());
@@ -61,12 +62,8 @@ void CRabbit::Update()
 	m_pGravity = GetComponent<CGravity>();
 
 	
-	
-
-
-
 	m_moveTimer += fDT;
-	// printf("m_rigidbody->GetVelocity().y : %f\n", m_rigidbody->GetVelocity().y);
+	// printf("Rabbit Pos : %f, %f\n", GetPos().x, GetPos().y);
 	// printf("m_pGravity->GetGround() : %d\n", m_pGravity->GetGround());
 	if (m_rigidbody->GetVelocity().y < 0 && m_pGravity->GetGround() == false)
 	{
@@ -84,7 +81,7 @@ void CRabbit::Update()
 	{
 		// 123
 		// µÙ∑πc¿Ã 1√ 
-		printf("m_attackCount : %d\n", m_attackCount);
+		// printf("m_attackCount : %d\n", m_attackCount);
 		if (m_attackCount < 3)
 		{
 			m_attackTimer += fDT;
@@ -111,7 +108,7 @@ void CRabbit::Update()
 	if (vRenderPos.x <= -1 || vRenderPos.x >= GLMgr::g_screenWidth)
 	{
 		DeleteObject(this);
-		printf("CBullet::Update() -> Deleted\n");
+		// printf("CBullet::Update() -> Deleted\n");
 	}
 
 	// m_moveTimer += fDT;
@@ -145,6 +142,7 @@ void CRabbit::OnCollisionEnter(CCollider* pOther)
 	CGameObject* pOtherObj = pOther->gameObject;
 	if (dynamic_cast<CBullet*>(pOtherObj))
 	{
+		m_bAlive = false;
 		// DeleteObject(this);
 	}
 

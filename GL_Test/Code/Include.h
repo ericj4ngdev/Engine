@@ -18,9 +18,17 @@ enum class GROUP_TYPE {
 	PROJ_PLAYER,
 	PROJ_ENEMY,
 	WEAPON,
+	SPAWNER,
 	END = 32,
 };
 
+
+enum class ENEMY {
+	RABBIT,
+	BAT,
+	GORILLA,
+
+};
 
 enum class EVENT_TYPE {
 	CREATE_OBJECT,
@@ -97,7 +105,7 @@ using std::vector;
 #include "Asset/CEnemy.h"
 #include "Asset/CRabbit.h"
 #include "Asset/CEnemyProjectile.h"
-
+#include "Asset/CEnemySpawner.h"
 
 
 #endif

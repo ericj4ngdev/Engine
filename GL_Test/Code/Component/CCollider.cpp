@@ -19,7 +19,7 @@ void CCollider::Update()
 
 void CCollider::FinalUpdate()
 {
-	// m_scale = gameObject->GetScale();
+	m_scale = gameObject->GetScale();
 	// 오브젝트 위치를 따라다님
 	m_vCurColPos = gameObject->GetPos();							 // 물리 영향 다 받은 위치 정보
 	float fTop = m_vCurColPos.y + m_scale.y / 2;

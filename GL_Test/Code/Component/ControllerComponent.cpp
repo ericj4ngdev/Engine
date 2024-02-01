@@ -50,10 +50,10 @@ void ControllerComponent::Update()
 		printf("boundary");
 	}*/
 
-	printf("\x1B[H");
-	printf("\x1B[B");
+	/*printf("\x1B[H");
+	printf("\x1B[B");*/
 	// printf("ControllerComponent::Update() -> m_eCurStste : %d	m_eCurAttackState : %d\n", (int)m_eCurState, (int)m_eCurAttackState);
-	// printf("ControllerComponent::Update() -> Player (%f, %f)\n", m_curpos.x, m_curpos.y);
+	// printf("Player (%f, %f)\n", m_curpos.x, m_curpos.y);
 	gameObject->GetComponent<TransformComponent>()->SetPosition(m_curpos);
 }
 

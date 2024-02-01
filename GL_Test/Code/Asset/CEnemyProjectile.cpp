@@ -35,7 +35,6 @@ void CEnemyProjectile::Update()
 	GetComponent<CAnimator>()->Play("Carrot", true);
 	ScreenOut();
 	Movement();
-	// 
 }
 
 void CEnemyProjectile::OnCollisionEnter(CCollider* pOther)
@@ -43,8 +42,6 @@ void CEnemyProjectile::OnCollisionEnter(CCollider* pOther)
 	// printf("CEnemyProjectile\n");
 
 }
-
-
 
 void CEnemyProjectile::Movement()
 {
@@ -60,7 +57,6 @@ void CEnemyProjectile::ScreenOut()
 	// printf("vRenderPos.x : %f\n", vRenderPos.x);
 	if (vRenderPos.x <= -1 || vRenderPos.x >= GLMgr::g_screenWidth)
 	{
-		DeleteObject(this);
-		
+		DeleteObject(this);		
 	}
 }

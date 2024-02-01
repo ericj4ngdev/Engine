@@ -35,7 +35,7 @@ void CBullet::Update()
 	if (vRenderPos.x <= -1 || vRenderPos.x >= GLMgr::g_screenWidth)
 	{
 		DeleteObject(this);
-		printf("CBullet::Update() -> Deleted\n");
+		// printf("CBullet::Update() -> Deleted\n");
 	}
 }
 

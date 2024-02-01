@@ -13,9 +13,9 @@ void CBlock::Init()
 	strFilePath += "texture\\NES - Mega Man 2 - Energy Bars.png";
 
 
-	CreateComponent<CRenderComponent>();
+	// CreateComponent<CRenderComponent>();
 	CreateComponent<CCollider>();
-	GetComponent<CRenderComponent>()->SetTexture("Block", strFilePath.c_str());
+	// GetComponent<CRenderComponent>()->SetTexture("Block", strFilePath.c_str());
 }
 
 bool CBlock::LineIntersection(vec2 a, vec2 b, vec2 c, vec2 d) 

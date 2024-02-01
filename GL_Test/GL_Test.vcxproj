@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Code\Asset\CBlock.cpp" />
     <ClCompile Include="Code\Asset\CEnemyProjectile.cpp" />
+    <ClCompile Include="Code\Asset\CEnemySpawner.cpp" />
     <ClCompile Include="Code\Asset\CMap.cpp" />
     <ClCompile Include="Code\Asset\CPlayer.cpp" />
     <ClCompile Include="Code\Asset\CBullet.cpp" />
@@ -58,6 +59,7 @@
   <ItemGroup>
     <ClInclude Include="Code\Asset\CBlock.h" />
     <ClInclude Include="Code\Asset\CEnemyProjectile.h" />
+    <ClInclude Include="Code\Asset\CEnemySpawner.h" />
     <ClInclude Include="Code\Asset\CMap.h" />
     <ClInclude Include="Code\Asset\CPlayer.h" />
     <ClInclude Include="Code\Asset\CBullet.h" />

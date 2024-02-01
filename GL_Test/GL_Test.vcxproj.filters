@@ -171,6 +171,9 @@
     <ClCompile Include="Code\Asset\CEnemyProjectile.cpp">
       <Filter>소스 파일\Custom\Object\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Asset\CEnemySpawner.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\CScene.h">
@@ -295,6 +298,9 @@
     </ClInclude>
     <ClInclude Include="Code\Asset\CEnemyProjectile.h">
       <Filter>소스 파일\Custom\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Asset\CEnemySpawner.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

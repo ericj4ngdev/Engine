@@ -72,8 +72,7 @@ void CPlayer::Init()
 
 void CPlayer::Update()
 {
-	CGameObject::Update();	
-
+	CGameObject::Update();
 }
 
 void CPlayer::OnCollisionEnter(CCollider* pOther)

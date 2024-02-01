@@ -13,6 +13,7 @@ public:
 	void SetLookAt(vec2 vLook) { m_vLookAt = vLook; }
 	void SetTarget(CGameObject* pTarget) { m_pTargetObj = pTarget; }
 	vec2 GetRenderPos(vec2 vObjPos){ return vObjPos - m_vDiff; }	// 원래 좌표 - 차이값
+	vec2 GetLookAt() { return m_vLookAt; }
 public:
 	void Update();
 private:
