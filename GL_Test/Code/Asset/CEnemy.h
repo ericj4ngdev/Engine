@@ -13,9 +13,13 @@ public:
 protected:
 	vec2 GetPlayerPosition();
 	void ScreenOut();
+	void SetDirection();
 protected:
+	int m_iDir;
 	int m_iHP;
 	float m_fSpeed;
 	float m_fDamage;
+	
+friend class CEnemySpawner;
 };
 

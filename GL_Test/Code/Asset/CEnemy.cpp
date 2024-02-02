@@ -49,8 +49,19 @@ void CEnemy::ScreenOut()
 {
 	vec2 vRenderPos = GetComponent<CAnimator>()->GetAnimation()->GetRenderPos();	
 	// vRenderPos.x의 초기값이 0일 때 예외처리
-	if (vRenderPos.x <= -1 || vRenderPos.x >= GLMgr::g_screenWidth)
+	if (vRenderPos.x < -1 || vRenderPos.x > GLMgr::g_screenWidth)
 	{
 		DeleteObject(this);
 	}
+}
+
+void CEnemy::SetDirection()
+{
+	vec2 playerPos = GetPlayerPosition();
+	// vec2 dir = (playerPos - GetPos()).Normalize();
+
+	if (playerPos.x < GetPos().x) m_iDir = -1;
+	else m_iDir = 1;
+
+	// m_iDir = dir.x > 0 ? 1 : -1;			// 방향이 반대
 }

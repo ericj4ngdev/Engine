@@ -27,8 +27,7 @@ public:
     void ChangeState(RABBIT_STATE newState);
     void Attack();
     void Jump();
-private:
-    int m_iDir;
+private:    
     CRigidbody* m_rigidbody;
     CCollider* m_Collider;
     CGravity* m_pGravity;

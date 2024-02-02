@@ -1,6 +1,7 @@
 #pragma once
 
 class CEnemy;
+class CRabbit;
 
 class CEnemySpawner : public CGameObject
 {
@@ -18,7 +19,8 @@ public:
 private:
 	ENEMY m_eEnemy;
 	CEnemy* m_Enemy;
-	bool m_bSpawn;				// 소환되었는가
+	// bool m_bSpawn;				// 소환되었는가
+	int	 m_iSpawnCnt;
 	bool m_bDead;
 };
 

@@ -156,6 +156,8 @@ void SampleScene::Enter()
 void SampleScene::Update()
 {
 	CScene::Update();
+	// 그룹 개수 확인해보기
+	printf("%d\n", m_arrObj[(int)GROUP_TYPE::ENEMY].size());
 	// if (GetKeyDown(ENTER)) ChangeScene(SCENE_TYPE::STAGE_01);
 }
 
