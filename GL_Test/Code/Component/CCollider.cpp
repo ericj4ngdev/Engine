@@ -10,7 +10,7 @@ COMPONENT_CONSTRUCTOR(CCollider), m_ID(g_iNextID++)
 
 void CCollider::Init()
 {	
-	m_scale = gameObject->GetScale();
+	// m_scale = gameObject->GetScale();
 }
 
 void CCollider::Update()

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Asset\CBat.cpp" />
     <ClCompile Include="Code\Asset\CBlock.cpp" />
     <ClCompile Include="Code\Asset\CEnemyProjectile.cpp" />
     <ClCompile Include="Code\Asset\CEnemySpawner.cpp" />
@@ -57,6 +58,7 @@
     <ClCompile Include="Code\Scene\SStage01.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Asset\CBat.h" />
     <ClInclude Include="Code\Asset\CBlock.h" />
     <ClInclude Include="Code\Asset\CEnemyProjectile.h" />
     <ClInclude Include="Code\Asset\CEnemySpawner.h" />

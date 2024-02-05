@@ -50,6 +50,10 @@ void CTexture::LoadTexture(const char* path)
 		{
 			image[i * 4 + 3] = 0; // 알파값을 0으로 설정하여 투명하게 만듦
 		}
+		if (r == 0 && g == 0 && b == 255) // 파란색인 경우
+		{
+			image[i * 4 + 3] = 0; // 알파값을 0으로 설정하여 투명하게 만듦
+		}
 	}
 
 	m_vTexSize = vec2(width, height);

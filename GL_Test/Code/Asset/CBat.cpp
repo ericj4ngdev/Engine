@@ -1,0 +1,159 @@
+#include "include.h"
+
+CBat::CBat()
+{
+	Init();
+	m_fSpeed = 50;
+	m_fMoveTimer = 0;
+	m_bReady = true;
+	m_bHit = false;
+}
+
+CBat::CBat(string name) : CEnemy(name)
+{
+	Init();
+	m_fSpeed = 80;
+	m_fMoveTimer = 0;
+	m_bReady = true;
+	m_bHit = false;
+}
+
+CBat::~CBat()
+{
+
+}
+
+void CBat::Init()
+{
+	CreateComponent<CRigidbody>();
+	CreateComponent<CGravity>();
+	CreateComponent<CCollider>();
+	CreateComponent<CAnimator>();
+
+	GetComponent<CRigidbody>()->SetFriction(700.0f);
+	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(300.0f, 1000.0f));
+	SetScale(vec2{ 75.f, 80.f });
+
+
+	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
+	strFilePath += "texture\\NES - Mega Man 2 - Enemies.png";
+	GetComponent<CAnimator>()->SetTexture("Enemy", strFilePath.c_str());
+	CTexture* pTex = GetComponent<CAnimator>()->GetTexture();
+
+	GetComponent<CAnimator>()->CreateAnimation("Bat_Idle", pTex, vec2(1, 116), vec2(16, 24), vec2(0, 0), 1, 0.5f, 1);
+	GetComponent<CAnimator>()->CreateAnimation("Bat_Ready", pTex, vec2(1, 141), vec2(32, 24), vec2(33, 0), 1, 0.1f, 4);
+	GetComponent<CAnimator>()->CreateAnimation("Bat_Fly", pTex, vec2(133, 141), vec2(32, 24), vec2(33, 0), 1, 0.1f, 3);
+
+}
+
+void CBat::Update()
+{
+	CGameObject::Update();
+
+	m_pRigidbody = GetComponent<CRigidbody>();	// 얘는 왜 업데이트해야 하는가?
+	m_pCollider = GetComponent<CCollider>();
+	
+	m_fMoveTimer += fDT;
+	if (m_fMoveTimer >= 2.0f && m_bReady)
+	{
+		m_bReady = false;
+		ChangeState(ENEMY_STATE::READY);
+	}
+	if (m_fMoveTimer >= 2.2f && !m_bHit) Move();
+
+
+	// 맞고 Idle 가면 m_fMoveTimer =0, m_bReady는 다시 true;
+	if (m_bHit && m_eCurState != ENEMY_STATE::IDLE)
+	{
+		BackToIdle();
+	}
+	
+	printf("State : %d\n", m_eCurState);
+
+	UpdateState();
+
+	ScreenOut();
+}
+
+void CBat::OnCollisionEnter(CCollider* pOther)
+{
+	CGameObject* pOtherObj = pOther->gameObject;
+
+	if (dynamic_cast<CPlayer*>(pOtherObj))
+	{
+		// 플레이어에게 신호
+		static_cast<CPlayer*>(pOtherObj)->TakeDamage(m_fDamage);
+		m_bHit = true;	
+		
+	}
+}
+
+void CBat::TakeDamage()
+{
+	DeleteObject(this);
+}
+
+void CBat::UpdateState()
+{
+	switch (m_eCurState)
+	{
+	case ENEMY_STATE::IDLE:
+		GetComponent<CAnimator>()->Play("Bat_Idle", true);
+		break;
+	case ENEMY_STATE::READY:
+		GetComponent<CAnimator>()->Play("Bat_Ready", false);		
+		break;
+	case ENEMY_STATE::MOVE:
+		GetComponent<CAnimator>()->Play("Bat_Fly", true);
+		break;
+	case ENEMY_STATE::JUMP:
+		break;
+	case ENEMY_STATE::FALL:
+		break;
+	case ENEMY_STATE::ATTACK:
+		break;
+	case ENEMY_STATE::HIT:
+		GetComponent<CAnimator>()->Play("Bat_Fly", true);
+		break;
+	case ENEMY_STATE::DEAD:
+		break;
+	default:
+		break;
+	}
+}
+
+void CBat::Move()
+{
+	ChangeState(ENEMY_STATE::MOVE);
+	vec2 playerPos = GetPlayerPosition();
+	vec2 dir = (playerPos - GetPos()).Normalize();
+	vec2 vCurPos = GetPos();
+	vCurPos += dir * m_fSpeed * fDT;
+	SetPos(vCurPos);
+}
+
+void CBat::Ready()
+{
+	
+}
+
+void CBat::BackToIdle()
+{	
+	vec2 vCurPos = GetPos();
+	
+	// 나무 높이로 올라가기
+	if (vCurPos.y < 200) 
+	{
+		ChangeState(ENEMY_STATE::HIT);
+		vCurPos.y += 500 * fDT;
+		m_fMoveTimer = 0;
+		m_bReady = true;
+		SetPos(vCurPos);
+	}
+	else 
+	{
+		m_bHit = false;
+		ChangeState(ENEMY_STATE::IDLE);
+	}
+}
+

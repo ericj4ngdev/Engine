@@ -4,6 +4,7 @@
 CEnemy::CEnemy():m_iHP(0)
 				, m_fSpeed(0)
 				, m_fDamage(0)
+	, m_eCurState(ENEMY_STATE::IDLE)
 {
 
 }
@@ -12,6 +13,7 @@ CEnemy::CEnemy(string name) : CGameObject(name)
 							, m_iHP(0)
 							, m_fSpeed(0)
 							,m_fDamage(0)
+							, m_eCurState(ENEMY_STATE::IDLE)
 {
 	
 }
@@ -64,4 +66,10 @@ void CEnemy::SetDirection()
 	else m_iDir = 1;
 
 	// m_iDir = dir.x > 0 ? 1 : -1;			// 방향이 반대
+}
+
+void CEnemy::ChangeState(ENEMY_STATE newState)
+{
+	if (m_eCurState == newState) return;
+	m_eCurState = newState;
 }

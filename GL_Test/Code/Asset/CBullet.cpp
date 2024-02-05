@@ -44,8 +44,8 @@ void CBullet::OnCollisionEnter(CCollider* pOther)
 {
 	CGameObject* pOtherObj = pOther->gameObject;
 	if (dynamic_cast<CEnemy*>(pOtherObj))
-	{
-		// DeleteObject(pOtherObj);
+	{		
+		static_cast<CEnemy*>(pOtherObj)->TakeDamage();
 		DeleteObject(this);
 	}
 }

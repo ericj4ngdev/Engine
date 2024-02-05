@@ -27,19 +27,14 @@ void CEnemySpawner::Update()
 	// printf("\x1B[H");
 	// printf("\x1B[B");
 	// printf("CheckPosition	m_iSpawnCnt	\n");
-	// (1,0,1)이어야 재소환
-
-	// bool bDead = m_Enemy->IsDead();
+	
 	if (m_Enemy != nullptr) {
 		m_bDead = m_Enemy->IsDead();
 	}
-	printf("%d		%d		%d\n", bInPos, m_iSpawnCnt, m_bDead);
+	// printf("%d		%d		%d\n", bInPos, m_iSpawnCnt, m_bDead);
 	if (bInPos) 
 	{		
-		// 화면 안에서 죽은 경우
-		// assert(m_bDead == false);
-		// 어디서 m_bDead를 false(0)로 만들지..??? 생각해보니 어이가 없네
-		
+		// 화면 안에서 죽은 경우		
 		if (m_iSpawnCnt == 0) 
 		{
 			SpawnEnemy();
@@ -51,10 +46,10 @@ void CEnemySpawner::Update()
 	{
 		// 초기에 소환안된 경우 return
 		if (m_Enemy == nullptr) return;
-		// 화면 밖에서 죽은 경우
 		// 안에서 죽은 경우 cnt회복 경로
 		if (m_iSpawnCnt == -1) m_iSpawnCnt = 0;
-		if (m_bDead)	m_iSpawnCnt = 0; // m_iSpawnCnt--;
+		// 화면 밖에서 죽은 경우
+		if (m_bDead)	m_iSpawnCnt = 0;
 	}
 
 }
@@ -71,6 +66,7 @@ void CEnemySpawner::SpawnEnemy()
 		m_Enemy = new CRabbit();
 		break;
 	case ENEMY::BAT:
+		m_Enemy = new CBat();
 		break;
 	case ENEMY::GORILLA:
 		break;

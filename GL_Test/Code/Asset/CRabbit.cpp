@@ -1,5 +1,4 @@
 #include "include.h"
-#include "CRabbit.h"
 
 CRabbit::CRabbit()
 {
@@ -8,7 +7,6 @@ CRabbit::CRabbit()
 	m_attackTimer = 0;
 	m_attackDT = 0.8f;
 	m_moveTimer = 0;
-	m_eCurState = RABBIT_STATE::IDLE;
 	Init();
 }
 
@@ -19,7 +17,6 @@ CRabbit::CRabbit(string name) : CEnemy(name)
 	m_attackTimer = 0;
 	m_attackDT = 0.8f;
 	m_moveTimer = 0;
-	m_eCurState = RABBIT_STATE::IDLE;
 	Init();
 }
 
@@ -68,11 +65,11 @@ void CRabbit::Update()
 	// printf("m_pGravity->GetGround() : %d\n", m_pGravity->GetGround());
 	if (m_rigidbody->GetVelocity().y < 0 && m_pGravity->GetGround() == false)
 	{
-		ChangeState(RABBIT_STATE::FALL);
+		ChangeState(ENEMY_STATE::FALL);
 	}
 
 	// if (m_attackTimer > 5 && m_eCurState != RABBIT_STATE::JUMP)
-	if (m_moveTimer > 6.f && m_eCurState != RABBIT_STATE::JUMP)
+	if (m_moveTimer > 6.f && m_eCurState != ENEMY_STATE::JUMP)
 	{
 		m_moveTimer = 0;
 		Jump();
@@ -106,15 +103,6 @@ void CRabbit::Update()
 
 	ScreenOut();
 
-	//vec2 vRenderPos = GetComponent<CAnimator>()->GetAnimation()->GetRenderPos();
-	//// printf("vRenderPos.x : %f\n", vRenderPos.x);
-	//// 토끼 크기만큼 더하기
-	//if (vRenderPos.x <= -1 || vRenderPos.x >= GLMgr::g_screenWidth)
-	//{
-	//	DeleteObject(this);
-	//	// printf("CBullet::Update() -> Deleted\n");
-	//}
-
 	// m_moveTimer += fDT;
 	//if (m_moveTimer > 3.f) 
 	//{
@@ -144,15 +132,10 @@ void CRabbit::Update()
 void CRabbit::OnCollisionEnter(CCollider* pOther)
 {
 	CGameObject* pOtherObj = pOther->gameObject;
-	if (dynamic_cast<CBullet*>(pOtherObj))
-	{
-		// m_bAlive = false;
-		DeleteObject(this);
-	}
 
 	if (dynamic_cast<CPlayer*>(pOtherObj))
 	{
-		// 플레이어에게 신호?
+		// 플레이어에게 신호
 		static_cast<CPlayer*>(pOtherObj)->TakeDamage(m_fDamage);
 	}
 }
@@ -161,43 +144,36 @@ void CRabbit::UpdateState()
 {
 	switch (m_eCurState)
 	{
-	case RABBIT_STATE::IDLE:
+	case ENEMY_STATE::IDLE:
 	{
 		if (m_iDir == 1) GetComponent<CAnimator>()->Play("Rabbit_Idle_Right", true);
 		else GetComponent<CAnimator>()->Play("Rabbit_Idle_Left", true);
-		ChangeState(RABBIT_STATE::IDLE);
+		ChangeState(ENEMY_STATE::IDLE);
 	}
 		break;
-	case RABBIT_STATE::JUMP:
+	case ENEMY_STATE::JUMP:
 	{
 		if (m_iDir == 1) GetComponent<CAnimator>()->Play("Rabbit_Jump_Right", true);
 		else GetComponent<CAnimator>()->Play("Rabbit_Jump_Left", true);
 	}
 		break;
-	case RABBIT_STATE::FALL:
+	case ENEMY_STATE::FALL:
 	{
 		if (m_iDir == 1) GetComponent<CAnimator>()->Play("Rabbit_Jump_Right", true);
 		else GetComponent<CAnimator>()->Play("Rabbit_Jump_Left", true);
-		if (m_pGravity->GetGround()) ChangeState(RABBIT_STATE::IDLE);
+		if (m_pGravity->GetGround()) ChangeState(ENEMY_STATE::IDLE);
 	}
 	break;
-	case RABBIT_STATE::ATTACK:
+	case ENEMY_STATE::ATTACK:
 	{
 		if (m_iDir == 1)  GetComponent<CAnimator>()->Play("Rabbit_Idle_Right", true);
 		else GetComponent<CAnimator>()->Play("Rabbit_Idle_Left", true);
-		ChangeState(RABBIT_STATE::IDLE);
+		ChangeState(ENEMY_STATE::IDLE);
 	}
 		break;
 	default:
 		break;
 	}
-}
-
-void CRabbit::ChangeState(RABBIT_STATE newState)
-{
-	// 이전 프레임과 비교
-	if (m_eCurState == newState) return;
-	m_eCurState = newState;
 }
 
 void CRabbit::Attack()
@@ -227,8 +203,13 @@ void CRabbit::Jump()
 	// 점프 
 	if (m_rigidbody)
 	{
-		ChangeState(RABBIT_STATE::JUMP);
+		ChangeState(ENEMY_STATE::JUMP);
 		m_rigidbody->AddVelocity(vec2(1000.f * m_iDir, 800.f));
 	}
+}
+
+void CRabbit::TakeDamage()
+{
+	DeleteObject(this);
 }
 

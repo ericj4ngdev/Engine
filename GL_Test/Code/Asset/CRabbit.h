@@ -5,14 +5,6 @@ class CCollider;
 class CGravity;
 class CAnimator;
 
-enum class RABBIT_STATE 
-{
-    IDLE,
-    JUMP,
-    FALL,
-    ATTACK,
-};
-
 class CRabbit : public CEnemy
 {
 public:
@@ -23,8 +15,9 @@ public:
     virtual void Update();
     virtual void OnCollisionEnter(CCollider* pOther);
 public:
-    void UpdateState();
-    void ChangeState(RABBIT_STATE newState);
+    virtual void UpdateState();
+    virtual void TakeDamage();
+public:
     void Attack();
     void Jump();
 private:    
@@ -35,7 +28,5 @@ private:
     float m_attackTimer;
     float m_attackDT;
     float m_moveTimer;
-    RABBIT_STATE m_eCurState;
-
 };
 

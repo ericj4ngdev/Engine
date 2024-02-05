@@ -2,6 +2,7 @@
 
 class CEnemy;
 class CRabbit;
+class CBat;
 
 class CEnemySpawner : public CGameObject
 {

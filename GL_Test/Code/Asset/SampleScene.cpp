@@ -15,18 +15,18 @@ void SampleScene::Enter()
 	AddObject(map, GROUP_TYPE::MAP);
 
 	CPlayer* player = new CPlayer("Player");
-	player->SetPos(vec2(-450.f, 100.f));
+	player->SetPos(vec2(-300.f, 100.f));
 	player->GetComponent<TransformComponent>()->SetScale(vec2(75.f, 75.f));
 	player->GetComponent<CCollider>()->Init();
 	AddObject(player, GROUP_TYPE::PLAYER);
 
-	// CRabbit* enemy = nullptr;
-	// string enemyName = "enemy";
-	// enemy = new CRabbit(enemyName);
-	// enemy->GetComponent<TransformComponent>()->SetPosition(vec2(400.f, 200.f));
-	// enemy->GetComponent<TransformComponent>()->SetScale(vec2{ 75.f, 80.f });
-	// enemy->GetComponent<CCollider>()->Init();
-	// AddObject(enemy, GROUP_TYPE::ENEMY);
+	/*CBat* enemy = nullptr;
+	string enemyName = "enemy";
+	enemy = new CBat(enemyName);
+	enemy->GetComponent<TransformComponent>()->SetPosition(vec2(400.f, 200.f));
+	enemy->GetComponent<TransformComponent>()->SetScale(vec2{ 75.f, 80.f });
+	enemy->GetComponent<CCollider>()->Init();
+	AddObject(enemy, GROUP_TYPE::ENEMY);*/
 
 	/*for (int i = 0; i < 3; i++)
 	{
@@ -42,11 +42,23 @@ void SampleScene::Enter()
 	pro->SetPos(vec2(-350.f, 150.f));
 	AddObject(pro, GROUP_TYPE::PROJ_ENEMY);
 
-	CEnemySpawner* spot = new CEnemySpawner();
-	spot->SetPos(vec2(600.f, 100.f));
-	spot->SetEnemy(ENEMY::RABBIT);
-	spot->GetComponent<CCollider>()->Init();
-	AddObject(spot, GROUP_TYPE::SPAWNER);
+	CEnemySpawner* spot = nullptr;
+	{
+		string str_spotName = "Spot" + to_string(0);
+		spot = new CEnemySpawner(str_spotName);
+		spot->SetPos(vec2(600.f, 0.f));
+		spot->SetEnemy(ENEMY::BAT);
+		// spot->GetComponent<CCollider>()->Init();
+		AddObject(spot, GROUP_TYPE::SPAWNER);
+
+		str_spotName = "Spot" + to_string(1);
+		spot = new CEnemySpawner(str_spotName);
+		spot->SetPos(vec2(1000.f, 100.f));
+		spot->SetEnemy(ENEMY::RABBIT);
+		// spot->GetComponent<CCollider>()->Init();
+		AddObject(spot, GROUP_TYPE::SPAWNER);
+	}
+	
 
 	//string blockName = "Block" + to_string(1);
 	//block = new CBlock(blockName);
@@ -63,7 +75,7 @@ void SampleScene::Enter()
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(-70.f, 110.f)));
 		block->SetScale(vec2{ 50.f, 2000.f });
-		block->GetComponent<CCollider>()->Init();
+		// block->GetComponent<CCollider>()->Init();
 		AddObject(block, GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(0);
@@ -157,7 +169,7 @@ void SampleScene::Update()
 {
 	CScene::Update();
 	// 그룹 개수 확인해보기
-	printf("%d\n", m_arrObj[(int)GROUP_TYPE::ENEMY].size());
+	// printf("%d\n", m_arrObj[(int)GROUP_TYPE::ENEMY].size());
 	// if (GetKeyDown(ENTER)) ChangeScene(SCENE_TYPE::STAGE_01);
 }
 

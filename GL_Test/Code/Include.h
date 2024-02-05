@@ -104,9 +104,11 @@ using std::vector;
 #include "Asset/CBullet.h"
 #include "Asset/CEnemy.h"
 #include "Asset/CRabbit.h"
+#include "Asset/CBat.h"
+
+
 #include "Asset/CEnemyProjectile.h"
 #include "Asset/CEnemySpawner.h"
-
 
 #endif
 
