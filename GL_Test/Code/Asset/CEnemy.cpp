@@ -34,6 +34,11 @@ void CEnemy::OnCollisionEnter(CCollider* pOther)
 	
 }
 
+void CEnemy::OnCollision(CCollider* pOther)
+{
+
+}
+
 vec2 CEnemy::GetPlayerPosition()
 {
 	// 현재 씬에 있는 플레이어

@@ -1,3 +1,3 @@
 ﻿  CBat.cpp
-C:\GitHub\Engine\GL_Test\Code\Asset\CBat.cpp(83,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  SampleScene.cpp
   GL_Test.vcxproj -> C:\GitHub\Engine\GL_Test\Output\bin_Debug\GL_Test.exe

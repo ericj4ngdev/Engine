@@ -177,6 +177,9 @@
     <ClCompile Include="Code\Asset\CEnemySpawner.cpp">
       <Filter>소스 파일\Custom\Object\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Util\Color4f.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\CScene.h">

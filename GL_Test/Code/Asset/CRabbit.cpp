@@ -4,8 +4,8 @@ CRabbit::CRabbit()
 {
 	m_iDir = 1;
 	m_attackCount = 0;
-	m_attackTimer = 0;
-	m_attackDT = 0.8f;
+	m_fAttackTimer = 0;
+	m_fAttackDT = 0.8f;
 	m_moveTimer = 0;
 	Init();
 }
@@ -14,8 +14,8 @@ CRabbit::CRabbit(string name) : CEnemy(name)
 {
 	m_iDir = 1;
 	m_attackCount = 0;
-	m_attackTimer = 0;
-	m_attackDT = 0.8f;
+	m_fAttackTimer = 0;
+	m_fAttackDT = 0.8f;
 	m_moveTimer = 0;
 	Init();
 }
@@ -68,7 +68,7 @@ void CRabbit::Update()
 		ChangeState(ENEMY_STATE::FALL);
 	}
 
-	// if (m_attackTimer > 5 && m_eCurState != RABBIT_STATE::JUMP)
+	// if (m_fAttackTimer > 5 && m_eCurState != RABBIT_STATE::JUMP)
 	if (m_moveTimer > 6.f && m_eCurState != ENEMY_STATE::JUMP)
 	{
 		m_moveTimer = 0;
@@ -82,11 +82,11 @@ void CRabbit::Update()
 		// printf("m_attackCount : %d\n", m_attackCount);
 		if (m_attackCount < 3)
 		{
-			m_attackTimer += fDT;
-			if (m_attackTimer > m_attackDT)		// m_attackDT = 1
+			m_fAttackTimer += fDT;
+			if (m_fAttackTimer > m_fAttackDT)		// m_fAttackDT = 1
 			{
 				Attack();				// 발사기능. 0.8초 간격
-				m_attackTimer = 0;
+				m_fAttackTimer = 0;
 				++m_attackCount;
 			}
 		}
@@ -96,7 +96,7 @@ void CRabbit::Update()
 	else 
 	{
 		m_attackCount = 0;
-		m_attackTimer = 0;
+		m_fAttackTimer = 0;
 	}
 	// printf("Rabbit State : %d\n", m_eCurState);
 	UpdateState();
@@ -111,19 +111,19 @@ void CRabbit::Update()
 	//	// 딜레이 1초
 	//	if (m_attackCount < 3)
 	//	{
-	//		m_attackTimer += fDT;
-	//		if (m_attackTimer > m_attackDT)		// m_attackDT = 1
+	//		m_fAttackTimer += fDT;
+	//		if (m_fAttackTimer > m_fAttackDT)		// m_fAttackDT = 1
 	//		{
 	//			Attack();				// 발사기능. 1초 간격
-	//			m_attackTimer = 0;
+	//			m_fAttackTimer = 0;
 	//			m_attackCount++;
 	//		}
 	//	}
 	//	else 
 	//	{
 	//		m_attackCount = 0;
-	//		m_attackTimer = 0;
-	//		m_attackDT = 1;
+	//		m_fAttackTimer = 0;
+	//		m_fAttackDT = 1;
 	//		m_moveTimer = -1;
 	//	}
 	//}
@@ -135,8 +135,25 @@ void CRabbit::OnCollisionEnter(CCollider* pOther)
 
 	if (dynamic_cast<CPlayer*>(pOtherObj))
 	{
+		int dir = 0;
+
+		dir = (pOtherObj->GetPos().x > GetPos().x) ? 1 : -1;
 		// 플레이어에게 신호
-		static_cast<CPlayer*>(pOtherObj)->TakeDamage(m_fDamage);
+		static_cast<CPlayer*>(pOtherObj)->TakeDamage(m_fDamage, dir);
+	}
+}
+
+void CRabbit::OnCollision(CCollider* pOther)
+{
+	CGameObject* pOtherObj = pOther->gameObject;
+
+	if (dynamic_cast<CPlayer*>(pOtherObj))
+	{
+		int dir = 0;
+
+		dir = (pOtherObj->GetPos().x > GetPos().x) ? 1 : -1;
+		// 플레이어에게 신호
+		static_cast<CPlayer*>(pOtherObj)->TakeDamage(m_fDamage, dir);
 	}
 }
 

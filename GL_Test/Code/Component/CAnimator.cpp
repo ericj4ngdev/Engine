@@ -80,3 +80,18 @@ void CAnimator::SetTexture(const string& _strKey, const char* _strFilePath)
 	m_texture = CResMgr::GetInstance()->Load(_strKey, _strFilePath);
 	m_Texid = m_texture->m_texId;
 }
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="alpha"> 0,1사이 값</param>
+void CAnimator::SetAlpha(float alpha)
+{
+	// 모든 애니메이션 접근
+	map<string, CAnimation*>::iterator iter = m_mapAnim.begin();
+	for (iter = m_mapAnim.begin(); iter != m_mapAnim.end(); iter++)
+	{
+		// 모든 애니메이션의 alpha값 조절
+		iter->second->SetColor(Color4f(1,1,1, alpha));
+	}	
+}

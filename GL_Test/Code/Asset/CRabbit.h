@@ -14,6 +14,7 @@ public:
     virtual void Init();
     virtual void Update();
     virtual void OnCollisionEnter(CCollider* pOther);
+    virtual void OnCollision(CCollider* pOther);
 public:
     virtual void UpdateState();
     virtual void TakeDamage();
@@ -25,8 +26,8 @@ private:
     CCollider* m_Collider;
     CGravity* m_pGravity;
     int m_attackCount;
-    float m_attackTimer;
-    float m_attackDT;
+    float m_fAttackTimer;
+    float m_fAttackDT;
     float m_moveTimer;
 };
 

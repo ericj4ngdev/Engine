@@ -69,8 +69,6 @@ void CAnimation::Render()
 
 }
 
-
-
 void CAnimation::Create(CTexture* pTex, vec2 vLT, vec2 vSliceSize, vec2 vStep, int idir, float fDuration, int iFrameCount)
 {
 	m_pTex = pTex;

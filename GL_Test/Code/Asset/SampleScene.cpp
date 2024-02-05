@@ -6,8 +6,7 @@ void SampleScene::Init()
 }
 
 void SampleScene::Enter()
-{
-	
+{	
 	CMap* map = new CMap("backgound");
 	vec2 offset = vec2(6000.f, -1600.0f);
 	map->SetPos(offset + vec2(0,0));
@@ -38,9 +37,9 @@ void SampleScene::Enter()
 		AddObject(enemy, GROUP_TYPE::ENEMY);
 	}*/
 
-	CEnemyProjectile* pro = new CEnemyProjectile();
+	/*CEnemyProjectile* pro = new CEnemyProjectile();
 	pro->SetPos(vec2(-350.f, 150.f));
-	AddObject(pro, GROUP_TYPE::PROJ_ENEMY);
+	AddObject(pro, GROUP_TYPE::PROJ_ENEMY);*/
 
 	CEnemySpawner* spot = nullptr;
 	{

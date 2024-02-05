@@ -2,12 +2,13 @@
 
 CEnemyProjectile::CEnemyProjectile() : m_fSpeed(0)
 	, m_vDir(vec2(0,0))
+	, m_fDamage(10)
 {
 	Init();
 }
 
 CEnemyProjectile::CEnemyProjectile(string name) : m_fSpeed(0)
-, m_vDir(vec2(0, 0))
+, m_vDir(vec2(0, 0)), m_fDamage(10)
 {
 	Init();
 }
@@ -39,8 +40,30 @@ void CEnemyProjectile::Update()
 
 void CEnemyProjectile::OnCollisionEnter(CCollider* pOther)
 {
-	// printf("CEnemyProjectile\n");
+	CGameObject* pOtherObj = pOther->gameObject;
 
+	if (dynamic_cast<CPlayer*>(pOtherObj))
+	{
+		int dir = 0;
+
+		dir = (pOtherObj->GetPos().x > GetPos().x) ? 1 : -1;
+		// 플레이어에게 신호
+		static_cast<CPlayer*>(pOtherObj)->TakeDamage(m_fDamage, dir);
+	}
+}
+
+void CEnemyProjectile::OnCollision(CCollider* pOther)
+{
+	CGameObject* pOtherObj = pOther->gameObject;
+
+	if (dynamic_cast<CPlayer*>(pOtherObj))
+	{
+		int dir = 0;
+
+		dir = (pOtherObj->GetPos().x > GetPos().x) ? 1 : -1;
+		// 플레이어에게 신호
+		static_cast<CPlayer*>(pOtherObj)->TakeDamage(m_fDamage, dir);
+	}
 }
 
 void CEnemyProjectile::Movement()

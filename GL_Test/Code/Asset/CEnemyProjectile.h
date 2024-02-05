@@ -9,6 +9,7 @@ public:
 	virtual void Init();
 	virtual void Update();
 	virtual void OnCollisionEnter(CCollider* pOther);
+	virtual void OnCollision(CCollider* pOther);
 public :
 	void Movement();
 	void ScreenOut();
@@ -17,5 +18,6 @@ public :
 private:
 	float m_fSpeed;
 	vec2 m_vDir;
+	float m_fDamage;
 };
 

@@ -22,6 +22,7 @@ public:
 	virtual void Init();
 	virtual void Update();
 	virtual void OnCollisionEnter(CCollider* pOther);
+	virtual void OnCollision(CCollider* pOther);
 protected:
 	vec2 GetPlayerPosition();
 	void ScreenOut();

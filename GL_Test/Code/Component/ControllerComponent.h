@@ -42,6 +42,11 @@ public:
 	void ChangeState(PLAYER_STATE newState);
 	void ChangeAttackState(PLAYER_ATTACK_STATE attackState);
 	void UpdateAttack();
+	void TakeDamage(float damage, int dir);
+	bool DecreaseHP(float damage);
+private:
+	float m_HP;
+	int m_Life;
 private:
 	vec2 m_curpos;
 	float m_speed;
@@ -59,9 +64,12 @@ private:
 	float animationTimer;
 	float m_MoveOffset;
 private:
-	float m_attackDT;
-	float m_attackTimer;
+	float m_fAttackDT;
+	float m_fAttackTimer;
+	float m_fHitTimer;
 	int m_attackCount;
+	bool m_bInvincible;
+	float m_bInvincibleTimer;
 public:
 	void SetSpeed(float sp) { m_speed = sp; }
 };

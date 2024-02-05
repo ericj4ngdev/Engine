@@ -7,10 +7,15 @@ ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent
 	, m_iPrevDir(-1)
 	, m_bMoveable(true)
 	, m_MoveOffset(0.1f)
-	, m_attackTimer(1)
+	, m_fAttackTimer(1)
 	, m_attackCount(0)
-	, m_attackDT(0.1)
+	, m_fAttackDT(0.1)
 	, m_eCurAttackState(PLAYER_ATTACK_STATE::IDLE)
+	, m_HP(100)
+	, m_Life(2)
+	, m_fHitTimer(0)
+	, m_bInvincible(false)
+	, m_bInvincibleTimer(0)
 {
 	// m_speed = 1000;
 }
@@ -23,7 +28,7 @@ void ControllerComponent::Init()
 {
 	// m_attackCount = 0;
 	// animationTimer = 1;
-	// m_attackDT = 0.3;
+	// m_fAttackDT = 0.3;
 }
 
 void ControllerComponent::Update()
@@ -33,7 +38,28 @@ void ControllerComponent::Update()
 	m_Collider = gameObject->GetComponent<CCollider>();
 	m_pGravity = gameObject->GetComponent<CGravity>();
 	
-	Control();	
+	// 무적이면
+	if (m_bInvincible)
+	{
+		m_bInvincibleTimer += fDT;
+		if (m_bInvincibleTimer < 2)
+		{
+			// 깜빡이기
+			gameObject->GetComponent<CAnimator>()->SetAlpha(0.5);
+		}
+		else
+		{
+			// 무적 끝
+			gameObject->GetComponent<CAnimator>()->SetAlpha(1);
+			m_bInvincible = false;
+			m_bInvincibleTimer = 0;
+		}
+	}
+
+	if (m_eCurState != PLAYER_STATE::HIT && m_eCurState != PLAYER_STATE::DEAD)
+	{
+		Control();	
+	}
 	UpdateState();
 
 	vec2 vRenderPos = gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos();
@@ -72,7 +98,8 @@ void ControllerComponent::Destroy()
 }
 
 void ControllerComponent::Control()
-{	
+{
+
 	float move = 0;
 
 	bool moveLeft = GetKeyHold(LEFT);
@@ -92,21 +119,6 @@ void ControllerComponent::Control()
 		// m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));
 	}
 
-	/*if (GetKeyHold(LEFT))
-	{
-		m_iDir = -1;
-		move = m_iDir * m_speed;
-		m_curpos.x += move * fDT;
-		m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));		
-	}
-	else if (GetKeyHold(RIGHT))
-	{
-		m_iDir = 1;
-		move = m_iDir * m_speed;
-		m_curpos.x += move * fDT;
-		m_rigidbody->SetVelocity(vec2(move, m_rigidbody->GetVelocity().y));		
-	}*/
-
 	if (abs(move) > m_MoveOffset)
 	{
 		if (m_eCurState == PLAYER_STATE::IDLE)
@@ -117,8 +129,6 @@ void ControllerComponent::Control()
 		if (m_eCurState == PLAYER_STATE::WALK)
 			ChangeState(PLAYER_STATE::IDLE);
 	}
-	
-	
 
 	// Fall 조건
 	if (m_rigidbody->GetVelocity().y < 0 && m_pGravity->GetGround() == false)
@@ -126,6 +136,7 @@ void ControllerComponent::Control()
 		ChangeState(PLAYER_STATE::FALL);
 	}
 
+	// 점프
 	if (GetKeyDown(C) && m_eCurState != PLAYER_STATE::JUMP
 					  && m_eCurState != PLAYER_STATE::FALL)
 	{
@@ -137,15 +148,16 @@ void ControllerComponent::Control()
 		}		
 	}
 
+	// 공격
 	if (GetKeyHold(V))
 	{
 		if (m_attackCount < 3) 
 		{
-			m_attackTimer += fDT;
-			if (m_attackTimer > m_attackDT)
+			m_fAttackTimer += fDT;
+			if (m_fAttackTimer > m_fAttackDT)
 			{
 				SpecialAttack();				// 발사기능. 0.3초 간격
-				m_attackTimer = 0;
+				m_fAttackTimer = 0;
 				m_attackCount++;
 			}
 			switch (m_eCurState)
@@ -174,7 +186,7 @@ void ControllerComponent::Control()
 	{
 		// 단타용 떼면 완전 종료
 		ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
-		m_attackTimer = 1;
+		m_fAttackTimer = 1;
 		m_attackCount = 0;
 	}
 	
@@ -255,6 +267,21 @@ void ControllerComponent::UpdateState()
 	}
 	break;
 	case PLAYER_STATE::HIT:
+	{
+		m_fHitTimer += fDT;
+		if (m_fHitTimer < 0.5f)
+		{
+			if (m_iDir == 1)
+				gameObject->GetComponent<CAnimator>()->Play("Hit_Right", true);
+			else
+				gameObject->GetComponent<CAnimator>()->Play("Hit_Left", true);
+		}
+		else
+		{
+			m_fHitTimer = 0;
+			ChangeState(PLAYER_STATE::IDLE);
+		}
+	}
 		break;
 	case PLAYER_STATE::DEAD:
 		break;
@@ -341,6 +368,50 @@ void ControllerComponent::UpdateAttack()
 		break;
 	default:
 		break;
+	}
+
+}
+
+void ControllerComponent::TakeDamage(float damage, int dir)
+{
+	// 무적 상태가 아니면
+	if (m_bInvincible == false) 
+	{
+		printf("Damaged!");
+		if (DecreaseHP(damage))
+		{
+			ChangeState(PLAYER_STATE::HIT);
+			m_bInvincible = true;
+			// 넉백
+			m_rigidbody->AddVelocity(vec2(dir * 200, m_rigidbody->GetVelocity().y));
+		}
+		else
+		{
+			// 죽는 효과
+			ChangeState(PLAYER_STATE::DEAD);
+		}
+	}
+	
+}
+
+/// <summary>
+/// 살아있으면 true, 죽었으면 false
+/// </summary>
+/// <param name="damage"></param>
+/// <returns></returns>
+bool ControllerComponent::DecreaseHP(float damage)
+{
+	m_HP -= damage;
+	if(m_HP <= 0)	// 죽었다.
+	{
+		m_HP = 0;
+		// 빈 HP바 표시
+		return false;
+	}
+	else           // 살아있다.
+	{
+		// HP바 감소
+		return true;
 	}
 
 }

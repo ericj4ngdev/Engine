@@ -43,6 +43,11 @@ void CPlayer::Init()
 	GetComponent<CAnimator>()->CreateAnimation("Run_Attack_Left", pTex, vec2(47, 70), vec2(32, 24), vec2(33, 0), -1, 0.15f, 3);
 	GetComponent<CAnimator>()->CreateAnimation("Jump_Attack_Left", pTex, vec2(146, 70), vec2(26, 29), vec2(33, 0), -1, 0.15f, 1);
 
+	GetComponent<CAnimator>()->CreateAnimation("Hit_Right", pTex, vec2(248, 70), vec2(26, 28), vec2(0, 0), 1, 0.15f, 1);
+	GetComponent<CAnimator>()->CreateAnimation("Hit_Left", pTex, vec2(248, 70), vec2(26, 28), vec2(0, 0), -1, 0.15f, 1);
+	// 70 - 42 = 28
+	// 274 - 248 = 26
+	
 	// CAnimation* pAnim = GetComponent<CAnimator>()->FindAnimation("Attack_Right");
 	// pAnim->GetFrame(2).vOffset = vec2(0, -10.f);
 	// pAnim->GetFrame(2).vSlice = vec2(48, 32);
@@ -108,7 +113,7 @@ void CPlayer::OnCollisionExit(CCollider* pOther)
 	}
 }
 
-void CPlayer::TakeDamage(int damage)
-{
-	// printf("Damaged!");
+void CPlayer::TakeDamage(float damage, int dir)
+{	
+	GetComponent<ControllerComponent>()->TakeDamage(damage, dir);
 }

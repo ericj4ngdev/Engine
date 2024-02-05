@@ -47,6 +47,7 @@ public:
 	size_t GetMaxFrame() { return m_vecFrm.size(); }
 	vec2 GetRenderPos() {return m_vRenderPos; }
 	void DrawSprite();
+	void SetColor(Color4f c) { m_color = c; };
 private:
 	void SetName(const string& name) { m_strName = name; }
 public:

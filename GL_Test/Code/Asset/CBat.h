@@ -15,6 +15,7 @@ public:
 	virtual void Init();
 	virtual void Update();
 	virtual void OnCollisionEnter(CCollider* pOther);
+	virtual void OnCollision(CCollider* pOther);
 public:
 	void TakeDamage();
 	void UpdateState();

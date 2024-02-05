@@ -27,5 +27,5 @@ public:
 
     CTexture* GetTexture() { return m_texture; }
     void SetTexture(const string& _strKey, const char* _strFilePath);
-    
+    void SetAlpha(float alpha);
 };
