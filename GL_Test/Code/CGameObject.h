@@ -25,7 +25,7 @@ public:
 public:
 	string GetName() const { return m_name; }
 	void Setname(const string name) { m_name = move(name); }
-	bool GetIsEnable() const { return isEnable; }
+	bool GetIsEnable() const { return m_bEnable; }
 	void SetIsEnable(bool is_enable);
 	vec2 GetPos() { return m_transform->GetPosition(); }
 	vec2 GetScale() { return m_transform->GetScale(); }
@@ -44,7 +44,7 @@ protected:
 	list<CComponent*> m_components;
 	string m_name;
 	CGameObject* m_parent;
-	bool isEnable;
+	bool m_bEnable;
 	bool m_bAlive;
 protected:
 	void UpdateComponent();

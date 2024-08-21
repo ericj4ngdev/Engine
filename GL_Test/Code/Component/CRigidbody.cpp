@@ -6,12 +6,17 @@ COMPONENT_CONSTRUCTOR(CRigidbody), m_Mass(1.f)
 {
 	
 }
+
 void CRigidbody::Init()
 {
+	
 }
+
 void CRigidbody::Update()
 {
+	
 }
+
 void CRigidbody::FinalUpdate()
 {
 	// printf("m_vForce (%f, %f)\n", m_vForce.x, m_vForce.y);

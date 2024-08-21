@@ -1,6 +1,6 @@
 #include "include.h"
 
-// CComponent의 생성자를 자식 생성자 초기화로부터 호출
+// CComponent?? ??????? ??? ?????? ?????觀??? ???
 ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent("ControllerComponent", l_gameObject)
 	, m_eCurState(PLAYER_STATE::IDLE)
 	, m_iDir(1)
@@ -34,22 +34,22 @@ void ControllerComponent::Init()
 void ControllerComponent::Update()
 {
 	m_curpos = gameObject->GetComponent<TransformComponent>()->GetPosition();
-	m_rigidbody = gameObject->GetComponent<CRigidbody>();	// 얘는 왜 업데이트해야 하는가?
+	m_rigidbody = gameObject->GetComponent<CRigidbody>();	// ??? ?? ?????????? ??째??
 	m_Collider = gameObject->GetComponent<CCollider>();
 	m_pGravity = gameObject->GetComponent<CGravity>();
 	
-	// 무적이면
+	// ???????
 	if (m_bInvincible)
 	{
 		m_bInvincibleTimer += fDT;
 		if (m_bInvincibleTimer < 2)
 		{
-			// 깜빡이기
+			// ???????
 			gameObject->GetComponent<CAnimator>()->SetAlpha(0.5);
 		}
 		else
 		{
-			// 무적 끝
+			// ???? ??
 			gameObject->GetComponent<CAnimator>()->SetAlpha(1);
 			m_bInvincible = false;
 			m_bInvincibleTimer = 0;
@@ -94,7 +94,7 @@ void ControllerComponent::Render()
 
 void ControllerComponent::Destroy()
 {
-
+	
 }
 
 void ControllerComponent::Control()
@@ -106,7 +106,7 @@ void ControllerComponent::Control()
 	bool moveRight = GetKeyHold(RIGHT);
 
 	if (moveLeft || moveRight) {
-		// 좌우 이동 처리
+		// ?쩔? ??? ???
 		if (moveLeft) {
 			m_iDir = -1;
 		}
@@ -130,13 +130,13 @@ void ControllerComponent::Control()
 			ChangeState(PLAYER_STATE::IDLE);
 	}
 
-	// Fall 조건
+	// Fall ????
 	if (m_rigidbody->GetVelocity().y < 0 && m_pGravity->GetGround() == false)
 	{
 		ChangeState(PLAYER_STATE::FALL);
 	}
 
-	// 점프
+	// ????
 	if (GetKeyDown(C) && m_eCurState != PLAYER_STATE::JUMP
 					  && m_eCurState != PLAYER_STATE::FALL)
 	{
@@ -148,7 +148,7 @@ void ControllerComponent::Control()
 		}		
 	}
 
-	// 공격
+	// ????
 	if (GetKeyHold(V))
 	{
 		if (m_attackCount < 3) 
@@ -156,7 +156,7 @@ void ControllerComponent::Control()
 			m_fAttackTimer += fDT;
 			if (m_fAttackTimer > m_fAttackDT)
 			{
-				SpecialAttack();				// 발사기능. 0.3초 간격
+				SpecialAttack();				// ?????. 0.3?? ????
 				m_fAttackTimer = 0;
 				m_attackCount++;
 			}
@@ -184,7 +184,7 @@ void ControllerComponent::Control()
 	}
 	if (GetKeyUp(V)) 
 	{
-		// 단타용 떼면 완전 종료
+		// ????? ???? ???? ????
 		ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
 		m_fAttackTimer = 1;
 		m_attackCount = 0;
@@ -202,7 +202,7 @@ void ControllerComponent::Control()
 
 	// assert(gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos());
 	// if (gameObject->GetComponent<CAnimator>()->GetAnimation()->GetRenderPos()) { return; }
-	// set(현재 위치 + 변화량) 동기화.	
+	// set(???? ??? + ?????) ?????.	
 }
 
 
@@ -247,7 +247,7 @@ void ControllerComponent::UpdateState()
 			gameObject->GetComponent<CAnimator>()->Play("Jump_Right", true);			
 		else		
 			gameObject->GetComponent<CAnimator>()->Play("Jump_Left", true);	
-		// Idle로 돌아오는 코드는 Player의 OnCollision에 있다. 
+		// Idle?? ??????? ???? Player?? OnCollision?? ???. 
 	}
 	break;
 	case PLAYER_STATE::ATTACK:
@@ -262,7 +262,7 @@ void ControllerComponent::UpdateState()
 		else
 			gameObject->GetComponent<CAnimator>()->Play("Fall_Left", true);
 		
-		// CPlayer의 OnCollsionEnter로 돌아오게 하려 했는데 엔진 구조상 Idle로 안돌아온다. 
+		// CPlayer?? OnCollsionEnter?? ??????? ??? ???? ???? ?????? Idle?? ?????쨈?. 
 		if(m_pGravity->GetGround()) ChangeState(PLAYER_STATE::IDLE);
 	}
 	break;
@@ -297,9 +297,9 @@ void ControllerComponent::UpdateAttack()
 	case PLAYER_ATTACK_STATE::IDLE: 
 	{
 		animationTimer = 0;
-		// ChangeState(PLAYER_STATE::IDLE);		// 공중에선 Idle로 돌아오면 안된다.
-		// 그래서 Jump_Attack빼고 일일이 ChangeState(PLAYER_STATE::IDLE);넣어줌
-		// 아래 코드 추가 -> 단발 공격시 애니메이션 안돌아감
+		// ChangeState(PLAYER_STATE::IDLE);		// ??????? Idle?? ??????? ????.
+		// ????? Jump_Attack???? ?????? ChangeState(PLAYER_STATE::IDLE);?????
+		// ??? ??? ??? -> ??? ????? ??????? ??????
 		if(m_ePrevAttackState != PLAYER_ATTACK_STATE::JUMP_ATTACK)
 			ChangeState(PLAYER_STATE::IDLE);
 		else
@@ -309,7 +309,7 @@ void ControllerComponent::UpdateAttack()
 	case PLAYER_ATTACK_STATE::NORMAL:
 	{
 		animationTimer += fDT;
-		// 0.5초 동안 애니메이션 
+		// 0.5?? ???? ??????? 
 		if (animationTimer < 0.5f) 
 		{
 			if (m_iDir == 1)
@@ -319,13 +319,13 @@ void ControllerComponent::UpdateAttack()
 		}
 		else 
 		{
-			// 0.5초 지나면 끝(누르고 있어도 끝)
+			// 0.5?? ?????? ??(?????? ??? ??)
 			ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
 			ChangeState(PLAYER_STATE::IDLE);
-			animationTimer = 0;			// 직접 시간 초기화
-			// 둘 다 Idle이면 다음 프레임에서 PLAYER_STATE가 Attack이 아니어서 
-			// PLAYER_ATTACK_STATE가 IDLE이어도 animationTimer가 초기화가 안된다.
-			// 따라서 Change할 때, 전체 초기화를 해줘야 한다 생각
+			animationTimer = 0;			// ???? ?챨? ????
+			// ?? ?? Idle??? ???? ????????? PLAYER_STATE?? Attack?? ???? 
+			// PLAYER_ATTACK_STATE?? IDLE??? animationTimer?? ?????? ????.
+			// ???? Change?? ??, ??? ?????? ????? ??? ????
 		}	
 	}
 		break;
@@ -360,8 +360,8 @@ void ControllerComponent::UpdateAttack()
 		else
 		{
 			ChangeAttackState(PLAYER_ATTACK_STATE::IDLE);
-			ChangeState(PLAYER_STATE::FALL);		// 공중 공격이 끝나면 Idle이 아닌 공중으로 복귀. 
-			// FALL에서 알아서 IDLE로 돌아갈 거임
+			ChangeState(PLAYER_STATE::FALL);		// ???? ?????? ?????? Idle?? ??? ???????? ????. 
+			// FALL???? ???? IDLE?? ????? ????
 			animationTimer = 0;
 		}
 	}
@@ -374,7 +374,7 @@ void ControllerComponent::UpdateAttack()
 
 void ControllerComponent::TakeDamage(float damage, int dir)
 {
-	// 무적 상태가 아니면
+	// ???? ???째? ????
 	if (m_bInvincible == false) 
 	{
 		printf("Damaged!");
@@ -382,12 +382,12 @@ void ControllerComponent::TakeDamage(float damage, int dir)
 		{
 			ChangeState(PLAYER_STATE::HIT);
 			m_bInvincible = true;
-			// 넉백
+			// ???
 			m_rigidbody->AddVelocity(vec2(dir * 200, m_rigidbody->GetVelocity().y));
 		}
 		else
 		{
-			// 죽는 효과
+			// ??? ???
 			ChangeState(PLAYER_STATE::DEAD);
 		}
 	}
@@ -395,31 +395,31 @@ void ControllerComponent::TakeDamage(float damage, int dir)
 }
 
 /// <summary>
-/// 살아있으면 true, 죽었으면 false
+/// ????????? true, ??????? false
 /// </summary>
 /// <param name="damage"></param>
 /// <returns></returns>
 bool ControllerComponent::DecreaseHP(float damage)
 {
 	m_HP -= damage;
-	if(m_HP <= 0)	// 죽었다.
+	if(m_HP <= 0)	// ?????.
 	{
 		m_HP = 0;
-		// 빈 HP바 표시
+		// ?? HP?? ???
 		return false;
 	}
-	else           // 살아있다.
+	else           // ??????.
 	{
-		// HP바 감소
+		// HP?? ????
 		return true;
 	}
 
 }
 
-// 모든 State 끝에 Idle로 돌아가는 로직 만들기
+// ??? State ???? Idle?? ??????? ???? ?????
 void ControllerComponent::ChangeState(PLAYER_STATE newState)
 {
-	// 이전 프레임과 비교
+	// ???? ??????? ??
 	if (m_eCurState == newState) return;
 	m_eCurState = newState;
 }

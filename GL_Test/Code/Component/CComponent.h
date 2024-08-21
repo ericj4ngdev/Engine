@@ -7,7 +7,7 @@ class CComponent
 {
 public:
     CGameObject* gameObject = nullptr;
-    bool isEnable = true;
+    bool bEnable = true;
     std::string m_classType;
 
 public:
@@ -16,7 +16,7 @@ public:
     CComponent(const CComponent& src) 
     {
         gameObject = src.gameObject;
-        isEnable = src.isEnable;
+        bEnable = src.bEnable;
         m_classType = src.m_classType;
     }
     virtual ~CComponent() = default;
@@ -32,11 +32,11 @@ public:
 
     virtual bool GetIsEnable() const 
     {
-        return isEnable;
+        return bEnable;
     }
     virtual void SetIsEnable(bool is_enable)
     {
-        isEnable = is_enable;
+        bEnable = is_enable;
     }
 
     std::string GetClassType() const 

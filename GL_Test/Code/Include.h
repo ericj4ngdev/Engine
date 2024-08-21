@@ -83,7 +83,7 @@ using std::vector;
 
 
 #include "CScene.h"
-#include "Asset/SampleScene.h"
+#include "Object/SampleScene.h"
 #include "Scene/SStage01.h"
 
 #include "Component/CComponent.h"
@@ -98,17 +98,17 @@ using std::vector;
 #include "Component/Bullet.h"
 
 #include "CGameObject.h"
-#include "Asset/CPlayer.h"
-#include "Asset/CBlock.h"
-#include "Asset/CMap.h"
-#include "Asset/CBullet.h"
-#include "Asset/CEnemy.h"
-#include "Asset/CRabbit.h"
-#include "Asset/CBat.h"
+#include "Object/CPlayer.h"
+#include "Object/CBlock.h"
+#include "Object/CMap.h"
+#include "Object/CBullet.h"
+#include "Object/CEnemy.h"
+#include "Object/CRabbit.h"
+#include "Object/CBat.h"
 
 
-#include "Asset/CEnemyProjectile.h"
-#include "Asset/CEnemySpawner.h"
+#include "Object/CEnemyProjectile.h"
+#include "Object/CEnemySpawner.h"
 
 #endif
 

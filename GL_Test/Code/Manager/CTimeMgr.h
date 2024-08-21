@@ -7,10 +7,10 @@ private:
 	LARGE_INTEGER	m_llPrevCount;
 	LARGE_INTEGER	m_llFrequency;
 
-	double			m_dDT;			// ÇÁ·¹ÀÓ »çÀÌ ½Ã°£°ª
-	double			m_dAcc;			// ´©Àû½Ã°£ = ÇöÀç ½Ã°£
-	unsigned int	m_uiCallCount;	// ÇÔ¼ö È£Ãâ È½¼ö Ã¼Å©
-	unsigned int	m_uiFPS;		// ÃÊ´ç È£Ãâ È½¼ö
+	double			m_dDT;			// í”„ë ˆì„ ì‚¬ì´ ì‹œê°„ê°’
+	double			m_dAcc;			// ëˆ„ì ì‹œê°„ = í˜„ì¬ ì‹œê°„
+	unsigned int	m_uiCallCount;	// í•¨ìˆ˜ í˜¸ì¶œ íšŸìˆ˜ ì²´í¬
+	unsigned int	m_uiFPS;		// ì´ˆë‹¹ í˜¸ì¶œ íšŸìˆ˜
 
 public:
 	void Init();

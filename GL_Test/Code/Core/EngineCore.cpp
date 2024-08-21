@@ -33,7 +33,7 @@ void EngineCore::Render()
 {
 	CTimeMgr::GetInstance()->Render();
 	GLMgr::GetInstance()->Render();
-	CSceneMgr::GetInstance()->Render();		// RenderCompo °»½ÅÇÔ
+	CSceneMgr::GetInstance()->Render();				// RenderCompo ê°±ì‹ í•¨
 
 	glutSwapBuffers();
 }

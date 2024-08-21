@@ -19,16 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Code\Asset\CBat.cpp" />
-    <ClCompile Include="Code\Asset\CBlock.cpp" />
-    <ClCompile Include="Code\Asset\CEnemyProjectile.cpp" />
-    <ClCompile Include="Code\Asset\CEnemySpawner.cpp" />
-    <ClCompile Include="Code\Asset\CMap.cpp" />
-    <ClCompile Include="Code\Asset\CPlayer.cpp" />
-    <ClCompile Include="Code\Asset\CBullet.cpp" />
-    <ClCompile Include="Code\Asset\CEnemy.cpp" />
-    <ClCompile Include="Code\Asset\CRabbit.cpp" />
-    <ClCompile Include="Code\Asset\SampleScene.cpp" />
+    <ClCompile Include="Code\Object\CBat.cpp" />
+    <ClCompile Include="Code\Object\CBlock.cpp" />
+    <ClCompile Include="Code\Object\CEnemyProjectile.cpp" />
+    <ClCompile Include="Code\Object\CEnemySpawner.cpp" />
+    <ClCompile Include="Code\Object\CMap.cpp" />
+    <ClCompile Include="Code\Object\CPlayer.cpp" />
+    <ClCompile Include="Code\Object\CBullet.cpp" />
+    <ClCompile Include="Code\Object\CEnemy.cpp" />
+    <ClCompile Include="Code\Object\CRabbit.cpp" />
+    <ClCompile Include="Code\Object\SampleScene.cpp" />
     <ClCompile Include="Code\CGameObject.cpp" />
     <ClCompile Include="Code\Component\CAnimator.cpp" />
     <ClCompile Include="Code\Component\CCollider.cpp" />
@@ -59,16 +59,16 @@
     <ClCompile Include="Code\Util\Color4f.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\Asset\CBat.h" />
-    <ClInclude Include="Code\Asset\CBlock.h" />
-    <ClInclude Include="Code\Asset\CEnemyProjectile.h" />
-    <ClInclude Include="Code\Asset\CEnemySpawner.h" />
-    <ClInclude Include="Code\Asset\CMap.h" />
-    <ClInclude Include="Code\Asset\CPlayer.h" />
-    <ClInclude Include="Code\Asset\CBullet.h" />
-    <ClInclude Include="Code\Asset\CEnemy.h" />
-    <ClInclude Include="Code\Asset\CRabbit.h" />
-    <ClInclude Include="Code\Asset\SampleScene.h" />
+    <ClInclude Include="Code\Object\CBat.h" />
+    <ClInclude Include="Code\Object\CBlock.h" />
+    <ClInclude Include="Code\Object\CEnemyProjectile.h" />
+    <ClInclude Include="Code\Object\CEnemySpawner.h" />
+    <ClInclude Include="Code\Object\CMap.h" />
+    <ClInclude Include="Code\Object\CPlayer.h" />
+    <ClInclude Include="Code\Object\CBullet.h" />
+    <ClInclude Include="Code\Object\CEnemy.h" />
+    <ClInclude Include="Code\Object\CRabbit.h" />
+    <ClInclude Include="Code\Object\SampleScene.h" />
     <ClInclude Include="Code\Cmacro.h" />
     <ClInclude Include="Code\Component\CAnimator.h" />
     <ClInclude Include="Code\Component\CCollider.h" />

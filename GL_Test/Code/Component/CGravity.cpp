@@ -7,10 +7,12 @@ COMPONENT_CONSTRUCTOR(CGravity), m_bGround(false)
 
 void CGravity::Init()
 {
+	
 }
 
 void CGravity::Update()
 {
+	
 }
 
 void CGravity::FinalUpdate()
@@ -21,20 +23,22 @@ void CGravity::FinalUpdate()
 	{
 		// ¶¥ÀÌ¸é Áß·Â X
 		return;
-	}
-	
+	}	
 }
 
 void CGravity::Render()
 {
+	
 }
 
 void CGravity::Destroy()
 {
+	
 }
 
 CGravity::~CGravity()
 {
+	
 }
 
 void CGravity::SetGround(bool b)

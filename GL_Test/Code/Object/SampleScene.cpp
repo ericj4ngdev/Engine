@@ -13,6 +13,7 @@ void SampleScene::Enter()
 	map->SetScale(vec2(4098.f, 1282.f) * 3.20f);
 	AddObject(map, GROUP_TYPE::MAP);
 
+	// CPlayer player_1("Player_1");
 	CPlayer* player = new CPlayer("Player");
 	player->SetPos(vec2(-300.f, 100.f));
 	player->GetComponent<TransformComponent>()->SetScale(vec2(75.f, 75.f));
@@ -186,8 +187,10 @@ void SampleScene::Destroy()
 
 SampleScene::SampleScene()
 {
+	
 }
 
 SampleScene::~SampleScene()
 {
+	
 }

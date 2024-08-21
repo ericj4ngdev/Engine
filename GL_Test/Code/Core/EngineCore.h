@@ -2,7 +2,7 @@
 #include "Cmacro.h"
 class EngineCore
 {
-	SINGLE(EngineCore);
+	SINGLE(EngineCore)
 
 public:
 	void Init();
@@ -10,3 +10,5 @@ public:
 	void Render();
 	void Event();
 };
+
+

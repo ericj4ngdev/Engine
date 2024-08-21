@@ -1,12 +1,12 @@
 #include "include.h"
 
 
-CGameObject::CGameObject() : m_parent(nullptr), isEnable(true), m_bAlive(true)
+CGameObject::CGameObject() : m_parent(nullptr), m_bEnable(true), m_bAlive(true)
 {
     m_transform = CreateComponent<TransformComponent>();
 }
 
-CGameObject::CGameObject(std::string name) : m_parent(nullptr), isEnable(true), m_bAlive(true)
+CGameObject::CGameObject(std::string name) : m_parent(nullptr), m_bEnable(true), m_bAlive(true)
 {
     m_name = name;
     m_transform = CreateComponent<TransformComponent>();
@@ -19,13 +19,13 @@ CGameObject::~CGameObject()
 
 void CGameObject::Update()
 {
-    if (!isEnable) return;
+    if (!m_bEnable) return;
     UpdateComponent();
 }
 
 void CGameObject::FinalUpdate()
 {
-    if (!isEnable) return;
+    if (!m_bEnable) return;
     for (const auto& component : m_components)
     {
         if (component == nullptr) continue;
@@ -36,7 +36,7 @@ void CGameObject::FinalUpdate()
 
 void CGameObject::Render()
 {
-    if (!isEnable) return;
+    if (!m_bEnable) return;
     RenderComponent();
 }
 

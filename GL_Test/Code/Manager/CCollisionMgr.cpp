@@ -14,6 +14,7 @@ void CCollisionMgr::Init()
 {
 
 }
+
 void CCollisionMgr::Update()
 {
 	for (UINT iRow = 0; iRow < (UINT)GROUP_TYPE::END; ++iRow)
