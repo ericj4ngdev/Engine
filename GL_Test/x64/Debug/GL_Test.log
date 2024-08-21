@@ -1,3 +1,19 @@
-﻿  CBat.cpp
-  SampleScene.cpp
+﻿  ControllerComponent.cpp
+C:\GitHub\Engine\GL_Test\Code\Manager\CTimeMgr.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(12,15): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(215,47): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\GitHub\Engine\GL_Test\Code\Component\ControllerComponent.cpp(386,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  TransformComponent.cpp
+C:\GitHub\Engine\GL_Test\Code\Manager\CTimeMgr.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  Zombie.cpp
+C:\GitHub\Engine\GL_Test\Code\Manager\CTimeMgr.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  LINK : C:\GitHub\Engine\GL_Test\Output\bin_Debug\GL_Test.exe not found or not built by the last incremental link; performing full link
   GL_Test.vcxproj -> C:\GitHub\Engine\GL_Test\Output\bin_Debug\GL_Test.exe

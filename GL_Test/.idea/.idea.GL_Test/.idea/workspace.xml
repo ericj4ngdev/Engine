@@ -7,93 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b40ed18-4c64-4eee-bff1-4216e9b8c32e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CBat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CBat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CBat.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CBat.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CBlock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CBlock.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CBlock.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CBlock.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CBullet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CBullet.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CBullet.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CBullet.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CEnemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CEnemy.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CEnemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CEnemy.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CEnemyProjectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CEnemyProjectile.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CEnemyProjectile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CEnemyProjectile.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CEnemySpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CEnemySpawner.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CEnemySpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CEnemySpawner.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CMap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CMap.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CMap.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CPlayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CPlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CPlayer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CRabbit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CRabbit.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/CRabbit.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/CRabbit.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/SampleScene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/SampleScene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Asset/SampleScene.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Object/SampleScene.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/CGameObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/CGameObject.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/CGameObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/CGameObject.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/CScene.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/CScene.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Component/CComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Component/CComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Component/CGravity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Component/CGravity.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Component/CRigidbody.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Component/CRigidbody.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Component/ControllerComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Component/ControllerComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Core/EngineCore.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Core/EngineCore.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Core/EngineCore.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Core/EngineCore.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Include.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Include.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Manager/CCollisionMgr.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Manager/CCollisionMgr.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/Manager/CTimeMgr.h" beforeDir="false" afterPath="$PROJECT_DIR$/Code/Manager/CTimeMgr.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GL_Test.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/GL_Test.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Output/bin_Debug/GL_Test.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Output/bin_Debug/GL_Test.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Output/bin_Debug/GL_Test.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Output/bin_Debug/GL_Test.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/Bullet.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/Bullet.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CAnimation.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CAnimation.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CAnimator.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CAnimator.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CBat.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CBat.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CBlock.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CBlock.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CBullet.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CBullet.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CCollider.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CCollider.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CCollisionMgr.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CCollisionMgr.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CEnemy.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CEnemy.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CEnemyProjectile.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CEnemyProjectile.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CEnemySpawner.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CEnemySpawner.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CEventMgr.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CEventMgr.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CGameObject.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CGameObject.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CGravity.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CGravity.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CKeyMgr.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CKeyMgr.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CMap.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CMap.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CPathMgr.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CPathMgr.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CPlayer.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CPlayer.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CRabbit.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CRabbit.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CRenderComponent.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CRenderComponent.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CResMgr.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CResMgr.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CResource.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CResource.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CRigidbody.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CRigidbody.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CSceneMgr.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CSceneMgr.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CTexture.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CTexture.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/CTimeMgr.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/CTimeMgr.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/Color4f.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/Color4f.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/ControllerComponent.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/ControllerComponent.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/EngineCore.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/EngineCore.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/Func.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/Func.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/GLMgr.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/GLMgr.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/GL_Test.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/GL_Test.ilk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/GL_Test.pch" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/GL_Test.pch" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/Cl.items.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/Cl.items.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/GL_Test.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/GL_Test.lastbuildstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/link.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/GL_Test.tlog/link.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/SStage01.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/SStage01.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/SampleScene.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/SampleScene.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/TransformComponent.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/TransformComponent.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/Zombie.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/Zombie.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/cScene.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/cScene.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/ccamera.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/ccamera.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/main.obj" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/main.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/vc143.idb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/vc143.pdb" afterDir="false" />
-    </list>
+    <list default="true" id="8b40ed18-4c64-4eee-bff1-4216e9b8c32e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -216,6 +130,7 @@
       <workItem from="1723979921166" duration="237000" />
       <workItem from="1723992687505" duration="3410000" />
       <workItem from="1724220770932" duration="1863000" />
+      <workItem from="1724238454884" duration="15000" />
     </task>
     <servers />
   </component>
