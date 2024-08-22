@@ -58,60 +58,57 @@ using std::vector;
 // #include <GL/glew.h>
 #include <GL/glut.h>
 
-#include "Func.h"
-#include "Util/MoreMath.h"
-#include "Util/Vector.h"
-#include "Util/Color4f.h"
+#include "EngineFramework/Util/Func.h"
+#include "EngineFramework/Util/MoreMath.h"
+#include "EngineFramework/Util/Vector.h"
+#include "EngineFramework/Util/Color4f.h"
 
-#include "Core/EngineCore.h"
-#include "Core/GLMgr.h"
-#include "Manager/CResMgr.h"
+#include "EngineFramework/EngineCore.h"
+#include "EngineFramework/Manager/GLMgr.h"
+#include "EngineFramework/Manager/CResMgr.h"
 
+#include "EngineFramework/Manager/CTimeMgr.h"
+#include "EngineFramework/Manager/CPathMgr.h"
+#include "EngineFramework/Manager/CCollisionMgr.h"
+#include "EngineFramework/Manager/CCamera.h"
+#include "EngineFramework/Manager/CEventMgr.h"
+#include "EngineFramework/Manager/CKeyMgr.h"
+#include "EngineFramework/Manager/CSceneMgr.h"
 
-#include "CoreBase.h"
-#include "Manager/CTimeMgr.h"
-#include "Manager/CPathMgr.h"
-#include "Manager/CCollisionMgr.h"
-#include "Manager/CCamera.h"
-#include "Manager/CEventMgr.h"
-#include "Manager/CKeyMgr.h"
-#include "Manager/CSceneMgr.h"
+#include "EngineFramework/Resource/CResource.h"
+#include "EngineFramework/Resource/CTexture.h"
+#include "EngineFramework/Resource/CAnimation.h"
 
-#include "CResource.h"
-#include "Resource/CTexture.h"
-#include "Resource/CAnimation.h"
+#include "EngineFramework/Scene/CScene.h"
 
+#include "EngineFramework/Component/CComponent.h"
+#include "EngineFramework/Component/CRenderComponent.h"
+#include "EngineFramework/Component/TransformComponent.h"
+#include "EngineFramework/Component/ControllerComponent.h"
+#include "EngineFramework/Component/CCollider.h"
+#include "EngineFramework/Component/CAnimator.h"
+#include "EngineFramework/Component/Zombie.h"
+#include "EngineFramework/Component/CRigidbody.h"
+#include "EngineFramework/Component/CGravity.h"
+#include "EngineFramework/Component/Bullet.h"
 
-#include "CScene.h"
-#include "Object/SampleScene.h"
-#include "Scene/SStage01.h"
+#include "EngineFramework/GameFramework/CGameObject.h"
+#include "EngineFramework/GameFramework/CPlayerController.h"
+#include "EngineFramework/GameFramework/CCharacter.h"
 
-#include "Component/CComponent.h"
-#include "Component/CRenderComponent.h"
-#include "Component/TransformComponent.h"
-#include "Component/ControllerComponent.h"
-#include "Component/CCollider.h"
-#include "Component/CAnimator.h"
-#include "Component/Zombie.h"
-#include "Component/CRigidbody.h"
-#include "Component/CGravity.h"
-#include "Component/Bullet.h"
+// Megaman
+#include "Megaman/Scene/SampleScene.h"
+#include "Megaman/Scene/SStage01.h"
 
-#include "CGameObject.h"
-#include "Object/CPlayer.h"
-#include "Object/CBlock.h"
-#include "Object/CMap.h"
-#include "Object/CBullet.h"
-#include "Object/CEnemy.h"
-#include "Object/CRabbit.h"
-#include "Object/CBat.h"
-
-
-#include "Object/CEnemyProjectile.h"
-#include "Object/CEnemySpawner.h"
+#include "Megaman/Object/Player/CPlayer.h"
+#include "Megaman/Object/Map/CBlock.h"
+#include "Megaman/Object/Map/CMap.h"
+#include "Megaman/Object/Enemy/CEnemy.h"
+#include "Megaman/Object/Enemy/CRabbit.h"
+#include "Megaman/Object/Enemy/CBat.h"
+#include "Megaman/Object/Projectile/CBullet.h"
+#include "Megaman/Object/Projectile/CEnemyProjectile.h"
+#include "Megaman/Object/Spawner/CEnemySpawner.h"
 
 #endif
-
-
-
 

@@ -1,315 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="리소스 파일">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\Shader">
-      <UniqueIdentifier>{d61a8871-5816-4cdc-babd-1a22a0c685dc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Core">
-      <UniqueIdentifier>{503b8a54-6ffc-4f55-9106-89966768e04a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Core\Components">
-      <UniqueIdentifier>{f7ee8dcc-9541-4bb2-bbd2-e76837b98d64}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Core\Managers">
-      <UniqueIdentifier>{20ff8402-461a-471d-a86c-d76ea3dd0a1d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Core\Objects">
-      <UniqueIdentifier>{e0e73e32-9016-47ad-97b6-ead00288ce92}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Core\Scene">
-      <UniqueIdentifier>{1aafd325-6fa4-451d-bf5c-03e9d74c412a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Core\Resources">
-      <UniqueIdentifier>{fd76c42e-416d-4114-a6c6-80919fa9977d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Core\Util">
-      <UniqueIdentifier>{a28e6766-926b-4702-9070-459e1dc816b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Custom">
-      <UniqueIdentifier>{aadf0d40-e3d6-4e45-be04-292073a6307e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Core\Util\Render">
-      <UniqueIdentifier>{86da0d46-188e-48d1-9e2b-fe222385f5b1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Core\Components\Collider">
-      <UniqueIdentifier>{d3f4e65b-57dc-47d3-8b4d-3f72337c9aca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Core\Components\Custom">
-      <UniqueIdentifier>{054d4ab8-de92-4102-a337-999a4cbd48b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Custom\Scene">
-      <UniqueIdentifier>{b5106668-1ae4-43ad-a911-a429802447d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Custom\Object">
-      <UniqueIdentifier>{68681015-d984-401c-94ea-66091382290b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Custom\Object\Enemy">
-      <UniqueIdentifier>{5f523008-31f2-42f0-85fd-14083c5d4a86}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Custom\Object\Map">
-      <UniqueIdentifier>{a4eb1620-1610-49e0-a331-beb052b9b337}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Custom\Object\Player">
-      <UniqueIdentifier>{374c6948-1515-4622-8dca-cfc1f151579a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Code\main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\CScene.cpp">
-      <Filter>소스 파일\Core\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\CGameObject.cpp">
-      <Filter>소스 파일\Core\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Component\TransformComponent.cpp">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\CResource.cpp">
-      <Filter>소스 파일\Core\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Core\EngineCore.cpp">
-      <Filter>소스 파일\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Core\GLMgr.cpp">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Manager\CKeyMgr.cpp">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Manager\CSceneMgr.cpp">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Resource\CTexture.cpp">
-      <Filter>소스 파일\Core\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Component\CRenderComponent.cpp">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Manager\CTimeMgr.cpp">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Manager\CPathMgr.cpp">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Manager\CResMgr.cpp">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Component\CCollider.cpp">
-      <Filter>소스 파일\Core\Components\Collider</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Manager\CCollisionMgr.cpp">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Component\CRigidbody.cpp">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Component\CGravity.cpp">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Manager\CCamera.cpp">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Component\ControllerComponent.cpp">
-      <Filter>소스 파일\Core\Components\Custom</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Component\Zombie.cpp">
-      <Filter>소스 파일\Core\Components\Custom</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Component\Bullet.cpp">
-      <Filter>소스 파일\Core\Components\Custom</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Manager\CEventMgr.cpp">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Resource\CAnimation.cpp">
-      <Filter>소스 파일\Core\Resources</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Scene\SStage01.cpp">
-      <Filter>소스 파일\Custom\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Asset\SampleScene.cpp">
-      <Filter>소스 파일\Custom\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Asset\CBlock.cpp">
-      <Filter>소스 파일\Custom\Object\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Asset\CPlayer.cpp">
-      <Filter>소스 파일\Custom\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Asset\CMap.cpp">
-      <Filter>소스 파일\Custom\Object\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Asset\CEnemy.cpp">
-      <Filter>소스 파일\Custom\Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Asset\CRabbit.cpp">
-      <Filter>소스 파일\Custom\Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Asset\CBullet.cpp">
-      <Filter>소스 파일\Custom\Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Component\CAnimator.cpp">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Func.cpp">
-      <Filter>소스 파일\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Asset\CEnemyProjectile.cpp">
-      <Filter>소스 파일\Custom\Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Asset\CBat.cpp">
-      <Filter>소스 파일\Custom\Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Asset\CEnemySpawner.cpp">
-      <Filter>소스 파일\Custom\Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Util\Color4f.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
+    <ClCompile Include="Code\EngineFramework\Component\Bullet.cpp" />
+    <ClCompile Include="Code\EngineFramework\Component\CAnimator.cpp" />
+    <ClCompile Include="Code\EngineFramework\Component\CCollider.cpp" />
+    <ClCompile Include="Code\EngineFramework\Component\CGravity.cpp" />
+    <ClCompile Include="Code\EngineFramework\Component\ControllerComponent.cpp" />
+    <ClCompile Include="Code\EngineFramework\Component\CRenderComponent.cpp" />
+    <ClCompile Include="Code\EngineFramework\Component\CRigidbody.cpp" />
+    <ClCompile Include="Code\EngineFramework\Component\TransformComponent.cpp" />
+    <ClCompile Include="Code\EngineFramework\Component\Zombie.cpp" />
+    <ClCompile Include="Code\EngineFramework\GameFramework\CGameObject.cpp" />
+    <ClCompile Include="Code\EngineFramework\Manager\CCamera.cpp" />
+    <ClCompile Include="Code\EngineFramework\Manager\CCollisionMgr.cpp" />
+    <ClCompile Include="Code\EngineFramework\Manager\CEventMgr.cpp" />
+    <ClCompile Include="Code\EngineFramework\Manager\CKeyMgr.cpp" />
+    <ClCompile Include="Code\EngineFramework\Manager\CPathMgr.cpp" />
+    <ClCompile Include="Code\EngineFramework\Manager\CResMgr.cpp" />
+    <ClCompile Include="Code\EngineFramework\Manager\CSceneMgr.cpp" />
+    <ClCompile Include="Code\EngineFramework\Manager\CTimeMgr.cpp" />
+    <ClCompile Include="Code\EngineFramework\Manager\GLMgr.cpp" />
+    <ClCompile Include="Code\EngineFramework\Resource\CAnimation.cpp" />
+    <ClCompile Include="Code\EngineFramework\Resource\CResource.cpp" />
+    <ClCompile Include="Code\EngineFramework\Resource\CTexture.cpp" />
+    <ClCompile Include="Code\EngineFramework\Scene\CScene.cpp" />
+    <ClCompile Include="Code\EngineFramework\Util\Color4f.cpp" />
+    <ClCompile Include="Code\EngineFramework\Util\Func.cpp" />
+    <ClCompile Include="Code\EngineFramework\EngineCore.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Enemy\CBat.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Map\CBlock.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Projectile\CBullet.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Enemy\CEnemy.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Projectile\CEnemyProjectile.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Spawner\CEnemySpawner.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Map\CMap.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Player\CPlayer.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Enemy\CRabbit.cpp" />
+    <ClCompile Include="Code\EngineFramework\GameFramework\CPlayerController.cpp" />
+    <ClCompile Include="Code\Megaman\Scene\SampleScene.cpp" />
+    <ClCompile Include="Code\Megaman\Scene\SStage01.cpp" />
+    <ClCompile Include="Code\main.cpp" />
+    <ClCompile Include="Code\EngineFramework\GameFramework\CCharacter.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\CScene.h">
-      <Filter>소스 파일\Core\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\CoreBase.h">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\CGameObject.h">
-      <Filter>소스 파일\Core\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Util\Vector.h">
-      <Filter>소스 파일\Core\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Component\CComponent.h">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Component\TransformComponent.h">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Util\MoreMath.h">
-      <Filter>소스 파일\Core\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\CResource.h">
-      <Filter>소스 파일\Core\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Core\EngineCore.h">
-      <Filter>소스 파일\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Core\GLMgr.h">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Manager\CSceneMgr.h">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Manager\CKeyMgr.h">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Resource\CTexture.h">
-      <Filter>소스 파일\Core\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Component\CRenderComponent.h">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Manager\CTimeMgr.h">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Manager\CPathMgr.h">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Manager\CResMgr.h">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Util\Color4f.h">
-      <Filter>소스 파일\Core\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Component\CCollider.h">
-      <Filter>소스 파일\Core\Components\Collider</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Component\CRigidbody.h">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Manager\CCollisionMgr.h">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Manager\CCamera.h">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Component\ControllerComponent.h">
-      <Filter>소스 파일\Core\Components\Custom</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Component\Zombie.h">
-      <Filter>소스 파일\Core\Components\Custom</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Component\Bullet.h">
-      <Filter>소스 파일\Core\Components\Custom</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Manager\CEventMgr.h">
-      <Filter>소스 파일\Core\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Component\CGravity.h">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Resource\CAnimation.h">
-      <Filter>소스 파일\Core\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Asset\SampleScene.h">
-      <Filter>소스 파일\Custom\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Scene\SStage01.h">
-      <Filter>소스 파일\Custom\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Asset\CBlock.h">
-      <Filter>소스 파일\Custom\Object\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Asset\CPlayer.h">
-      <Filter>소스 파일\Custom\Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Asset\CMap.h">
-      <Filter>소스 파일\Custom\Object\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Asset\CEnemy.h">
-      <Filter>소스 파일\Custom\Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Asset\CRabbit.h">
-      <Filter>소스 파일\Custom\Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Asset\CBullet.h">
-      <Filter>소스 파일\Custom\Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Component\CAnimator.h">
-      <Filter>소스 파일\Core\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Include.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Func.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Cmacro.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Asset\CEnemyProjectile.h">
-      <Filter>소스 파일\Custom\Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Asset\CBat.h">
-      <Filter>소스 파일\Custom\Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Asset\CEnemySpawner.h">
-      <Filter>소스 파일\Custom\Object\Enemy</Filter>
-    </ClInclude>
+    <ClInclude Include="Code\EngineFramework\Component\Bullet.h" />
+    <ClInclude Include="Code\EngineFramework\Component\CAnimator.h" />
+    <ClInclude Include="Code\EngineFramework\Component\CCollider.h" />
+    <ClInclude Include="Code\EngineFramework\Component\CComponent.h" />
+    <ClInclude Include="Code\EngineFramework\Component\CGravity.h" />
+    <ClInclude Include="Code\EngineFramework\Component\ControllerComponent.h" />
+    <ClInclude Include="Code\EngineFramework\Component\CRenderComponent.h" />
+    <ClInclude Include="Code\EngineFramework\Component\CRigidbody.h" />
+    <ClInclude Include="Code\EngineFramework\Component\TransformComponent.h" />
+    <ClInclude Include="Code\EngineFramework\Component\Zombie.h" />
+    <ClInclude Include="Code\EngineFramework\GameFramework\CGameObject.h" />
+    <ClInclude Include="Code\EngineFramework\Manager\CCamera.h" />
+    <ClInclude Include="Code\EngineFramework\Manager\CCollisionMgr.h" />
+    <ClInclude Include="Code\EngineFramework\Manager\CEventMgr.h" />
+    <ClInclude Include="Code\EngineFramework\Manager\CKeyMgr.h" />
+    <ClInclude Include="Code\EngineFramework\Manager\CPathMgr.h" />
+    <ClInclude Include="Code\EngineFramework\Manager\CResMgr.h" />
+    <ClInclude Include="Code\EngineFramework\Manager\CSceneMgr.h" />
+    <ClInclude Include="Code\EngineFramework\Manager\CTimeMgr.h" />
+    <ClInclude Include="Code\EngineFramework\Manager\GLMgr.h" />
+    <ClInclude Include="Code\EngineFramework\Resource\CAnimation.h" />
+    <ClInclude Include="Code\EngineFramework\Resource\CResource.h" />
+    <ClInclude Include="Code\EngineFramework\Resource\CTexture.h" />
+    <ClInclude Include="Code\EngineFramework\Scene\CScene.h" />
+    <ClInclude Include="Code\EngineFramework\Util\Color4f.h" />
+    <ClInclude Include="Code\EngineFramework\Util\Func.h" />
+    <ClInclude Include="Code\EngineFramework\Util\MoreMath.h" />
+    <ClInclude Include="Code\EngineFramework\Util\Vector.h" />
+    <ClInclude Include="Code\EngineFramework\Cmacro.h" />
+    <ClInclude Include="Code\EngineFramework\EngineCore.h" />
+    <ClInclude Include="Code\Megaman\Object\Enemy\CBat.h" />
+    <ClInclude Include="Code\Megaman\Object\Map\CBlock.h" />
+    <ClInclude Include="Code\Megaman\Object\Projectile\CBullet.h" />
+    <ClInclude Include="Code\Megaman\Object\Enemy\CEnemy.h" />
+    <ClInclude Include="Code\Megaman\Object\Projectile\CEnemyProjectile.h" />
+    <ClInclude Include="Code\Megaman\Object\Spawner\CEnemySpawner.h" />
+    <ClInclude Include="Code\Megaman\Object\Map\CMap.h" />
+    <ClInclude Include="Code\Megaman\Object\Player\CPlayer.h" />
+    <ClInclude Include="Code\EngineFramework\GameFramework\CPlayerController.h" />
+    <ClInclude Include="Code\Megaman\Object\Enemy\CRabbit.h" />
+    <ClInclude Include="Code\Megaman\Scene\SampleScene.h" />
+    <ClInclude Include="Code\Megaman\Scene\SStage01.h" />
+    <ClInclude Include="Code\Include.h" />
+    <ClInclude Include="Code\EngineFramework\GameFramework\CCharacter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="freeglut.dll" />
+    <None Include="glew32.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
 </Project>
