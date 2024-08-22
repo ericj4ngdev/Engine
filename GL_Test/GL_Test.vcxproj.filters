@@ -47,6 +47,12 @@
     <ClCompile Include="Code\Megaman\Scene\SStage01.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\EngineFramework\GameFramework\CCharacter.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Player\State\CStateBase.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Player\State\FSM.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Player\State\CStateJump.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Player\State\CStateIdle.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Player\State\CStateRun.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Player\CMegaman.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\EngineFramework\Component\Bullet.h" />
@@ -93,6 +99,12 @@
     <ClInclude Include="Code\Megaman\Scene\SStage01.h" />
     <ClInclude Include="Code\Include.h" />
     <ClInclude Include="Code\EngineFramework\GameFramework\CCharacter.h" />
+    <ClInclude Include="Code\Megaman\Object\Player\State\CStateBase.h" />
+    <ClInclude Include="Code\Megaman\Object\Player\State\FSM.h" />
+    <ClInclude Include="Code\Megaman\Object\Player\State\CStateJump.h" />
+    <ClInclude Include="Code\Megaman\Object\Player\State\CStateIdle.h" />
+    <ClInclude Include="Code\Megaman\Object\Player\State\CStateRun.h" />
+    <ClInclude Include="Code\Megaman\Object\Player\CMegaman.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="freeglut.dll" />

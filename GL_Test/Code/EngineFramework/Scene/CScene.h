@@ -1,11 +1,13 @@
 #pragma once
-
+const int MAX_CONTROLLER = 8;
 class CGameObject;
+class CPlayerController;
 
 class CScene
 {
 protected:
     vector<CGameObject*> m_arrObj[(UINT)GROUP_TYPE::END];
+    vector<CPlayerController*> m_arrPC;
     string m_name;
 
 public:
@@ -25,5 +27,6 @@ public:
     const vector<CGameObject*>& GetGroupObject(GROUP_TYPE eType) { return m_arrObj[(UINT)eType]; }
     void DeleteGroup(GROUP_TYPE eGroup);
     void DeleteAll();
+    CPlayerController* GetController();
 };
 

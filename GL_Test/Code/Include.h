@@ -38,6 +38,8 @@ enum class EVENT_TYPE {
 	END,
 };
 
+static int PC_Idx = 0;
+
 // #pragma comment(lib,"glut32.lib") 
 #include <stdio.h>
 #include <stdlib.h>
@@ -101,6 +103,7 @@ using std::vector;
 #include "Megaman/Scene/SStage01.h"
 
 #include "Megaman/Object/Player/CPlayer.h"
+#include "Megaman/Object/Player/CMegaman.h"
 #include "Megaman/Object/Map/CBlock.h"
 #include "Megaman/Object/Map/CMap.h"
 #include "Megaman/Object/Enemy/CEnemy.h"
@@ -109,6 +112,13 @@ using std::vector;
 #include "Megaman/Object/Projectile/CBullet.h"
 #include "Megaman/Object/Projectile/CEnemyProjectile.h"
 #include "Megaman/Object/Spawner/CEnemySpawner.h"
+
+
+#include "Megaman/Object/Player/State/FSM.h"
+#include "Megaman/Object/Player/State/CStateBase.h"
+#include "Megaman/Object/Player/State/CStateIdle.h"
+#include "Megaman/Object/Player/State/CStateJump.h"
+#include "Megaman/Object/Player/State/CStateRun.h"
 
 #endif
 

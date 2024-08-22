@@ -1,8 +1,13 @@
 #include "include.h"
 
-CScene::CScene() 
+CScene::CScene()
 {
-
+	// 처음부터 8개를 만든다. 
+	for (int i = 0; i < MAX_CONTROLLER; i++)
+	{
+		CPlayerController* PC = new CPlayerController("PC "+(char)i);
+		m_arrPC.push_back(PC);
+	}
 }
 
 CScene::~CScene() 
@@ -78,4 +83,22 @@ void CScene::DeleteAll()
 	{
 		DeleteGroup((GROUP_TYPE)i);
 	}
+}
+
+CPlayerController* CScene::GetController()
+{
+	if (PC_Idx < 0 || PC_Idx >= MAX_CONTROLLER)
+	{
+		cout << "Max PC_Idx";
+		return nullptr;
+	}
+
+	CPlayerController* pController = m_arrPC[PC_Idx];
+
+	if (pController != nullptr)
+	{
+		PC_Idx++;
+		return pController;
+	}
+	return nullptr;
 }
