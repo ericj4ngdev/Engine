@@ -9,6 +9,8 @@ CPlayer::~CPlayer() = default;
 
 void CPlayer::Init()
 {
+	
+
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
 	CreateComponent<CAnimator>();
 	CreateComponent<ControllerComponent>();
@@ -17,7 +19,7 @@ void CPlayer::Init()
 	CreateComponent<CCollider>();
 	
 	// 조종에 AddForce를 안해서 무의미 
-	 GetComponent<CRigidbody>()->SetFriction(700.0f);		
+	GetComponent<CRigidbody>()->SetFriction(700.0f);		
 	// x값 무의미
 	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(200.0f, 1000.0f));
 	GetComponent<CGravity>()->SetGravity(1700.0f);	
@@ -73,6 +75,7 @@ void CPlayer::Init()
 
 	GetComponent<ControllerComponent>()->SetSpeed(200.0f);
 	m_StepedBlockCount = 0;
+	CGameObject::Init();
 }
 
 void CPlayer::Update()

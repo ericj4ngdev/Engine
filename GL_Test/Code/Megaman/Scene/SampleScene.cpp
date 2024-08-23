@@ -1,10 +1,5 @@
 #include "include.h"
 
-void SampleScene::Init()
-{
-	// 안쓰임
-}
-
 void SampleScene::Enter()
 {	
 	CMap* map = new CMap("backgound");
@@ -14,10 +9,16 @@ void SampleScene::Enter()
 	AddObject(map, GROUP_TYPE::MAP);
 
 	// CPlayer player_1("Player_1");
-	CPlayer* player = new CPlayer("Player");
+	/*CPlayer* player = new CPlayer("Player");
 	player->SetPos(vec2(-300.f, 100.f));
 	player->GetComponent<TransformComponent>()->SetScale(vec2(75.f, 75.f));
 	player->GetComponent<CCollider>()->Init();
+	AddObject(player, GROUP_TYPE::PLAYER);*/
+
+	CMegaman* player = new CMegaman("Player");
+	player->SetPos(vec2(-300.f, 100.f));
+	player->GetComponent<TransformComponent>()->SetScale(vec2(75.f, 75.f));
+	// player->GetComponent<CCollider>()->Init();
 	AddObject(player, GROUP_TYPE::PLAYER);
 
 	/*CBat* enemy = nullptr;
@@ -83,7 +84,7 @@ void SampleScene::Enter()
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 7.5f, 110.f)));
 		block->SetScale(vec2{ 50.f * 16, 50.f });
-		block->GetComponent<CCollider>()->Init();
+		// block->GetComponent<CCollider>()->Init();
 		AddObject(block, GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(1);
@@ -91,7 +92,7 @@ void SampleScene::Enter()
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 17.3f, 160.f)));	// 원래 y값 25
 		block->SetScale(vec2{ 50.f * 4, 50.f });
-		block->GetComponent<CCollider>()->Init();
+		// block->GetComponent<CCollider>()->Init();
 		AddObject(block, GROUP_TYPE::MAP);
 
 		// 공중
@@ -100,7 +101,7 @@ void SampleScene::Enter()
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 7.75f, 250.f)));
 		block->SetScale(vec2{ 50.f * 5, 50.f });
-		block->GetComponent<CCollider>()->Init();
+		// block->GetComponent<CCollider>()->Init();
 		AddObject(block, GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(3);
@@ -108,7 +109,7 @@ void SampleScene::Enter()
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 22.0f, 110.f)));
 		block->SetScale(vec2{ 50.f * 5, 50.f });
-		block->GetComponent<CCollider>()->Init();
+		// block->GetComponent<CCollider>()->Init();
 		AddObject(block, GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(4);
@@ -116,7 +117,7 @@ void SampleScene::Enter()
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 27.0f, 160.f)));
 		block->SetScale(vec2{ 50.f * 5, 50.f });
-		block->GetComponent<CCollider>()->Init();
+		// block->GetComponent<CCollider>()->Init();
 		AddObject(block, GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(5);
@@ -124,7 +125,7 @@ void SampleScene::Enter()
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 36.9f, 210.f)));
 		block->SetScale(vec2{ 50.f * 14.3, 50.f });
-		block->GetComponent<CCollider>()->Init();
+		// block->GetComponent<CCollider>()->Init();
 		AddObject(block, GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(6);
@@ -132,7 +133,7 @@ void SampleScene::Enter()
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 48.0f, 160.f)));
 		block->SetScale(vec2{ 50.f * 8, 50.f });
-		block->GetComponent<CCollider>()->Init();
+		// block->GetComponent<CCollider>()->Init();
 		AddObject(block, GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(7);
@@ -140,7 +141,7 @@ void SampleScene::Enter()
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 63.3f, 110.f)));
 		block->SetScale(vec2{ 50.f * 22.5, 50.f });
-		block->GetComponent<CCollider>()->Init();
+		// block->GetComponent<CCollider>()->Init();
 		AddObject(block, GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(8);
@@ -148,7 +149,7 @@ void SampleScene::Enter()
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 79.3f, 110.f)));
 		block->SetScale(vec2{ 50.f * 7, 2000.f });
-		block->GetComponent<CCollider>()->Init();
+		// block->GetComponent<CCollider>()->Init();
 		AddObject(block, GROUP_TYPE::MAP);
 	}
 	
@@ -163,6 +164,12 @@ void SampleScene::Enter()
 	ivec2 vResolution = ivec2(GLMgr::g_screenWidth, GLMgr::g_screenWidth);
 
 	// CCamera::GetInstance()->SetLookAt(vResolution / 2.f);
+}
+
+void SampleScene::Init()
+{
+	// 모든 객체 초기화
+	CScene::Init();
 }
 
 void SampleScene::Update()

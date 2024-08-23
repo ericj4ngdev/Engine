@@ -9,7 +9,7 @@ public:
 	explicit CGameObject(string name);
 	virtual ~CGameObject();
 
-	virtual void Init() = 0;		// 순수가상함수
+	virtual void Init();		// 순수가상함수
 	virtual void Update();
 	virtual void FinalUpdate();
 	virtual void Render();
@@ -47,6 +47,7 @@ protected:
 	bool m_bEnable;
 	bool m_bAlive;
 protected:
+	void InitComponent();
 	void UpdateComponent();
 	void RenderComponent();
 };

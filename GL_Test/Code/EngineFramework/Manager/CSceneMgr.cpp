@@ -33,6 +33,7 @@ void CSceneMgr::Init()
 	// ÇöÀç ¾À ¼³Á¤
 	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::START];
 	m_pCurScene->Enter();
+	m_pCurScene->Init();
 }
 
 void CSceneMgr::Update()

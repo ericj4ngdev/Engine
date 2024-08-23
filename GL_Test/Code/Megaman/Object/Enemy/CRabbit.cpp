@@ -7,7 +7,10 @@ CRabbit::CRabbit()
 	m_fAttackTimer = 0;
 	m_fAttackDT = 0.8f;
 	m_moveTimer = 0;
-	Init();
+	CreateComponent<CRigidbody>();
+	CreateComponent<CGravity>();
+	CreateComponent<CCollider>();
+	CreateComponent<CAnimator>();
 }
 
 CRabbit::CRabbit(string name) : CEnemy(name)
@@ -17,7 +20,10 @@ CRabbit::CRabbit(string name) : CEnemy(name)
 	m_fAttackTimer = 0;
 	m_fAttackDT = 0.8f;
 	m_moveTimer = 0;
-	Init();
+	CreateComponent<CRigidbody>();
+	CreateComponent<CGravity>();
+	CreateComponent<CCollider>();
+	CreateComponent<CAnimator>();
 }
 
 CRabbit::~CRabbit()
@@ -26,11 +32,6 @@ CRabbit::~CRabbit()
 
 void CRabbit::Init()
 {
-	CreateComponent<CRigidbody>();
-	CreateComponent<CGravity>();
-	CreateComponent<CCollider>();
-	CreateComponent<CAnimator>();
-
 	GetComponent<CRigidbody>()->SetFriction(700.0f);
 	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(300.0f, 1000.0f));
 	GetComponent<CGravity>()->SetGravity(1700.0f);
@@ -49,6 +50,7 @@ void CRabbit::Init()
 	// 156 574
 	m_fSpeed = 100;
 
+	CEnemy::Init();
 }
 
 void CRabbit::Update()

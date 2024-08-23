@@ -40,6 +40,9 @@ enum class EVENT_TYPE {
 
 static int PC_Idx = 0;
 
+#define LOG(fmt, ...) \
+printf("%s " fmt "\n", __FUNCTION__, ##__VA_ARGS__);
+
 // #pragma comment(lib,"glut32.lib") 
 #include <stdio.h>
 #include <stdlib.h>

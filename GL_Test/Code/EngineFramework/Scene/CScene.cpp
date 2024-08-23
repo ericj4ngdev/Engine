@@ -2,12 +2,7 @@
 
 CScene::CScene()
 {
-	// 처음부터 8개를 만든다. 
-	for (int i = 0; i < MAX_CONTROLLER; i++)
-	{
-		CPlayerController* PC = new CPlayerController("PC "+(char)i);
-		m_arrPC.push_back(PC);
-	}
+	
 }
 
 CScene::~CScene() 
@@ -23,6 +18,36 @@ CScene::~CScene()
 	}
 	
 	// vector소멸은 알아서
+}
+
+void CScene::Init()
+{
+	// 처음부터 8개를 만든다. 
+	for (int i = 0; i < MAX_CONTROLLER; i++)
+	{
+		CPlayerController* PC = new CPlayerController("PC " + (char)i);
+		m_arrPC.push_back(PC);
+	}
+
+	for (int i = 0; i < (UINT)GROUP_TYPE::END; i++)
+	{
+		for (int j = 0; j < m_arrObj[i].size(); j++)
+		{
+			if (!m_arrObj[i][j]->IsDead())
+			{
+				m_arrObj[i][j]->Init();	// i그룹 j 객체
+			}
+		}
+	}
+
+	// PlayerController 초기화
+	for (int i = 0; i < m_arrPC.size(); i++)
+	{
+		if (nullptr != m_arrPC[i])
+		{
+			m_arrPC[i]->Init();	
+		}
+	}
 }
 
 void CScene::Update()

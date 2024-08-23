@@ -18,8 +18,21 @@ public:
 	virtual void Jump() override;
 
 public:
+	void InitAnimation();	
+public:
 	void TakeDamage(float damage, int dir);
 	// FSM 관련 메서드
-	
+private:
+	CAnimator* m_Animator;
+	CRigidbody* m_Rigidbody;
+	CGravity* m_Gravity;
+	CCollider* m_Collider;
+
+	vec2 m_curpos;
+	int m_iDir;
+	float m_speed;
+	bool m_bInvincible;
+	float m_bInvincibleTimer;
+	int m_StepedBlockCount;
 };
 

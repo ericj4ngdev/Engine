@@ -17,6 +17,11 @@ CGameObject::~CGameObject()
     
 }
 
+void CGameObject::Init()
+{
+    InitComponent();
+}
+
 void CGameObject::Update()
 {
     if (!m_bEnable) return;
@@ -70,6 +75,16 @@ void CGameObject::SetIsEnable(bool is_enable)
     {
         if (component == nullptr) continue;
         component->SetIsEnable(is_enable);
+    }
+}
+
+void CGameObject::InitComponent()
+{
+    for (const auto& component : m_components)
+    {
+        if (component == nullptr) continue;
+        if (component->GetIsEnable())
+            component->Init();
     }
 }
 

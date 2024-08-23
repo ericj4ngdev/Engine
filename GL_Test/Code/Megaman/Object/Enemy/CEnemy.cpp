@@ -22,6 +22,7 @@ CEnemy::~CEnemy() = default;
 
 void CEnemy::Init()
 {
+	CGameObject::Init();
 }
 
 void CEnemy::Update()

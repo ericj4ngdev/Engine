@@ -8,7 +8,7 @@ CEnemySpawner::CEnemySpawner() :m_Enemy(nullptr), m_iSpawnCnt(0), m_bDead(true)
 
 CEnemySpawner::CEnemySpawner(string name) :m_Enemy(nullptr), m_iSpawnCnt(0), m_bDead(true)
 {
-	Init();
+	CreateComponent<CCollider>();
 }
 
 CEnemySpawner::~CEnemySpawner()
@@ -16,8 +16,7 @@ CEnemySpawner::~CEnemySpawner()
 }
 
 void CEnemySpawner::Init()
-{
-	CreateComponent<CCollider>();
+{	
 	SetScale(vec2(10, 10));
 }
 

@@ -2,20 +2,26 @@
 
 CBat::CBat()
 {
-	Init();
 	m_fSpeed = 50;
 	m_fMoveTimer = 0;
 	m_bReady = true;
 	m_bHit = false;
+	CreateComponent<CRigidbody>();
+	CreateComponent<CGravity>();
+	CreateComponent<CCollider>();
+	CreateComponent<CAnimator>();
 }
 
 CBat::CBat(string name) : CEnemy(name)
 {
-	Init();
 	m_fSpeed = 80;
 	m_fMoveTimer = 0;
 	m_bReady = true;
 	m_bHit = false;
+	CreateComponent<CRigidbody>();
+	CreateComponent<CGravity>();
+	CreateComponent<CCollider>();
+	CreateComponent<CAnimator>();
 }
 
 CBat::~CBat()
@@ -25,10 +31,6 @@ CBat::~CBat()
 
 void CBat::Init()
 {
-	CreateComponent<CRigidbody>();
-	CreateComponent<CGravity>();
-	CreateComponent<CCollider>();
-	CreateComponent<CAnimator>();
 
 	GetComponent<CRigidbody>()->SetFriction(700.0f);
 	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(300.0f, 1000.0f));
@@ -44,6 +46,7 @@ void CBat::Init()
 	GetComponent<CAnimator>()->CreateAnimation("Bat_Ready", pTex, vec2(1, 141), vec2(32, 24), vec2(33, 0), 1, 0.1f, 4);
 	GetComponent<CAnimator>()->CreateAnimation("Bat_Fly", pTex, vec2(133, 141), vec2(32, 24), vec2(33, 0), 1, 0.1f, 3);
 
+	CEnemy::Init();
 }
 
 void CBat::Update()

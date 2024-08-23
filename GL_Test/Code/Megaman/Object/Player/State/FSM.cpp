@@ -1,6 +1,6 @@
 #include "include.h"
 
-FSM::FSM(CGameObject* l_gameObject) : CComponent("FSM", l_gameObject), m_CurrentState(nullptr)
+COMPONENT_CONSTRUCTOR(FSM), m_CurrentState(nullptr)
 {
 	CCharacter* Character = dynamic_cast<CCharacter*>(gameObject);
 	m_IdleState = new CStateIdle(Character);
@@ -27,10 +27,28 @@ void FSM::TransitionTo(CStateBase* InNextState)
 	InNextState->Enter();
 }
 
+void FSM::Init()
+{
+
+}
+
 void FSM::Update()
 {
 	if (m_CurrentState != nullptr)
 	{
+		LOG("begin")
 		m_CurrentState->Update();
 	}
+}
+
+void FSM::FinalUpdate()
+{
+}
+
+void FSM::Render()
+{
+}
+
+void FSM::Destroy()
+{
 }

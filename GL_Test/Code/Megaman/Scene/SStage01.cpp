@@ -3,6 +3,7 @@
 
 void SStage01::Init()
 {
+	CScene::Init();
 }
 
 void SStage01::Enter()

@@ -2,15 +2,16 @@
 
 CCharacter::CCharacter(string name) : CGameObject(name)
 {
-	Init();
+	bOnAir = false;
+	// Init();
 }
 
 CCharacter::~CCharacter() = default;
 
 void CCharacter::Init()
-{
-	// GetPlayerController
-	
+{	
+	m_FSM = CreateComponent<FSM>();
+	// m_FSM->Initialize(m_CurrentState);
 	CPlayerController* PC = CSceneMgr::GetInstance()->GetCurScene()->GetController();
 	if (PC)
 	{
@@ -20,10 +21,12 @@ void CCharacter::Init()
 	{
 		cout << "CCharacter::Init() CPlayerController is null";
 	}
+	CGameObject::Init();
 }
 
 void CCharacter::Update()
 {
+	CGameObject::Update();
 	// 예시: C키가 눌렸다면 점프 상태로 전환
 	if (GetKeyDown(C) && !bOnAir)
 	{
@@ -41,8 +44,12 @@ void CCharacter::UnPossesed()
 	m_Controller = nullptr;
 }
 
+
+
 void CCharacter::Jump()
 {
+	LOG("%d", bOnAir)
 	bOnAir = true;
+	LOG("%d", bOnAir)
 }
 
