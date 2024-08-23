@@ -6,10 +6,10 @@ CBat::CBat()
 	m_fMoveTimer = 0;
 	m_bReady = true;
 	m_bHit = false;
-	CreateComponent<CRigidbody>();
+	m_pRigidbody = CreateComponent<CRigidbody>();
 	CreateComponent<CGravity>();
-	CreateComponent<CCollider>();
-	CreateComponent<CAnimator>();
+	m_pCollider = CreateComponent<CCollider>();
+	// Init();
 }
 
 CBat::CBat(string name) : CEnemy(name)
@@ -18,10 +18,10 @@ CBat::CBat(string name) : CEnemy(name)
 	m_fMoveTimer = 0;
 	m_bReady = true;
 	m_bHit = false;
-	CreateComponent<CRigidbody>();
+	m_pRigidbody = CreateComponent<CRigidbody>();
 	CreateComponent<CGravity>();
-	CreateComponent<CCollider>();
-	CreateComponent<CAnimator>();
+	m_pCollider = CreateComponent<CCollider>();
+	// Init();
 }
 
 CBat::~CBat()
@@ -31,20 +31,18 @@ CBat::~CBat()
 
 void CBat::Init()
 {
-
-	GetComponent<CRigidbody>()->SetFriction(700.0f);
-	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(300.0f, 1000.0f));
+	m_pRigidbody->SetFriction(700.0f);
+	m_pRigidbody->SetMaxVelocity(vec2(300.0f, 1000.0f));
 	SetScale(vec2{ 75.f, 80.f });
-
 
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
 	strFilePath += "texture\\NES - Mega Man 2 - Enemies.png";
-	GetComponent<CAnimator>()->SetTexture("Enemy", strFilePath.c_str());
-	CTexture* pTex = GetComponent<CAnimator>()->GetTexture();
+	m_Animator->SetTexture("Enemy", strFilePath.c_str());
+	CTexture* pTex = m_Animator->GetTexture();
 
-	GetComponent<CAnimator>()->CreateAnimation("Bat_Idle", pTex, vec2(1, 116), vec2(16, 24), vec2(0, 0), 1, 0.5f, 1);
-	GetComponent<CAnimator>()->CreateAnimation("Bat_Ready", pTex, vec2(1, 141), vec2(32, 24), vec2(33, 0), 1, 0.1f, 4);
-	GetComponent<CAnimator>()->CreateAnimation("Bat_Fly", pTex, vec2(133, 141), vec2(32, 24), vec2(33, 0), 1, 0.1f, 3);
+	m_Animator->CreateAnimation("Bat_Idle", pTex, vec2(1, 116), vec2(16, 24), vec2(0, 0), 1, 0.5f, 1);
+	m_Animator->CreateAnimation("Bat_Ready", pTex, vec2(1, 141), vec2(32, 24), vec2(33, 0), 1, 0.1f, 4);
+	m_Animator->CreateAnimation("Bat_Fly", pTex, vec2(133, 141), vec2(32, 24), vec2(33, 0), 1, 0.1f, 3);
 
 	CEnemy::Init();
 }
@@ -52,9 +50,6 @@ void CBat::Init()
 void CBat::Update()
 {
 	CGameObject::Update();
-
-	m_pRigidbody = GetComponent<CRigidbody>();	// 얘는 왜 업데이트해야 하는가?
-	m_pCollider = GetComponent<CCollider>();
 	
 	m_fMoveTimer += fDT;
 	if (m_fMoveTimer >= 2.0f && m_bReady)
@@ -128,13 +123,13 @@ void CBat::UpdateState()
 	switch (m_eCurState)
 	{
 	case ENEMY_STATE::IDLE:
-		GetComponent<CAnimator>()->Play("Bat_Idle", true);
+		m_Animator->Play("Bat_Idle", true);
 		break;
 	case ENEMY_STATE::READY:
-		GetComponent<CAnimator>()->Play("Bat_Ready", false);		
+		m_Animator->Play("Bat_Ready", false);
 		break;
 	case ENEMY_STATE::MOVE:
-		GetComponent<CAnimator>()->Play("Bat_Fly", true);
+		m_Animator->Play("Bat_Fly", true);
 		break;
 	case ENEMY_STATE::JUMP:
 		break;
@@ -143,7 +138,7 @@ void CBat::UpdateState()
 	case ENEMY_STATE::ATTACK:
 		break;
 	case ENEMY_STATE::HIT:
-		GetComponent<CAnimator>()->Play("Bat_Fly", true);
+		m_Animator->Play("Bat_Fly", true);
 		break;
 	case ENEMY_STATE::DEAD:
 		break;

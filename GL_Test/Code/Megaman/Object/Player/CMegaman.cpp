@@ -6,6 +6,9 @@ CMegaman::CMegaman(string name) : CCharacter(name)
 	, m_MoveOffset(0.1f)
 	, m_bInvincibleTimer(0)
 	, m_StepedBlockCount(0)
+	, m_fAttackTimer(1)
+	, m_attackCount(0)
+	, m_fAttackDT(0.1)
 {
 	m_FSM = CreateComponent<FSM>();
 	m_Animator = CreateComponent<CAnimator>();
@@ -26,7 +29,7 @@ void CMegaman::Init()
 		
 	InitAnimation();
 	// m_Animator->Play("Idle_Right", true);
-	m_speed = 200.0f;
+	m_speed = 150.0f;
 	CCharacter::Init();
 }
 
@@ -48,6 +51,15 @@ void CMegaman::Update()
 			m_bInvincible = false;
 			m_bInvincibleTimer = 0;
 		}
+	}
+	
+	if (m_curpos.x > 0 && m_curpos.x < 3000)
+	{
+		CCamera::GetInstance()->SetTarget(this);
+	}
+	else
+	{
+		CCamera::GetInstance()->SetTarget(NULL);
 	}
 
 	Move();
@@ -110,6 +122,19 @@ void CMegaman::Move()
 	}
 
 	m_Rigidbody->SetVelocity(vec2(move, m_Rigidbody->GetVelocity().y));
+}
+
+void CMegaman::Attack()
+{
+	LOG("Log")
+	vec2 vBulletPos = GetPos();
+	vBulletPos.x += (GetScale().y / 2.f) * m_iDir;
+
+	CBullet* pBullet = new CBullet("Bullet");
+	pBullet->SetPos(vBulletPos);
+	pBullet->GetComponent<Bullet>()->SetDir(vec2(m_iDir, 0));
+
+	CreateObject(pBullet, GROUP_TYPE::PROJ_PLAYER);
 }
 
 void CMegaman::InitAnimation()

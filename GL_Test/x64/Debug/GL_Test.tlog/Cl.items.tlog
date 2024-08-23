@@ -29,6 +29,7 @@ C:\GitHub\Engine\GL_Test\Code\main.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\main.o
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Enemy\CBat.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CBat.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Map\CBlock.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CBlock.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\CMegaman.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CMegaman.obj
+C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\State\CStateAttack.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStateAttack.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\State\CStateBase.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStateBase.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\State\CStateFall.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStateFall.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\State\CStateIdle.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStateIdle.obj

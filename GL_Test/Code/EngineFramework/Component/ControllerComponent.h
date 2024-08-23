@@ -61,7 +61,7 @@ private:
 	int m_iDir;
 	int m_iPrevDir;
 	bool m_bMoveable;
-	float animationTimer;
+	float m_AnimationTimer;
 	float m_MoveOffset;
 private:
 	float m_fAttackDT;

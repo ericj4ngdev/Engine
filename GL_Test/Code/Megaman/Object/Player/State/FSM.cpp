@@ -7,6 +7,7 @@ COMPONENT_CONSTRUCTOR(FSM), m_CurrentState(nullptr)
 	m_JumpState = new CStateJump(Character);
 	m_RunState = new CStateRun(Character);
 	m_FallState = new CStateFall(Character);
+	m_AttackState = new CStateAttack(Character);
 }
 
 FSM::~FSM()
@@ -28,6 +29,7 @@ void FSM::TransitionTo(CStateBase* InNextState)
 {
 	if (m_CurrentState)
 	{
+		m_PrevState = m_CurrentState;
 		m_CurrentState->Exit();
 	}
 	m_CurrentState = InNextState;

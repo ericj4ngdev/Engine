@@ -123,7 +123,7 @@ using std::vector;
 #include "Megaman/Object/Player/State/CStateJump.h"
 #include "Megaman/Object/Player/State/CStateRun.h"
 #include "Megaman/Object/Player/State/CStateFall.h"
-
+#include "Megaman/Object/Player/State/CStateAttack.h"
 
 #endif
 

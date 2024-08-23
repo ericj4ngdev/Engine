@@ -25,6 +25,12 @@ void CStateIdle::Update()
         m_Character->GetFSM()->TransitionTo(m_Character->GetFSM()->GetJumpState());
     }
 
+    if (GetKeyDown(V))
+    {
+        m_Character->Attack();
+        m_Character->GetFSM()->TransitionTo(m_Character->GetFSM()->GetAttackState());
+    }
+
     // ¶¥ÀÌ ¾øÀ¸¸é
     if (!m_Character->m_Gravity->GetGround())
     {

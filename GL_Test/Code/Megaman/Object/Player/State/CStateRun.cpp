@@ -20,6 +20,12 @@ void CStateRun::Update()
         m_Character->m_Animator->Play("Walk_Left", true);
     }
 
+    if (GetKeyDown(V))
+    {
+        m_Character->GetFSM()->TransitionTo(m_Character->GetFSM()->GetAttackState());
+        m_Character->Attack();
+    }
+
     // FallState
     if (!m_Character->m_Gravity->GetGround())
     {

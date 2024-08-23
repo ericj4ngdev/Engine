@@ -37,6 +37,9 @@ protected:
 	float m_fSpeed;
 	float m_fDamage;
 	ENEMY_STATE m_eCurState;
+
+protected:
+	CAnimator* m_Animator;
 	
 friend class CEnemySpawner;
 };

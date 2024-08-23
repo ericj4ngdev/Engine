@@ -17,6 +17,7 @@ public:
 public:
 	virtual void Jump() override;
 	virtual void Move();
+	void Attack();
 
 public:
 	void InitAnimation();	
@@ -40,5 +41,10 @@ public:
 	bool m_bInvincible;
 	float m_bInvincibleTimer;
 	int m_StepedBlockCount;
+
+	// Attack
+	int m_attackCount;
+	float m_fAttackTimer;
+	float m_fAttackDT;
 };
 

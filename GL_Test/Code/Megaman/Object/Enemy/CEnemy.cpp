@@ -6,6 +6,7 @@ CEnemy::CEnemy():m_iHP(0)
 				, m_fDamage(0)
 	, m_eCurState(ENEMY_STATE::IDLE)
 {
+	m_Animator = CreateComponent<CAnimator>();
 
 }
 
@@ -15,7 +16,7 @@ CEnemy::CEnemy(string name) : CGameObject(name)
 							,m_fDamage(0)
 							, m_eCurState(ENEMY_STATE::IDLE)
 {
-	
+	m_Animator = CreateComponent<CAnimator>();
 }
 
 CEnemy::~CEnemy() = default;
@@ -55,7 +56,7 @@ vec2 CEnemy::GetPlayerPosition()
 
 void CEnemy::ScreenOut()
 {
-	vec2 vRenderPos = GetComponent<CAnimator>()->GetAnimation()->GetRenderPos();	
+	vec2 vRenderPos = m_Animator->GetAnimation()->GetRenderPos();
 	// vRenderPos.x의 초기값이 0일 때 예외처리
 	if (vRenderPos.x < -1 || vRenderPos.x > GLMgr::g_screenWidth)
 	{

@@ -2,8 +2,8 @@
 
 
 CEnemySpawner::CEnemySpawner() :m_Enemy(nullptr), m_iSpawnCnt(0), m_bDead(true)
-{
-	Init();
+{	
+	CreateComponent<CCollider>();
 }
 
 CEnemySpawner::CEnemySpawner(string name) :m_Enemy(nullptr), m_iSpawnCnt(0), m_bDead(true)
@@ -72,6 +72,7 @@ void CEnemySpawner::SpawnEnemy()
 	default:
 		break;
 	}
+	m_Enemy->Init();
 	m_Enemy->SetPos(GetPos());
 	m_Enemy->SetDirection();
 	CreateObject(m_Enemy, GROUP_TYPE::ENEMY);

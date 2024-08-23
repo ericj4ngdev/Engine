@@ -11,6 +11,12 @@ void CStateJump::Enter()
 
 void CStateJump::Update()
 {
+    if (GetKeyDown(V))
+    {
+        m_Character->GetFSM()->TransitionTo(m_Character->GetFSM()->GetAttackState());
+        m_Character->Attack();
+    }
+
     if (m_Character->m_iDir >= 0)
     {
         m_Character->m_Animator->Play("Jump_Right", true);
