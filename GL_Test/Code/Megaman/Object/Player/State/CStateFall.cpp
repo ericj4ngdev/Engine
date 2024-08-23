@@ -11,9 +11,14 @@ void CStateFall::Enter()
 
 void CStateFall::Update()
 {
+    if (m_Character->GetbDamaged())
+    {
+        m_Character->m_FSM->TransitionTo(m_Character->m_FSM->GetHurtState());
+    }
+
     if (GetKeyDown(V))
     {
-        m_Character->GetFSM()->TransitionTo(m_Character->GetFSM()->GetAttackState());
+        m_Character->m_FSM->TransitionTo(m_Character->m_FSM->GetAttackState());
         m_Character->Attack();
     }
 
@@ -29,7 +34,7 @@ void CStateFall::Update()
     // 착지 하면 Idle로 전환
     if (m_Character->m_Gravity->GetGround())
     {
-        m_Character->GetFSM()->TransitionTo(m_Character->GetFSM()->GetIdleState());
+        m_Character->m_FSM->TransitionTo(m_Character->m_FSM->GetIdleState());
     }
 }
 

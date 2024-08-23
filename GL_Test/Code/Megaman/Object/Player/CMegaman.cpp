@@ -6,15 +6,13 @@ CMegaman::CMegaman(string name) : CCharacter(name)
 	, m_MoveOffset(0.1f)
 	, m_bInvincibleTimer(0)
 	, m_StepedBlockCount(0)
-	, m_fAttackTimer(1)
-	, m_attackCount(0)
-	, m_fAttackDT(0.1)
 {
 	m_FSM = CreateComponent<FSM>();
 	m_Animator = CreateComponent<CAnimator>();
 	m_Rigidbody = CreateComponent<CRigidbody>();
 	m_Gravity = CreateComponent<CGravity>();
 	m_Collider = CreateComponent<CCollider>();
+	m_Stat = CreateComponent<CStatComponent>();
 }
 
 CMegaman::~CMegaman() = default;
@@ -27,6 +25,7 @@ void CMegaman::Init()
 	m_Rigidbody->SetMaxVelocity(vec2(200.0f, 1000.0f));
 	m_Gravity->SetGravity(1700.0f);
 		
+	m_Stat->SetFullHP();
 	InitAnimation();
 	// m_Animator->Play("Idle_Right", true);
 	m_speed = 150.0f;
@@ -41,12 +40,13 @@ void CMegaman::Update()
 	if (m_bInvincible)
 	{
 		m_bInvincibleTimer += fDT;
-		if (m_bInvincibleTimer < 2)
+		if (m_bInvincibleTimer < 3)
 		{
 			m_Animator->SetAlpha(0.5);
 		}
 		else
 		{
+			// m_bDamaged = false;
 			m_Animator->SetAlpha(1);
 			m_bInvincible = false;
 			m_bInvincibleTimer = 0;
@@ -65,6 +65,11 @@ void CMegaman::Update()
 	Move();
 
 	SetPos(m_curpos);
+}
+
+void CMegaman::Render()
+{
+	CGameObject::Render();
 }
 
 void CMegaman::OnCollisionEnter(CCollider* pOther)
@@ -165,5 +170,19 @@ void CMegaman::InitAnimation()
 
 void CMegaman::TakeDamage(float damage, int dir)
 {
-	// GetComponent<ControllerComponent>()->TakeDamage(damage, dir);
+	if (m_bInvincible == false)
+	{
+		CCharacter::TakeDamage(damage, dir);
+		m_bInvincible = true;
+		m_Stat->TakeDamage(damage, dir);
+	}
+}
+
+void CMegaman::KnockBack(int dir)
+{
+	LOG("dir : %d", dir)
+	// bool변수하나 바꿔서 상태 전환
+	// m_Rigidbody->AddVelocity(vec2(-m_Rigidbody->GetVelocity().x, m_Rigidbody->GetVelocity().y));
+	m_Rigidbody->AddVelocity(vec2(100000, m_Rigidbody->GetVelocity().y));
+	// m_Rigidbody->AddForce(vec2(dir * 200, 0));
 }

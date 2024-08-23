@@ -66,7 +66,7 @@ void CBat::Update()
 		BackToIdle();
 	}
 	
-	printf("State : %d\n", m_eCurState);
+	// printf("State : %d\n", m_eCurState);
 
 	UpdateState();
 
@@ -77,13 +77,13 @@ void CBat::OnCollisionEnter(CCollider* pOther)
 {
 	CGameObject* pOtherObj = pOther->gameObject;
 
-	if (dynamic_cast<CPlayer*>(pOtherObj))
+	if (dynamic_cast<CCharacter*>(pOtherObj))
 	{
 		int dir = 0;
 
 		dir = (pOtherObj->GetPos().x > GetPos().x) ? 1 : -1;
 		// 플레이어에게 신호
-		static_cast<CPlayer*>(pOtherObj)->TakeDamage(m_fDamage, dir);
+		static_cast<CCharacter*>(pOtherObj)->TakeDamage(m_fDamage, dir);
 		m_bHit = true;	
 		
 	}
@@ -93,13 +93,13 @@ void CBat::OnCollision(CCollider* pOther)
 {
 	CGameObject* pOtherObj = pOther->gameObject;
 
-	if (dynamic_cast<CPlayer*>(pOtherObj))
+	if (dynamic_cast<CCharacter*>(pOtherObj))
 	{
 		int dir = 0;
 
 		dir = (pOtherObj->GetPos().x > GetPos().x) ? 1 : -1;
 		// 플레이어에게 신호
-		static_cast<CPlayer*>(pOtherObj)->TakeDamage(m_fDamage, dir);
+		static_cast<CCharacter*>(pOtherObj)->TakeDamage(m_fDamage, dir);
 		m_bHit = true;
 	}
 }
@@ -110,7 +110,7 @@ void CBat::TakeDamage()
 	if (m_eCurState == ENEMY_STATE::IDLE) 
 	{
 		// 총알 튕기기
-
+		LOG("Nothing")
 	}
 	else
 	{

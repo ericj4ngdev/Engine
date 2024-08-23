@@ -53,6 +53,7 @@
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateAttack.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateBase.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateFall.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Player\State\CStateHurt.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateIdle.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateJump.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateRun.cpp" />
@@ -67,6 +68,7 @@
     <ClCompile Include="Code\EngineFramework\GameFramework\CPlayerController.cpp" />
     <ClCompile Include="Code\Megaman\Scene\SampleScene.cpp" />
     <ClCompile Include="Code\Megaman\Scene\SStage01.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Component\CStatComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\EngineFramework\Cmacro.h" />
@@ -101,12 +103,14 @@
     <ClInclude Include="Code\EngineFramework\Util\MoreMath.h" />
     <ClInclude Include="Code\EngineFramework\Util\Vector.h" />
     <ClInclude Include="Code\Include.h" />
+    <ClInclude Include="Code\Megaman\Object\Component\CStatComponent.h" />
     <ClInclude Include="Code\Megaman\Object\Enemy\CBat.h" />
     <ClInclude Include="Code\Megaman\Object\Map\CBlock.h" />
     <ClInclude Include="Code\Megaman\Object\Player\CMegaman.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateAttack.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateBase.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateFall.h" />
+    <ClInclude Include="Code\Megaman\Object\Player\State\CStateHurt.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateIdle.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateJump.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateRun.h" />

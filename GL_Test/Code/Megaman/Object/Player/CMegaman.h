@@ -8,7 +8,7 @@ public:
 	virtual void Init();
 	virtual void Update();
 	// virtual void FinalUpdate() override;
-	// virtual void Render() override;
+	virtual void Render() override;
 	// virtual void Destroy() override;
 
 	virtual void OnCollisionEnter(CCollider* pOther);
@@ -21,10 +21,11 @@ public:
 
 public:
 	void InitAnimation();	
-	FSM* GetFSM() const { return m_FSM; }
-	void SetFSM(FSM* PlayerFSM) { m_FSM = PlayerFSM; }
+	// FSM* GetFSM() const { return m_FSM; }
+	// void SetFSM(FSM* PlayerFSM) { m_FSM = PlayerFSM; }
 public:
-	void TakeDamage(float damage, int dir);
+	virtual void TakeDamage(float damage, int dir) override;
+	void KnockBack(int dir);
 	// FSM 관련 메서드
 public:
 	FSM* m_FSM;
@@ -32,6 +33,7 @@ public:
 	CRigidbody* m_Rigidbody;
 	CGravity* m_Gravity;
 	CCollider* m_Collider;
+	CStatComponent* m_Stat;
 
 	vec2 m_curpos;
 	int m_iDir;
@@ -42,6 +44,7 @@ public:
 	float m_bInvincibleTimer;
 	int m_StepedBlockCount;
 
+	
 	// Attack
 	int m_attackCount;
 	float m_fAttackTimer;

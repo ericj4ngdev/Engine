@@ -22,7 +22,7 @@ public:
     void Attack();
     void Jump();
 private:    
-    CRigidbody* m_rigidbody;
+    CRigidbody* m_Rigidbody;
     CCollider* m_Collider;
     CGravity* m_pGravity;
     int m_attackCount;

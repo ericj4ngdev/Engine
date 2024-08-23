@@ -45,12 +45,12 @@ public:
 	void TakeDamage(float damage, int dir);
 	bool DecreaseHP(float damage);
 private:
-	float m_HP;
+	float m_CurrentHP;
 	int m_Life;
 private:
 	vec2 m_curpos;
 	float m_speed;
-	CRigidbody* m_rigidbody;
+	CRigidbody* m_Rigidbody;
 	CCollider* m_Collider;
 	CGravity* m_pGravity;
 private:

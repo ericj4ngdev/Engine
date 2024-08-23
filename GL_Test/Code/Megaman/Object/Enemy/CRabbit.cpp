@@ -7,10 +7,9 @@ CRabbit::CRabbit()
 	m_fAttackTimer = 0;
 	m_fAttackDT = 0.8f;
 	m_moveTimer = 0;
-	CreateComponent<CRigidbody>();
-	CreateComponent<CGravity>();
-	CreateComponent<CCollider>();
-	CreateComponent<CAnimator>();
+	m_Rigidbody =CreateComponent<CRigidbody>();
+	m_pGravity = CreateComponent<CGravity>();
+	m_Collider = CreateComponent<CCollider>();
 }
 
 CRabbit::CRabbit(string name) : CEnemy(name)
@@ -20,10 +19,9 @@ CRabbit::CRabbit(string name) : CEnemy(name)
 	m_fAttackTimer = 0;
 	m_fAttackDT = 0.8f;
 	m_moveTimer = 0;
-	CreateComponent<CRigidbody>();
-	CreateComponent<CGravity>();
-	CreateComponent<CCollider>();
-	CreateComponent<CAnimator>();
+	m_Rigidbody = CreateComponent<CRigidbody>();
+	m_pGravity = CreateComponent<CGravity>();
+	m_Collider = CreateComponent<CCollider>();
 }
 
 CRabbit::~CRabbit()
@@ -32,20 +30,20 @@ CRabbit::~CRabbit()
 
 void CRabbit::Init()
 {
-	GetComponent<CRigidbody>()->SetFriction(700.0f);
-	GetComponent<CRigidbody>()->SetMaxVelocity(vec2(300.0f, 1000.0f));
-	GetComponent<CGravity>()->SetGravity(1700.0f);
+	m_Rigidbody->SetFriction(700.0f);
+	m_Rigidbody->SetMaxVelocity(vec2(300.0f, 1000.0f));
+	m_pGravity->SetGravity(1700.0f);
 	SetScale(vec2{ 75.f, 80.f });
 	
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
 	strFilePath += "texture\\NES - Mega Man 2 - Enemies.png";
-	GetComponent<CAnimator>()->SetTexture("Enemy", strFilePath.c_str());
-	CTexture* pTex = GetComponent<CAnimator>()->GetTexture();
+	m_Animator->SetTexture("Enemy", strFilePath.c_str());
+	CTexture* pTex = m_Animator->GetTexture();
 
-	GetComponent<CAnimator>()->CreateAnimation("Rabbit_Idle_Right", pTex, vec2(124, 611), vec2(32, 38), vec2(0, 0), -1, 0.5f, 1);
-	GetComponent<CAnimator>()->CreateAnimation("Rabbit_Idle_Left", pTex, vec2(124, 611), vec2(32, 38), vec2(0, 0), 1, 0.5f, 1);
-	GetComponent<CAnimator>()->CreateAnimation("Rabbit_Jump_Right", pTex, vec2(190, 611), vec2(32, 38), vec2(-33, 0), -1, 0.1f, 1);
-	GetComponent<CAnimator>()->CreateAnimation("Rabbit_Jump_Left", pTex, vec2(190, 611), vec2(32, 38), vec2(-33, 0), 1, 0.1f, 1);
+	m_Animator->CreateAnimation("Rabbit_Idle_Right", pTex, vec2(124, 611), vec2(32, 38), vec2(0, 0), -1, 0.5f, 1);
+	m_Animator->CreateAnimation("Rabbit_Idle_Left", pTex, vec2(124, 611), vec2(32, 38), vec2(0, 0), 1, 0.5f, 1);
+	m_Animator->CreateAnimation("Rabbit_Jump_Right", pTex, vec2(190, 611), vec2(32, 38), vec2(-33, 0), -1, 0.1f, 1);
+	m_Animator->CreateAnimation("Rabbit_Jump_Left", pTex, vec2(190, 611), vec2(32, 38), vec2(-33, 0), 1, 0.1f, 1);
 	// x : 190 -> 157 -> 124 // 
 	// 156 574
 	m_fSpeed = 100;
@@ -57,15 +55,10 @@ void CRabbit::Update()
 {
 	CGameObject::Update();
 	
-	m_rigidbody = GetComponent<CRigidbody>();	// 얘는 왜 업데이트해야 하는가?
-	m_Collider = GetComponent<CCollider>();
-	m_pGravity = GetComponent<CGravity>();
-
-	
 	m_moveTimer += fDT;
 	// printf("Rabbit Pos : %f, %f\n", GetPos().x, GetPos().y);
 	// printf("m_pGravity->GetGround() : %d\n", m_pGravity->GetGround());
-	if (m_rigidbody->GetVelocity().y < 0 && m_pGravity->GetGround() == false)
+	if (m_Rigidbody->GetVelocity().y < 0 && m_pGravity->GetGround() == false)
 	{
 		ChangeState(ENEMY_STATE::FALL);
 	}
@@ -104,44 +97,19 @@ void CRabbit::Update()
 	UpdateState();
 
 	ScreenOut();
-
-	// m_moveTimer += fDT;
-	//if (m_moveTimer > 3.f) 
-	//{
-	//	// 착지하면 Idle
-	//	GetComponent<CAnimator>()->Play("Rabbit_Idle_Left", true);
-	//	// 딜레이 1초
-	//	if (m_attackCount < 3)
-	//	{
-	//		m_fAttackTimer += fDT;
-	//		if (m_fAttackTimer > m_fAttackDT)		// m_fAttackDT = 1
-	//		{
-	//			Attack();				// 발사기능. 1초 간격
-	//			m_fAttackTimer = 0;
-	//			m_attackCount++;
-	//		}
-	//	}
-	//	else 
-	//	{
-	//		m_attackCount = 0;
-	//		m_fAttackTimer = 0;
-	//		m_fAttackDT = 1;
-	//		m_moveTimer = -1;
-	//	}
-	//}
 }
 
 void CRabbit::OnCollisionEnter(CCollider* pOther)
 {
 	CGameObject* pOtherObj = pOther->gameObject;
 
-	if (dynamic_cast<CPlayer*>(pOtherObj))
+	if (dynamic_cast<CCharacter*>(pOtherObj))
 	{
 		int dir = 0;
 
 		dir = (pOtherObj->GetPos().x > GetPos().x) ? 1 : -1;
 		// 플레이어에게 신호
-		static_cast<CPlayer*>(pOtherObj)->TakeDamage(m_fDamage, dir);
+		static_cast<CCharacter*>(pOtherObj)->TakeDamage(m_fDamage, dir);
 	}
 }
 
@@ -149,13 +117,13 @@ void CRabbit::OnCollision(CCollider* pOther)
 {
 	CGameObject* pOtherObj = pOther->gameObject;
 
-	if (dynamic_cast<CPlayer*>(pOtherObj))
+	if (dynamic_cast<CCharacter*>(pOtherObj))
 	{
 		int dir = 0;
 
 		dir = (pOtherObj->GetPos().x > GetPos().x) ? 1 : -1;
 		// 플레이어에게 신호
-		static_cast<CPlayer*>(pOtherObj)->TakeDamage(m_fDamage, dir);
+		static_cast<CCharacter*>(pOtherObj)->TakeDamage(m_fDamage, dir);
 	}
 }
 
@@ -165,28 +133,28 @@ void CRabbit::UpdateState()
 	{
 	case ENEMY_STATE::IDLE:
 	{
-		if (m_iDir == 1) GetComponent<CAnimator>()->Play("Rabbit_Idle_Right", true);
-		else GetComponent<CAnimator>()->Play("Rabbit_Idle_Left", true);
+		if (m_iDir == 1) m_Animator->Play("Rabbit_Idle_Right", true);
+		else m_Animator->Play("Rabbit_Idle_Left", true);
 		ChangeState(ENEMY_STATE::IDLE);
 	}
 		break;
 	case ENEMY_STATE::JUMP:
 	{
-		if (m_iDir == 1) GetComponent<CAnimator>()->Play("Rabbit_Jump_Right", true);
-		else GetComponent<CAnimator>()->Play("Rabbit_Jump_Left", true);
+		if (m_iDir == 1) m_Animator->Play("Rabbit_Jump_Right", true);
+		else m_Animator->Play("Rabbit_Jump_Left", true);
 	}
 		break;
 	case ENEMY_STATE::FALL:
 	{
-		if (m_iDir == 1) GetComponent<CAnimator>()->Play("Rabbit_Jump_Right", true);
-		else GetComponent<CAnimator>()->Play("Rabbit_Jump_Left", true);
+		if (m_iDir == 1) m_Animator->Play("Rabbit_Jump_Right", true);
+		else m_Animator->Play("Rabbit_Jump_Left", true);
 		if (m_pGravity->GetGround()) ChangeState(ENEMY_STATE::IDLE);
 	}
 	break;
 	case ENEMY_STATE::ATTACK:
 	{
-		if (m_iDir == 1)  GetComponent<CAnimator>()->Play("Rabbit_Idle_Right", true);
-		else GetComponent<CAnimator>()->Play("Rabbit_Idle_Left", true);
+		if (m_iDir == 1)  m_Animator->Play("Rabbit_Idle_Right", true);
+		else m_Animator->Play("Rabbit_Idle_Left", true);
 		ChangeState(ENEMY_STATE::IDLE);
 	}
 		break;
@@ -220,10 +188,10 @@ void CRabbit::Attack()
 void CRabbit::Jump()
 {
 	// 점프 
-	if (m_rigidbody)
+	if (m_Rigidbody)
 	{
 		ChangeState(ENEMY_STATE::JUMP);
-		m_rigidbody->AddVelocity(vec2(1000.f * m_iDir, 800.f));
+		m_Rigidbody->AddVelocity(vec2(1000.f * m_iDir, 800.f));
 	}
 }
 

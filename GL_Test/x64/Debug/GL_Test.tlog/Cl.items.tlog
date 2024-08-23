@@ -32,6 +32,7 @@ C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\CMegaman.cpp;C:\GitHub\Engin
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\State\CStateAttack.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStateAttack.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\State\CStateBase.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStateBase.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\State\CStateFall.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStateFall.obj
+C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\State\CStateHurt.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStateHurt.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\State\CStateIdle.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStateIdle.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\State\CStateJump.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStateJump.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Player\State\CStateRun.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStateRun.obj
@@ -46,3 +47,4 @@ C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Enemy\CRabbit.cpp;C:\GitHub\Engine\
 C:\GitHub\Engine\GL_Test\Code\EngineFramework\GameFramework\CPlayerController.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CPlayerController.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Scene\SampleScene.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\SampleScene.obj
 C:\GitHub\Engine\GL_Test\Code\Megaman\Scene\SStage01.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\SStage01.obj
+C:\GitHub\Engine\GL_Test\Code\Megaman\Object\Component\CStatComponent.cpp;C:\GitHub\Engine\GL_Test\x64\Debug\CStatComponent.obj

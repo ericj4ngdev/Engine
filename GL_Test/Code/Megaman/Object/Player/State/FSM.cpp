@@ -8,6 +8,7 @@ COMPONENT_CONSTRUCTOR(FSM), m_CurrentState(nullptr)
 	m_RunState = new CStateRun(Character);
 	m_FallState = new CStateFall(Character);
 	m_AttackState = new CStateAttack(Character);
+	m_HurtState = new CStateHurt(Character);
 }
 
 FSM::~FSM()
@@ -33,7 +34,6 @@ void FSM::TransitionTo(CStateBase* InNextState)
 		m_CurrentState->Exit();
 	}
 	m_CurrentState = InNextState;
-	// LOG("m_CurrentState : %s", m_CurrentState->GetName())
 	InNextState->Enter();
 }
 

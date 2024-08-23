@@ -3,6 +3,7 @@
 CCharacter::CCharacter(string name) : CGameObject(name)
 {
 	bOnAir = false;
+	m_bDamaged = false;
 }
 
 CCharacter::~CCharacter() = default;
@@ -47,5 +48,10 @@ void CCharacter::Jump()
 	LOG("%d", bOnAir)
 	bOnAir = true;
 	LOG("%d", bOnAir)
+}
+
+void CCharacter::TakeDamage(float damage, int dir)
+{
+	m_bDamaged = true;
 }
 

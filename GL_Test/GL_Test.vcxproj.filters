@@ -55,6 +55,8 @@
     <ClCompile Include="Code\Megaman\Object\Player\CMegaman.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateFall.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateAttack.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Component\CStatComponent.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Player\State\CStateHurt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\EngineFramework\Component\Bullet.h" />
@@ -109,6 +111,8 @@
     <ClInclude Include="Code\Megaman\Object\Player\CMegaman.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateFall.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateAttack.h" />
+    <ClInclude Include="Code\Megaman\Object\Component\CStatComponent.h" />
+    <ClInclude Include="Code\Megaman\Object\Player\State\CStateHurt.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="freeglut.dll" />

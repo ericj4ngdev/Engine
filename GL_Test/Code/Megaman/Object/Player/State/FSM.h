@@ -6,6 +6,7 @@ class CStateJump;
 class CStateRun;
 class CStateFall;
 class CStateAttack;
+class CStateHurt;
 
 class FSM : public CComponent
 {
@@ -29,6 +30,7 @@ public:
     CStateRun* GetRunState() const { return m_RunState; }
     CStateFall* GetFallState() const { return m_FallState; }
     CStateAttack* GetAttackState() const { return m_AttackState; }
+    CStateHurt* GetHurtState() const { return m_HurtState; }
 private:
     CStateBase* m_CurrentState;
     CStateBase* m_PrevState;
@@ -37,4 +39,5 @@ private:
     CStateRun* m_RunState;
     CStateFall* m_FallState;
     CStateAttack* m_AttackState;
+    CStateHurt* m_HurtState;
 };

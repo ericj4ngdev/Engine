@@ -11,7 +11,7 @@ ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent
 	, m_attackCount(0)
 	, m_fAttackDT(0.1)
 	, m_eCurAttackState(PLAYER_ATTACK_STATE::IDLE)
-	, m_HP(100)
+	, m_CurrentHP(100)
 	, m_Life(2)
 	, m_fHitTimer(0)
 	, m_bInvincible(false)
@@ -34,7 +34,7 @@ void ControllerComponent::Init()
 void ControllerComponent::Update()
 {
 	m_curpos = gameObject->GetComponent<TransformComponent>()->GetPosition();
-	m_rigidbody = gameObject->GetComponent<CRigidbody>();	// ??? ?? ?????????? ??°??
+	m_Rigidbody = gameObject->GetComponent<CRigidbody>();	// ??? ?? ?????????? ??°??
 	m_Collider = gameObject->GetComponent<CCollider>();
 	m_pGravity = gameObject->GetComponent<CGravity>();
 	
@@ -131,7 +131,7 @@ void ControllerComponent::Control()
 	}
 
 	// Fall ????
-	if (m_rigidbody->GetVelocity().y < 0 && m_pGravity->GetGround() == false)
+	if (m_Rigidbody->GetVelocity().y < 0 && m_pGravity->GetGround() == false)
 	{
 		ChangeState(PLAYER_STATE::FALL);
 	}
@@ -141,10 +141,10 @@ void ControllerComponent::Control()
 					  && m_eCurState != PLAYER_STATE::FALL)
 	{
 		// if (m_eCurState != PLAYER_STATE::ATTACK || m_eCurAttackState != PLAYER_ATTACK_STATE::JUMP_ATTACK)
-		if (m_rigidbody)
+		if (m_Rigidbody)
 		{
 			ChangeState(PLAYER_STATE::JUMP);
-			m_rigidbody->AddVelocity(vec2(m_rigidbody->GetVelocity().x, 800.f));
+			m_Rigidbody->AddVelocity(vec2(m_Rigidbody->GetVelocity().x, 800.f));
 		}		
 	}
 
@@ -383,7 +383,7 @@ void ControllerComponent::TakeDamage(float damage, int dir)
 			ChangeState(PLAYER_STATE::HIT);
 			m_bInvincible = true;
 			// ???
-			m_rigidbody->AddVelocity(vec2(dir * 200, m_rigidbody->GetVelocity().y));
+			m_Rigidbody->AddVelocity(vec2(dir * 200, m_Rigidbody->GetVelocity().y));
 		}
 		else
 		{
@@ -401,10 +401,10 @@ void ControllerComponent::TakeDamage(float damage, int dir)
 /// <returns></returns>
 bool ControllerComponent::DecreaseHP(float damage)
 {
-	m_HP -= damage;
-	if(m_HP <= 0)	// ?????.
+	m_CurrentHP -= damage;
+	if(m_CurrentHP <= 0)	// ?????.
 	{
-		m_HP = 0;
+		m_CurrentHP = 0;
 		// ?? HP?? ???
 		return false;
 	}

@@ -105,6 +105,8 @@ using std::vector;
 #include "Megaman/Scene/SampleScene.h"
 #include "Megaman/Scene/SStage01.h"
 
+#include "Megaman/Object/Component/CStatComponent.h"
+
 #include "Megaman/Object/Player/CPlayer.h"
 #include "Megaman/Object/Player/CMegaman.h"
 #include "Megaman/Object/Map/CBlock.h"
@@ -124,6 +126,7 @@ using std::vector;
 #include "Megaman/Object/Player/State/CStateRun.h"
 #include "Megaman/Object/Player/State/CStateFall.h"
 #include "Megaman/Object/Player/State/CStateAttack.h"
+#include "Megaman/Object/Player/State/CStateHurt.h"
 
 #endif
 

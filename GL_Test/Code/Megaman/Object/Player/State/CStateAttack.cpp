@@ -12,15 +12,15 @@ CStateAttack::~CStateAttack()
 
 void CStateAttack::Enter()
 {
-    if (m_Character->GetFSM()->GetPreviousState() == m_Character->GetFSM()->GetIdleState())
+    if (m_Character->m_FSM->GetPreviousState() == m_Character->m_FSM->GetIdleState())
     {
         m_eCurAttackState = ATTACK_STATE::NORMAL_ATTACK;        
     }
-    else if (m_Character->GetFSM()->GetPreviousState() == m_Character->GetFSM()->GetRunState())
+    else if (m_Character->m_FSM->GetPreviousState() == m_Character->m_FSM->GetRunState())
     {
         m_eCurAttackState = ATTACK_STATE::RUN_ATTACK;        
     }
-    else if (m_Character->GetFSM()->GetPreviousState() == m_Character->GetFSM()->GetJumpState() || m_Character->GetFSM()->GetPreviousState() == m_Character->GetFSM()->GetFallState())
+    else if (m_Character->m_FSM->GetPreviousState() == m_Character->m_FSM->GetJumpState() || m_Character->m_FSM->GetPreviousState() == m_Character->m_FSM->GetFallState())
     {
         m_eCurAttackState = ATTACK_STATE::JUMP_ATTACK;        
     }
@@ -31,19 +31,24 @@ void CStateAttack::Enter()
 }
 
 void CStateAttack::Update()
-{    
+{
+    if (m_Character->GetbDamaged())
+    {
+        m_Character->m_FSM->TransitionTo(m_Character->m_FSM->GetHurtState());
+    }
+
     m_AnimationTimer += fDT;    
     // 시간이 끝나면 전환
     if (GetKeyDown(V))
     {
         m_Character->Attack();
-        m_AnimationTimer = 0;
+        // m_AnimationTimer = 0;
     }
     
     switch (m_eCurAttackState)
     {
     case ATTACK_STATE::IDLE:
-        m_Character->GetFSM()->TransitionTo(m_Character->GetFSM()->GetIdleState());
+        m_Character->m_FSM->TransitionTo(m_Character->m_FSM->GetIdleState());
         break;
     case ATTACK_STATE::NORMAL_ATTACK:
     {
@@ -56,7 +61,7 @@ void CStateAttack::Update()
         }
         else
         {
-            m_Character->GetFSM()->TransitionTo(m_Character->GetFSM()->GetIdleState());
+            m_Character->m_FSM->TransitionTo(m_Character->m_FSM->GetIdleState());
             m_AnimationTimer = 0;
         }
     }           
@@ -72,7 +77,7 @@ void CStateAttack::Update()
         }
         else
         {
-            m_Character->GetFSM()->TransitionTo(m_Character->GetFSM()->GetRunState());
+            m_Character->m_FSM->TransitionTo(m_Character->m_FSM->GetRunState());
             m_AnimationTimer = 0;
         }
     }            
@@ -88,7 +93,7 @@ void CStateAttack::Update()
         }
         else
         {
-            m_Character->GetFSM()->TransitionTo(m_Character->GetFSM()->GetJumpState());
+            m_Character->m_FSM->TransitionTo(m_Character->m_FSM->GetJumpState());
             m_AnimationTimer = 0;
         }
     }
