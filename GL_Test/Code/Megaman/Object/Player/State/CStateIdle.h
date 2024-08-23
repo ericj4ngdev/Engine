@@ -3,7 +3,8 @@
 class CStateIdle : public CStateBase
 {
 public:
-	CStateIdle(CCharacter* Character) : CStateBase(Character) {}
+	CStateIdle(CMegaman* Character)
+		: CStateBase(Character, "Idle") {}
 	~CStateIdle() override;
 
 public:

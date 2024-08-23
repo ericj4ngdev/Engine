@@ -53,6 +53,7 @@
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateIdle.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateRun.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\CMegaman.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Player\State\CStateFall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\EngineFramework\Component\Bullet.h" />
@@ -105,6 +106,7 @@
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateIdle.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateRun.h" />
     <ClInclude Include="Code\Megaman\Object\Player\CMegaman.h" />
+    <ClInclude Include="Code\Megaman\Object\Player\State\CStateFall.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="freeglut.dll" />

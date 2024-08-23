@@ -3,7 +3,8 @@
 class CStateRun : public CStateBase
 {
 public:
-	CStateRun(CCharacter* Character) : CStateBase(Character) {}
+	CStateRun(CMegaman* Character)
+		: CStateBase(Character, "Run") {}
 	~CStateRun() override;
 
 public:

@@ -16,13 +16,17 @@ public:
 	virtual void OnCollisionExit(CCollider* pOther);
 public:
 	virtual void Jump() override;
+	virtual void Move();
 
 public:
 	void InitAnimation();	
+	FSM* GetFSM() const { return m_FSM; }
+	void SetFSM(FSM* PlayerFSM) { m_FSM = PlayerFSM; }
 public:
 	void TakeDamage(float damage, int dir);
 	// FSM 관련 메서드
-private:
+public:
+	FSM* m_FSM;
 	CAnimator* m_Animator;
 	CRigidbody* m_Rigidbody;
 	CGravity* m_Gravity;
@@ -31,6 +35,8 @@ private:
 	vec2 m_curpos;
 	int m_iDir;
 	float m_speed;
+	float m_MoveOffset;
+	float m_Movement;
 	bool m_bInvincible;
 	float m_bInvincibleTimer;
 	int m_StepedBlockCount;

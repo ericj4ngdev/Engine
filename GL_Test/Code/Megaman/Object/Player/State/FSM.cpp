@@ -2,13 +2,20 @@
 
 COMPONENT_CONSTRUCTOR(FSM), m_CurrentState(nullptr)
 {
-	CCharacter* Character = dynamic_cast<CCharacter*>(gameObject);
+	CMegaman* Character = dynamic_cast<CMegaman*>(gameObject);
 	m_IdleState = new CStateIdle(Character);
 	m_JumpState = new CStateJump(Character);
+	m_RunState = new CStateRun(Character);
+	m_FallState = new CStateFall(Character);
 }
 
 FSM::~FSM()
 {
+}
+
+void FSM::Init()
+{
+	Initialize(m_IdleState);
 }
 
 void FSM::Initialize(CStateBase* InStartingState)
@@ -24,19 +31,15 @@ void FSM::TransitionTo(CStateBase* InNextState)
 		m_CurrentState->Exit();
 	}
 	m_CurrentState = InNextState;
+	// LOG("m_CurrentState : %s", m_CurrentState->GetName())
 	InNextState->Enter();
-}
-
-void FSM::Init()
-{
-
 }
 
 void FSM::Update()
 {
 	if (m_CurrentState != nullptr)
 	{
-		LOG("begin")
+		LOG("m_CurrentState : %s", m_CurrentState->GetName().c_str())
 		m_CurrentState->Update();
 	}
 }

@@ -3,9 +3,11 @@
 CMegaman::CMegaman(string name) : CCharacter(name)
 	, m_iDir(1)
 	, m_bInvincible(false)
+	, m_MoveOffset(0.1f)
 	, m_bInvincibleTimer(0)
 	, m_StepedBlockCount(0)
 {
+	m_FSM = CreateComponent<FSM>();
 	m_Animator = CreateComponent<CAnimator>();
 	m_Rigidbody = CreateComponent<CRigidbody>();
 	m_Gravity = CreateComponent<CGravity>();
@@ -23,8 +25,8 @@ void CMegaman::Init()
 	m_Gravity->SetGravity(1700.0f);
 		
 	InitAnimation();
-	
-	// GetComponent<ControllerComponent>()->SetSpeed(200.0f);	
+	// m_Animator->Play("Idle_Right", true);
+	m_speed = 200.0f;
 	CCharacter::Init();
 }
 
@@ -32,7 +34,7 @@ void CMegaman::Update()
 {
 	CCharacter::Update();	
 	m_curpos = GetPos();
-	LOG("m_curPos : %d %d", m_curpos.x, m_curpos.y)
+	//LOG("m_curPos : %f %f", m_curpos.x, m_curpos.y)
 	if (m_bInvincible)
 	{
 		m_bInvincibleTimer += fDT;
@@ -48,19 +50,8 @@ void CMegaman::Update()
 		}
 	}
 
-	float move = 0;
+	Move();
 
-	bool moveLeft = GetKeyHold(LEFT);
-	bool moveRight = GetKeyHold(RIGHT);
-
-	if (moveLeft || moveRight) 
-	{
-		if (moveLeft) { m_iDir = -1; }
-		else { m_iDir = 1; }
-
-		move = m_iDir * m_speed;
-		m_curpos.x += move * fDT;
-	}
 	SetPos(m_curpos);
 }
 
@@ -96,6 +87,29 @@ void CMegaman::OnCollisionExit(CCollider* pOther)
 void CMegaman::Jump()
 {
 	CCharacter::Jump();
+	if (m_Rigidbody)
+	{
+		m_Rigidbody->AddVelocity(vec2(m_Rigidbody->GetVelocity().x, 800.f));
+	}
+}
+
+void CMegaman::Move()
+{
+	float move = 0;
+
+	bool moveLeft = GetKeyHold(LEFT);
+	bool moveRight = GetKeyHold(RIGHT);
+
+	if (moveLeft || moveRight)
+	{
+		if (moveLeft) { m_iDir = -1; }
+		else { m_iDir = 1; }
+		move = m_iDir * m_speed;
+		m_Movement = move;	
+		m_curpos.x += move * fDT;
+	}
+
+	m_Rigidbody->SetVelocity(vec2(move, m_Rigidbody->GetVelocity().y));
 }
 
 void CMegaman::InitAnimation()

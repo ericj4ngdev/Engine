@@ -51,6 +51,7 @@
     <ClCompile Include="Code\Megaman\Object\Map\CBlock.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\CMegaman.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateBase.cpp" />
+    <ClCompile Include="Code\Megaman\Object\Player\State\CStateFall.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateIdle.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateJump.cpp" />
     <ClCompile Include="Code\Megaman\Object\Player\State\CStateRun.cpp" />
@@ -103,6 +104,7 @@
     <ClInclude Include="Code\Megaman\Object\Map\CBlock.h" />
     <ClInclude Include="Code\Megaman\Object\Player\CMegaman.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateBase.h" />
+    <ClInclude Include="Code\Megaman\Object\Player\State\CStateFall.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateIdle.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateJump.h" />
     <ClInclude Include="Code\Megaman\Object\Player\State\CStateRun.h" />

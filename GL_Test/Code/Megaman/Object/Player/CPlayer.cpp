@@ -2,7 +2,11 @@
 
 CPlayer::CPlayer(string name) : CGameObject(name)
 {
-	Init();
+	CreateComponent<CAnimator>();
+	CreateComponent<ControllerComponent>();
+	CreateComponent<CRigidbody>();
+	CreateComponent<CGravity>();
+	CreateComponent<CCollider>();
 }
 
 CPlayer::~CPlayer() = default;
@@ -12,11 +16,7 @@ void CPlayer::Init()
 	
 
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
-	CreateComponent<CAnimator>();
-	CreateComponent<ControllerComponent>();
-	CreateComponent<CRigidbody>();
-	CreateComponent<CGravity>();
-	CreateComponent<CCollider>();
+	
 	
 	// 조종에 AddForce를 안해서 무의미 
 	GetComponent<CRigidbody>()->SetFriction(700.0f);		

@@ -2,7 +2,8 @@
 class CStateBase
 {
 public:
-	CStateBase(CCharacter* Character) : m_Character(Character) {}
+	CStateBase(CMegaman* Character, const string& name)
+		: m_Character(Character), m_Name(name) {}
 	virtual ~CStateBase();
 
 public:
@@ -10,7 +11,11 @@ public:
 	virtual void Update(){}
 	virtual void Exit(){}
 
+public:
+	virtual const string& GetName() const { return m_Name; }
+
 protected:
-	CCharacter* m_Character;
+	CMegaman* m_Character;
+	string m_Name;
 };
 

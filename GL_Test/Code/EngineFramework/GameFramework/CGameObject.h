@@ -71,6 +71,6 @@ T* CGameObject::CreateComponent()
 {
 	T* component = new T(this);
 	AddComponent(component);
-	component->Init();
+	// component->Init();
 	return component;
 }

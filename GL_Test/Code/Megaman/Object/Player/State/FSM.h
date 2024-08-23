@@ -1,8 +1,10 @@
 #pragma once
 
-#include "CStateBase.h"
-#include "CStateIdle.h"
-#include "CStateJump.h"
+class CStateBase;
+class CStateIdle;
+class CStateJump;
+class CStateRun;
+class CStateFall;
 
 class FSM : public CComponent
 {
@@ -21,11 +23,12 @@ public:
     // 상태 객체 접근자
     CStateIdle* GetIdleState() const { return m_IdleState; }
     CStateJump* GetJumpState() const { return m_JumpState; }
-
+    CStateRun* GetRunState() const { return m_RunState; }
+    CStateFall* GetFallState() const { return m_FallState; }
 private:
     CStateBase* m_CurrentState;
-
-    // 상태 객체들을 FSM이 관리
     CStateIdle* m_IdleState;
     CStateJump* m_JumpState;
+    CStateRun* m_RunState;
+    CStateFall* m_FallState;
 };
