@@ -22,9 +22,10 @@ public:
 public:
 	CRigidbody* m_pRigidbody;
 	CCollider* m_pCollider;
+	CGravity* m_pGravity;
 	bool m_bReady;
 	bool m_bHit;
-	float m_fMoveTimer;
+	float m_moveTimer;
 	float m_fReadyDelay;
 	float m_fSpeed;
 public:

@@ -9,7 +9,7 @@ ControllerComponent::ControllerComponent(CGameObject* l_gameObject) : CComponent
 	, m_MoveOffset(0.1f)
 	, m_fAttackTimer(1)
 	, m_attackCount(0)
-	, m_fAttackDT(0.1)
+	, m_fAttackDT(0.1f)
 	, m_eCurAttackState(PLAYER_ATTACK_STATE::IDLE)
 	, m_CurrentHP(100)
 	, m_Life(2)

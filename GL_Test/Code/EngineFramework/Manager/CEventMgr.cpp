@@ -27,11 +27,12 @@ void CEventMgr::Excute(const tEvent& eve)
 	{
 		// lParam : Object Address
 		// wParam : Group Type
-		CGameObject* pNewObj = (CGameObject*)eve.lParam;
+		auto pRawObj = reinterpret_cast<CGameObject*>(eve.lParam);
+		auto pNewObj = std::unique_ptr<CGameObject>(pRawObj);
 		GROUP_TYPE eType = (GROUP_TYPE)eve.wParam;
 
 		// ¾À¿¡ Ãß°¡
-		CSceneMgr::GetInstance()->GetCurScene()->AddObject(pNewObj, eType);
+		CSceneMgr::GetInstance()->GetCurScene()->AddObject(move(pNewObj), eType);
 	}
 		break;
 	case EVENT_TYPE::DELETE_OBJECT:

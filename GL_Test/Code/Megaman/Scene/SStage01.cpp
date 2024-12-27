@@ -8,10 +8,7 @@ void SStage01::Init()
 
 void SStage01::Enter()
 {
-	CMap* map = new CMap("backgound");
-	map->GetComponent<TransformComponent>()->SetPosition(vec2(3194.f, -7.5f));
-	map->GetComponent<TransformComponent>()->SetScale(vec2(3500.f, 400.f) * 3.20f);
-	AddObject(map, GROUP_TYPE::MAP);
+	
 	
 }
 

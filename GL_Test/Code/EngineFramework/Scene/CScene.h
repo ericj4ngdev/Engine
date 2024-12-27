@@ -6,8 +6,8 @@ class CPlayerController;
 class CScene
 {
 protected:
-    vector<CGameObject*> m_arrObj[(UINT)GROUP_TYPE::END];
-    vector<CPlayerController*> m_arrPC;
+    vector<vector<std::unique_ptr<CGameObject>>> m_arrObj; // 그룹별로 객체 소유
+    vector<std::unique_ptr<CPlayerController>> m_arrPC;    // 플레이어 컨트롤러 소유
     string m_name;
 
 public:
@@ -23,8 +23,8 @@ public:
     virtual void Render();
     virtual void Destroy() = 0;
 public:
-    void AddObject(CGameObject* pGameObject, GROUP_TYPE eType){ m_arrObj[(UINT)eType].push_back(pGameObject); }
-    const vector<CGameObject*>& GetGroupObject(GROUP_TYPE eType) { return m_arrObj[(UINT)eType]; }
+    void AddObject(std::unique_ptr<CGameObject> pGameObject, GROUP_TYPE eType);    
+    const vector<std::unique_ptr<CGameObject>>& GetGroupObject(GROUP_TYPE eType) { return m_arrObj[(UINT)eType]; }
     void DeleteGroup(GROUP_TYPE eGroup);
     void DeleteAll();
     CPlayerController* GetController();

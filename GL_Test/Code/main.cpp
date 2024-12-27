@@ -1,7 +1,9 @@
 ﻿// main.cpp : 이 파일에는 'main' 함수가 포함됩니다. 프로그램 실행이 시작되고 종료됩니다.
 //
+
 #include "include.h"
 using namespace std;
+
 
 bool InitInstance(int argc, char** argv) {
     glutInit(&argc, argv);
@@ -38,8 +40,11 @@ int GLMgr::g_screenHeight = 720;
 
 int main(int argc, char** argv)
 {
-    // 메모리 누수 체크
-    // _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    // 메모리 누수 검사 활성화
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    // _CrtSetBreakAlloc(927);
+    // _CrtDumpMemoryLeaks();
+    
     // _CrtSetBreakAlloc(1012);
 
     if (!InitInstance(argc, argv)) return 0;
@@ -47,8 +52,7 @@ int main(int argc, char** argv)
     Init();    
     glutDisplayFunc(Tick);
     glutIdleFunc(OnIdle);
-    glutMainLoop();    
-
+    glutMainLoop();        
     return 0;
 }
 

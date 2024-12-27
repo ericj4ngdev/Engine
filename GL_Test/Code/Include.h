@@ -44,11 +44,16 @@ static int PC_Idx = 0;
 printf("%s " fmt "\n", __FUNCTION__, ##__VA_ARGS__);
 
 // #pragma comment(lib,"glut32.lib") 
+#define _CRTDBG_MAP_ALLOC
+#include <cstdlib>
+#include <crtdbg.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
 #include <stdio.h>
 #include <windows.h>
+#include <memory>
 using namespace std;
 #include<assert.h>
 #include <iostream>
@@ -62,6 +67,22 @@ using std::vector;
 #include <cmath>
 // #include <GL/glew.h>
 #include <GL/glut.h>
+
+// 파일 경로에서 파일 이름만 반환
+inline const char* GetFileName(const char* path, int line) {
+	const char* file = strrchr(path, '\\'); // 마지막 '\' 위치 찾기
+	return file ? (file + 1) : path;       // 파일명 또는 경로 반환
+}
+
+inline const int GetLine(int line)
+{
+	return line;
+}
+
+// 메모리 누수 디버그 정보 활성화
+#define new new(_NORMAL_BLOCK, GetFileName(__FILE__, __LINE__), __LINE__)
+// #define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
+
 
 #include "EngineFramework/Util/Func.h"
 #include "EngineFramework/Util/MoreMath.h"
@@ -127,6 +148,10 @@ using std::vector;
 #include "Megaman/Object/Player/State/CStateFall.h"
 #include "Megaman/Object/Player/State/CStateAttack.h"
 #include "Megaman/Object/Player/State/CStateHurt.h"
+
+
+
+
 
 #endif
 

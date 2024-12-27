@@ -2,155 +2,106 @@
 
 void SampleScene::Enter()
 {	
-	CMap* map = new CMap("backgound");
+	auto map = std::make_unique<CMap>("backgound");
 	vec2 offset = vec2(6000.f, -1600.0f);
 	map->SetPos(offset + vec2(0,0));
 	map->SetScale(vec2(4098.f, 1282.f) * 3.20f);
-	AddObject(map, GROUP_TYPE::MAP);
+	AddObject(move(map), GROUP_TYPE::MAP);
 
-	// CPlayer player_1("Player_1");
-	/*CPlayer* player = new CPlayer("Player");
-	player->SetPos(vec2(-300.f, 100.f));
-	player->GetComponent<TransformComponent>()->SetScale(vec2(75.f, 75.f));
-	player->GetComponent<CCollider>()->Init();
-	AddObject(player, GROUP_TYPE::PLAYER);*/
-
-	CMegaman* player = new CMegaman("Player");
+	auto player = std::make_unique<CMegaman>("Player");
 	player->SetPos(vec2(-300.f, 100.f));
 	player->GetComponent<TransformComponent>()->SetScale(vec2(75.f, 75.f));
 	// player->GetComponent<CCollider>()->Init();
-	AddObject(player, GROUP_TYPE::PLAYER);
+	AddObject(move(player), GROUP_TYPE::PLAYER);
 
-	/*CBat* enemy = nullptr;
-	string enemyName = "enemy";
-	enemy = new CBat(enemyName);
-	enemy->GetComponent<TransformComponent>()->SetPosition(vec2(400.f, 200.f));
-	enemy->GetComponent<TransformComponent>()->SetScale(vec2{ 75.f, 80.f });
-	enemy->GetComponent<CCollider>()->Init();
-	AddObject(enemy, GROUP_TYPE::ENEMY);*/
-
-	/*for (int i = 0; i < 3; i++)
-	{
-		string enemyName = "enemy" + to_string(i);
-		enemy = new CRabbit(enemyName);
-		enemy->GetComponent<TransformComponent>()->SetPosition(vec2( 500.f + (float)i * 200.f, 200.f));
-		enemy->GetComponent<TransformComponent>()->SetScale(vec2 { 75.f, 80.f });
-		enemy->GetComponent<CCollider>()->Init();
-		AddObject(enemy, GROUP_TYPE::ENEMY);
-	}*/
-
-	/*CEnemyProjectile* pro = new CEnemyProjectile();
-	pro->SetPos(vec2(-350.f, 150.f));
-	AddObject(pro, GROUP_TYPE::PROJ_ENEMY);*/
-
-	CEnemySpawner* spot = nullptr;
+	/*CEnemySpawner* spot = nullptr;
 	{
 		string str_spotName = "Spot" + to_string(0);
 		spot = new CEnemySpawner(str_spotName);
 		spot->SetPos(vec2(600.f, 0.f));
 		spot->SetEnemy(ENEMY::BAT);
-		// spot->GetComponent<CCollider>()->Init();
 		AddObject(spot, GROUP_TYPE::SPAWNER);
 
 		str_spotName = "Spot" + to_string(1);
 		spot = new CEnemySpawner(str_spotName);
 		spot->SetPos(vec2(1000.f, 100.f));
 		spot->SetEnemy(ENEMY::RABBIT);
-		// spot->GetComponent<CCollider>()->Init();
 		AddObject(spot, GROUP_TYPE::SPAWNER);
-	}
+	}*/
 	
-
-	//string blockName = "Block" + to_string(1);
-	//block = new CBlock(blockName);
-	//block->GetComponent<TransformComponent>()->SetPosition(vec2(175.f, 25.f));	// 원래 y값 25
-	//block->GetComponent<TransformComponent>()->SetScale(vec2{ 50.f, 50.f });
-	//block->GetComponent<CCollider>()->Init();
-	//AddObject(block, GROUP_TYPE::MAP);
-	
-	CBlock* block = nullptr;
+	unique_ptr<CBlock> block = nullptr;
 	{
 		// boundary
 		string blockName = "Block" + to_string(0);
-		block = new CBlock(blockName);
+		block = std::make_unique<CBlock>(blockName);
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(-70.f, 110.f)));
 		block->SetScale(vec2{ 50.f, 2000.f });
-		// block->GetComponent<CCollider>()->Init();
-		AddObject(block, GROUP_TYPE::MAP);
+		AddObject(move(block), GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(0);
-		block = new CBlock(blockName);
+		block = std::make_unique<CBlock>(blockName);
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 7.5f, 110.f)));
-		block->SetScale(vec2{ 50.f * 16, 50.f });
-		// block->GetComponent<CCollider>()->Init();
-		AddObject(block, GROUP_TYPE::MAP);
+		block->SetScale(vec2{ 50.f * 16, 50.f });		
+		AddObject(move(block), GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(1);
-		block = new CBlock(blockName);
+		block = std::make_unique<CBlock>(blockName);
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 17.3f, 160.f)));	// 원래 y값 25
-		block->SetScale(vec2{ 50.f * 4, 50.f });
-		// block->GetComponent<CCollider>()->Init();
-		AddObject(block, GROUP_TYPE::MAP);
+		block->SetScale(vec2{ 50.f * 4, 50.f });		
+		AddObject(move(block), GROUP_TYPE::MAP);
 
 		// 공중
 		blockName = "Block" + to_string(2);
-		block = new CBlock(blockName);
+		block = std::make_unique<CBlock>(blockName);
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 7.75f, 250.f)));
-		block->SetScale(vec2{ 50.f * 5, 50.f });
-		// block->GetComponent<CCollider>()->Init();
-		AddObject(block, GROUP_TYPE::MAP);
+		block->SetScale(vec2{ 50.f * 5, 50.f });		
+		AddObject(move(block), GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(3);
-		block = new CBlock(blockName);
+		block = std::make_unique<CBlock>(blockName);
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 22.0f, 110.f)));
-		block->SetScale(vec2{ 50.f * 5, 50.f });
-		// block->GetComponent<CCollider>()->Init();
-		AddObject(block, GROUP_TYPE::MAP);
+		block->SetScale(vec2{ 50.f * 5, 50.f });		
+		AddObject(move(block), GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(4);
-		block = new CBlock(blockName);
+		block = std::make_unique<CBlock>(blockName);
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 27.0f, 160.f)));
-		block->SetScale(vec2{ 50.f * 5, 50.f });
-		// block->GetComponent<CCollider>()->Init();
-		AddObject(block, GROUP_TYPE::MAP);
+		block->SetScale(vec2{ 50.f * 5, 50.f });		
+		AddObject(move(block), GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(5);
-		block = new CBlock(blockName);
+		block = std::make_unique<CBlock>(blockName);
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 36.9f, 210.f)));
-		block->SetScale(vec2{ 50.f * 14.3, 50.f });
-		// block->GetComponent<CCollider>()->Init();
-		AddObject(block, GROUP_TYPE::MAP);
+		block->SetScale(vec2{ 50.f * 14.3, 50.f });		
+		AddObject(move(block), GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(6);
-		block = new CBlock(blockName);
+		block = std::make_unique<CBlock>(blockName);
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 48.0f, 160.f)));
-		block->SetScale(vec2{ 50.f * 8, 50.f });
-		// block->GetComponent<CCollider>()->Init();
-		AddObject(block, GROUP_TYPE::MAP);
+		block->SetScale(vec2{ 50.f * 8, 50.f });		
+		AddObject(move(block), GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(7);
-		block = new CBlock(blockName);
+		block = std::make_unique<CBlock>(blockName);
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 63.3f, 110.f)));
-		block->SetScale(vec2{ 50.f * 22.5, 50.f });
-		// block->GetComponent<CCollider>()->Init();
-		AddObject(block, GROUP_TYPE::MAP);
+		block->SetScale(vec2{ 50.f * 22.5, 50.f });		
+		AddObject(move(block), GROUP_TYPE::MAP);
 
 		blockName = "Block" + to_string(8);
-		block = new CBlock(blockName);
+		block = std::make_unique<CBlock>(blockName);
 		block->SetPos(vec2(vec2(offset.x - 6500, offset.y + 1300)
 			+ vec2(50.f * 79.3f, 110.f)));
-		block->SetScale(vec2{ 50.f * 7, 2000.f });
-		// block->GetComponent<CCollider>()->Init();
-		AddObject(block, GROUP_TYPE::MAP);
+		block->SetScale(vec2{ 50.f * 7, 2000.f });		
+		AddObject(move(block), GROUP_TYPE::MAP);
 	}
 	
 

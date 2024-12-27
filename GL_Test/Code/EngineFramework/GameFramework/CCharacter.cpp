@@ -1,6 +1,6 @@
 #include "include.h"
 
-CCharacter::CCharacter(string name) : CGameObject(name)
+CCharacter::CCharacter(string name) : CGameObject(name), m_Controller(nullptr)
 {
 	bOnAir = false;
 	m_bDamaged = false;
@@ -12,6 +12,9 @@ void CCharacter::Init()
 {
 	// m_FSM->Initialize(m_CurrentState);
 	CPlayerController* PC = CSceneMgr::GetInstance()->GetCurScene()->GetController();
+	// Scene::Init에선 PC생성해서 push하지만 Character가 없음
+	// PC가 null은 아닌데 GetController해도 null임 
+	// 그래서 Character가 없음
 	if (PC)
 	{
 		PC->OnPossess(this);

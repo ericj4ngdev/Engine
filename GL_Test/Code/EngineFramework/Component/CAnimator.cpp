@@ -1,6 +1,6 @@
 #include "include.h"
 
-COMPONENT_CONSTRUCTOR(CAnimator) , m_bRepeat(false)
+COMPONENT_CONSTRUCTOR(CAnimator) , m_bRepeat(false), m_pCurAnim(nullptr)
 {
 
 }
@@ -55,7 +55,8 @@ void CAnimator::CreateAnimation(const string strName, CTexture* pTex, vec2 vLT, 
 	pAnim->m_pAnimator = this;
 	pAnim->Create(pTex, vLT, vSliceSize, vStep, idir, fDuration, iFrameCount);
 
-	m_mapAnim.insert(make_pair(strName, pAnim));
+	m_mapAnim.insert(make_pair(strName, move(pAnim)));
+	// delete pAnim;
 }
 
 CAnimation* CAnimator::FindAnimation(const string& strName)

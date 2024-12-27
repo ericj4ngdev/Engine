@@ -61,8 +61,8 @@ void CCollisionMgr::Reset()
 void CCollisionMgr::CollisionGroupUpdate(GROUP_TYPE eLeft, GROUP_TYPE eRight)
 {
 	CScene* pCurScene = CSceneMgr::GetInstance()->GetCurScene();
-	const vector<CGameObject*>& vecLeft = pCurScene->GetGroupObject(eLeft);
-	const vector<CGameObject*>& vecRight = pCurScene->GetGroupObject(eRight);
+	const auto& vecLeft = pCurScene->GetGroupObject(eLeft);
+	const auto& vecRight = pCurScene->GetGroupObject(eRight);
 	map<ULONGLONG, bool>::iterator iter;
 	for (int i = 0; i < vecLeft.size(); i++)
 	{

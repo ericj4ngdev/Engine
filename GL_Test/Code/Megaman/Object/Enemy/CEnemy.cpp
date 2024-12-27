@@ -44,13 +44,18 @@ void CEnemy::OnCollision(CCollider* pOther)
 vec2 CEnemy::GetPlayerPosition()
 {
 	// 현재 씬에 있는 플레이어
-	vector<CGameObject*> player_group = CSceneMgr::GetInstance()->GetCurScene()->GetGroupObject(GROUP_TYPE::PLAYER);
+	const auto& player_group = CSceneMgr::GetInstance()->GetCurScene()->GetGroupObject(GROUP_TYPE::PLAYER);
 	if (player_group.empty())
 	{
 		printf("not find player");
 		return vec2(0,0);
 	}
-	CPlayer* m_cPlayer = (CPlayer*)player_group[0];			// ?
+	CPlayer* m_cPlayer = dynamic_cast<CPlayer*>(player_group[0].get());			// ?
+	if (m_cPlayer == nullptr)
+	{
+		printf("failed to cast to CPlayer");
+		return vec2(0, 0);
+	}
 	return m_cPlayer->GetPos();
 }
 

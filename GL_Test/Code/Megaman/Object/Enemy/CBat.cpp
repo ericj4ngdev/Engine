@@ -3,23 +3,23 @@
 CBat::CBat()
 {
 	m_fSpeed = 50;
-	m_fMoveTimer = 0;
+	m_moveTimer = 0;
 	m_bReady = true;
 	m_bHit = false;
 	m_pRigidbody = CreateComponent<CRigidbody>();
-	CreateComponent<CGravity>();
+	m_pGravity= CreateComponent<CGravity>();
 	m_pCollider = CreateComponent<CCollider>();
 	// Init();
 }
 
 CBat::CBat(string name) : CEnemy(name)
 {
-	m_fSpeed = 80;
-	m_fMoveTimer = 0;
+	m_fSpeed = 50;
+	m_moveTimer = 0;
 	m_bReady = true;
 	m_bHit = false;
 	m_pRigidbody = CreateComponent<CRigidbody>();
-	CreateComponent<CGravity>();
+	m_pGravity= CreateComponent<CGravity>();
 	m_pCollider = CreateComponent<CCollider>();
 	// Init();
 }
@@ -33,6 +33,7 @@ void CBat::Init()
 {
 	m_pRigidbody->SetFriction(700.0f);
 	m_pRigidbody->SetMaxVelocity(vec2(300.0f, 1000.0f));
+	m_pGravity->SetGravity(0.0f);
 	SetScale(vec2{ 75.f, 80.f });
 
 	std::string strFilePath = CPathMgr::GetInstance()->GetContentPath();
@@ -51,13 +52,13 @@ void CBat::Update()
 {
 	CGameObject::Update();
 	
-	m_fMoveTimer += fDT;
-	if (m_fMoveTimer >= 2.0f && m_bReady)
+	m_moveTimer += fDT;
+	if (m_moveTimer >= 2.0f && m_bReady)
 	{
 		m_bReady = false;
 		ChangeState(ENEMY_STATE::READY);
 	}
-	if (m_fMoveTimer >= 2.2f && !m_bHit) Move();
+	if (m_moveTimer >= 2.2f && !m_bHit) Move();
 
 
 	// 맞고 Idle 가면 m_fMoveTimer =0, m_bReady는 다시 true;
@@ -171,7 +172,7 @@ void CBat::BackToIdle()
 	{
 		ChangeState(ENEMY_STATE::HIT);
 		vCurPos.y += 500 * fDT;
-		m_fMoveTimer = 0;
+		m_moveTimer = 0;
 		m_bReady = true;
 		SetPos(vCurPos);
 	}
